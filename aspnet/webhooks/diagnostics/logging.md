@@ -1,26 +1,26 @@
 ---
 uid: webhooks/diagnostics/logging
-title: ASP.NET Webhook logging |Microsoft Docs
+title: ASP.NETウェブフックのロギング |マイクロソフトドキュメント
 author: rick-anderson
-description: ASP.NET Webhook でログを記録する方法。
+description: WebHook にログインASP.NET方法。
 ms.author: riande
 ms.date: 01/17/2012
 ms.assetid: f71bc442-5f80-481b-a32c-a0ec18dee9d6
-ms.openlocfilehash: a05b32c4a8f9577bcf6170bd19a9e440b1aeb75b
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 350732acbd3a73bddb8f8b20dcd50c225d89be82
+ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78440908"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80675341"
 ---
-# <a name="aspnet-webhooks-logging"></a>ASP.NET Webhook のログ記録
+# <a name="aspnet-webhooks-logging"></a>ウェブフックのログをASP.NETする
 
-Microsoft ASP.NET Webhook では、問題と問題を報告する方法としてログ記録を使用します。 既定では、ログは managed を使用して書き込まれます。この[トレース](https://msdn.microsoft.com/library/system.diagnostics.trace)は、他のログストリームと同様に[トレースリスナー](https://msdn.microsoft.com/library/system.diagnostics.tracelistener.aspx)を使用して実行できます。
+マイクロソフトASP.NET WebHooks は、問題や問題を報告する方法としてログ記録を使用しています。 デフォルトでは、ログは[System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace)を使用して書き込まれ、他のログ ストリームと同様に[トレース リスナーを](https://msdn.microsoft.com/library/system.diagnostics.tracelistener.aspx)使用して追跡できます。
 
-Web アプリケーションを Azure Web アプリとしてデプロイすると、ログは自動的に選択され、他のすべての[システム診断](https://msdn.microsoft.com/library/system.diagnostics.trace)ログと一緒に管理できます。 詳細については、「 [Azure App Service での web アプリの診断ログの有効化](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/)」を参照してください。
+Web アプリケーションを Azure Web アプリとしてデプロイすると、ログは自動的に取得され、他の[System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace)ログと共に管理できます。 詳細については[、Azure アプリ サービスで Web アプリの診断ログを有効にするをご覧ください](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/)。
 
-さらに、「 [Visual studio を使用した Azure App Service での web アプリのトラブルシューティング](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/#webserverlogs)」の説明に従って、visual studio 内から直接ログを取得することもできます。
+また、「Visual Studio を[使用した Azure アプリ サービスでの Web アプリのトラブルシューティング](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/#webserverlogs)」で説明されているように、ログは Visual Studio 内から直接取得できます。
 
 ## <a name="redirecting-logs"></a>ログのリダイレクト
 
-ログを[Log4Net](http://logging.apache.org/log4net/) [に書き込む](https://msdn.microsoft.com/library/system.diagnostics.trace)のではなく、ログマネージャーに直接ログ記録することができます。これは、ログマネージャーに直接記録することができ[ます。](http://nlog-project.org/) [ILogger](https://github.com/aspnet/AspNetWebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Common/Diagnostics/ILogger.cs)の実装を提供し、任意の依存関係挿入エンジンに登録するだけで、webhook Microsoft ASP.NET によって取得されます。 詳細については、 [ASP.NET Web API 2 での依存関係の挿入に](https://www.asp.net/web-api/overview/advanced/dependency-injection)関する説明を参照してください。
+[System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace)にログを書き込む代わりに[、Log4Net](http://logging.apache.org/log4net/)や[NLog](http://nlog-project.org/)などのログ マネージャに直接ログを記録できる代替ログ実装を提供できます。 単に[ILogger](https://github.com/aspnet/AspNetWebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Common/Diagnostics/ILogger.cs)の実装を提供し、お好みの依存性注入エンジンでそれを登録し、それはマイクロソフトASP.NETWebHooksによって拾われます。 詳細については[、Web API 2 の依存関係ASP.NETインジェクション](https://www.asp.net/web-api/overview/advanced/dependency-injection)を参照してください。

@@ -1,150 +1,150 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/web-config-transformations
-title: 'Visual Studio を使用した ASP.NET Web 配置: web.config ファイルの変換 |Microsoft Docs'
+title: 'ASP.NET Web 配置を使用して Visual Studio: Web.config ファイル変換 |マイクロソフトドキュメント'
 author: tdykstra
-description: このチュートリアルシリーズでは、ASP.NET web アプリケーションをデプロイ (発行) して、Web Apps またはサードパーティのホスティングプロバイダーに Azure App Service する方法について説明します。
+description: このチュートリアル シリーズでは、azure App Service Web Apps またはサード パーティのホスティング プロバイダーに、ASP.NET Web アプリケーションをデプロイ (公開) する方法を示します。
 ms.author: riande
 ms.date: 02/15/2013
 ms.assetid: 5a2a927b-14cb-40bc-867a-f0680f9febd7
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/web-config-transformations
 msc.type: authoredcontent
 ms.openlocfilehash: a9d39547c94a63003442ba6fe1257693dde24b05
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78513712"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80675749"
 ---
-# <a name="aspnet-web-deployment-using-visual-studio-webconfig-file-transformations"></a>Visual Studio を使用した ASP.NET Web 配置: web.config ファイル変換
+# <a name="aspnet-web-deployment-using-visual-studio-webconfig-file-transformations"></a>Visual Studio を使用した Web 配置のASP.NET: Web.config ファイル変換
 
-[Tom Dykstra](https://github.com/tdykstra)
+[トム・ダイクストラ](https://github.com/tdykstra)著
 
-[スタートプロジェクトのダウンロード](https://go.microsoft.com/fwlink/p/?LinkId=282627)
+[スタート プロジェクトのダウンロード](https://go.microsoft.com/fwlink/p/?LinkId=282627)
 
-> このチュートリアルシリーズでは、Visual Studio 2012 または Visual Studio 2010 を使用して、Azure App Service Web Apps またはサードパーティのホスティングプロバイダーにするために、ASP.NET web アプリケーションをデプロイ (発行) する方法について説明します。 シリーズの詳細については、[シリーズの最初のチュートリアル](introduction.md)を参照してください。
+> このチュートリアル シリーズでは、Visual Studio 2012 または Visual Studio 2010 を使用して、azure App Service Web Apps またはサード パーティのホスティング プロバイダーに ASP.NET Web アプリケーションをデプロイ (発行) する方法を示します。 シリーズの詳細については、[シリーズの最初のチュートリアルを](introduction.md)参照してください。
 
 ## <a name="overview"></a>概要
 
-このチュートリアルでは、別の移行先環境に配置するときに web.config ファイルを変更するプロセスを自動化する方法について説明*します。* ほとんどのアプリケーションでは、アプリケーションの配置時に異なる必要がある設定が*web.config ファイルに*あります。 これらの変更を行うプロセスを自動化すると、を展開するたびに手動で行う必要がなくなります。これは面倒でエラーが発生しやすくなります。
+このチュートリアルでは *、Web.config*ファイルを別の配置先環境に配置するときに、ファイルを変更するプロセスを自動化する方法を示します。 ほとんどのアプリケーションは *、Web.config*ファイルに設定を持っていますが、アプリケーションを配置するときには異なる設定をする必要があります。 これらの変更を行うプロセスを自動化すると、展開するたびに手動で行う必要がなくなります。
 
-リマインダー: チュートリアルを実行しているときにエラーメッセージが表示されたり機能しない場合は、必ず[トラブルシューティングのページ](troubleshooting.md)を確認してください。
+リマインダー: チュートリアルを進める際にエラーメッセージが表示されたり、何かが機能しない場合は、[トラブルシューティングページ](troubleshooting.md)を確認してください。
 
-## <a name="webconfig-transformations-versus-web-deploy-parameters"></a>Web.config の変換と Web 配置パラメーター
+## <a name="webconfig-transformations-versus-web-deploy-parameters"></a>Web.config 変換と Web 配置パラメーターの比較
 
-*Web.config ファイル設定*の変更プロセスを自動化するには、web.config[変換](https://msdn.microsoft.com/library/dd465326.aspx)と[Web 配置パラメーター](https://msdn.microsoft.com/library/ff398068.aspx)の2つの方法があります。 Web.config*変換ファイル*には、配置時に*web.config ファイルを*変更する方法を指定する XML マークアップが含まれています。 特定のビルド構成および特定の発行プロファイルに対して異なる変更を指定できます。 既定のビルド構成はデバッグとリリースであり、カスタムビルド構成を作成できます。 通常、発行プロファイルは、配置先の環境に対応します。 (「[テスト環境として IIS に配置](deploying-to-iis.md)する」チュートリアルの発行プロファイルの詳細については、「」を参照してください)。
+*Web.config*ファイルの設定を変更するプロセスを自動化するには[、Web.config 変換](https://msdn.microsoft.com/library/dd465326.aspx)と[Web 配置パラメーター](https://msdn.microsoft.com/library/ff398068.aspx)の 2 つの方法があります。 *Web.config*変換ファイルには、配置時に*Web.config*ファイルを変更する方法を指定する XML マークアップが含まれています。 特定のビルド構成と特定の発行プロファイルに対して、異なる変更を指定できます。 既定のビルド構成はデバッグとリリースで、カスタム ビルド構成を作成できます。 発行プロファイルは、通常、宛先環境に対応します。 (発行プロファイルの詳細については、「[テスト環境としての IIS への展開](deploying-to-iis.md)」チュートリアルを参照してください)。
 
-Web 配置パラメーターを使用すると、 *web.config ファイルにある設定*を含め、配置時に構成する必要があるさまざまな種類の設定を指定できます。 *Web.config ファイルの*変更を指定するために使用する場合、Web 配置のパラメーターはより複雑になりますが、を配置するまで設定する値がわからない場合に便利です。 たとえば、エンタープライズ環境では、*展開パッケージ*を作成して、運用環境にインストールする it 部門のユーザーに付与することができます。また、そのユーザーは、不明な接続文字列またはパスワードを入力できる必要があります。
+Web 配置パラメーターを使用すると *、Web.config*ファイル内の設定など、配置中に構成する必要があるさまざまな種類の設定を指定できます。 *Web.config*ファイルの変更を指定する場合、Web 配置パラメーターは設定が複雑になりますが、配置するまで設定する値がわからない場合に便利です。 たとえば、エンタープライズ環境では、*展開パッケージ*を作成し、実稼働環境でインストールする IT 部門の担当者に配布を提供し、そのユーザーが知らない接続文字列やパスワードを入力できるようにする必要があります。
 
-このチュートリアルシリーズで説明するシナリオで*は、web.config ファイルに*対して実行する必要があるすべてのことを事前に把握しているので、Web 配置パラメーターを使用する必要はありません。 使用するビルド構成に応じて異なる変換をいくつか構成します。また、使用する発行プロファイルによって異なるものもあります。
+このチュートリアル シリーズで説明するシナリオでは *、Web.config*ファイルに対して行う必要があるすべてのことを事前に把握しているので、Web 配置パラメーターを使用する必要はありません。 使用するビルド構成によって異なる変換と、使用する発行プロファイルによって異なる変換を構成します。
 
 <a id="watransforms"></a>
 
-## <a name="specifying-webconfig-settings-in-azure"></a>Azure での web.config 設定の指定
+## <a name="specifying-webconfig-settings-in-azure"></a>Azure での Web.config 設定の指定
 
-変更する*web.config ファイルの*設定が `<connectionStrings>` または `<appSettings>` 要素に含まれていて、Azure App Service で Web Apps するように配置している場合は、配置時に変更を自動化するためのもう1つのオプションがあります。 Web アプリの管理ポータルページの **[構成]** タブで、Azure で有効にする設定を入力できます ( **[アプリの設定]** セクションと **[接続文字列]** セクションまで下にスクロールします)。 プロジェクトをデプロイすると、Azure によって自動的に変更が適用されます。 詳細については、「 [Windows Azure websites: アプリケーション文字列と接続文字列のしくみ](https://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx)」を参照してください。
+変更する*Web.config*ファイルの設定が`<connectionStrings>``<appSettings>`要素または要素にある場合、Azure App Service で Web アプリにデプロイする場合は、デプロイ中に変更を自動化する別のオプションがあります。 Azure で有効にする設定を、Web アプリの管理ポータル ページの [**構成**] タブに入力できます (下にスクロールして **、アプリの設定**と**接続文字列**のセクションを表示します)。 プロジェクトをデプロイすると、Azure は変更を自動的に適用します。 詳細については、「 [Windows Azure Web サイト : アプリケーション文字列と接続文字列の動作 」](https://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx)を参照してください。
 
 ## <a name="default-transformation-files"></a>既定の変換ファイル
 
-**ソリューションエクスプローラー**で、[ *web.config] を展開し*て、2つの既定のビルド構成に対して既定で作成さ*れる、web.config および web.config* *の変換ファイル*を表示します。
+**ソリューション エクスプローラー**で *[Web.config]* を展開し、2 つの既定のビルド構成に対して既定で作成される*Web.Debug.config*および*Web.Release.config*変換ファイルを表示します。
 
-![Config_transform_files](web-config-transformations/_static/image1.png)
+![ウェブconfig_transform_files](web-config-transformations/_static/image1.png)
 
-カスタムビルド構成の変換ファイルを作成するには、web.config ファイルを右クリックし、コンテキストメニューの **[構成変換の追加]** をクリックします。 このチュートリアルでは、カスタムビルド構成を作成していないため、これを行う必要はありません。メニューオプションは無効になっています。
+カスタム ビルド構成の変換ファイルを作成するには、Web.config ファイルを右クリックし、コンテキスト メニューから **[構成変換の追加]** を選択します。 このチュートリアルでは、カスタム ビルド構成を作成していないため、この操作を行う必要はありません。
 
-後で、3つの変換ファイルを作成します。1つはテスト、ステージング、および実稼働の各発行プロファイル用です。 発行プロファイル変換ファイルで処理する設定の典型的な例としては、移行先の環境によっては、テストと運用で異なる WCF エンドポイントがあります。 発行プロファイル変換ファイルは、後のチュートリアルで使用する発行プロファイルを作成した後で作成します。
+後で、テスト、ステージング、および運用の発行プロファイルにそれぞれ 1 つずつ、3 つの変換ファイルを作成します。 発行先の環境に依存するため、発行プロファイル変換ファイルで処理する設定の一般的な例は、テストと運用環境で異なる WCF エンドポイントです。 公開プロファイル変換ファイルは、公開プロファイルを作成した後、後のチュートリアルで作成します。
 
-## <a name="disable-debug-mode"></a>デバッグモードを無効にする
+## <a name="disable-debug-mode"></a>デバッグ モードを無効にする
 
-ターゲット環境ではなくビルド構成に依存する設定の例として、`debug` 属性があります。 リリースビルドでは、通常、デプロイ先の環境に関係なくデバッグを無効にする必要があります。 したがって、既定では、Visual Studio プロジェクトテンプレートは、`compilation` 要素から `debug` 属性を削除するコードを使用して、 *web.config 変換ファイルを作成します*。 既定の*web.config*は次のようになります。コメントアウトされたサンプル変換コードに加え、`debug` 属性を削除するコードが `compilation` 要素に含まれています。
+配置先環境ではなくビルド構成に依存する設定の例としては、`debug`属性があります。 リリース ビルドの場合、通常は、配置先の環境に関係なくデバッグを無効にします。 したがって、既定では、Visual Studio プロジェクト テンプレートは、要素から`debug`属性を削除するコードを使用して*Web.Release.config*変換ファイルを作成します。 `compilation` 次に示す既定の*Web.Release.config*は、コメントアウトされたいくつかのサンプル変換コードに加えて、属性を`compilation`削除する要素にコード`debug`が含まれています。
 
 [!code-xml[Main](web-config-transformations/samples/sample1.xml?highlight=18)]
 
-`xdt:Transform="RemoveAttributes(debug)"` 属性は、配置された*web.config*ファイルの `system.web/compilation` 要素から `debug` 属性を削除することを指定します。 これは、リリースビルドを配置するたびに実行されます。
+この`xdt:Transform="RemoveAttributes(debug)"`属性は、配置された`debug`*Web.config*ファイルの`system.web/compilation`要素から属性を削除することを指定します。 これは、リリース ビルドを配置するたびに行われます。
 
-## <a name="limit-error-log-access-to-administrators"></a>管理者へのエラーログアクセスを制限する
+## <a name="limit-error-log-access-to-administrators"></a>エラー ログへのアクセスを管理者に制限する
 
-アプリケーションの実行中にエラーが発生した場合、アプリケーションはシステムによって生成されたエラーページの代わりに一般的なエラーページを表示し、エラーのログ記録とレポートには[Elmah NuGet パッケージ](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx)を使用します。 アプリケーションの*web.config*ファイルの `customErrors` 要素は、次のエラーページを指定します。
+アプリケーションの実行中にエラーが発生した場合、アプリケーションはシステム生成エラー ページの代わりに一般的なエラー ページを表示し、エラーログとレポートに[Elmah NuGet パッケージ](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx)を使用します。 アプリケーション`customErrors` *Web.config*ファイル内の要素は、エラー ページを指定します。
 
 [!code-xml[Main](web-config-transformations/samples/sample2.xml)]
 
-エラーページを表示するには、`customErrors` 要素の `mode` 属性を一時的に "RemoteOnly" から "On" に変更し、Visual Studio からアプリケーションを実行します。 無効な URL ( *Studentsxxx*など) を要求することでエラーが発生します。 IIS によって生成された "リソースが見つかりません" というエラーページが表示され、 *Genericerrorpage .aspx*ページが表示されます。
+エラー ページを表示するには、一時的に`mode`要素の属性`customErrors`を "RemoteOnly" から "On" に変更し、Visual Studio からアプリケーションを実行します。 エラーが発生するには *、"学生xxx.aspx"* などの無効な URL を要求します。 IIS で生成された "リソースが見つかりません" エラー ページの代わりに *、GenericErrorPage.aspx*ページが表示されます。
 
-![[エラー] ページ](web-config-transformations/_static/image2.png)
+![エラー ページ](web-config-transformations/_static/image2.png)
 
-エラーログを表示するには、ポート番号の後の URL のすべてを*elmah* (たとえば `http://localhost:51130/elmah.axd`) に置き換え、enter キーを押します。
+エラー ログを表示するには、ポート番号の後の URL 内のすべてを*elmah.axd* (`http://localhost:51130/elmah.axd`たとえば) に置き換えて、Enter キーを押します。
 
-![ELMAH ページ](web-config-transformations/_static/image3.png)
+![エルマページ](web-config-transformations/_static/image3.png)
 
-完了したら、忘れずに `customErrors` 要素を "RemoteOnly" モードに戻してください。
+完了したら、要素を`customErrors`"RemoteOnly"モードに戻すことを忘れないでください。
 
-開発用コンピューターでは、[エラーログ] ページに無料でアクセスできるようにすると便利ですが、運用環境ではセキュリティ上のリスクになります。 運用サイトでは、管理者へのエラーログアクセスを制限する承認規則を追加し、その制限がテストとステージングにも必要であることを確認します。 このため、リリースビルドを配置するたびに実装する必要があるもう1つの変更があり、これ*は、web.config ファイルに*属しています。
+開発用コンピューターでは、エラー ログ ページへの無料アクセスを許可する便利ですが、運用環境ではセキュリティ上のリスクがあります。 運用サイトでは、エラー ログへのアクセスを管理者に制限する承認規則を追加し、テストとステージングでも必要な制限が機能することを確認します。 したがって、これはリリース ビルドを配置するたびに実装する必要があるもう 1 つの変更であるため *、Web.Release.config*ファイルに属します。
 
-次に示すように *、web.config を開き、* 終了 `configuration` タグの直前に新しい `location` 要素を追加します。
+次に示すように *、Web.Release.config*を開き`location`、`configuration`終了タグの直前に新しい要素を追加します。
 
 [!code-xml[Main](web-config-transformations/samples/sample3.xml?highlight=27-34)]
 
-`Transform` 属性値 "Insert" により、この `location` 要素*は、web.config ファイル内*の既存の `location` 要素に兄弟として追加されます。 ( **[更新プログラムのクレジット]** ページの承認規則を指定する `location` 要素が既に1つあります)。
+"`Transform`挿入" の属性値を指定`location`すると、この要素は*Web.config* `location`ファイル内の既存の要素に兄弟として追加されます。 (**更新クレジット**ページ`location`の承認規則を指定する要素が既に 1 つあります)。
 
 これで、変換をプレビューして、正しくコーディングされていることを確認できます。
 
-**ソリューションエクスプローラー**で、 *[web.config] を右クリックし*、[変換の**プレビュー**] をクリックします。
+**ソリューション エクスプローラー**で*Web.Release.config*を右クリックし、[**変換のプレビュー**] をクリックします。
 
 ![[変換のプレビュー] メニュー](web-config-transformations/_static/image4.png)
 
-左側*に開発用の web.config ファイル*を表示するページが開き、変更が強調表示された状態で、配置された*web.config*ファイルが右側に表示されます。
+左側に開発*用の Web.config*ファイルと、配置された*Web.config*ファイルが右側に表示され、変更が強調表示された状態で表示されるページが開きます。
 
 ![デバッグ変換のプレビュー](web-config-transformations/_static/image5.png)
 
-![場所変換のプレビュー](web-config-transformations/_static/image6.png)
+![位置変換のプレビュー](web-config-transformations/_static/image6.png)
 
-(プレビューでは、変換を記述しなかった追加の変更が発生する可能性があります。通常は、機能に影響しない空白を削除する必要があります)。
+(プレビューでは、変換を記述していないいくつかの追加の変更に気付くかもしれません: これらは通常、機能に影響を与えない空白の削除を伴います)。
 
-配置後にサイトをテストする場合は、承認規則が有効であることを確認するテストも行います。
+展開後にサイトをテストする場合は、承認規則が有効であることを確認するテストも行います。
 
 > [!NOTE] 
 > 
-> **セキュリティ**に関する注意実稼働アプリケーションのパブリックにエラーの詳細を表示しないようにするか、その情報をパブリックな場所に格納してください。 攻撃者は、エラー情報を使用してサイトの脆弱性を検出することができます。 独自のアプリケーションで ELMAH を使用する場合は、セキュリティ上のリスクを最小限に抑えるように ELMAH を構成します。 このチュートリアルの ELMAH の例は、推奨される構成とは見なさないでください。 これは、アプリケーションがファイルを作成するために必要なフォルダーの処理方法を示すために選択された例です。 詳細については、「 [ELMAH エンドポイントのセキュリティ保護](https://code.google.com/p/elmah/wiki/SecuringErrorLogPages)」を参照してください。
+> **セキュリティに関する注意事項**プロダクション アプリケーションでは、エラーの詳細を公開したり、パブリックな場所に情報を格納したりしないでください。 攻撃者はエラー情報を使用して、サイトの脆弱性を発見することができます。 独自のアプリケーションで ELMAH を使用する場合は、セキュリティリスクを最小限に抑えるために ELMAH を構成します。 このチュートリアルの ELMAH の例は、推奨される構成とは見なされません。 アプリケーションがファイルを作成できるフォルダーを処理する方法を説明するために選択された例です。 詳細については、「 [ELMAH エンドポイントのセキュリティ保護](https://code.google.com/p/elmah/wiki/SecuringErrorLogPages)」を参照してください。
 
-## <a name="a-setting-that-youll-handle-in-publish-profile-transformation-files"></a>発行プロファイル変換ファイルで処理する設定
+## <a name="a-setting-that-youll-handle-in-publish-profile-transformation-files"></a>プロファイル変換ファイルの発行で処理する設定
 
-一般的なシナリオと*して、web.config ファイルの*設定は、配置する環境ごとに異なる必要があります。 たとえば、WCF サービスを呼び出すアプリケーションでは、テスト環境と運用環境で異なるエンドポイントが必要になる場合があります。 Contoso 大学のアプリケーションにも、この種類の設定が含まれています。 この設定では、開発、テスト、運用など、どの環境が使用されているかを示す、サイトのページに表示されるインジケーターを制御します。 設定値は、アプリケーションが "(Dev)" または "(Test)" を、サイトのメインの見出しに追加するかどうかを決定し*ます。* マスターページ:
+一般的なシナリオでは、配置する環境ごとに異なる*Web.config*ファイルの設定を行う必要があります。 たとえば、WCF サービスを呼び出すアプリケーションは、テスト環境と運用環境で別のエンドポイントを必要とする場合があります。 Contoso 大学アプリケーションには、この種の設定も含まれています。 この設定は、サイトのページに表示されるインジケータを制御し、開発、テスト、運用など、どの環境に入っているかを示します。 設定値は、アプリケーションが*Site.Master*マスター ページのメイン見出しに "(Dev)" または "(Test)" を追加するかどうかを決定します。
 
-![環境インジケーター](web-config-transformations/_static/image7.png)
+![環境インジケータ](web-config-transformations/_static/image7.png)
 
-アプリケーションがステージング環境または運用環境で実行されている場合、環境インジケーターは省略されます。
+アプリケーションがステージングまたはプロダクションで実行されている場合、環境標識は省略されます。
 
-Contoso 大学の web ページでは、アプリケーションが実行されている環境を確認するため*に、web.config ファイルの*`appSettings` に設定されている値を読み取ります。
+Contoso 大学 Web ページは、アプリケーションが実行`appSettings`されている環境を決定するために *、Web.config*ファイルで設定されている値を読み取ります。
 
 [!code-xml[Main](web-config-transformations/samples/sample4.xml)]
 
-この値は、テスト環境では "Test"、ステージング環境と運用環境では "運用" にする必要があります。
+値は、テスト環境では "Test" 、ステージングと運用の場合は "Prod" にする必要があります。
 
 変換ファイルの次のコードは、この変換を実装します。
 
 [!code-xml[Main](web-config-transformations/samples/sample5.xml)]
 
-属性値 "SetAttributes" `xdt:Transform` は、この変換の目的が、 *web.config*ファイル内の既存の要素の属性値を変更することを示します。 `xdt:Locator` 属性値 "Match (キー)" は、変更される要素が、ここで指定された `key` 属性と一致する `key` 属性を持つ要素であることを示します。 `add` 要素の唯一の属性は `value`です。これは、配置された*web.config*ファイルで変更されます。 次に示すコードでは、`Environment` `appSettings` 要素の `value` 属性が、配置されている*web.config ファイルで*"Test" に設定されています。
+`xdt:Transform`属性値 "SetAttributes" は、この変換の目的が*Web.config*ファイル内の既存の要素の属性値を変更することを示します。 `xdt:Locator`属性値"Match(key)"は、変更する要素が、ここで指定された属性と`key`一致する`key`属性を持つ要素であることを示します。 `add`要素の他の属性は`value`、 で、配置された*Web.config*ファイルで変更されるものです。 ここに示すコードにより、`value`配置される`Environment``appSettings`*Web.config*ファイルで要素の属性が "Test" に設定されます。
 
-この変換は、まだ作成していない発行プロファイル変換ファイルに属しています。 テスト環境、ステージング環境、および運用環境の発行プロファイルを作成するときに、この変更を実装する変換ファイルを作成および更新します。 これを行うには、[ [IIS に配置](deploying-to-iis.md)] および [[運用環境への配置](deploying-to-production.md)] チュートリアルを実行します。
+この変換は、まだ作成していない発行プロファイル変換ファイルに属します。 テスト、ステージング、および運用環境の発行プロファイルを作成するときに、この変更を実装する変換ファイルを作成および更新します。 IIS[への展開](deploying-to-iis.md)で、運用環境のチュートリアル[に展開します](deploying-to-production.md)。
 
 > [!NOTE]
-> この設定は `<appSettings>` 要素内にあるため、Azure App Service Web Apps をデプロイするときに変換を指定する別の方法として、このトピックで前述した「 [Azure での web.config 設定の指定](#watransforms)」を参照してください。
+> この設定は`<appSettings>`要素内にあるため、Azure アプリ サービスで Web アプリをデプロイするときに変換を指定する別の方法は、このトピックの前半の[「Azure での Web.config 設定の指定](#watransforms)」を参照してください。
 
 ## <a name="setting-connection-strings"></a>接続文字列の設定
 
-既定の変換ファイルには、接続文字列の更新方法を示す例が含まれていますが、ほとんどの場合、接続文字列の変換を設定する必要はありません。これは、発行プロファイルで接続文字列を指定できるためです。 これを行うには、[ [IIS に配置](deploying-to-iis.md)] および [[運用環境への配置](deploying-to-production.md)] チュートリアルを実行します。
+既定の変換ファイルには接続文字列を更新する方法を示す例が含まれていますが、ほとんどの場合、発行プロファイルで接続文字列を指定できるため、接続文字列変換を設定する必要はありません。 IIS[への展開](deploying-to-iis.md)で、運用環境のチュートリアル[に展開します](deploying-to-production.md)。
 
 ## <a name="summary"></a>まとめ
 
-これで、発行プロファイルを作成する前に*web.config の変換を*実行できるようになりました。また、配置した web.config ファイルに含まれる内容のプレビューが表示されました。
+これで、発行プロファイルを作成する前に*Web.config*変換を使用してできる限り多くの作業が完了し、配置された Web.config ファイルの内容のプレビューが表示されます。
 
-![場所変換のプレビュー](web-config-transformations/_static/image8.png)
+![位置変換のプレビュー](web-config-transformations/_static/image8.png)
 
-次のチュートリアルでは、プロジェクトのプロパティの設定を必要とする配置のセットアップタスクについて説明します。
+次のチュートリアルでは、プロジェクトのプロパティを設定する必要がある配置のセットアップ タスクを処理します。
 
 ## <a name="more-information"></a>詳細情報
 
-このチュートリアルで説明しているトピックの詳細については、「web.config の変換を使用して、[配置中に変換先の web.config ファイルまたは app.config ファイルの設定を変更する](https://go.microsoft.com/fwlink/p/?LinkId=282413#transforms)」を参照してください。
+このチュートリアルで扱うトピックの詳細については[、「Web.config 変換を使用して、配置中に配置中に Web.config 変換を使用して設定を変更](https://go.microsoft.com/fwlink/p/?LinkId=282413#transforms)する」を参照ASP.NET。
 
 > [!div class="step-by-step"]
 > [前へ](preparing-databases.md)

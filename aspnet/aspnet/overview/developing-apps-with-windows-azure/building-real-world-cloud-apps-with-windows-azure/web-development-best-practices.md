@@ -1,165 +1,165 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices
-title: Web 開発のベストプラクティス (Azure を使用した実際のクラウドアプリの構築) |Microsoft Docs
+title: Web 開発のベスト プラクティス (Azure を使用した実際のクラウド アプリの構築) |マイクロソフトドキュメント
 author: MikeWasson
-description: Azure 電子ブックを使用した実際のクラウドアプリの構築は、Scott Guthrie によって開発されたプレゼンテーションに基づいています。 13のパターンとベストプラクティスについて説明します。
+description: Azure 電子書籍を使用したリアル ワールド クラウド アプリの構築は、スコット ガスリーが開発したプレゼンテーションに基づいています。 それは彼ができる13のパターンと実践を説明します.
 ms.author: riande
 ms.date: 06/12/2014
 ms.assetid: 52d6c941-2cd9-442f-9872-2c798d6d90cd
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices
 msc.type: authoredcontent
 ms.openlocfilehash: dfd8a3ac2328d3f17dfbe36e68b37d181177b0f4
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78471406"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80675641"
 ---
-# <a name="web-development-best-practices-building-real-world-cloud-apps-with-azure"></a>Web 開発のベストプラクティス (Azure を使用した実際のクラウドアプリの構築)
+# <a name="web-development-best-practices-building-real-world-cloud-apps-with-azure"></a>Web 開発のベスト プラクティス (Azure を使用した実際のクラウド アプリの構築)
 
-[Mike Wasson](https://github.com/MikeWasson)、 [Rick Anderson](https://twitter.com/RickAndMSFT)、 [Tom Dykstra](https://github.com/tdykstra)
+[マイク・ワッソン](https://github.com/MikeWasson),[リック・アンダーソン](https://twitter.com/RickAndMSFT),[トム・ダイクストラ](https://github.com/tdykstra)
 
-[修正 It プロジェクトをダウンロード](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4)するか[、電子書籍をダウンロード](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)します
+[修正イットプロジェクトをダウンロード](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4)するか[、電子書籍をダウンロード](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
-> Azure 電子ブック**を使用した実際のクラウドアプリの構築**は、Scott Guthrie によって開発されたプレゼンテーションに基づいています。 ここでは、クラウド用の web アプリの開発を成功させるのに役立つ13のパターンとプラクティスについて説明します。 電子書籍の詳細については、[最初の章](introduction.md)を参照してください。
+> Azure 電子書籍**を使用したリアル ワールド クラウド アプリの構築**は、スコット ガスリーが開発したプレゼンテーションに基づいています。 クラウド向けの Web アプリの開発を成功させるために役立つ 13 のパターンとプラクティスについて説明します。 電子書籍の詳細については、[最初の章を](introduction.md)参照してください。
 
-最初の3つのパターンは、アジャイル開発プロセスの設定に関するものです。残りの部分は、アーキテクチャとコードに関するものです。 この1つは、web 開発のベストプラクティスのコレクションです。
+最初の 3 つのパターンは、アジャイル開発プロセスの設定に関するものでした。残りはアーキテクチャとコードに関するものです。 これは、Web 開発のベスト プラクティスのコレクションです。
 
-- スマートロードバランサーの背後にある[ステートレスな web サーバー](#stateless) 。
+- スマート ロード バランサーの背後にある[ステートレス Web サーバー](#stateless) 。
 - [セッション状態を回避](#sessionstate)する (または、これを回避できない場合は、データベースではなく分散キャッシュを使用します)。
-- [CDN を使用](#cdn)して、静的ファイルアセット (イメージ、スクリプト) をエッジキャッシュします。
-- [.Net 4.5 の非同期サポートを使用](#async)して、ブロック呼び出しを回避します。
+- [CDN を使用して](#cdn)、静的ファイルアセット (イメージ、スクリプト) をエッジ・キャッシュします。
+- [NET 4.5 の非同期サポートを使用](#async)して、呼び出しをブロックしないようにします。
 
-これらのプラクティスは、クラウドアプリだけでなく、すべての web 開発に対して有効ですが、クラウドアプリでは特に重要です。 クラウド環境で提供される非常に柔軟なスケーリングを最適に使用できるように、連携して機能します。 これらのプラクティスに従っていない場合は、アプリケーションを拡張しようとすると制限が発生します。
+これらのプラクティスは、クラウド アプリだけでなく、すべての Web 開発に有効ですが、クラウド アプリでは特に重要です。 クラウド環境で提供される柔軟性の高いスケーリングを最適に活用できるように、連携して作業を行います。 これらのプラクティスに従わない場合は、アプリケーションをスケーリングするときに制限が生じるでしょう。
 
 <a id="stateless"></a>
-## <a name="stateless-web-tier-behind-a-smart-load-balancer"></a>スマートロードバランサーの背後にあるステートレス web 層
+## <a name="stateless-web-tier-behind-a-smart-load-balancer"></a>スマート ロード バランサーの背後にあるステートレス Web 層
 
-*ステートレス web 層*は、web サーバーのメモリまたはファイルシステムにアプリケーションデータを格納しないことを意味します。 Web 層のステートレスを維持すると、カスタマーエクスペリエンスを向上させ、コストを節約することができます。
+*ステートレス Web 層*は、アプリケーション データを Web サーバーのメモリまたはファイル システムに格納しないことを意味します。 Web 層をステートレスにしておくと、より優れたカスタマー エクスペリエンスを提供し、コストを節約できます。
 
-- Web 層がステートレスで、ロードバランサーの背後に配置されている場合は、サーバーを動的に追加または削除することによって、アプリケーショントラフィックの変化に迅速に対応できます。 実際に使用している限り、サーバーリソースに対してのみ課金されるクラウド環境では、需要の変化に対応することにより、大幅な節約につながる可能性があります。
-- ステートレス web 層は、アプリケーションをスケールアウトするために、アーキテクチャがはるかに簡単です。 これにより、スケーリングのニーズに迅速に対応し、プロセスでの開発とテストにかかるコストを削減できます。
-- クラウドサーバーは、オンプレミスサーバーと同様に、修正プログラムを適用して再起動する必要があります。また、web 層がステートレスである場合は、サーバーが一時的にダウンしたときにトラフィックを再ルーティングしても、エラーや予期しない動作が発生することはありません。
+- Web 層がステートレスで、ロード バランサーの背後にある場合は、サーバーを動的に追加または削除することで、アプリケーション トラフィックの変更にすばやく対応できます。 実際に使用している限り、サーバー リソースに対してのみ支払いを行うクラウド環境では、需要の変化に対応する能力が大幅に節約されます。
+- ステートレス Web 層は、アプリケーションのスケールアウトが非常に簡単なアーキテクチャです。 また、スケーリングのニーズに迅速に対応し、プロセスの開発とテストに費やすお金を減らすことができます。
+- オンプレミスのサーバーと同様に、クラウド サーバーは、パッチを適用して再起動する必要があります。Web 層がステートレスである場合、サーバーが一時的にダウンしたときにトラフィックを再ルーティングしても、エラーや予期しない動作は発生しません。
 
-ほとんどの実際のアプリケーションでは、web セッションの状態を格納する必要があります。ここでの主なポイントは、web サーバーに格納することではありません。 状態は、他の方法で保存できます。たとえば、cookie のクライアントや、キャッシュプロバイダーを使用した ASP.NET セッション状態でのアウトプロセスサーバー側の状態を格納できます。 ファイルは、ローカルファイルシステムではなく、 [Windows Azure Blob ストレージ](unstructured-blob-storage.md)に格納できます。
+ほとんどの実際のアプリケーションでは、Web セッションの状態を格納する必要があります。ここでの主なポイントは、Webサーバーに保存しないことです。 キャッシュ プロバイダーを使用して、cookie 内のクライアントやプロセス外のサーバー側の場合など、他の方法ASP.NET状態を格納できます。 ローカル ファイル システムの代わりに[、Windows Azure Blob ストレージ](unstructured-blob-storage.md)にファイルを格納できます。
 
-Web 層がステートレスである場合に、Windows Azure Web サイトでアプリケーションを簡単に拡張できる例として、管理ポータルで Windows Azure Web サイトの **[スケール]** タブを参照してください。
+Web 層がステートレスである場合に、Windows Azure Web サイトでアプリケーションを簡単にスケーリングする方法の例として、管理ポータルで Windows Azure Web サイトの **[スケール**] タブを参照してください。
 
 ![[スケール] タブ](web-development-best-practices/_static/image1.png)
 
-Web サーバーを追加する場合は、[インスタンス数] スライダーを右にドラッグするだけでかまいません。 5に設定し、 **[保存]** をクリックします。また、web サイトのトラフィックを処理する Windows Azure の web サーバーが数秒以内に表示されます。
+Web サーバーを追加する場合は、インスタンス数スライダーを右にドラッグするだけです。 5 に設定し、[**保存**] をクリックすると、数秒以内に Windows Azure に 5 台の Web サーバーが Web サイトのトラフィックを処理します。
 
-![5つのインスタンス](web-development-best-practices/_static/image2.png)
+![5 つのインスタンス](web-development-best-practices/_static/image2.png)
 
-インスタンス数を簡単に3または1に戻すことができます。 Windows Azure の料金は時間単位ではなく分単位で課金されるため、スケールバックするときには、すぐにコストの節約を開始します。
+インスタンスのカウントを 3 に設定するか、1 に戻すのと同じように簡単に設定できます。 スケール バックすると、Windows Azure は時間単位ではなく分単位で課金されるため、すぐにお金の節約を開始します。
 
-また、CPU 使用率に基づいて web サーバーの数を自動的に増減するように Windows Azure に指示することもできます。 次の例では、CPU 使用率が60% を下回ると、web サーバーの数が最小値2に減少し、CPU 使用率が80% を超えた場合、web サーバーの数が最大4まで増加します。
+また、CPU 使用率に基づいて Web サーバーの数を自動的に増減するように Windows Azure に指示することもできます。 次の例では、CPU 使用率が 60% を下回ると、Web サーバーの数は最小 2 まで減少し、CPU 使用率が 80% を超えた場合、Web サーバーの数は最大 4 まで増加します。
 
-![CPU 使用率によるスケーリング](web-development-best-practices/_static/image3.png)
+![CPU 使用率によるスケール](web-development-best-practices/_static/image3.png)
 
-または、作業時間中にサイトがビジー状態であることがわかっている場合はどうすればよいでしょうか。 夜間に複数のサーバーを実行するように Windows Azure に指示し、1台のサーバー夜、夜、週末まで減らすことができます。 次の一連のスクリーンショットでは、午前8時から午後5時までの間に、1台のサーバーを1台のサーバーで実行するように web サイトを設定する方法を示しています。
+また、勤務時間中にサイトがビジー状態になることがわかっている場合はどうでしょうか。 Windows Azure では、日中に複数のサーバーを実行し、1 つのサーバーの夜間、夜間、週末に減らすことができます。 次の一連のスクリーン ショットは、午前 8 時から午後 5 時までの勤務時間中に 1 台のサーバーを稼働時間外に実行し、4 台のサーバーを実行するように Web サイトを設定する方法を示しています。
 
 ![スケジュールによるスケール](web-development-best-practices/_static/image4.png)
 
-![スケジュール時刻の設定](web-development-best-practices/_static/image5.png)
+![スケジュール時間の設定](web-development-best-practices/_static/image5.png)
 
-![日中のスケジュール](web-development-best-practices/_static/image6.png)
+![昼間のスケジュール](web-development-best-practices/_static/image6.png)
 
-![Weeknight スケジュール](web-development-best-practices/_static/image7.png)
+![平日のスケジュール](web-development-best-practices/_static/image7.png)
 
 ![週末のスケジュール](web-development-best-practices/_static/image8.png)
 
-もちろん、これらはすべて、スクリプトやポータルでも実行できます。
+もちろん、このすべては、スクリプトだけでなく、ポータルで行うことができます。
 
-Windows Azure では、アプリケーションのスケールアウトの機能はほぼ無制限です。サーバー Vm を動的に追加または削除する障害を回避するには、web 層をステートレスにします。
+アプリケーションのスケール アウト機能は、Web 層をステートレスに保つことによって、サーバー VM を動的に追加または削除する障害を避ける限り、Windows Azure ではほとんど無制限です。
 
 <a id="sessionstate"></a>
-## <a name="avoid-session-state"></a>セッション状態を回避する
+## <a name="avoid-session-state"></a>セッション状態の回避
 
-ユーザー セッションの状態をなんらかの形で格納しないのは、実際のクラウド アプリケーションでは実用的でない場合が多いですが、方法によっては、パフォーマンスとスケーラビリティに与える影響が大きくなります。 状態を格納する必要がある場合は、状態の量を少なくし、Cookie に格納することをお勧めします。 そうでない場合は、次の最良の解決策は、ASP.NET セッション状態を、[分散型メモリ内キャッシュ](distributed-caching.md#sessionstate)のプロバイダーと共に使用することです。 パフォーマンスとスケーラビリティの観点から最もお勧めできないのが、データベースを利用したセッション状態プロバイダーを使用する方法です。
+ユーザー セッションの状態をなんらかの形で格納しないのは、実際のクラウド アプリケーションでは実用的でない場合が多いですが、方法によっては、パフォーマンスとスケーラビリティに与える影響が大きくなります。 状態を格納する必要がある場合は、状態の量を少なくし、Cookie に格納することをお勧めします。 それが実現不可能な場合、次に最善の解決策は[、分散型のインメモリ キャッシュ](distributed-caching.md#sessionstate)用ASP.NETプロバイダとのセッション状態を使用することです。 パフォーマンスとスケーラビリティの観点から最もお勧めできないのが、データベースを利用したセッション状態プロバイダーを使用する方法です。
 
 <a id="cdn"></a>
-## <a name="use-a-cdn-to-cache-static-file-assets"></a>CDN を使用して静的ファイルアセットをキャッシュする
+## <a name="use-a-cdn-to-cache-static-file-assets"></a>CDN を使用して静的ファイル資産をキャッシュする
 
-CDN は Content Delivery Network の頭字語です。 イメージやスクリプトファイルなどの静的なファイルアセットを CDN プロバイダーに提供すると、プロバイダーは世界中のデータセンターにこれらのファイルをキャッシュします。これにより、ユーザーがアプリケーションにアクセスするときに、比較的迅速な応答が得られ、キャッシュされた待機時間が短くなります。資産. これにより、サイトの全体的な読み込み時間が短縮され、web サーバーの負荷が軽減されます。 CDNs は、地理的に広く分散しているユーザーに到達する場合に特に重要です。
+CDN は、コンテンツ配信ネットワークの頭字語です。 CDN プロバイダーに画像やスクリプト ファイルなどの静的ファイル資産を提供し、プロバイダーは、ユーザーがアプリケーションにアクセスする場所で、キャッシュされた資産の比較的迅速な応答と低待機時間を得ることができるように、世界中のデータ センターにこれらのファイルをキャッシュします。 これにより、サイト全体のロード時間が短縮され、Web サーバーの負荷が軽減されます。 地理的に広く分散している対象ユーザーに到達する場合、CDN は特に重要です。
 
-Windows Azure には CDN があり、Windows Azure または任意の web ホスティング環境で実行されるアプリケーションで他の CDNs を使用できます。
+Windows Azure には CDN が含まれているので、Windows Azure または任意の Web ホスティング環境で実行されるアプリケーションで他の CDN を使用できます。
 
 <a id="async"></a>
-## <a name="use-net-45s-async-support-to-avoid-blocking-calls"></a>.NET 4.5 の非同期サポートを使用してブロック呼び出しを回避する
+## <a name="use-net-45s-async-support-to-avoid-blocking-calls"></a>NET 4.5 の非同期サポートを使用して呼び出しをブロックしないようにする
 
-.NET 4.5 ではC# 、タスクを非同期に処理しやすくするために、と VB のプログラミング言語が強化されています。 非同期プログラミングの利点は、複数の web サービス呼び出しを同時に開始する必要がある場合などの並列処理の場合だけではありません。 また、高負荷条件下では、web サーバーがより効率的かつ信頼性の高い方法で動作できるようになります。 Web サーバーで使用できるスレッドの数は限られています。また、すべてのスレッドが使用されている場合、受信要求はスレッドが解放されるまで待機する必要があります。 アプリケーションコードがデータベースクエリや web サービス呼び出しなどのタスクを非同期に処理しない場合、サーバーが i/o 応答を待機している間、多くのスレッドが不必要に関連付けられます。 これにより、高負荷状態でサーバーが処理できるトラフィックの量が制限されます。 非同期プログラミングでは、web サービスまたはデータベースがデータを返すのを待機しているスレッドは、のデータが受信されるまで、新しい要求を処理するために解放されます。 ビジー状態の web サーバーでは、数百または数千の要求をすぐに処理できます。その場合、スレッドが解放されるのを待機します。
+.NET 4.5 では、タスクを非同期的に処理する作業を簡単にするために、C# および VB のプログラミング言語が拡張されました。 非同期プログラミングの利点は、複数の Web サービス呼び出しを同時に開始する場合など、並列処理の状況だけではありません。 また、高負荷条件下で Web サーバーのパフォーマンスを高め、信頼性の高い状態で実行することもできます。 Web サーバーでは使用可能なスレッドの数が限られており、すべてのスレッドが使用中の場合、高負荷条件の場合、着信要求はスレッドが解放されるまで待機する必要があります。 アプリケーション コードがデータベース クエリや Web サービス呼び出しなどのタスクを非同期的に処理しない場合、サーバーが I/O 応答を待機している間、多くのスレッドが不必要に縛られます。 これにより、負荷の高い状況下でサーバーが処理できるトラフィックの量が制限されます。 非同期プログラミングでは、Web サービスまたはデータベースがデータを返すのを待機しているスレッドは、 データが受信されるまで、新しい要求を処理するために解放されます。 ビジー状態の Web サーバーでは、数百または数千の要求を速やかに処理でき、それ以外の場合はスレッドが解放されるのを待ちます。
 
-既に説明したように、web サイトを処理する web サーバーの数を減らすことは簡単にできます。 そのため、サーバーでスループットを向上させることができる場合、必要な数だけではなく、必要なトラフィック量に応じてサーバーを減らすことができるため、コストを削減できます。
+先ほど説明したように、Web サイトを処理する Web サーバーの数を増やすのと同じくらい簡単です。 したがって、サーバーがスループットを向上できる場合は、その数をそれほど多く必要としないため、特定のトラフィック量に対するサーバー数が他の方法よりも少なくて済むため、コストを削減できます。
 
-.NET 4.5 の非同期プログラミングモデルのサポートは、Web フォーム、MVC、Web API の ASP.NET 4.5 に含まれています。Entity Framework 6、 [Windows AZURE STORAGE API](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/07/12/introducing-storage-client-library-2-1-rc-for-net-and-windows-phone-8.aspx)で。
+NET 4.5 非同期プログラミング モデルのサポートは、web フォーム、MVC、および Web API の ASP.NET 4.5 に含まれています。エンティティ フレームワーク 6、および[Windows Azure ストレージ API](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/07/12/introducing-storage-client-library-2-1-rc-for-net-and-windows-phone-8.aspx)で。
 
 ### <a name="async-support-in-aspnet-45"></a>ASP.NET 4.5 での非同期サポート
 
-ASP.NET 4.5 では、非同期プログラミングのサポートは言語だけでなく、MVC、Web フォーム、Web API フレームワークにも追加されています。 たとえば、ASP.NET MVC コントローラーのアクションメソッドは、web 要求からデータを受け取り、そのデータをビューに渡します。これにより、ブラウザーに送信される HTML が作成されます。 多くの場合、アクションメソッドは、web ページにデータを表示したり、web ページに入力されたデータを保存したりするために、データベースや web サービスからデータを取得する必要があります。 このようなシナリオでは、 *actionresult*オブジェクトを返す代わりに、actionresult オブジェクトを返すのではなく、*タスク&lt;actionresult&gt;* を返して、 *async*キーワードを使用してメソッドをマークすることができます。 メソッド内で、待機時間が関係する操作をコード行が開始するときに、await キーワードを使用してマークします。
+ASP.NET 4.5 では、言語だけでなく、MVC、Web フォーム、および Web API フレームワークにも非同期プログラミングのサポートが追加されました。 たとえば、ASP.NET MVC コントローラー アクション メソッドは、web 要求からデータを受け取り、ビューにデータを渡し、ブラウザーに送信される HTML を作成します。 多くの場合、アクション メソッドは、Web ページに表示したり、Web ページに入力されたデータを保存したりするために、データベースまたは Web サービスからデータを取得する必要があります。 このようなシナリオでは、アクション メソッドを非同期にするのは簡単です: *ActionResult*オブジェクトを返す代わりに、*タスク&lt;アクション&gt;の結果*を返し *、async*キーワードを使用してメソッドをマークします。 メソッド内で、コード行が待機時間を含む操作を開始するときに、await キーワードを使用してマークします。
 
-データベースクエリのリポジトリメソッドを呼び出す簡単なアクションメソッドを次に示します。
+データベース クエリのリポジトリ メソッドを呼び出す単純なアクション メソッドを次に示します。
 
 [!code-csharp[Main](web-development-best-practices/samples/sample1.cs)]
 
-ここでは、データベース呼び出しを非同期に処理するのと同じ方法を示します。
+次に、データベース呼び出しを非同期で処理するメソッドと同じです。
 
 [!code-csharp[Main](web-development-best-practices/samples/sample2.cs?highlight=1,4)]
 
-内部では、コンパイラが適切な非同期コードを生成します。 アプリケーションが `FindTaskByIdAsync`の呼び出しを行うと、ASP.NET は `FindTask` 要求を行い、ワーカースレッドをアンワインドして、別の要求を処理できるようにします。 `FindTask` 要求が完了すると、その呼び出しの後に来るコードの処理を続行するためにスレッドが再起動されます。 `FindTask` 要求が開始されてからデータが返されるまでの間に、有効な作業を実行するために使用できるスレッドがあります。これは、応答を待機している間に関連付けられます。
+この点では、コンパイラは適切な非同期コードを生成します。 アプリケーションが 呼`FindTaskByIdAsync`び出しを行うと、ASP.NET要求を`FindTask`行い、ワーカー スレッドを巻き戻して、別の要求を処理できるようにします。 要求が`FindTask`完了すると、スレッドが再始動され、その呼び出しの後に来るコードの処理が続行されます。 `FindTask`要求が開始された時点からデータが返されるまでの間に、有用な処理を行うためのスレッドがあり、それ以外の場合は応答を待機します。
 
-非同期コードにはいくつかのオーバーヘッドがありますが、負荷が低い条件下では、負荷の高い条件下では、使用可能なスレッドを待機している間は待機している要求を処理することができます。
+非同期コードにはオーバーヘッドがいくつか存在しますが、負荷の低い状況ではオーバーヘッドは無視できますが、負荷の高い条件では、使用可能なスレッドを待機する要求を処理できます。
 
-ASP.NET 1.1 以降、このような非同期プログラミングを行うことができましたが、記述が難しく、エラーが発生しやすく、デバッグが困難でした。 ASP.NET 4.5 でのコーディングを簡略化したので、これを行わない理由はありません。
+ASP.NET 1.1 以降、このような非同期プログラミングを行うことは可能でしたが、書き込みが困難で、エラーが発生しやすく、デバッグが困難でした。 ASP.NET 4.5 でコーディングを簡略化したので、もうそれをしない理由はありません。
 
-### <a name="async-support-in-entity-framework-6"></a>Entity Framework 6 での非同期サポート
+### <a name="async-support-in-entity-framework-6"></a>エンティティ フレームワーク 6 での非同期サポート
 
-4\.5 での非同期サポートの一部として、web サービス呼び出し、ソケット、およびファイルシステム i/o に対する非同期サポートが提供されましたが、web アプリケーションの最も一般的なパターンはデータベースをヒットさせることであり、データライブラリは非同期をサポートしていませんでした。 Entity Framework 6 では、データベースアクセスの非同期サポートが追加されました。
+4.5 の非同期サポートの一環として、Web サービス呼び出し、ソケット、およびファイル システム I/O の非同期サポートが出荷されましたが、Web アプリケーションの最も一般的なパターンはデータベースをヒットするものであり、データ ライブラリは非同期をサポートしていませんでした。 現在、Entity Framework 6 は、データベース アクセスの非同期サポートを追加します。
 
-Entity Framework 6 では、クエリまたはコマンドをデータベースに送信するすべてのメソッドに非同期バージョンがあります。 次の例は、 *Find*メソッドの非同期バージョンを示しています。
+Entity Framework 6 では、クエリまたはコマンドをデータベースに送信するすべてのメソッドは、非同期バージョンを持ちます。 この例は *、Find*メソッドの非同期バージョンを示しています。
 
 [!code-csharp[Main](web-development-best-practices/samples/sample3.cs?highlight=8)]
 
-この非同期サポートは、挿入、削除、更新、単純な検出だけでなく、LINQ クエリでも機能します。
+また、この非同期サポートは、挿入、削除、更新、および単純な検索だけでなく、LINQ クエリでも機能します。
 
 [!code-csharp[Main](web-development-best-practices/samples/sample4.cs?highlight=7,10)]
 
-このコードでは、クエリをデータベースに送信するメソッドであるため、`ToList` メソッドの `Async` バージョンがあります。 `Where` メソッドと `OrderByDescending` メソッドはクエリのみを構成し、`ToListAsync` メソッドはクエリを実行し、応答を `result` 変数に格納します。
+このコードでは、`Async`クエリを`ToList`データベースに送信するメソッドであるため、メソッドのバージョンがあります。 `Where`メソッドと`OrderByDescending`メソッドはクエリのみを構成し、`ToListAsync`メソッドはクエリを実行し、応答を変数`result`に格納します。
 
 ## <a name="summary"></a>まとめ
 
-ここに記載されている web 開発のベストプラクティスは、任意の web プログラミングフレームワークと任意のクラウド環境に実装できますが、ASP.NET と Windows Azure には簡単にするためのツールが用意されています。 これらのパターンに従うと、web 層を簡単にスケールアウトできます。また、各サーバーはより多くのトラフィックを処理できるため、コストを最小限に抑えることができます。
+ここで説明する Web 開発のベスト プラクティスは、任意の Web プログラミング フレームワークとクラウド環境で実装できますが、ASP.NETと Windows Azure には簡単に使用できるツールがあります。 これらのパターンに従えば、Web 層を簡単にスケールアウトでき、各サーバーがより多くのトラフィックを処理できるため、経費を最小限に抑えることができます。
 
-[次の章](single-sign-on.md)では、クラウドでのシングルサインオンシナリオを有効にする方法について説明します。
+[次の章](single-sign-on.md)では、クラウドでシングル サインオンのシナリオがどのように有効にされるかを説明します。
 
 ## <a name="resources"></a>リソース
 
-詳細については、次のリソースを参照してください。
+詳細については、以下のリソースを参照してください。
 
-ステートレス web サーバー:
+ステートレス Web サーバー:
 
-- [Microsoft のパターンとプラクティス-自動スケールのガイダンス](https://msdn.microsoft.com/library/dn589774.aspx)。
-- [Windows Azure Web サイトで ARR のインスタンスアフィニティを無効に](https://azure.microsoft.com/blog/2013/11/18/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)しています。 「Erez Benari によるブログ投稿」では、Windows Azure Web サイトのセッションアフィニティについて説明しています。
+- [マイクロソフトのパターンとプラクティス - 自動スケール ガイド](https://msdn.microsoft.com/library/dn589774.aspx):
+- [Windows Azure Web サイトで ARR のインスタンス アフィニティを無効にする](https://azure.microsoft.com/blog/2013/11/18/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)。 エレス・ベナリのブログ記事では、Windows Azure Web サイトのセッション アフィニティについて説明します。
 
-CDN
+Cdn：
 
-- [フェイルセーフ: スケーラブルで回復力のある Cloud Services を構築](https://channel9.msdn.com/Series/FailSafe)します。 Ulrich Homann、Marc Mercuri、Mark Simm による9部構成のビデオシリーズ。 1:34:00 以降のエピソード3の CDN に関する説明を参照してください。
-- [Microsoft のパターンとプラクティスの静的コンテンツホスティングパターン](https://msdn.microsoft.com/library/dn589776.aspx)
-- [CDN レビュー](http://www.cdnreviews.com/)。 多くの CDNs の概要。
+- [フェイルセーフ: スケーラブルで回復力のあるクラウド サービスの構築](https://channel9.msdn.com/Series/FailSafe) ウルリッヒ・ホーマン、マルク・メルクリ、マーク・シムズによる9部構成のビデオシリーズ。 エピソード 3 の CDN ディスカッションを 1:34:00 から始めるをご覧ください。
+- [Microsoft のパターンとプラクティス静的コンテンツ ホスティング パターン](https://msdn.microsoft.com/library/dn589776.aspx)
+- [CDN レビュー](http://www.cdnreviews.com/). 多くの CDN の概要。
 
 非同期プログラミング:
 
-- [ASP.NET MVC 4 での非同期メソッドの使用](../../../../mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4.md)。 Rick Anderson のチュートリアル。
-- [Async および Await を使用したC#非同期プログラミング (および Visual Basic)](https://msdn.microsoft.com/library/vstudio/hh191443.aspx)。 非同期プログラミングの原理、ASP.NET 4.5 での動作、および実装するコードの記述方法について説明した MSDN ホワイトペーパーです。
-- [Entity Framework の非同期クエリと保存](https://msdn.microsoft.com/data/jj819165)
-- [Async を使用して ASP.NET Web アプリケーションを構築する方法](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/DEV-B337#fbid=tgkT4SR_DK7)。 Rowan 明美によるビデオプレゼンテーション。 高負荷の状態で web サーバーのスループットを大幅に向上させるための非同期プログラミングのしくみを示します。
-- [フェイルセーフ: スケーラブルで回復力のある Cloud Services を構築](https://channel9.msdn.com/Series/FailSafe)します。 Ulrich Homann、Marc Mercuri、Mark Simm による9部構成のビデオシリーズ。 非同期プログラミングがスケーラビリティに与える影響については、エピソード4とエピソード8を参照してください。
-- [ASP.NET 4.5 で非同期メソッドを使用するマジックと、重要な注意事項が](http://www.hanselman.com/blog/TheMagicOfUsingAsynchronousMethodsInASPNET45PlusAnImportantGotcha.aspx)あります。 Scott マン Selman によるブログ投稿、主に ASP.NET Web フォームアプリケーションでの async の使用について説明します。
+- [mvc 4 での非同期メソッドASP.NET使用](../../../../mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4.md)します。 リック・アンダーソンによるチュートリアル。
+- [非同期と Await を使用した非同期プログラミング (C# および Visual Basic)。](https://msdn.microsoft.com/library/vstudio/hh191443.aspx) 非同期プログラミングの根拠、ASP.NET 4.5 での動作、および実装するコードの記述方法を説明する MSDN ホワイト ペーパー。
+- [エンティティ フレームワークの非同期クエリと保存](https://msdn.microsoft.com/data/jj819165)
+- [非同期を使用してASP.NET Web アプリケーションをビルドする方法](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/DEV-B337#fbid=tgkT4SR_DK7). ローワン・ミラーによるビデオプレゼンテーション。 高負荷条件下での Web サーバースループットの劇的な向上を非同期プログラミングによってどのように促進できるかを示すグラフィックデモを示します。
+- [フェイルセーフ: スケーラブルで回復力のあるクラウド サービスの構築](https://channel9.msdn.com/Series/FailSafe) ウルリッヒ・ホーマン、マルク・メルクリ、マーク・シムズによる9部構成のビデオシリーズ。 非同期プログラミングがスケーラビリティに与える影響については、エピソード 4 とエピソード 8 を参照してください。
+- [ASP.NET 4.5 で非同期メソッドを使用する魔法と重要なゴッチャ](http://www.hanselman.com/blog/TheMagicOfUsingAsynchronousMethodsInASPNET45PlusAnImportantGotcha.aspx). Scott Hanselman によるブログ投稿、 主に web フォーム アプリケーションでの非同期の使用に関ASP.NET。
 
-その他の web 開発のベストプラクティスについては、次のリソースを参照してください。
+Web 開発のその他のベスト プラクティスについては、次のリソースを参照してください。
 
-- [修正プログラムのサンプルは、アプリケーションのベストプラクティス](the-fix-it-sample-application.md#bestpractices)です。 この電子書籍の付録には、「It アプリケーションの修正」で実装されたいくつかのベストプラクティスが記載されています。
-- [Web 開発者チェックリスト](http://webdevchecklist.com/asp.net)
+- [Fix it サンプル アプリケーション - ベスト プラクティス](the-fix-it-sample-application.md#bestpractices). この電子書籍の付録には、Fix It アプリケーションで実装された多くのベスト プラクティスが記載されています。
+- [ウェブ開発者チェックリスト](http://webdevchecklist.com/asp.net)
 
 > [!div class="step-by-step"]
 > [前へ](continuous-integration-and-continuous-delivery.md)

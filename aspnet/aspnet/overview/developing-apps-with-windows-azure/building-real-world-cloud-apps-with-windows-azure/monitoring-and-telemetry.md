@@ -1,291 +1,291 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry
-title: 監視とテレメトリ (Azure を使用した実際のクラウドアプリの構築) |Microsoft Docs
+title: 監視とテレメトリ (Azure を使用した実際のクラウド アプリの構築) |マイクロソフトドキュメント
 author: MikeWasson
-description: Azure 電子ブックを使用した実際のクラウドアプリの構築は、Scott Guthrie によって開発されたプレゼンテーションに基づいています。 13のパターンとベストプラクティスについて説明します。
+description: Azure 電子書籍を使用したリアル ワールド クラウド アプリの構築は、スコット ガスリーが開発したプレゼンテーションに基づいています。 それは彼ができる13のパターンと実践を説明します.
 ms.author: riande
 ms.date: 07/09/2015
 ms.assetid: 7e986ab5-6615-4638-add7-4614ce7b51db
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry
 msc.type: authoredcontent
 ms.openlocfilehash: f61810ea7b486b2fa0bbb234edea7541eedde835
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78471136"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80675671"
 ---
-# <a name="monitoring-and-telemetry-building-real-world-cloud-apps-with-azure"></a>監視とテレメトリ (Azure を使用した実際のクラウドアプリの構築)
+# <a name="monitoring-and-telemetry-building-real-world-cloud-apps-with-azure"></a>監視とテレメトリ (Azure を使用した実際のクラウド アプリの構築)
 
-[Mike Wasson](https://github.com/MikeWasson)、 [Rick Anderson](https://twitter.com/RickAndMSFT)、 [Tom Dykstra](https://github.com/tdykstra)
+[マイク・ワッソン](https://github.com/MikeWasson),[リック・アンダーソン](https://twitter.com/RickAndMSFT),[トム・ダイクストラ](https://github.com/tdykstra)
 
-[修正 It プロジェクトをダウンロード](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4)するか[、電子書籍をダウンロード](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)します
+[修正イットプロジェクトをダウンロード](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4)するか[、電子書籍をダウンロード](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
-> Azure 電子ブック**を使用した実際のクラウドアプリの構築**は、Scott Guthrie によって開発されたプレゼンテーションに基づいています。 ここでは、クラウド用の web アプリの開発を成功させるのに役立つ13のパターンとプラクティスについて説明します。 電子書籍の詳細については、[最初の章](introduction.md)を参照してください。
+> Azure 電子書籍**を使用したリアル ワールド クラウド アプリの構築**は、スコット ガスリーが開発したプレゼンテーションに基づいています。 クラウド向けの Web アプリの開発を成功させるために役立つ 13 のパターンとプラクティスについて説明します。 電子書籍の詳細については、[最初の章を](introduction.md)参照してください。
 
-多くのユーザーは、アプリケーションがダウンしたことを知らせるために、顧客に依存しています。 これは、特にクラウドではなく、どこでもベストプラクティスではありません。 クイック通知の保証はありません。通知を受け取ると、多くの場合、何が起こったかについてのデータが最小限または誤解されます。 優れたテレメトリとログ記録システムにより、アプリで何が起こっているかを認識できます。問題が発生した場合は、すぐに見つけて、トラブルシューティングに役立つ情報を得ることができます。
+多くの人々は、アプリケーションがダウンしたときに顧客に知らせるために顧客に依存しています。 これは実際にはどこでもベストプラクティスではなく、特にクラウドでのベストプラクティスではありません。 迅速な通知の保証はなく、通知を受け取ると、何が起こったのかについて最小限または誤解を招くデータを得ることがよくあります。 優れたテレメトリとログ記録システムを使用すると、アプリの動作を把握でき、問題が発生した場合は、すぐに確認し、トラブルシューティングに役立つ情報を入手できます。
 
-## <a name="buy-or-rent-a-telemetry-solution"></a>テレメトリソリューションを購入またはレンタルする
+## <a name="buy-or-rent-a-telemetry-solution"></a>テレメトリ ソリューションを購入またはレンタルする
 
 > [!NOTE]
-> この記事は[Application Insights](/azure/application-insights/app-insights-overview)がリリースされる前に作成されました。 Application Insights は、Azure でテレメトリソリューションを使用する場合に推奨される方法です。 詳細については[、ASP.NET web サイトの「セットアップ Application Insights](/azure/application-insights/app-insights-asp-net) 」を参照してください。
+> この記事は[、アプリケーションインサイトが](/azure/application-insights/app-insights-overview)リリースされる前に書かれました。 アプリケーション インサイトは、Azure のテレメトリ ソリューションの推奨アプローチです。 詳細については[、ASP.NET Web サイトのアプリケーションインサイトの設定を](/azure/application-insights/app-insights-asp-net)参照してください。
 
-クラウド環境にとって優れた点の1つは、お客様の勝利を簡単に購入またはレンタルできることです。 テレメトリは一例です。 多くの労力を費やすことなく、非常に優れたテレメトリシステムを稼働させることができ、コスト効率に優れています。 Azure と統合される優れたパートナーが多数あり、その中には free レベルがあるものもあります。これにより、何の基本テレメトリも取得できます。 Azure で現在使用できるもののほんの一部を次に示します。
+クラウド環境の素晴らしい点の1つは、勝利への道を購入したりレンタルしたりするのは本当に簡単だということです。 テレメトリは一例です。 多くの努力を必要とせず、非常にコスト効率の高い、本当に優れたテレメトリシステムを稼働させることができます。 Azure と統合する優れたパートナーが多数あり、一部には無料のレベルがあるため、基本的なテレメトリを無償で利用できます。 Azure で現在利用できるもののほんの一部を次に示します。
 
 - [New Relic](http://newrelic.com/)
 - [AppDynamics](http://www.appdynamics.com/)
 - [Dynatrace](https://datamarket.azure.com/application/b4011de2-1212-4375-9211-e882766121ff)
 
-[Microsoft System Center](http://www.petri.co.il/microsoft-system-center-introduction.htm#)には、監視機能も含まれています。
+[マイクロソフト システム センター](http://www.petri.co.il/microsoft-system-center-introduction.htm#)には、監視機能も含まれています。
 
-製品利用統計情報システムを簡単に使用できるように、新しい聖箱を設定する手順を簡単に説明します。
+テレメトリ システムを使用する簡単さを示すために、新しい遺物の設定を簡単に説明します。
 
-Azure 管理ポータルで、サービスにサインアップします。 **[新規]** をクリックし、 **[ストア]** をクリックします。 **[アドオンの選択]** ダイアログボックスが表示されます。 下にスクロールし、 **[新しい聖箱]** をクリックします。
+Azure 管理ポータルで、サービスにサインアップします。 [**新規作成**] をクリックし、[**ストア**] をクリックします。 [**アドオンの選択**] ダイアログ ボックスが表示されます。 下にスクロールして[**新しい遺物 ]** をクリックします。
 
 ![アドオンの選択](monitoring-and-telemetry/_static/image1.png)
 
-右矢印をクリックし、目的のサービスレベルを選択します。 このデモでは、free レベルを使用します。
+右矢印をクリックし、目的のサービスレベルを選択します。 このデモでは無料の利用枠を使用します。
 
 ![アドオンの個人用設定](monitoring-and-telemetry/_static/image2.png)
 
-右矢印をクリックし、[購入] を確認します。新しい聖箱がポータルにアドオンとして表示されるようになりました。
+右矢印をクリックして「購入」を確認すると、New Relic がポータルにアドオンとして表示されるようになりました。
 
 ![購入の確認](monitoring-and-telemetry/_static/image3.png)
 
-![管理ポータルの新しい聖なるアドオン](monitoring-and-telemetry/_static/image4.png)
+![管理ポータルの新しい遺物アドオン](monitoring-and-telemetry/_static/image4.png)
 
-**[接続情報]** をクリックし、ライセンスキーをコピーします。
+[**接続情報**] をクリックし、ライセンス キーをコピーします。
 
 ![接続情報](monitoring-and-telemetry/_static/image5.png)
 
-ポータルで web アプリの **[構成]** タブに移動し、 **[パフォーマンスの監視]** を**アドオン**に設定して、 **[アドオンの選択]** ドロップダウンリストを **[新しい聖箱]** に設定します。 **[保存]** をクリックします。
+ポータルで Web アプリの **[構成**] タブに移動し、[**パフォーマンスの監視]** を **[アドオン**] に設定し、[**アドオンの選択**] ドロップダウン リストを **[新しい遺物]** に設定します。 次に、[**保存**] をクリックします。
 
-![[構成] タブの新しい聖箱](monitoring-and-telemetry/_static/image6.png)
+![[構成] タブの新しい遺物](monitoring-and-telemetry/_static/image6.png)
 
-Visual Studio で、新しい聖なる NuGet パッケージをアプリにインストールします。
+Visual Studio で、アプリに新しい遺物 NuGet パッケージをインストールします。
 
-![[構成] タブの開発者分析](monitoring-and-telemetry/_static/image7.png)
+![[構成] タブでの開発者分析](monitoring-and-telemetry/_static/image7.png)
 
-アプリを Azure にデプロイし、使用を開始します。 いくつかの修正プログラムを作成して、新しい箱が監視するための活動を提供します。
+アプリを Azure にデプロイし、使用を開始します。 いくつかの修正 It タスクを作成して、新しい Relic が監視するアクティビティを提供します。
 
-次に、ポータルの **[アドオン] タブに**ある**新しい聖**金のページに戻り、 **[管理]** をクリックします。 認証にシングルサインオンを使用して、資格情報を再度入力する必要がないように、ポータルから新しい聖管理ポータルに送信されます。 [概要] ページには、さまざまなパフォーマンス統計情報が表示されます。 (画像をクリックすると、[概要] ページの最大サイズが表示されます)。
+次に、ポータルの [**アドオン**] タブの **[新しい遺物**] ページに戻り、[**管理**] をクリックします。 認証用のシングル サインオンを使用して、ポータルから New Relic 管理ポータルに送信されるので、資格情報を再入力する必要はありません。 [概要] ページには、さまざまなパフォーマンス統計情報が表示されます。 (画像をクリックすると、概要ページのフルサイズが表示されます。
 
-[![新しい聖箱の監視 タブ](monitoring-and-telemetry/_static/image9.png)](monitoring-and-telemetry/_static/image8.png)
+[![[新しい遺物の監視] タブ](monitoring-and-telemetry/_static/image9.png)](monitoring-and-telemetry/_static/image8.png)
 
-表示できる統計情報の一部を次に示します。
+以下は、ご覧の統計のほんの一部です。
 
-- 1日の異なる時刻の平均応答時間。
+- 異なる時間帯の平均応答時間。
 
     ![応答時間](monitoring-and-telemetry/_static/image10.png)
-- 1日の異なる時間におけるスループット率 (1 分あたりの要求数)。
+- 1 日の異なる時間におけるスループット率 (1 分あたりの要求数)。
 
     ![スループット](monitoring-and-telemetry/_static/image11.png)
-- 異なる HTTP 要求の処理に費やされたサーバーの CPU 時間。
+- サーバーの CPU 時間が異なる HTTP 要求の処理に費やされました。
 
     ![Web トランザクション時間](monitoring-and-telemetry/_static/image12.png)
-- アプリケーションコードのさまざまな部分で費やされた CPU 時間:
+- アプリケーション コードのさまざまな部分で CPU 時間を消費する:
 
     ![トレースの詳細](monitoring-and-telemetry/_static/image13.png)
-- 履歴パフォーマンスの統計情報。
+- パフォーマンスの履歴統計。
 
-    ![パフォーマンス履歴](monitoring-and-telemetry/_static/image14.png)
-- Blob service などの外部サービスへの呼び出し、およびサービスの信頼性と応答性に関する統計情報。
+    ![歴史的業績](monitoring-and-telemetry/_static/image14.png)
+- Blob サービスなどの外部サービスへの呼び出しと、サービスの信頼性と応答性に関する統計情報。
 
     ![外部サービス](monitoring-and-telemetry/_static/image15.png)
 
     ![外部サービス](monitoring-and-telemetry/_static/image16.png)
 
     ![外部サービス](monitoring-and-telemetry/_static/image17.png)
-- 世界中のどこにあるか、または米国 web アプリのトラフィックのどこにあるかに関する情報。
+- 世界のどこで、または米国の Web アプリのトラフィックがどこから来たかについての情報。
 
     ![[地理的な場所]](monitoring-and-telemetry/_static/image18.png)
 
-また、レポートとイベントを設定することもできます。 たとえば、エラーが発生し始めるたびに、アラートサポートスタッフに電子メールを送信して問題を報告することができます。
+レポートやイベントを設定することもできます。 たとえば、エラーが表示され始めたら、いつでも問題をサポートスタッフに通知する電子メールを送信できます。
 
 ![Reports](monitoring-and-telemetry/_static/image19.png)
 
-新しい聖箱は、テレメトリシステムの一例にすぎません。これは、他のサービスからも取得できます。 クラウドの利点は、コードを記述しなくても、最小限またはまったく費用をかけることなく、アプリケーションの使用状況や顧客の実際の使用状況について、さらに多くの情報を得ることができることです。
+新しい遺物はテレメトリシステムの一例に過ぎません。他のサービスからもこのすべてを取得できます。 クラウドの美しさは、コードを記述することなく、最小限または費用をかけずに、アプリケーションがどのように使用されているか、顧客が実際に経験している内容に関するより多くの情報を突然得ることができるということです。
 
 <a id="log"></a>
-## <a name="log-for-insight"></a>詳細情報のログ
+## <a name="log-for-insight"></a>インサイトのログ
 
-テレメトリパッケージは最初の手順として適していますが、独自のコードをインストルメント化する必要もあります。 テレメトリサービスでは、問題が発生したことが通知され、顧客がどのような状況を抱えているかがわかりますが、コード内で何が起こっているかについての洞察が得られない場合があります。
+テレメトリ パッケージは最初の手順としては良いですが、独自のコードをインストルメント化する必要があります。 テレメトリ サービスは、問題が発生した場合に通知し、顧客が経験していることを示しますが、コードで何が起こっているのかについて多くの洞察を得ることができなくなる場合があります。
 
-アプリの動作を確認するために、実稼働サーバーにリモートである必要はありません。 1台のサーバーを使用していても、何百ものサーバーに拡張した場合はどうすればよいでしょうか。 ログには、問題を分析してデバッグするために実稼働サーバーにリモートで必要とされない十分な情報が提供される必要があります。 ログを使用して問題を特定できるように、十分な情報をログに記録しておく必要があります。
+アプリの動作を確認するために、運用サーバーにリモートでアクセスする必要はありません。 1 台のサーバーがある場合は実用的かもしれませんが、何百ものサーバーにスケールし、どのサーバーにリモートで接続する必要があるかわからない場合はどうでしょうか。 ログには、問題を分析してデバッグするために運用サーバーにリモートで接続する必要のない十分な情報が必要です。 ログだけで問題を特定できるように、十分な情報を記録する必要があります。
 
-### <a name="log-in-production"></a>運用環境のログイン
+### <a name="log-in-production"></a>本番環境でログイン
 
-多くのユーザーは、問題があり、デバッグする必要がある場合にのみ、運用環境でのトレースを有効にします。 これにより、問題が発生してから、その問題に関するトラブルシューティング情報が得られるまでに、かなりの遅延が生じる可能性があります。 また、断続的なエラーについては役に立たないことがあります。
+多くのユーザーが、問題が発生し、デバッグする場合にのみ、運用環境でトレースをオンにします。 これにより、問題を認識してから、問題に関するトラブルシューティング情報を取得するまでの間にかなりの時間がかかることがあります。 また、取得する情報は、断続的なエラーには役立たない場合があります。
 
-ストレージが安価なクラウド環境では、常に運用環境にログオンしたままにしておくことをお勧めします。 このようにすると、エラーが発生した場合は、既にログに記録されています。履歴データを使用すると、時間の経過と共に、または定期的に発生する問題を分析するのに役立ちます。 パージプロセスを自動化して古いログを削除することもできますが、ログを保持するよりも、このようなプロセスを設定する方がコストがかかる場合があります。
+ストレージが安価なクラウド環境で推奨されているのは、常に本番環境でログオンし続けましょう。 このようにして、エラーが発生した場合は既にログに記録されており、時間の経過とともに発生する問題や、異なる時間に定期的に発生する問題の分析に役立つ履歴データを取得できます。 古いログを削除するパージ プロセスを自動化できますが、ログを保持するよりも、このようなプロセスを設定する方がコストがかかる場合があります。
 
-ログ記録の費用は、トラブルシューティングにかかる時間と、問題が発生したときに必要なすべての情報を取得することによって節約できるコストと比較して簡単です。 その後、だれかが、最後夜8:00 前後にランダムなエラーが発生したことを知らせても、エラーを覚えていないので、問題の原因をすぐに把握できます。
+ログ記録の追加費用は、何か問題が発生したときに必要なすべての情報を利用できるようにすることで、トラブルシューティングに要する時間とコストを節約できるのと比べると、簡単です。 その後、誰かが昨夜8時頃にランダムエラーを起こしたと言ったが、彼らはエラーを覚えていないとき、あなたは簡単に問題が何であったかを見つけることができます。
 
-1か月あたり $4 未満の場合、ログは 50 gb まで保持できます。また、パフォーマンスのボトルネックを回避するために、ログ記録のパフォーマンスへの影響はごくわずかです。パフォーマンスのボトルネックを回避するには、ログライブラリが非同期であることを確認してください。
+月に 4 ドル未満の場合は、50 GB のログを手元に保持でき、パフォーマンスのボトルネックを避けるために、ログ ライブラリが非同期であることを確認する 1 つの点を念頭に置く限り、ログ記録のパフォーマンスへの影響は簡単です。
 
-### <a name="differentiate-logs-that-inform-from-logs-that-require-action"></a>アクションを必要とするログから通知されるログを区別する
+### <a name="differentiate-logs-that-inform-from-logs-that-require-action"></a>アクションが必要なログから情報を提供するログを区別する
 
-ログは、(何かを知りたい)、または行動 (何かを行います) を通知するためのものです。 ACT ログは、純粋がユーザーまたは自動化されたプロセスを実行する必要がある問題に対してのみ記述するように注意してください。 ACT ログの数が多すぎると、ノイズが発生し、正規の問題を検出するためにすべてを処理するのに多くの作業が必要になります。 また、ACT ログで、サポートスタッフに電子メールを送信するなどのアクションが自動的にトリガーされる場合は、1つの問題によって何千ものアクションがトリガーされないようにしてください。
+ログは、情報を提供するためのものです (私はあなたに何かを知ってほしい) または ACT (私はあなたに何かをしてほしい)。 真に人や自動化されたプロセスにアクションを実行する必要がある問題に対してのみACTログを書くように注意してください。 あまりにも多くのACTログはノイズを発生させるので、本物の問題を見つけるためにすべてをふるいにかけるためにあまりにも多くの作業が必要です。 また、ACT ログがサポート スタッフに電子メールを送信するなどのアクションを自動的にトリガーする場合は、1 つの問題によって何千ものアクションがトリガーされないようにします。
 
-.NET システムの診断トレースでは、ログにエラー、警告、情報、デバッグ/詳細レベルを割り当てることができます。 Act ログのエラーレベルを予約し、ログ記録のために低いレベルを使用することで、ACT ログから ACT を区別できます。
+NET System.Diagnostics トレースでは、ログにエラー、警告、情報、およびデバッグ/詳細レベルを割り当てることができます。 ACT ログのエラー レベルを予約し、INFORM ログに低いレベルを使用することで、ACT と INFORM ログを区別できます。
 
 ![ログ記録のレベル](monitoring-and-telemetry/_static/image20.png)
 
-### <a name="configure-logging-levels-at-run-time"></a>実行時にログ記録レベルを構成する
+### <a name="configure-logging-levels-at-run-time"></a>実行時のログ レベルの構成
 
-運用環境でログを常にオンにすることは非常に便利ですが、もう1つのベストプラクティスは、ログ記録フレームワークを実装することです。これにより、アプリケーションを再デプロイしたり再起動したりすることなく、ログ記録する詳細レベルの実行時に調整できます。 たとえば、`System.Diagnostics` のトレース機能を使用すると、エラー、警告、情報、およびデバッグ/詳細ログを作成できます。 常にエラー、警告、および情報のログを運用環境に記録することをお勧めします。また、トラブルシューティングのためにデバッグ/詳細ログを動的に追加することもできます。
+運用環境で常にログを記録する価値がありますが、もう 1 つのベスト プラクティスは、アプリケーションを再展開または再起動することなく、ログ記録する詳細レベルを実行時に調整できるログ記録フレームワークを実装することです。 たとえば、トレース機能を使用`System.Diagnostics`する場合は、エラー、警告、情報、およびデバッグ/詳細ログを作成できます。 エラー、警告、情報ログを常に運用環境でログに記録することをお勧めします。
 
-Azure App Service の Web Apps には、ファイルシステム、テーブルストレージ、または Blob ストレージに `System.Diagnostics` ログを書き込むためのサポートが組み込まれています。 ストレージの宛先ごとに異なるログ記録レベルを選択できます。また、アプリケーションを再起動しなくてもログ記録レベルを変更できます。 Blob storage のサポートにより[、hdinsight の分析ジョブ](https://docs.microsoft.com/azure/hdinsight/)をアプリケーションログで簡単に実行できるようになります。これは、Hdinsight が blob ストレージを直接操作する方法を認識しているためです。
+Azure App Service の Web アプリには、`System.Diagnostics`ファイル システム、テーブル ストレージ、または BLOB ストレージにログを書き込む機能が組み込まれています。 ストレージの宛先ごとに異なるログレベルを選択したり、アプリケーションを再起動せずにログレベルをリアルタイムで変更したりできます。 BLOB ストレージのサポートにより[、HDInsight](https://docs.microsoft.com/azure/hdinsight/)は BLOB ストレージを直接操作する方法を認識しているため、アプリケーション ログで HDInsight 分析ジョブを実行しやすくなります。
 
 ### <a name="log-exceptions"></a>例外をログに記録する
 
-例外を挿入しないで*ください。* ログコード内の ToString ()。 これにより、コンテキスト情報が残されます。 SQL エラーの場合は、SQL エラー番号は残されます。 すべての例外について、トラブルシューティングに必要なすべてのものを確実に提供するために、コンテキスト情報、例外自体、および内部例外を含めてください。 たとえば、コンテキスト情報には、サーバー名、トランザクション識別子、およびユーザー名を含めることができます (ただし、パスワードやシークレットは使用できません)。
+例外を置くだけではありません *。* ログコード内の ToString() 。 それは文脈情報を残します。 SQL エラーの場合は、SQL エラー番号を除外します。 すべての例外に対して、コンテキスト情報、例外自体、および内部例外を含めて、トラブルシューティングに必要なすべてを提供していることを確認します。 たとえば、コンテキスト情報には、サーバー名、トランザクション ID、およびユーザー名 (パスワードやシークレットは含まれません) が含まれます。
 
-各開発者が例外ログを使用して適切な作業を行う場合、その一部は実行されません。 毎回適切に実行されるようにするには、logger インターフェイスに例外処理を直接作成します。この場合、例外オブジェクト自体を logger クラスに渡し、logger クラスで例外データを適切にログに記録します。
+例外ログで正しいことを行うために各開発者に頼っている場合、それらのいくつかはそうしません。 毎回正しい方法で実行されるようにするには、ロガー インターフェイスに例外処理をビルドします。
 
-### <a name="log-calls-to-services"></a>サービスへの呼び出しをログに記録する
+### <a name="log-calls-to-services"></a>サービスへの通話をログに記録する
 
-アプリケーションがサービスを呼び出すたびに、データベース、REST API、または外部のサービスのいずれであるかにかかわらず、ログを作成することを強くお勧めします。 ログには、成功または失敗を示すだけでなく、各要求の所要時間も示されます。 クラウド環境では、完全な停止ではなく、低速ダウンに関連する問題が頻繁に発生します。 通常、10ミリ秒かかることがあります。 アプリの速度が低下していることを知らせる場合は、新しい聖を見たり、お客様の経験を持っている製品利用統計情報サービスを確認したり、自分のログを調べて、それが遅い理由の詳細を確認したりできるようにする必要があります。
+データベース、REST API、外部サービスなど、アプリからサービスを呼び出すたびにログを書き込むのを強くお勧めします。 成功または失敗の兆候だけでなく、各要求にかかった時間をログに含めます。 クラウド環境では、完全な停止ではなく、スローダウンに関連する問題がしばしば発生します。 通常10ミリ秒かかるものは、突然1秒かかるかもしれません。 アプリが遅いと言われると、New Relic や持っているテレメトリ サービスを確認してエクスペリエンスを検証できるようにし、自分のログを見て、遅い理由の詳細を確認できます。
 
 ### <a name="use-an-ilogger-interface"></a>ILogger インターフェイスを使用する
 
-実稼働アプリケーションを作成する際には、単純な*ILogger*インターフェイスを作成し、メソッドをいくつか使用することをお勧めします。 これにより、後でログの実装を変更することが容易になり、コードを実行する必要がなくなります。 `System.Diagnostics.Trace` クラスを修正することもできますが、その代わりに、 *ILogger*を実装するログ記録クラスの内部で使用しているので、アプリ全体で*ILogger*メソッド呼び出しを行います。
+プロダクション アプリケーションを作成するときに推奨される操作は、単純な*ILogger*インターフェイスを作成し、その中にいくつかのメソッドを貼り付ける方法です。 これにより、ログの実装を後で簡単に変更でき、すべてのコードを使用する必要がなくて済みます。 Fix It アプリ`System.Diagnostics.Trace`全体でクラスを使用することもできますが、代わりに*ILogger*を実装するログ クラスでカバーの下で使用し、アプリ全体で*ILogger*メソッドを呼び出します。
 
-このようにして、ログ記録を充実させたい場合は、 [`System.Diagnostics.Trace`](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio#apptracelogs)を任意のログメカニズムに置き換えることができます。 たとえば、アプリのサイズが大きくなると、 [Nlog](http://nlog-project.org/)や[エンタープライズライブラリのログ記録アプリケーションブロック](https://msdn.microsoft.com/library/dn440731(v=pandp.60).aspx)などのより包括的なログパッケージを使用することになります。 ([Log4Net](http://logging.apache.org/log4net/)はもう1つの一般的なログ記録フレームワークですが、非同期ログ記録は行われません)。
+このようにして、ロギングをより豊かにしたい場合は、必要なロギングメカニズムに[`System.Diagnostics.Trace`](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio#apptracelogs)置き換えることができます。 たとえば、アプリが大きくなるにつれて[、NLog](http://nlog-project.org/)や[エンタープライズ ライブラリ のログ記録アプリケーション ブロック](https://msdn.microsoft.com/library/dn440731(v=pandp.60).aspx)などのより包括的なログ パッケージを使用するように決定する場合があります。 [(Log4Net](http://logging.apache.org/log4net/)は、もう 1 つの一般的なログ フレームワークですが、非同期ログは実行されません)。
 
-NLog などのフレームワークを使用することの考えられる理由の1つは、ログ出力を複数の大きなデータストアに分割しやすくすることです。 この機能を使用すると、大量の通知データを効率的に保存しながら、高速なクエリを実行する必要がなく、ACT データへのすばやいアクセスを維持することができます。
+NLog などのフレームワークを使用する理由の 1 つとして、ログ出力を別々の大容量データ ストアと高価値データ ストアに分割することが考えられます。 これにより、ACT データへの迅速なアクセスを維持しながら、高速なクエリを実行する必要がない大量の INFORM データを効率的に格納できます。
 
-### <a name="semantic-logging"></a>セマンティックログ記録
+### <a name="semantic-logging"></a>セマンティック ログ
 
-より有用な診断情報を生成する可能性のある、比較的新しいログ記録を行う方法については、「[エンタープライズライブラリのセマンティックログアプリケーションブロック (スラブ)](http://convective.wordpress.com/2013/08/12/semantic-logging-application-block-slab/)」を参照してください。 スラブでは、.NET 4.5 の[Windows イベントトレーシング](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx)(ETW) と[EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx)サポートを使用して、より構造化されたクエリ可能なログを作成できます。 記録するイベントの種類ごとに異なる方法を定義することで、記述する情報をカスタマイズできます。 たとえば、SQL Database エラーをログに記録するには、`LogSQLDatabaseError` メソッドを呼び出すことがあります。 この種の例外については、重要な情報がエラー番号であることがわかっているので、エラー番号パラメーターをメソッドシグネチャに含めて、記述したログレコードの別のフィールドとしてエラー番号を記録することができます。 この数値は別のフィールドにあるため、エラー番号をメッセージ文字列に連結しただけの場合よりも、SQL エラー番号に基づいてより簡単かつ確実にレポートを取得できます。
+より有用な診断情報を生成できる比較的新しいログ記録方法については、「[エンタープライズ ライブラリ セマンティック ログ アプリケーション ブロック (SLAB)」](http://convective.wordpress.com/2013/08/12/semantic-logging-application-block-slab/)を参照してください。 SLAB では、.NET 4.5 で[Windows イベント トレース](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx)(ETW) およびイベント[ソース](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx)のサポートを使用して、構造化されたクエリ可能なログを作成できます。 ログに記録するイベントの種類ごとに異なるメソッドを定義し、書き込む情報をカスタマイズできるようにします。 たとえば、SQL データベース エラーをログに記録するには、`LogSQLDatabaseError`メソッドを呼び出します。 このような例外の場合、重要な情報がエラー番号であることを知っているので、メソッドシグネチャにエラー番号パラメータを含め、書き込むログレコードにエラー番号を別のフィールドとして記録することができます。 数値は別のフィールドに含まれているため、エラー番号をメッセージ文字列に連結した場合よりも、SQL エラー番号に基づいてレポートを簡単かつ確実に取得できます。
 
-## <a name="logging-in-the-fix-it-app"></a>It アプリを修正する
+## <a name="logging-in-the-fix-it-app"></a>修正アプリでのログイン
 
 ### <a name="the-ilogger-interface"></a>ILogger インターフェイス
 
-Fix It アプリの*ILogger*インターフェイスを次に示します。
+ここでは、修正イットアプリの*ILogger*インターフェイスです。
 
 [!code-csharp[Main](monitoring-and-telemetry/samples/sample1.cs)]
 
-これらのメソッドを使用すると、*システム診断*でサポートされているのと同じ4つのレベルでログを書き込むことができます。 TraceApi メソッドは、待機時間に関する情報と共に外部サービス呼び出しをログに記録するためのメソッドです。 デバッグ/詳細レベルのメソッドのセットを追加することもできます。
+これらのメソッドを使用すると *、System.Diagnostics*でサポートされている同じ 4 つのレベルでログを書き込めます。 TraceApi メソッドは、待機時間に関する情報を含む外部サービス呼び出しをログに記録するためのものです。 デバッグ/詳細レベルのメソッドのセットを追加することもできます。
 
-### <a name="the-logger-implementation-of-the-ilogger-interface"></a>ILogger インターフェイスの Logger 実装
+### <a name="the-logger-implementation-of-the-ilogger-interface"></a>ILogger インターフェイスのロガー実装
 
-インターフェイスの実装は非常に単純です。 基本的には、標準の*システム診断*メソッドを呼び出すだけです。 次のスニペットは、3つの情報メソッドとそのそれぞれを示しています。
+インターフェイスの実装は本当に簡単です。 基本的には、標準の*System.Diagnostics*メソッドを呼び出すだけです。 次のスニペットは、3 つの情報メソッドと、それぞれ 1 つずつを示しています。
 
 [!code-csharp[Main](monitoring-and-telemetry/samples/sample2.cs)]
 
-### <a name="calling-the-ilogger-methods"></a>ILogger メソッドの呼び出し
+### <a name="calling-the-ilogger-methods"></a>ILogger メソッドを呼び出す
 
-Fix It アプリ内のコードが例外をキャッチするたびに、 *ILogger*メソッドを呼び出して例外の詳細をログに記録します。 また、データベース、Blob service、または REST API の呼び出しが行われるたびに、呼び出しの前にストップウォッチが開始され、サービスが戻ったときにストップウォッチが停止され、成功または失敗に関する情報と共に経過時間が記録されます。
+Fix It アプリのコードが例外をキャッチするたびに *、ILogger*メソッドを呼び出して例外の詳細をログに記録します。 また、データベース、Blob サービス、または REST API を呼び出すたびに、呼び出しの前にストップウォッチが開始され、サービスが戻ったときにストップウォッチが停止し、成功または失敗に関する情報と共に経過時間が記録されます。
 
-ログメッセージにクラス名とメソッド名が含まれていることに注意してください。 ログメッセージによって、アプリケーションコードのどの部分が記述されているかを特定することをお勧めします。
+ログ メッセージには、クラス名とメソッド名が含まれていることに注意してください。 ログ メッセージがアプリケーション コードの書き込み部分を識別するようにすることをお勧めします。
 
 [!code-csharp[Main](monitoring-and-telemetry/samples/sample3.cs?highlight=6,14,20-21,25)]
 
-この時点で、修正プログラムのアプリが SQL Database を呼び出すたびに、呼び出し、呼び出したメソッド、およびどれだけの時間がかかったかを確認できます。
+したがって、Fix It アプリが SQL Database を呼び出すたびに、呼び出し、呼び出し元のメソッド、および正確にかかった時間を確認できます。
 
-![ログでのクエリの SQL Database](monitoring-and-telemetry/_static/image21.png)
+![ログ内の SQL データベースクエリ](monitoring-and-telemetry/_static/image21.png)
 
 ![](monitoring-and-telemetry/_static/image22.png)
 
-ログを参照すると、データベース呼び出しの時間が変動することがわかります。 この情報は役に立つ可能性があります。これは、アプリがすべてをログに記録するため、データベースサービスが時間の経過と共にどのように実行されているかの履歴傾向を分析できます。 たとえば、サービスは最も時間がかかる場合がありますが、要求が失敗したり、特定の時間帯に応答が遅くなったりすることがあります。
+ログを参照すると、データベース呼び出しの時間が可変であることがわかります。 この情報は役に立つ可能性があります: アプリは、このすべてをログに記録するため、データベース サービスが時間の経過ととおりにどのように実行されているかの履歴傾向を分析できます。 たとえば、サービスはほとんどの場合は高速ですが、要求が失敗したり、応答が遅くなったりする場合があります。
 
-Blob service に対しても同じことを行うことができます。アプリが新しいファイルをアップロードするたびにログが記録され、各ファイルのアップロードにかかった時間を正確に確認できます。
+Blob サービスでも同じ操作を実行できます - アプリが新しいファイルをアップロードするたびにログが記録され、各ファイルのアップロードにかかった時間を正確に確認できます。
 
-![Blob アップロードログ](monitoring-and-telemetry/_static/image23.png)
+![BLOB アップロード ログ](monitoring-and-telemetry/_static/image23.png)
 
-これは、サービスを呼び出すたびに記述する数行のコード行にすぎません。問題が発生した場合は、問題の内容、エラーかどうか、または実行速度が低下しているかどうかを正確に知ることができます。 問題の原因を特定するには、サーバーにリモートでいる必要はありません。エラーが発生した後にログ記録をオンにして、再作成することをお勧めします。
+サービスを呼び出すたびにコードを記述するコードは数行にすぎず、誰かが問題に遭遇したと言うたびに、問題が何であったのか、エラーだったのか、それとも遅く実行されていたのかを正確に知っています。 サーバーにリモートで接続したり、エラーが発生した後にログを有効にしたりすることなく、問題の原因を特定して、問題の再現を希望できます。
 
-## <a name="dependency-injection-in-the-fix-it-app"></a>It アプリを修正するための依存関係の挿入
+## <a name="dependency-injection-in-the-fix-it-app"></a>Fix It アプリでの依存関係の挿入
 
-上の例のリポジトリコンストラクターが logger インターフェイスの実装を取得する方法については、次のようになります。
+上記の例のリポジトリ コンストラクタがロガー インターフェイスの実装をどのように取得するのか疑問に思うかもしれません。
 
 [!code-csharp[Main](monitoring-and-telemetry/samples/sample4.cs?highlight=6)]
 
-インターフェイスを実装に接続するために、アプリは[AutoFac](http://autofac.org/)を使用して[依存関係の挿入](http://en.wikipedia.org/wiki/Dependency_injection)(DI) を使用します。 DI を使用すると、コード内のさまざまな場所でインターフェイスに基づくオブジェクトを使用できます。また、インターフェイスがインスタンス化されるときに使用される実装を1つの場所で指定するだけで済みます。 これにより、実装の変更が簡単になります。たとえば、システム診断 logger を NLog logger に置き換えることができます。 または、自動化されたテストでは、logger のモックバージョンに置き換えることができます。
+実装にインターフェイスを接続するには、アプリは[AutoFac](http://autofac.org/)で[依存関係の挿入](http://en.wikipedia.org/wiki/Dependency_injection)(DI) を使用します。 DI を使用すると、コード全体でインターフェイスに基づくオブジェクトを使用でき、インターフェイスのインスタンス化時に使用される実装を 1 か所で指定するだけで済みます。 これにより、実装を簡単に変更できます。 または、自動テストの場合は、ロガーのモックバージョンを置き換える必要があります。
 
-Fix It アプリケーションは、すべてのリポジトリとすべてのコントローラーで DI を使用します。 コントローラークラスのコンストラクターは、リポジトリが logger インターフェイスを取得するのと同じ方法で*ITaskRepository*インターフェイスを取得します。
+Fix It アプリケーションは、すべてのリポジトリとすべてのコントローラで DI を使用します。 コントローラクラスのコンストラクタは、リポジトリがロガーインターフェイスを取得するのと同じ方法で*ITaskRepository*インターフェイスを取得します。
 
 [!code-csharp[Main](monitoring-and-telemetry/samples/sample5.cs?highlight=5)]
 
-アプリは、AutoFac DI ライブラリを使用して、これらのコンストラクターに*Taskrepository*と*Logger*インスタンスを自動的に提供します。
+アプリは、自動的にこれらのコンス トラクターの*タスクリポジトリ*と*ロガー*インスタンスを提供する AutoFac DI ライブラリを使用します。
 
 [!code-csharp[Main](monitoring-and-telemetry/samples/sample6.cs?highlight=8,10)]
 
-このコードは基本的に、コンストラクターが*ILogger*インターフェイスを必要とし、 *Logger*クラスのインスタンスを渡す場合、および*ifixittaskrepository*インターフェイスが必要な場合は、 *fixittaskrepository*クラスのインスタンスを渡すことを意味します。
+このコードは基本的に、コンストラクタが*ILogger*インターフェイスを必要とし *、Logger*クラスのインスタンスを渡し、IFixItTaskRepositoryインターフェイスが必要なときはいつでも*FixItTaskRepository*クラスのインスタンスを渡すことを示しています。 *IFixItTaskRepository*
 
-[AutoFac](http://autofac.org/)は、使用できる多くの依存関係挿入フレームワークの1つです。 また、Microsoft のパターンとプラクティスで推奨およびサポートされている[Unity](https://blogs.msdn.com/b/agile/archive/2013/08/20/new-guide-dependency-injection-with-unity.aspx)もあります。
+[AutoFac](http://autofac.org/)は、使用できる多くの依存関係の挿入フレームワークの 1 つです。 もう 1 つの人気のあるのは、マイクロソフトのパターンとプラクティスで推奨されサポートされている[Unity](https://blogs.msdn.com/b/agile/archive/2013/08/20/new-guide-dependency-injection-with-unity.aspx)です。
 
-## <a name="built-in-logging-support-in-azure"></a>Azure での組み込みのログ記録のサポート
+## <a name="built-in-logging-support-in-azure"></a>Azure での組み込みのログのサポート
 
-Azure では、Azure App Service の[Web Apps に対して](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio)次の種類のログ記録をサポートしています。
+Azure では、Azure[アプリ サービスでの Web アプリの次の種類のログ記録がサポートされています](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio)。
 
-- システム診断トレース (サイトを再起動しなくても、オンとオフを切り替えることができ、レベルを設定できます)。
-- Windows イベント。
-- IIS ログ (HTTP/FREB)。
+- System.Diagnostics トレース (サイトを再起動せずにオンとオフを切り、オンにして、その場でレベルを設定できます)。
+- ウィンドウズイベント。
+- IIS ログ (HTTP/FREB)
 
-Azure では、Cloud Services で次の種類の[ログ記録](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)をサポートしています。
+Azure では、クラウド[サービスで次の種類のログ記録がサポートされています](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)。
 
-- システム診断のトレース。
+- 診断トレース。
 - パフォーマンス カウンター。
-- Windows イベント。
-- IIS ログ (HTTP/FREB)。
-- カスタムディレクトリ監視。
+- ウィンドウズイベント。
+- IIS ログ (HTTP/FREB)
+- カスタム ディレクトリの監視。
 
-Fix It アプリは、Diagnostics トレースを使用します。 Web アプリでの診断ログの記録を有効にするために必要な作業は、ポータルでスイッチを反転させるか、REST API を呼び出すことだけです。 ポータルで、サイトの **[構成]** タブをクリックし、下にスクロールして **[アプリケーション診断]** セクションを表示します。 ログ記録をオンまたはオフにして、目的のログ記録レベルを選択することができます。 Azure では、ファイルシステムまたはストレージアカウントにログを書き込むことができます。
+修正アプリは、System.Diagnostics トレースを使用します。 Web アプリで System.Diagnostics ログを有効にするために必要なのは、ポータル内のスイッチを反転するか、REST API を呼び出すことだけです。 ポータルで、サイトの **[構成**] タブをクリックし、下にスクロールして **[アプリケーション診断**] セクションを表示します。 ログ記録のオンとオフを切り、必要なログレベルを選択できます。 Azure で、ログをファイル システムまたはストレージ アカウントに書き込むことができます。
 
-![[構成] タブのアプリ診断とサイト診断](monitoring-and-telemetry/_static/image24.png)
+![[構成] タブでのアプリ診断とサイト診断](monitoring-and-telemetry/_static/image24.png)
 
-Azure でのログ記録を有効にすると、Visual Studio の [出力] ウィンドウにログが表示されます。
+Azure でのログ記録を有効にすると、作成中に [Visual Studio の出力] ウィンドウにログが表示されます。
 
-![ストリーミングログメニュー](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-viewlogsmenu.png)
+![ストリーミング ログ メニュー](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-viewlogsmenu.png)
 
-![ストリーミングログメニュー](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-nologsyet.png)
+![ストリーミング ログ メニュー](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-nologsyet.png)
 
-また、ログをストレージアカウントに書き込んで、Visual Studio や[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)の**サーバーエクスプローラー**などの Azure Storage Table service にアクセスできる任意のツールでログを表示することもできます。
+また、ストレージ アカウントに書き込まれたログを持ち、Visual Studio の**サーバー エクスプローラー**や Azure ストレージ[エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)などの Azure ストレージ テーブル サービスにアクセスできるツールを使用してログを表示することもできます。
 
-![サーバーエクスプローラーのログイン](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-storagelogs.png)
+![サーバー エクスプローラのログ](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-storagelogs.png)
 
 ## <a name="summary"></a>まとめ
 
-すぐに使えるテレメトリシステムを実装し、独自のコードでログ記録を行い、Azure でのログ記録を構成するのは非常に簡単です。 また、運用上の問題がある場合は、テレメトリシステムとカスタムログを組み合わせて使用することで、顧客にとって大きな問題になる前に問題を迅速に解決できるようになります。
+簡単に、使用でき、独自のコードでログを記録し、Azure でログを構成する、使用できやすいテレメトリ システムを実装できます。 また、運用上の問題が発生した場合、テレメトリ システムとカスタム ログを組み合わせて、問題が顧客にとって大きな問題になる前に、問題を迅速に解決するのに役立ちます。
 
-次の[章](transient-fault-handling.md)では、調査する必要がある運用上の問題にならないように、一時的なエラーを処理する方法について説明します。
+次の[章](transient-fault-handling.md)では、一時的なエラーを処理する方法を見て、調査する必要がある実稼働の問題にならないようにします。
 
 ## <a name="resources"></a>リソース
 
 詳細については、次のリソースを参照してください。
 
-製品利用統計情報に関するドキュメント:
+主にテレメトリに関するドキュメント:
 
-- [Microsoft のパターンとプラクティス-Azure のガイダンス](https://msdn.microsoft.com/library/dn568099.aspx)。 「インストルメンテーションとテレメトリに関するガイダンス」、「サービスメータリングのガイダンス」、「正常性エンドポイントの監視パターン」、および「ランタイム再構成パターン」を参照してください。
-- [クラウドでの小額ピンチ: Azure Websites での新しい聖なるパフォーマンス監視を有効に](http://www.hanselman.com/blog/PennyPinchingInTheCloudEnablingNewRelicPerformanceMonitoringOnWindowsAzureWebsites.aspx)します。
-- [Azure Cloud Services で大規模なサービスを設計するためのベストプラクティス](https://msdn.microsoft.com/library/windowsazure/jj717232.aspx)。 マーク Simm と Michael Thomassy によるホワイトペーパー。 「テレメトリと診断」セクションを参照してください。
-- [Application Insights を使用した次世代の開発](https://msdn.microsoft.com/magazine/dn683794.aspx)。 MSDN マガジンの記事です。
+- [マイクロソフトのパターンとプラクティス - Azure ガイダンス](https://msdn.microsoft.com/library/dn568099.aspx). 「インストルメンテーションとテレメトリのガイダンス、サービス のメータリング ガイダンス、正常性エンドポイントの監視パターン、およびランタイム再構成パターン」を参照してください。
+- [クラウドでのペニー ピンチ: Azure Web サイトでの新しい遺物パフォーマンス監視の有効化](http://www.hanselman.com/blog/PennyPinchingInTheCloudEnablingNewRelicPerformanceMonitoringOnWindowsAzureWebsites.aspx)
+- [Azure クラウド サービスでの大規模サービスの設計に関するベスト プラクティス](https://msdn.microsoft.com/library/windowsazure/jj717232.aspx) マーク・シムズとマイケル・トマシーによるホワイトペーパー。 「テレメトリと診断」セクションを参照してください。
+- [アプリケーションインサイトを用いて次世代開発を行う](https://msdn.microsoft.com/magazine/dn683794.aspx) MSDN マガジンの記事。
 
-ログ記録に関するドキュメント:
+主にロギングに関するドキュメント:
 
-- [セマンティックログアプリケーションブロック (スラブ)](http://convective.wordpress.com/2013/08/12/semantic-logging-application-block-slab/)。 Neil Mackenzie は、スラブを使用したセマンティックログ記録のケースを示しています。
-- [セマンティックログを使用して、構造化された意味のあるログを作成](https://channel9.msdn.com/Events/Build/2013/3-336)します。 Videoユリウス Dominguez は、スラブを使用したセマンティックログ記録のケースを示しています。
-- [EF6 SQL のログ記録–パート 1: 単純なログ記録](http://blog.oneunicorn.com/2013/05/08/ef6-sql-logging-part-1-simple-logging/)。 Arthur ヴィッカースは、EF 6 の Entity Framework によって実行されるクエリをログに記録する方法を示しています。
-- [ASP.NET MVC アプリケーションでの Entity Framework を使用した接続の回復性とコマンドのインターセプト](../../../../mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application.md)。 9部構成のチュートリアルシリーズの第4部では、EF 6 のコマンドインターセプト機能を使用して、Entity Framework によってデータベースに送信された SQL コマンドをログに記録する方法を示します。
-- [5.0 呼び出し元C#情報の属性を使用してログ記録を強化](http://www.dotnetcurry.com/showarticle.aspx?ID=972)します。 呼び出し元のメソッドの名前を、リテラルにハードコーディングしたり、リフレクションを使用して手動で取得したりせずに、簡単にログに記録する方法。
+- [セマンティック ログ アプリケーション ブロック (SLAB)](http://convective.wordpress.com/2013/08/12/semantic-logging-application-block-slab/) ニール・マッケンジーは、SLABでセマンティックロギングのケースを提示します。
+- [セマンティック ログを使用した構造化された意味のあるログの作成](https://channel9.msdn.com/Events/Build/2013/3-336): (ビデオ)ジュリアン・ドミンゲスは、SLABでセマンティックロギングのケースを提示します。
+- [EF6 SQL ロギング – パート 1: 単純なログ記録](http://blog.oneunicorn.com/2013/05/08/ef6-sql-logging-part-1-simple-logging/). アーサー ビッカース EF 6 でエンティティ フレームワークによって実行されるクエリをログに記録する方法を示します。
+- [ASP.NET MVC アプリケーションでのエンティティ フレームワークでの接続の回復性とコマンドの傍受](../../../../mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application.md)。 9 部構成のチュートリアル シリーズの 4 番目は、エンティティ フレームワークによってデータベースに送信される SQL コマンドをログに記録する EF 6 コマンドの傍受機能を使用する方法を示します。
+- [C# 5.0 発信者情報属性を使用してログ記録を改善](http://www.dotnetcurry.com/showarticle.aspx?ID=972)する 。 呼び出し元のメソッドの名前をリテラルにハードコーディングしたり、リフレクションを使用して手動で取得したりせずに、呼び出し元のメソッドの名前を簡単にログに記録する方法。
 
-ドキュメント: 主にトラブルシューティングについて説明します。
+トラブルシューティングに関するドキュメント:
 
-- [Azure のトラブルシューティング &amp; デバッグに関するブログ](https://blogs.msdn.com/b/kwill/)
-- [Azuretools – Azure Developer サポートチームによって使用される診断ユーティリティ](https://blogs.msdn.com/b/kwill/archive/2013/08/26/azuretools-the-diagnostic-utility-used-by-the-windows-azure-developer-support-team.aspx?Redirected=true)です。 では、さまざまな診断ツールと監視ツールをダウンロードして実行するために Azure VM で使用できるツールのダウンロードリンクが導入されています。 特定の VM の問題を診断する必要がある場合に便利です。
-- [Visual Studio を使用して Azure App Service の web アプリのトラブルシューティングを](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio)行います。 このチュートリアルでは、システム診断のトレースとリモートデバッグの概要について説明します。
+- [Azure&amp;のトラブルシューティング のデバッグブログ](https://blogs.msdn.com/b/kwill/).
+- [AzureTools – Azure 開発者サポート チームが使用する診断ユーティリティ](https://blogs.msdn.com/b/kwill/archive/2013/08/26/azuretools-the-diagnostic-utility-used-by-the-windows-azure-developer-support-team.aspx?Redirected=true)。 Azure VM でさまざまな診断および監視ツールをダウンロードして実行できるツールのダウンロード リンクを紹介し、提供します。 特定の VM で問題を診断する必要がある場合に役立ちます。
+- [Visual Studio を使用して Azure アプリ サービスの Web アプリのトラブルシューティングを行います](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio)。 System.Diagnostics トレースとリモート デバッグの概要を説明する手順を示します。
 
 ビデオ:
 
-- [フェイルセーフ: スケーラブルで回復力のある Cloud Services を構築](https://channel9.msdn.com/Series/FailSafe)します。 Ulrich Homann、Marc Mercuri、Mark Simm による9パートシリーズ。 高度な概念とアーキテクチャの原則を、非常にアクセスしやすく興味深い方法で紹介します。実際の顧客との Microsoft カスタマーアドバイザリチーム (CAT) エクスペリエンスによってストーリーが描画されます。 エピソード4と9は、監視とテレメトリに関するものです。 エピソード9には、監視サービス MetricsHub、AppDynamics、新しい聖数、および PagerDuty の概要が含まれています。
-- [大規模な構築: Azure のお客様から学んだ教訓-パート II](https://channel9.msdn.com/Events/Build/2012/3-030)。 Simm マークは、エラーの設計とすべてのインストルメント化について話します。 フェイルセーフシリーズに似ていますが、さらに詳細な方法について説明します。
+- [フェイルセーフ: スケーラブルで回復力のあるクラウド サービスの構築](https://channel9.msdn.com/Series/FailSafe) ウルリッヒ・ホーマン、マルク・メルクリ、マーク・シムズによる9部構成のシリーズ。 マイクロソフト カスタマー アドバイザリー チーム (CAT) の実際の顧客との経験から得たストーリーで、高レベルの概念とアーキテクチャの原則を非常にアクセスしやすく興味深い方法で紹介します。 エピソード 4 と 9 は、監視とテレメトリに関するものです。 エピソード 9 には、サービスメトリックスハブ、AppDynamics、新しい遺物、および PagerDuty の監視サービスの概要が含まれています。
+- [大きな建物: Azure のお客様から学んだ教訓 - パート II](https://channel9.msdn.com/Events/Build/2012/3-030). マーク・シムズは、失敗に対する設計とすべてをインストルメント化することについて話します。 フェイルセーフシリーズと同様ですが、より多くの方法の詳細に入ります。
 
-コードサンプル:
+コード サンプル:
 
-- [Azure のクラウドサービスの基礎](https://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649)。 Microsoft Azure Customer アドバイザリチームによって作成されたサンプルアプリケーション。 次の記事で説明されているように、テレメトリとログ記録の両方のプラクティスを示します。 このサンプルでは、 [Nlog](http://nlog-project.org/)を使用してアプリケーションのログ記録を実装します。 関連ドキュメントについては、[テレメトリとログに関する4つの TechNet wiki 記事](https://social.technet.microsoft.com/wiki/contents/articles/17987.cloud-service-fundamentals.aspx#Telemetry_coming_soon)を参照してください。
+- [Azure のクラウド サービスの基礎](https://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Microsoft Azure カスタマー アドバイザリ チームによって作成されたサンプル アプリケーション。 次の記事で説明されているように、テレメトリとログ記録の両方のプラクティスを示します。 このサンプルでは[、NLog](http://nlog-project.org/)を使用してアプリケーション ログを実装しています。 関連ドキュメントについては、[テレメトリとログ記録に関する TechNet Wiki の 4 つの記事のシリーズを](https://social.technet.microsoft.com/wiki/contents/articles/17987.cloud-service-fundamentals.aspx#Telemetry_coming_soon)参照してください。
 
 > [!div class="step-by-step"]
 > [前へ](design-to-survive-failures.md)

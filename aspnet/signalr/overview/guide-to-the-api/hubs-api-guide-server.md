@@ -1,48 +1,48 @@
 ---
 uid: signalr/overview/guide-to-the-api/hubs-api-guide-server
-title: ASP.NET SignalR Hub API ガイド-Server (C#) |Microsoft Docs
+title: ASP.NET SignalR ハブ API ガイド - サーバー (C#) |マイクロソフトドキュメント
 author: bradygaster
-description: このドキュメントでは、SignalR version 2 用の ASP.NET SignalR Hub API のサーバー側のプログラミングの概要について説明します。コードサンプルは次のようになります...
+description: このドキュメントでは、SignalR バージョン 2 の ASP.NET SignalR Hubs API のサーバー側のプログラミングの概要を示します。
 ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: b19913e5-cd8a-4e4b-a872-5ac7a858a934
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-server
 msc.type: authoredcontent
 ms.openlocfilehash: c681b104b15bfc4a04587c7abf685dcf20def2ca
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78431368"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80675803"
 ---
-# <a name="aspnet-signalr-hubs-api-guide---server-c"></a>ASP.NET SignalR Hub API ガイド-サーバー (C#)
+# <a name="aspnet-signalr-hubs-api-guide---server-c"></a>ASP.NET SignalR ハブ API ガイド - サーバー (C#)
 
-[Fletcher](https://github.com/pfletcher)、 [Tom Dykstra](https://github.com/tdykstra)
+[パトリック・フレッチャー](https://github.com/pfletcher),[トム・ダイクストラ](https://github.com/tdykstra)
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
-> このドキュメントでは、SignalR version 2 用の ASP.NET SignalR Hub API のサーバー側のプログラミングの概要について説明し、一般的なオプションを示すコードサンプルを示します。
+> このドキュメントでは、一般的なオプションを示すコード サンプルを含む、signalR バージョン 2 の ASP.NET SignalR Hubs API のサーバー側のプログラミングの概要を示します。
 > 
-> SignalR Hub API を使用すると、サーバーから接続されたクライアントおよびクライアントからサーバーへのリモートプロシージャコール (Rpc) を行うことができます。 サーバーコードでは、クライアントから呼び出すことができるメソッドを定義し、クライアントで実行するメソッドを呼び出すことができます。 クライアントコードでは、サーバーから呼び出すことができるメソッドを定義し、サーバーで実行されるメソッドを呼び出すことができます。 SignalR は、クライアントとサーバーのすべての組み込みを処理します。
+> SignalR Hubs API を使用すると、サーバーから接続されたクライアント、およびクライアントからサーバーへのリモート プロシージャ コール (RPC) を作成できます。 サーバー コードでは、クライアントから呼び出すことができるメソッドを定義し、クライアントで実行されるメソッドを呼び出します。 クライアント コードでは、サーバーから呼び出すことができるメソッドを定義し、サーバーで実行されるメソッドを呼び出します。 SignalR は、クライアントからサーバーへのすべての配管を処理します。
 > 
-> SignalR には、永続的な接続と呼ばれる下位レベルの API も用意されています。 SignalR、ハブ、および永続的な接続の概要については、「 [SignalR 2 の概要](../getting-started/introduction-to-signalr.md)」を参照してください。
+> SignalR は、固定接続と呼ばれる下位レベルの API も提供します。 SignalR、ハブ、および固定接続の概要については[、SignalR 2 の概要を](../getting-started/introduction-to-signalr.md)参照してください。
 > 
-> ## <a name="software-versions-used-in-this-topic"></a>このトピックで使用されているソフトウェアのバージョン
+> ## <a name="software-versions-used-in-this-topic"></a>このトピックで使用するソフトウェアバージョン
 > 
 > 
 > - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
 > - .NET 4.5
-> - SignalR バージョン2
+> - シグナル・バージョン 2
 >   
 > 
 > 
 > ## <a name="topic-versions"></a>トピックのバージョン
 > 
-> 以前のバージョンの SignalR の詳細については、「[古いバージョンの SignalR](../older-versions/index.md)」を参照してください。
+> SignalR の以前のバージョンについては[、SignalR の古いバージョン](../older-versions/index.md)を参照してください。
 > 
 > ## <a name="questions-and-comments"></a>質問とコメント
 > 
-> このチュートリアルの良い点に関するフィードバックや、ページ下部にあるコメントで改善できる点をお知らせください。 チュートリアルに直接関係のない質問がある場合は、[ASP.NET SignalR フォーラム](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)または[StackOverflow.com](http://stackoverflow.com/)にて投稿してください。
+> このチュートリアルを気に入った方法と、ページの下部にあるコメントで改善できる内容についてのフィードバックを残してください。 チュートリアルに直接関連しない質問がある場合は[、ASP.NET SignalR フォーラム](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)または[StackOverflow.com](http://stackoverflow.com/)に投稿できます。
 
 ## <a name="overview"></a>概要
 
@@ -50,147 +50,147 @@ ms.locfileid: "78431368"
 
 - [SignalR ミドルウェアを登録する方法](#route)
 
-    - [/Signalr URL](#signalrurl)
-    - [SignalR オプションの構成](#options)
-- [ハブクラスを作成して使用する方法](#hubclass)
+    - [/シグナルの URL](#signalrurl)
+    - [シグナル・オプションの構成](#options)
+- [ハブ クラスを作成して使用する方法](#hubclass)
 
-    - [ハブオブジェクトの有効期間](#transience)
-    - [JavaScript クライアントでのハブ名の camel 形式](#hubnames)
+    - [ハブ オブジェクトの有効期間](#transience)
+    - [JavaScript クライアントにおけるハブ名のキャメルケーシング](#hubnames)
     - [複数のハブ](#multiplehubs)
     - [厳密に型指定されたハブ](#stronglytypedhubs)
-- [クライアントが呼び出すことのできるハブクラスのメソッドを定義する方法](#hubmethods)
+- [クライアントが呼び出すことができるハブ クラスでメソッドを定義する方法](#hubmethods)
 
-    - [JavaScript クライアントでのメソッド名の camel 形式の表記](#methodnames)
-    - [非同期的に実行する場合](#asyncmethods)
+    - [JavaScript クライアントにおけるメソッド名のキャメル・ケーシング](#methodnames)
+    - [非同期で実行する場合](#asyncmethods)
     - [オーバーロードの定義](#overloads)
-    - [ハブメソッド呼び出しからの進行状況の報告](#progress)
-- [ハブクラスからクライアントメソッドを呼び出す方法](#callfromhub)
+    - [ハブ メソッド呼び出しからの進行状況のレポート](#progress)
+- [ハブ クラスからクライアント メソッドを呼び出す方法](#callfromhub)
 
-    - [RPC を受信するクライアントを選択する](#selectingclients)
-    - [メソッド名に対するコンパイル時の検証がありません](#dynamicmethodnames)
+    - [RPC を受信するクライアントの選択](#selectingclients)
+    - [メソッド名のコンパイル時検証なし](#dynamicmethodnames)
     - [大文字と小文字を区別しないメソッド名の一致](#caseinsensitive)
     - [非同期実行](#asyncclient)
-- [ハブクラスからグループメンバーシップを管理する方法](#groupsfromhub)
+- [ハブ クラスからグループ メンバーシップを管理する方法](#groupsfromhub)
 
     - [Add メソッドと Remove メソッドの非同期実行](#asyncgroupmethods)
-    - [グループメンバーシップの永続化](#grouppersistence)
-    - [シングルユーザーグループ](#singleusergroups)
-- [ハブクラスで接続の有効期間イベントを処理する方法](#connectionlifetime)
+    - [グループ メンバーシップの永続性](#grouppersistence)
+    - [シングルユーザー グループ](#singleusergroups)
+- [ハブ クラスで接続の有効期間イベントを処理する方法](#connectionlifetime)
 
-    - [OnConnected、Onconnected、および Onconnected が呼び出されたとき](#onreconnected)
-    - [呼び出し元の状態が設定されていません](#nocallerstate)
-- [コンテキストプロパティからクライアントに関する情報を取得する方法](#contextproperty)
-- [クライアントとハブクラスの間で状態を渡す方法](#passstate)
-- [ハブクラスでエラーを処理する方法](#handleErrors)
-- [ハブクラスの外部からクライアントメソッドを呼び出し、グループを管理する方法](#callfromoutsidehub)
+    - [オン接続、オン・オンライン切断、およびオン再接続が呼び出された場合](#onreconnected)
+    - [呼び出し元の状態が入力されていません](#nocallerstate)
+- [Context プロパティからクライアントに関する情報を取得する方法](#contextproperty)
+- [クライアントとハブ クラスの間で状態を渡す方法](#passstate)
+- [ハブ クラスのエラーを処理する方法](#handleErrors)
+- [ハブ クラスの外部からクライアント メソッドを呼び出し、グループを管理する方法](#callfromoutsidehub)
 
-    - [クライアントメソッドの呼び出し](#callingclientsoutsidehub)
-    - [グループメンバーシップの管理](#managinggroupsoutsidehub)
+    - [クライアント メソッドの呼び出し](#callingclientsoutsidehub)
+    - [グループ メンバーシップの管理](#managinggroupsoutsidehub)
 - [トレースを有効にする方法](#tracing)
-- [ハブパイプラインをカスタマイズする方法](#hubpipeline)
+- [ハブ パイプラインをカスタマイズする方法](#hubpipeline)
 
 クライアントのプログラミング方法に関するドキュメントについては、次のリソースを参照してください。
 
-- [SignalR Hub API ガイド-JavaScript クライアント](hubs-api-guide-javascript-client.md)
-- [SignalR Hub API ガイド-.NET クライアント](hubs-api-guide-net-client.md)
+- [シグナルハブ API ガイド - JavaScript クライアント](hubs-api-guide-javascript-client.md)
+- [SignalR ハブ API ガイド - .NET クライアント](hubs-api-guide-net-client.md)
 
-SignalR 2 のサーバーコンポーネントは、.NET 4.5 でのみ使用できます。 .NET 4.0 を実行しているサーバーでは、SignalR v1. x を使用する必要があります。
+SignalR 2 のサーバー コンポーネントは、.NET 4.5 でのみ使用できます。 NET 4.0 を実行しているサーバーは、SignalR v1.x を使用する必要があります。
 
 <a id="route"></a>
 
 ## <a name="how-to-register-signalr-middleware"></a>SignalR ミドルウェアを登録する方法
 
-クライアントがハブへの接続に使用するルートを定義するには、アプリケーションの起動時に `MapSignalR` メソッドを呼び出します。 `MapSignalR` は、`OwinExtensions` クラスの[拡張メソッド](https://msdn.microsoft.com/library/vstudio/bb383977.aspx)です。 次の例は、OWIN startup クラスを使用して SignalR Hub ルートを定義する方法を示しています。
+クライアントがハブへの接続に使用するルートを定義するには、アプリケーションの起動時`MapSignalR`にメソッドを呼び出します。 `MapSignalR`は、クラスの[拡張メソッド](https://msdn.microsoft.com/library/vstudio/bb383977.aspx)です`OwinExtensions`。 次の例は、OWIN スタートアップ クラスを使用して SignalR ハブ ルートを定義する方法を示しています。
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample1.cs)]
 
-SignalR 機能を ASP.NET MVC アプリケーションに追加する場合は、SignalR ルートが他のルートの前に追加されていることを確認してください。 詳しくは、「[チュートリアル: SignalR 2 と MVC 5](../getting-started/tutorial-getting-started-with-signalr-and-mvc.md)ではじめにます。
+ASP.NET MVC アプリケーションに SignalR 機能を追加する場合は、SignalR ルートが他のルートの前に追加されていることを確認します。 詳細については、「[チュートリアル: SignalR 2 と MVC 5 の概要](../getting-started/tutorial-getting-started-with-signalr-and-mvc.md)」を参照してください。
 
 <a id="signalrurl"></a>
 
-### <a name="the-signalr-url"></a>/Signalr URL
+### <a name="the-signalr-url"></a>/シグナルの URL
 
-既定では、クライアントがハブへの接続に使用するルート URL は "/signalr" です。 (この URL は、自動的に生成された JavaScript ファイルの "/signalr/hubs" URL と混同しないでください。 生成されたプロキシの詳細については、「 [SignalR HUB API Guide-JavaScript Client-生成されたプロキシとその機能](hubs-api-guide-javascript-client.md#genproxy)」を参照してください。
+デフォルトでは、クライアントがハブへの接続に使用するルート URL は"/signalr"です。 (この URL を、自動生成された JavaScript ファイル用の "/signalr/hubs" URL と混同しないでください。 生成されたプロキシの詳細については[、SignalR Hubs API ガイド - JavaScript クライアント - 生成されたプロキシと、それがあなたのために何をするのか](hubs-api-guide-javascript-client.md#genproxy)を参照してください。
 
-このベース URL を SignalR で使用できないような状況が発生する可能性があります。たとえば、 *signalr*という名前のフォルダーがプロジェクトにあり、その名前を変更したくないとします。 その場合は、次の例に示すように、ベース URL を変更できます (サンプルコードの "/signalr" は目的の URL に置き換えてください)。
+このベース URL を SignalR で使用できないという特別な状況が発生する可能性があります。たとえば、プロジェクト内に*signalr*という名前のフォルダーがあり、名前を変更したくないとします。 その場合は、次の例に示すように、ベース URL を変更できます (サンプル コードの "/signalr" を目的の URL に置き換えます)。
 
-**URL を指定するサーバーコード**
+**URL を指定するサーバー コード**
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample2.cs?highlight=1)]
 
-**URL (生成されたプロキシを含む) を指定する JavaScript クライアントコード**
+**URL を指定する JavaScript クライアント コード (生成されたプロキシを使用)**
 
 [!code-javascript[Main](hubs-api-guide-server/samples/sample3.js?highlight=1)]
 
-**URL (生成されたプロキシを除く) を指定する JavaScript クライアントコード**
+**URL を指定する JavaScript クライアント コード (生成されたプロキシを除く)**
 
 [!code-javascript[Main](hubs-api-guide-server/samples/sample4.js?highlight=1)]
 
-**URL を指定する .NET クライアントコード**
+**URL を指定する .NET クライアント コード**
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample5.cs?highlight=1)]
 
 <a id="options"></a>
 
-### <a name="configuring-signalr-options"></a>SignalR オプションの構成
+### <a name="configuring-signalr-options"></a>シグナル・オプションの構成
 
-`MapSignalR` メソッドのオーバーロードを使用すると、カスタム URL、カスタム依存関係競合回避モジュール、および次のオプションを指定できます。
+`MapSignalR`メソッドのオーバーロードを使用すると、カスタム URL、カスタム依存関係リゾルバー、および次のオプションを指定できます。
 
-- ブラウザークライアントから CORS または JSONP を使用してクロスドメイン呼び出しを有効にします。
+- ブラウザー クライアントからの CORS または JSONP を使用して、クロスドメイン呼び出しを有効にします。
 
-    通常、ブラウザーが `http://contoso.com`からページを読み込む場合、SignalR 接続は `http://contoso.com/signalr`の同じドメインにあります。 `http://contoso.com` のページが `http://fabrikam.com/signalr`に接続する場合は、ドメイン間接続が使用されます。 セキュリティ上の理由から、ドメイン間接続は既定で無効になっています。 詳細については、「 [ASP.NET SignalR HUB API Guide-JavaScript Client-クロスドメイン接続を確立する方法](hubs-api-guide-javascript-client.md#crossdomain)」を参照してください。
-- 詳細なエラーメッセージを有効にします。
+    通常、ブラウザが から`http://contoso.com`ページを読み込む場合、SignalR 接続は`http://contoso.com/signalr`同じドメインの で、 で行われます。 ページが に`http://contoso.com`接続する`http://fabrikam.com/signalr`場合、これはドメイン間接続です。 セキュリティ上の理由から、ドメイン間の接続は既定で無効になっています。 詳細については[、「ASP.NET SignalR Hubs API ガイド - JavaScript クライアント - クロスドメイン接続を確立する方法」](hubs-api-guide-javascript-client.md#crossdomain)を参照してください。
+- 詳細なエラー メッセージを有効にします。
 
-    エラーが発生した場合、SignalR の既定の動作では、何が起こったかについての詳細がなくても、クライアントに通知メッセージが送信されます。 悪意のあるユーザーがアプリケーションに対する攻撃に関する情報を使用できる可能性があるため、実稼働環境では詳細なエラー情報をクライアントに送信することはお勧めできません。 トラブルシューティングのために、このオプションを使用して、より詳細なエラー報告を一時的に有効にすることができます。
-- 自動的に生成された JavaScript プロキシファイルを無効にします。
+    エラーが発生した場合、SignalR の既定の動作では、何が起きたかについての詳細を通知メッセージをクライアントに送信します。 悪意のあるユーザーがアプリケーションに対する攻撃で情報を使用する可能性があるため、クライアントに詳細なエラー情報を送信することは推奨されません。 トラブルシューティングのために、このオプションを使用して、より有益なエラー報告を一時的に有効にすることができます。
+- 自動生成された JavaScript プロキシ ファイルを無効にします。
 
-    既定では、ハブクラスのプロキシを含む JavaScript ファイルが、URL "/signalr/hubs" への応答として生成されます。 JavaScript プロキシを使用しない場合、またはこのファイルを手動で生成してクライアント内の物理ファイルを参照する場合は、このオプションを使用してプロキシ生成を無効にすることができます。 詳細については、「 [SignalR HUB API Guide-JavaScript Client-SignalR によって生成されたプロキシの物理ファイルを作成する方法](hubs-api-guide-javascript-client.md#manualproxy)」を参照してください。
+    デフォルトでは、ハブクラスのプロキシを持つ JavaScript ファイルは、URL "/signalr/hubs" に応答して生成されます。 JavaScript プロキシを使用しない場合、またはこのファイルを手動で生成してクライアントの物理ファイルを参照する場合は、このオプションを使用してプロキシ生成を無効にすることができます。 詳細については、「 [SignalR ハブ API ガイド - JavaScript クライアント - SignalR で生成されたプロキシの物理ファイルを作成する方法](hubs-api-guide-javascript-client.md#manualproxy)」を参照してください。
 
-次の例は、`MapSignalR` メソッドの呼び出しで SignalR 接続 URL とこれらのオプションを指定する方法を示しています。 カスタム URL を指定するには、例の "/signalr" を使用する URL に置き換えます。
+次の例は、SignalR 接続 URL と、メソッドの呼び出し`MapSignalR`でこれらのオプションを指定する方法を示しています。 カスタム URL を指定するには、例の 「/signalr」を使用する URL に置き換えます。
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample6.cs)]
 
 <a id="hubclass"></a>
 
-## <a name="how-to-create-and-use-hub-classes"></a>ハブクラスを作成して使用する方法
+## <a name="how-to-create-and-use-hub-classes"></a>ハブ クラスを作成して使用する方法
 
-ハブを作成するには、 [Signalr](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hub(v=vs.111).aspx)から派生するクラスを作成します。 次の例は、チャットアプリケーションの単純なハブクラスを示しています。
+ハブを作成するには、から派生するクラス[を](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hub(v=vs.111).aspx)作成します。 チャット アプリケーションの単純な Hub クラスの例を次に示します。
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample7.cs)]
 
-この例では、接続されたクライアントが `NewContosoChatMessage` メソッドを呼び出すことができ、受信したデータは、接続されているすべてのクライアントにブロードキャストされます。
+この例では、接続されたクライアントがメソッドを`NewContosoChatMessage`呼び出し、呼び出すと、受信したデータが接続されているすべてのクライアントにブロードキャストされます。
 
 <a id="transience"></a>
 
-### <a name="hub-object-lifetime"></a>ハブオブジェクトの有効期間
+### <a name="hub-object-lifetime"></a>ハブ オブジェクトの有効期間
 
-ハブクラスをインスタンス化したり、サーバー上の独自のコードからそのメソッドを呼び出したりすることはありません。SignalR Hub パイプラインによって実行されるすべての処理です。 SignalR は、クライアントがサーバーへの接続、切断、またはメソッド呼び出しを行うときなどのハブ操作を処理する必要があるたびに、ハブクラスの新しいインスタンスを作成します。
+ハブ クラスをインスタンス化したり、サーバー上の独自のコードからそのメソッドを呼び出したりしないでください。SignalR ハブ パイプラインによって行われるすべてのことを示します。 SignalR は、クライアントがサーバーに対して接続、切断、またはメソッド呼び出しを行う場合など、ハブの操作を処理する必要があるたびに、ハブ クラスの新しいインスタンスを作成します。
 
-ハブクラスのインスタンスは一時的なものであるため、次のメソッド呼び出しの状態を維持するためにそれらを使用することはできません。 サーバーがクライアントからメソッド呼び出しを受け取るたびに、ハブクラスの新しいインスタンスによってメッセージが処理されます。 複数の接続とメソッド呼び出しによって状態を維持するには、データベースなどの他のメソッド、またはハブクラスの静的変数、または `Hub`から派生していない別のクラスを使用します。 データをメモリに保持する場合、ハブクラスの静的変数などのメソッドを使用すると、アプリドメインがリサイクルされるときにデータが失われます。
+Hub クラスのインスタンスは一時的なものであるため、メソッド呼び出しから次のメソッド呼び出しの状態を維持するために使用することはできません。 サーバーがクライアントからメソッド呼び出しを受け取るたびに、ハブ クラスの新しいインスタンスがメッセージを処理します。 複数の接続とメソッド呼び出しを通じて状態を維持するには、データベース、ハブ クラスの静的変数、または から`Hub`派生していない別のクラスなど、他のメソッドを使用します。 データをメモリに保持する場合、ハブ クラスの静的変数などのメソッドを使用すると、アプリ ドメインがリサイクルされるときにデータが失われます。
 
-ハブクラスの外部で実行されている独自のコードからクライアントにメッセージを送信する場合、ハブクラスのインスタンスをインスタンス化することはできませんが、ハブクラスの SignalR context オブジェクトへの参照を取得することで実行できます。 詳細については、このトピックで後述[する「クライアントメソッドを呼び出し、ハブクラスの外部からグループを管理する方法](#callfromoutsidehub)」を参照してください。
+ハブ クラスの外部で実行される独自のコードからクライアントにメッセージを送信する場合は、ハブ クラスインスタンスをインスタンス化して送信することはできませんが、ハブ クラスの SignalR コンテキスト オブジェクトへの参照を取得することで送信できます。 詳細については、このトピックの後半の[「Hub クラスの外部からクライアント メソッドを呼び出し、グループを管理する方法](#callfromoutsidehub)」を参照してください。
 
 <a id="hubnames"></a>
 
-### <a name="camel-casing-of-hub-names-in-javascript-clients"></a>JavaScript クライアントでのハブ名の camel 形式
+### <a name="camel-casing-of-hub-names-in-javascript-clients"></a>JavaScript クライアントにおけるハブ名のキャメルケーシング
 
-既定では、JavaScript クライアントは、camel 形式のクラス名を使用してハブを参照します。 SignalR は、JavaScript コードが JavaScript の規則に準拠できるように、この変更を自動的に行います。 前の例は、JavaScript コードでは `contosoChatHub` と呼ばれています。
+デフォルトでは、JavaScript クライアントはキャメルケースバージョンのクラス名を使用してハブを参照します。 SignalR は、JavaScript コードが JavaScript の規則に準拠できるように、この変更を自動的に行います。 前の例は JavaScript`contosoChatHub`コードと呼ばれます。
 
 **[サーバー]**
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample8.cs?highlight=1)]
 
-**生成されたプロキシを使用する JavaScript クライアント**
+**生成されたプロキシを使用した JavaScript クライアント**
 
 [!code-javascript[Main](hubs-api-guide-server/samples/sample9.js?highlight=1)]
 
-クライアントに使用する別の名前を指定する場合は、`HubName` 属性を追加します。 `HubName` 属性を使用する場合、JavaScript クライアントでの camel 形式の変更はありません。
+クライアントが使用する別の名前を指定する場合は、属性を`HubName`追加します。 属性を`HubName`使用する場合、JavaScript クライアントでキャメル ケースに名前が変更されません。
 
 **[サーバー]**
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample10.cs?highlight=1)]
 
-**生成されたプロキシを使用する JavaScript クライアント**
+**生成されたプロキシを使用した JavaScript クライアント**
 
 [!code-javascript[Main](hubs-api-guide-server/samples/sample11.js?highlight=1)]
 
@@ -198,75 +198,75 @@ SignalR 機能を ASP.NET MVC アプリケーションに追加する場合は�
 
 ### <a name="multiple-hubs"></a>複数のハブ
 
-アプリケーションでは、複数のハブクラスを定義できます。 これを行うと、接続は共有されますが、グループは分離されます。
+アプリケーションでは、複数のハブ クラスを定義できます。 これを行うと、接続は共有されますが、グループは別々になります。
 
-- すべてのクライアントは、同じ URL を使用して、サービス ("/signalr" またはカスタム URL を指定した場合はカスタム URL) との SignalR 接続を確立し、サービスで定義されているすべてのハブに対してその接続が使用されます。
+- すべてのクライアントは、サービスとの SignalR 接続 (指定した場合は "signalr" またはカスタム URL) を確立するために同じ URL を使用し、その接続はサービスによって定義されたすべてのハブに使用されます。
 
-    1つのクラスですべてのハブ機能を定義する場合と比較して、複数のハブでパフォーマンスの違いはありません。
-- すべてのハブは、同じ HTTP 要求情報を取得します。
+    1 つのクラスですべてのハブ機能を定義するのと比較して、複数のハブのパフォーマンスの違いはありません。
+- すべてのハブは同じ HTTP 要求情報を取得します。
 
-    すべてのハブが同じ接続を共有するため、サーバーが取得する唯一の HTTP 要求情報は、SignalR 接続を確立する元の HTTP 要求に含まれるものです。 接続要求を使用してクエリ文字列を指定することによってクライアントからサーバーに情報を渡す場合、異なるハブに対して異なるクエリ文字列を指定することはできません。 すべてのハブは同じ情報を受け取ります。
-- 生成された JavaScript プロキシファイルには、1つのファイル内のすべてのハブのプロキシが含まれます。
+    すべてのハブが同じ接続を共有するため、サーバーが取得する唯一の HTTP 要求情報は、SignalR 接続を確立する元の HTTP 要求に含まれるものになります。 接続要求を使用してクエリ文字列を指定してクライアントからサーバーに情報を渡す場合、異なるクエリ文字列を異なるハブに提供することはできません。 すべてのハブは同じ情報を受け取ります。
+- 生成された JavaScript プロキシ ファイルには、1 つのファイル内のすべてのハブのプロキシが含まれます。
 
-    JavaScript プロキシの詳細については、「 [SignalR HUB API Guide-Javascript Client-生成されたプロキシとその機能](hubs-api-guide-javascript-client.md#genproxy)」を参照してください。
+    JavaScript プロキシの詳細については、「 [SignalR Hubs API ガイド - JavaScript クライアント - 生成されたプロキシと、それがあなたのために何をするのか](hubs-api-guide-javascript-client.md#genproxy)」を参照してください。
 - グループはハブ内で定義されます。
 
-    SignalR では、接続されたクライアントのサブセットにブロードキャストする名前付きグループを定義できます。 グループは、ハブごとに個別に保持されます。 たとえば、"Administrators" という名前のグループには、`ContosoChatHub` クラスのクライアントセットが1つ含まれており、同じグループ名が `StockTickerHub` クラスの異なるクライアントセットを参照しています。
+    SignalR では、接続されたクライアントのサブセットにブロードキャストする名前付きグループを定義できます。 グループは、ハブごとに個別に管理されます。 たとえば、"Administrators" という名前のグループには`ContosoChatHub`、クラスのクライアントのセットが 1 つ含まれ、同じグループ名がクラスの異なる`StockTickerHub`クライアント セットを参照します。
 
 <a id="stronglytypedhubs"></a>
 ### <a name="strongly-typed-hubs"></a>厳密に型指定されたハブ
 
-クライアントが参照できる (またはハブメソッドで Intellisense を有効にする) ハブメソッドのインターフェイスを定義するには、`Hub`ではなく `Hub<T>` (SignalR 2.1 で導入) からハブを派生させます。
+クライアントが参照できるハブ メソッドのインターフェイスを定義し (ハブ メソッドで Intellisense を有効にする)、ハブを (SignalR 2.1`Hub`で紹介) ではなくから`Hub<T>`派生させるには、
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample12.cs)]
 
 <a id="hubmethods"></a>
 
-## <a name="how-to-define-methods-in-the-hub-class-that-clients-can-call"></a>クライアントが呼び出すことのできるハブクラスのメソッドを定義する方法
+## <a name="how-to-define-methods-in-the-hub-class-that-clients-can-call"></a>クライアントが呼び出すことができるハブ クラスでメソッドを定義する方法
 
-クライアントから呼び出すことができるようにする、ハブのメソッドを公開するには、次の例に示すようにパブリックメソッドを宣言します。
+クライアントから呼び出し可能にするメソッドをハブで公開するには、次の例に示すように、パブリック メソッドを宣言します。
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample13.cs?highlight=3)]
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample14.cs?highlight=3)]
 
-任意の C# のメソッドの場合と同様に、戻り値の型とパラメーター (複合型や配列を含む) を指定できます。 パラメーターで受け取った、または呼び出し元に返されたすべてのデータは、JSON を使用してクライアントとサーバーの間で通信されます。また、SignalR は、複雑なオブジェクトとオブジェクトの配列のバインドを自動的に処理します。
+C# メソッドの場合と同様に、複合型や配列を含む戻り値の型とパラメーターを指定できます。 パラメーターで受け取ったデータや呼び出し元に返されるデータは、JSON を使用してクライアントとサーバー間で通信され、SignalR は複雑なオブジェクトとオブジェクトの配列のバインドを自動的に処理します。
 
 <a id="methodnames"></a>
 
-### <a name="camel-casing-of-method-names-in-javascript-clients"></a>JavaScript クライアントでのメソッド名の camel 形式の表記
+### <a name="camel-casing-of-method-names-in-javascript-clients"></a>JavaScript クライアントにおけるメソッド名のキャメル・ケーシング
 
-既定では、JavaScript クライアントは、camel 形式のメソッド名を使用してハブメソッドを参照します。 SignalR は、JavaScript コードが JavaScript の規則に準拠できるように、この変更を自動的に行います。
+デフォルトでは、JavaScript クライアントは、キャメルケースバージョンのメソッド名を使用してハブメソッドを参照します。 SignalR は、JavaScript コードが JavaScript の規則に準拠できるように、この変更を自動的に行います。
 
 **[サーバー]**
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample15.cs?highlight=1)]
 
-**生成されたプロキシを使用する JavaScript クライアント**
+**生成されたプロキシを使用した JavaScript クライアント**
 
 [!code-javascript[Main](hubs-api-guide-server/samples/sample16.js?highlight=1)]
 
-クライアントに使用する別の名前を指定する場合は、`HubMethodName` 属性を追加します。
+クライアントが使用する別の名前を指定する場合は、属性を`HubMethodName`追加します。
 
 **[サーバー]**
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample17.cs?highlight=1)]
 
-**生成されたプロキシを使用する JavaScript クライアント**
+**生成されたプロキシを使用した JavaScript クライアント**
 
 [!code-javascript[Main](hubs-api-guide-server/samples/sample18.js?highlight=1)]
 
 <a id="asyncmethods"></a>
 
-### <a name="when-to-execute-asynchronously"></a>非同期的に実行する場合
+### <a name="when-to-execute-asynchronously"></a>非同期で実行する場合
 
-メソッドが長時間実行される場合、またはデータベースの参照や web サービスの呼び出しなどの待機が必要な処理を実行する必要がある場合は、([戻り値](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) `void` の型 `T` の代わりに) タスク[&lt;t&gt;](https://msdn.microsoft.com/library/dd321424.aspx)オブジェクトを返すことによって、ハブメソッドを非同期にします。 メソッドから `Task` オブジェクトを返すと、SignalR は `Task` が完了するまで待機してから、ラップされていない結果をクライアントに返します。そのため、クライアントでメソッド呼び出しをコーディングする方法に違いはありません。
+メソッドが長時間実行される場合、またはデータベースの参照や Web サービスの呼び出しなど、待機する作業を実行する必要がある場合は、戻り値の代わりに Task オブジェクトまたは[&lt;Task&gt; T](https://msdn.microsoft.com/library/dd321424.aspx)オブジェクトを`T`返してハブ メソッドを非同期にします (戻り値の[Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx)`void`型の代わりに)。 メソッドからオブジェクトを`Task`返すと、SignalR は完了`Task`するまで待機し、ラップされていない結果をクライアントに返すため、クライアントでのメソッド呼び出しのコーディング方法に違いはありません。
 
-ハブメソッドを非同期にすると、WebSocket トランスポートを使用するときに接続がブロックされることが回避されます。 ハブメソッドが同期的に実行され、トランスポートが WebSocket の場合、同じクライアントからのハブでの後続のメソッドの呼び出しは、ハブメソッドが完了するまでブロックされます。
+ハブ メソッドを非同期にすると、WebSocket トランスポートを使用する場合に接続がブロックされないようにします。 ハブ メソッドが同期的に実行され、トランスポートが WebSocket の場合、ハブ メソッドが完了するまで、同じクライアントからハブ上のメソッドの後続の呼び出しがブロックされます。
 
-次の例は、同期的または非同期的に実行するようにコード化された同じメソッドと、いずれかのバージョンの呼び出しに使用できる JavaScript クライアントコードを示しています。
+同期または非同期で実行するコードと同じメソッドの後に、いずれかのバージョンを呼び出すために機能する JavaScript クライアント コードを次の例に示します。
 
-**式**
+**同期**
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample19.cs)]
 
@@ -274,72 +274,72 @@ SignalR 機能を ASP.NET MVC アプリケーションに追加する場合は�
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample20.cs?highlight=1,7-8)]
 
-**生成されたプロキシを使用する JavaScript クライアント**
+**生成されたプロキシを使用した JavaScript クライアント**
 
 [!code-javascript[Main](hubs-api-guide-server/samples/sample21.js)]
 
-ASP.NET 4.5 で非同期メソッドを使用する方法の詳細については、「 [ASP.NET MVC 4 での非同期メソッドの使用](../../../mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4.md)」を参照してください。
+ASP.NET 4.5 で非同期メソッドを使用する方法の詳細については[、「ASP.NET MVC 4 での非同期メソッドの使用](../../../mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4.md)」を参照してください。
 
 <a id="overloads"></a>
 
 ### <a name="defining-overloads"></a>オーバーロードの定義
 
-メソッドのオーバーロードを定義する場合は、各オーバーロードのパラメーターの数が異なる必要があります。 異なるパラメーターの型を指定するだけでオーバーロードを区別する場合、ハブクラスはコンパイルされますが、クライアントがいずれかのオーバーロードを呼び出そうとすると、実行時に SignalR サービスによって例外がスローされます。
+メソッドのオーバーロードを定義する場合は、各オーバーロードのパラメーター数が異なる必要があります。 異なるパラメーター型を指定するだけでオーバーロードを区別する場合、ハブ クラスはコンパイルされますが、クライアントがいずれかのオーバーロードを呼び出そうとする実行時に SignalR サービスによって例外がスローされます。
 
 <a id="progress"></a>
-### <a name="reporting-progress-from-hub-method-invocations"></a>ハブメソッド呼び出しからの進行状況の報告
+### <a name="reporting-progress-from-hub-method-invocations"></a>ハブ メソッド呼び出しからの進行状況のレポート
 
-SignalR 2.1 では、.NET 4.5 で導入された[進行状況レポートパターン](https://blogs.msdn.com/b/dotnet/archive/2012/06/06/async-in-4-5-enabling-progress-and-cancellation-in-async-apis.aspx)のサポートが追加されています。 進行状況レポートを実装するには、クライアントがアクセスできるハブメソッドの `IProgress<T>` パラメーターを定義します。
+SignalR 2.1 では、.NET 4.5 で導入された[進行状況レポート パターン](https://blogs.msdn.com/b/dotnet/archive/2012/06/06/async-in-4-5-enabling-progress-and-cancellation-in-async-apis.aspx)のサポートが追加されました。 進捗レポートを実装するには、`IProgress<T>`クライアントがアクセスできるハブ メソッドのパラメーターを定義します。
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample22.cs)]
 
-実行時間の長いサーバーメソッドを作成する場合は、ハブスレッドをブロックするのではなく、Async/Await のような非同期プログラミングパターンを使用することが重要です。
+実行時間の長いサーバー メソッドを記述する場合は、ハブ スレッドをブロックするのではなく、非同期プログラミング パターンを使用することが重要です。
 
 <a id="callfromhub"></a>
 
-## <a name="how-to-call-client-methods-from-the-hub-class"></a>ハブクラスからクライアントメソッドを呼び出す方法
+## <a name="how-to-call-client-methods-from-the-hub-class"></a>ハブ クラスからクライアント メソッドを呼び出す方法
 
-サーバーからクライアントメソッドを呼び出すには、ハブクラスのメソッドで `Clients` プロパティを使用します。 次の例は、すべての接続されたクライアントで `addNewMessageToPage` を呼び出すサーバーコードと、JavaScript クライアントでメソッドを定義するクライアントコードを示しています。
+サーバーからクライアント メソッドを呼び出す`Clients`場合は、Hub クラスのメソッドでプロパティを使用します。 接続されているすべてのクライアントで呼び出す`addNewMessageToPage`サーバー コードと、JavaScript クライアントでメソッドを定義するクライアント コードの例を次に示します。
 
 **[サーバー]**
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample23.cs?highlight=5)]
 
-クライアントメソッドを呼び出すと、非同期操作が実行され、`Task`が返されます。 `await` を使用して次のことを行います。
+クライアント メソッドの呼び出しは非同期操作であり`Task`、 を返します。 `await` を使用して次のことを行います。
 
-* メッセージがエラーなしで送信されるようにします。 
-* Try-catch ブロックのエラーをキャッチして処理できるようにする場合は。
+* メッセージがエラーなしで送信されることを確認します。 
+* try-catch ブロックでエラーのキャッチと処理を有効にします。
 
-**生成されたプロキシを使用する JavaScript クライアント**
+**生成されたプロキシを使用した JavaScript クライアント**
 
 [!code-html[Main](hubs-api-guide-server/samples/sample24.html?highlight=1)]
 
-クライアントメソッドから戻り値を取得することはできません。`int x = Clients.All.add(1,1)` などの構文は機能しません。
+クライアント メソッドから戻り値を取得することはできません。構文が機能`int x = Clients.All.add(1,1)`しないなどの構文。
 
-パラメーターの複合型と配列を指定できます。 次の例では、メソッドパラメーターでクライアントに複合型を渡します。
+パラメーターには、複合型と配列を指定できます。 メソッド パラメーターで複合型をクライアントに渡す例を次に示します。
 
-**複合オブジェクトを使用してクライアントメソッドを呼び出すサーバーコード**
+**複雑なオブジェクトを使用してクライアント メソッドを呼び出すサーバー コード**
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample25.cs?highlight=3)]
 
-**複合オブジェクトを定義するサーバーコード**
+**複合オブジェクトを定義するサーバー コード**
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample26.cs?highlight=1)]
 
-**生成されたプロキシを使用する JavaScript クライアント**
+**生成されたプロキシを使用した JavaScript クライアント**
 
 [!code-javascript[Main](hubs-api-guide-server/samples/sample27.js?highlight=2-3)]
 
 <a id="selectingclients"></a>
 
-### <a name="selecting-which-clients-will-receive-the-rpc"></a>RPC を受信するクライアントを選択する
+### <a name="selecting-which-clients-will-receive-the-rpc"></a>RPC を受信するクライアントの選択
 
-Clients プロパティは、RPC を受信するクライアントを指定するためのいくつかのオプションを提供する[HubConnectionContext](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.hubconnectioncontext(v=vs.111).aspx)オブジェクトを返します。
+プロパティは、RPC を受信するクライアントを指定するためのいくつかのオプションを提供する[HubConnectionContext](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.hubconnectioncontext(v=vs.111).aspx)オブジェクトを返します。
 
 - 接続されたすべてのクライアント。
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample28.cs)]
-- 呼び出し元のクライアントのみ。
+- 呼び出し元クライアントのみ。
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample29.cs)]
 - 呼び出し元のクライアントを除くすべてのクライアント。
@@ -349,188 +349,188 @@ Clients プロパティは、RPC を受信するクライアントを指定す�
 
     [!code-css[Main](hubs-api-guide-server/samples/sample31.css)]
 
-    この例では、呼び出し元のクライアントで `addContosoChatMessageToPage` を呼び出し、`Clients.Caller`を使用した場合と同じ効果があります。
-- 指定したクライアントを除くすべての接続されているクライアント。接続 ID で識別されます。
+    この例では`addContosoChatMessageToPage`、呼び出し元のクライアントを呼び`Clients.Caller`出し、使用するのと同じ効果があります。
+- 接続 ID で識別される、指定されたクライアントを除くすべての接続クライアント。
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample32.cs)]
-- 指定したグループの接続されているすべてのクライアント。
+- 指定したグループ内のすべての接続クライアント。
 
     [!code-css[Main](hubs-api-guide-server/samples/sample33.css)]
-- 指定されたクライアントを除く、指定されたグループ内のすべての接続されているクライアント。接続 ID で識別されます。
+- 指定されたグループ内のすべての接続クライアント (接続 ID で識別される指定されたクライアントを除く)。
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample34.cs)]
-- 呼び出し元のクライアントを除く、指定されたグループ内のすべての接続されているクライアント。
+- 呼び出し元のクライアントを除き、指定されたグループ内のすべての接続済みクライアント。
 
     [!code-css[Main](hubs-api-guide-server/samples/sample35.css)]
-- UserId によって識別される特定のユーザー。
+- ユーザー ID によって識別される特定のユーザー。
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample36.cs)]
 
-    既定では、これは `IPrincipal.Identity.Name`ですが、 [IUserIdProvider の実装をグローバルホストに登録](mapping-users-to-connections.md#IUserIdProvider)することによって変更できます。
-- 接続 Id の一覧にあるすべてのクライアントとグループ。
+    既定では、これは`IPrincipal.Identity.Name`ですが、これは[IUserIdProvider の実装をグローバル ホストに登録](mapping-users-to-connections.md#IUserIdProvider)することで変更できます。
+- 接続 ID のリスト内のすべてのクライアントとグループ。
 
     [!code-css[Main](hubs-api-guide-server/samples/sample37.css)]
-- グループの一覧。
+- グループのリスト。
 
     [!code-css[Main](hubs-api-guide-server/samples/sample38.css)]
-- ユーザー名で指定します。
+- 名前によるユーザー。
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample39.cs)]
-- SignalR 2.1 で導入されたユーザー名の一覧です。
+- ユーザー名のリスト (SignalR 2.1 で導入)。
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample40.cs)]
 
 <a id="dynamicmethodnames"></a>
 
-### <a name="no-compile-time-validation-for-method-names"></a>メソッド名に対するコンパイル時の検証がありません
+### <a name="no-compile-time-validation-for-method-names"></a>メソッド名のコンパイル時検証なし
 
-指定したメソッド名は動的オブジェクトとして解釈されます。つまり、IntelliSense やコンパイル時の検証は行われません。 式は実行時に評価されます。 メソッド呼び出しが実行されると、SignalR はメソッド名とパラメーター値をクライアントに送信します。クライアントに名前と一致するメソッドがある場合、そのメソッドが呼び出され、パラメーター値が渡されます。 一致するメソッドがクライアントに見つからない場合、エラーは発生しません。 クライアントメソッドを呼び出すときに、SignalR がバックグラウンドでクライアントに送信するデータの形式の詳細については、「 [SignalR の概要](../getting-started/introduction-to-signalr.md)」を参照してください。
+指定したメソッド名は動的オブジェクトとして解釈されるため、IntelliSense またはコンパイル時の検証はありません。 式は実行時に評価されます。 メソッド呼び出しが実行されると、SignalR はメソッド名とパラメーター値をクライアントに送信し、クライアントに名前と一致するメソッドがある場合は、そのメソッドが呼び出され、パラメーター値が渡されます。 クライアントで一致するメソッドが見つからない場合、エラーは発生しません。 クライアント メソッドを呼び出すときに、SignalR がクライアントに送信するデータの形式については[、「SignalR の概要](../getting-started/introduction-to-signalr.md)」を参照してください。
 
 <a id="caseinsensitive"></a>
 
 ### <a name="case-insensitive-method-name-matching"></a>大文字と小文字を区別しないメソッド名の一致
 
-メソッド名の一致では、大文字と小文字が区別されません。 たとえば、サーバー上の `Clients.All.addContosoChatMessageToPage` は、クライアントで `AddContosoChatMessageToPage`、`addcontosochatmessagetopage`、または `addContosoChatMessageToPage` を実行します。
+メソッド名の一致は大文字と小文字を区別しません。 たとえば、`Clients.All.addContosoChatMessageToPage`サーバー上で、 、 `AddContosoChatMessageToPage` `addcontosochatmessagetopage`、または`addContosoChatMessageToPage`をクライアントで実行します。
 
 <a id="asyncclient"></a>
 
 ### <a name="asynchronous-execution"></a>非同期実行
 
-呼び出すメソッドは、非同期的に実行されます。 クライアントへのメソッド呼び出しの後に来るコードは、SignalR がクライアントへのデータの転送を完了するまで待たずにすぐに実行されます。ただし、後続のコード行がメソッドの完了を待機するように指定した場合は除きます。 次のコード例は、2つのクライアントメソッドを順番に実行する方法を示しています。
+呼び出すメソッドは非同期的に実行されます。 メソッドの呼び出し後に発生するコードは、メソッドの完了を待つ必要があるコードの行を指定しない限り、SignalR がクライアントにデータを送信するのを待たずにすぐに実行されます。 2 つのクライアント メソッドを順番に実行する方法を次のコード例に示します。
 
-**Await の使用 (.NET 4.5)**
+**アウェイトの使用 (.NET 4.5)**
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample41.cs?highlight=1,3)]
 
-次のコード行が実行される前にクライアントメソッドが終了するまで待機するために `await` を使用する場合、次のコード行が実行される前にクライアントが実際にメッセージを受信するという意味ではありません。 クライアントメソッド呼び出しの "完了" は、SignalR がメッセージの送信に必要なすべての処理を実行したことを意味します。 クライアントがメッセージを受信したことを確認する必要がある場合は、自分でその機構をプログラミングする必要があります。 たとえば、ハブで `MessageReceived` メソッドをコーディングすることができます。 `addContosoChatMessageToPage` また、クライアントで実行する必要のある作業を行った後 `MessageReceived` を呼び出すことができます。 ハブの `MessageReceived` では、元のメソッド呼び出しの実際のクライアントの受信と処理によって、どのような作業を行うことができます。
+クライアント メソッド`await`が次のコード行が実行される前に終了するまで待機する場合、クライアントが実際に次のコード行を実行する前にメッセージを受信するわけではありません。 クライアント メソッド呼び出しの "完了" は、SignalR がメッセージの送信に必要な処理をすべて行ったことを意味します。 クライアントがメッセージを受信したことを確認する必要がある場合は、そのメカニズムを自分でプログラミングする必要があります。 たとえば、ハブでメソッドを`MessageReceived`コーディングし、クライアントで必要な作業を`addContosoChatMessageToPage`行った後に呼び出`MessageReceived`すことができるクライアントのメソッドを作成できます。 ハブ`MessageReceived`では、実際のクライアントの受信と元のメソッド呼び出しの処理に依存する任意の作業を行うことができます。
 
-### <a name="how-to-use-a-string-variable-as-the-method-name"></a>文字列変数をメソッド名として使用する方法
+### <a name="how-to-use-a-string-variable-as-the-method-name"></a>メソッド名として文字列変数を使用する方法
 
-文字列変数をメソッド名として使用してクライアントメソッドを呼び出す場合は、`Clients.All` (または `Clients.Others`、`Clients.Caller`など) を `IClientProxy` にキャストし、 [invoke (methodName, args...)](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.iclientproxy.invoke(v=vs.111).aspx)を呼び出します。
+文字列変数をメソッド名として使用してクライアント メソッドを呼び出す場合は、 `Clients.All` `Clients.Others` `Clients.Caller` `IClientProxy` [Invoke(メソッド名、args.)をキャストし、Invoke(メソッド名、args.)を](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.iclientproxy.invoke(v=vs.111).aspx)呼び出します。
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample42.cs)]
 
 <a id="groupsfromhub"></a>
 
-## <a name="how-to-manage-group-membership-from-the-hub-class"></a>ハブクラスからグループメンバーシップを管理する方法
+## <a name="how-to-manage-group-membership-from-the-hub-class"></a>ハブ クラスからグループ メンバーシップを管理する方法
 
-SignalR のグループは、接続されたクライアントの指定したサブセットにメッセージをブロードキャストする方法を提供します。 グループには任意の数のクライアントを含めることができ、クライアントは任意の数のグループのメンバーになることができます。
+SignalR のグループは、接続されたクライアントの指定されたサブセットにメッセージをブロードキャストするためのメソッドを提供します。 グループには任意の数のクライアントを持たることができ、クライアントは任意の数のグループのメンバーになることができます。
 
-グループメンバーシップを管理するには、ハブクラスの `Groups` プロパティによって提供される[Add](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.igroupmanager.add(v=vs.111).aspx)メソッドと[Remove](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.igroupmanager.remove(v=vs.111).aspx)メソッドを使用します。 次の例は、クライアントコードによって呼び出されるハブメソッドで使用される `Groups.Add` および `Groups.Remove` メソッドと、それらを呼び出す JavaScript クライアントコードを示しています。
+グループ メンバーシップを管理するには、Hub[Remove](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.igroupmanager.remove(v=vs.111).aspx)クラスの`Groups`プロパティによって提供される[Add](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.igroupmanager.add(v=vs.111).aspx)メソッドと Remove メソッドを使用します。 クライアント コードによって呼`Groups.Add`び`Groups.Remove`出されるハブ メソッドと、それらを呼び出す JavaScript クライアント コードで使用されるメソッドの例を次に示します。
 
 **[サーバー]**
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample43.cs?highlight=5,10)]
 
-**生成されたプロキシを使用する JavaScript クライアント**
+**生成されたプロキシを使用した JavaScript クライアント**
 
 [!code-javascript[Main](hubs-api-guide-server/samples/sample44.js)]
 
 [!code-javascript[Main](hubs-api-guide-server/samples/sample45.js)]
 
-明示的にグループを作成する必要はありません。 実際には、`Groups.Add`への呼び出しで名前を初めて指定したときにグループが自動的に作成されます。このグループのメンバーシップから最後の接続を削除すると、グループが削除されます。
+グループを明示的に作成する必要はありません。 実際には、グループは、 への`Groups.Add`呼び出しで初めて名前を指定したときに自動的に作成され、最後の接続をそのメンバーのメンバーシップから削除すると削除されます。
 
-グループメンバーシップの一覧またはグループの一覧を取得するための API はありません。 SignalR は、 [pub/sub モデル](http://en.wikipedia.org/wiki/Publish/subscribe)に基づいてクライアントとグループにメッセージを送信します。サーバーは、グループまたはグループメンバーシップの一覧を保持しません。 これにより、web ファームにノードを追加するたびに、SignalR が保持するすべての状態を新しいノードに反映する必要があるため、スケーラビリティを最大化できます。
+グループメンバーシップリストまたはグループのリストを取得するための API はありません。 SignalR は[、 pub/sub モデル](http://en.wikipedia.org/wiki/Publish/subscribe)に基づいてクライアントとグループにメッセージを送信しますが、サーバーはグループまたはグループ メンバーシップの一覧を保持しません。 これにより、ノードを Web ファームに追加するたびに、SignalR が維持するすべての状態を新しいノードに伝達する必要があるため、スケーラビリティを最大限に高めます。
 
 <a id="asyncgroupmethods"></a>
 
 ### <a name="asynchronous-execution-of-add-and-remove-methods"></a>Add メソッドと Remove メソッドの非同期実行
 
-`Groups.Add` メソッドと `Groups.Remove` メソッドは、非同期的に実行されます。 クライアントをグループに追加し、グループを使用してすぐにメッセージをクライアントに送信する場合は、`Groups.Add` メソッドが最初に終了するようにする必要があります。 その方法を次のコード例に示します。
+メソッド`Groups.Add`と`Groups.Remove`メソッドは非同期で実行されます。 クライアントをグループに追加し、そのグループを使用してすぐにクライアントにメッセージを送信する場合は、`Groups.Add`メソッドが最初に終了することを確認する必要があります。 次のコード例は、その方法を示しています。
 
-**クライアントをグループに追加し、そのクライアントにメッセージングを行う**
+**グループへのクライアントの追加と、そのクライアントのメッセージング**
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample46.cs?highlight=1,3)]
 
 <a id="grouppersistence"></a>
 
-### <a name="group-membership-persistence"></a>グループメンバーシップの永続化
+### <a name="group-membership-persistence"></a>グループ メンバーシップの永続性
 
-SignalR は、ユーザーではなく接続を追跡します。そのため、ユーザーが接続を確立するたびにユーザーが同じグループにいる場合は、ユーザーが新しい接続を確立するたびに `Groups.Add` を呼び出す必要があります。
+SignalR はユーザーではなく接続を追跡するため、ユーザーが接続を確立するたびに同じグループにユーザーを入れてもらいたい場合は、ユーザーが新しい`Groups.Add`接続を確立するたびに呼び出す必要があります。
 
-接続が一時的に失われた後、SignalR が接続を自動的に復元できる場合があります。 この場合、SignalR は、新しい接続を確立するのではなく、同じ接続を復元するため、クライアントのグループメンバーシップは自動的に復元されます。 これは、サーバーの再起動または障害の結果として一時的な中断が発生した場合でも可能です。これは、グループメンバーシップを含む各クライアントの接続状態がクライアントに対してラウンドトリップされるためです。 接続がタイムアウトになる前にサーバーがダウンし、新しいサーバーに置き換えられた場合、クライアントは自動的に新しいサーバーに再接続し、メンバーであるグループに再登録することができます。
+接続が一時的に切断された後、SignalR が接続を自動的に復元できることがあります。 その場合、SignalR は、新しい接続を確立せず、同じ接続を復元するため、クライアントのグループ メンバーシップが自動的に復元されます。 これは、一時的な中断がサーバーの再起動または障害の結果である場合でも可能です。 サーバーがダウンし、接続がタイムアウトする前に新しいサーバーに置き換えられた場合、クライアントは自動的に新しいサーバーに再接続し、そのサーバーがメンバーになっているグループに再登録できます。
 
-接続が切断された後、または接続がタイムアウトしたとき、またはクライアントが切断されたとき (たとえば、ブラウザーが新しいページに移動したとき) に接続が自動的に復元できない場合、グループのメンバーシップは失われます。 次回ユーザーが接続するときは、新しい接続になります。 同じユーザーが新しい接続を確立するときにグループメンバーシップを維持するには、ユーザーが新しい接続を確立するたびに、アプリケーションがユーザーとグループの間の関連付けを追跡し、グループメンバーシップを復元する必要があります。
+接続が切断された後に接続を自動的に復元できない場合、または接続がタイムアウトしたとき、またはクライアントが切断されたとき (たとえば、ブラウザーが新しいページに移動した場合など) は、グループ メンバーシップが失われます。 次回ユーザーが接続すると、新しい接続になります。 同じユーザーが新しい接続を確立したときにグループ メンバーシップを維持するには、アプリケーションはユーザーとグループの関連付けを追跡し、ユーザーが新しい接続を確立するたびにグループ メンバーシップを復元する必要があります。
 
-接続と再接続の詳細については、このトピックで後述[する「ハブクラスで接続の有効期間イベントを処理する方法](#connectionlifetime)」を参照してください。
+接続と再接続の詳細については、このトピックの後の[「ハブ クラスで接続の有効期間イベントを処理する方法](#connectionlifetime)」を参照してください。
 
 <a id="singleusergroups"></a>
 
-### <a name="single-user-groups"></a>シングルユーザーグループ
+### <a name="single-user-groups"></a>シングルユーザー グループ
 
-SignalR を使用するアプリケーションは、通常、どのユーザーがメッセージを送信したか、どのユーザーがメッセージを受信する必要があるかを知るために、ユーザーと接続の間の関連付けを追跡する必要があります。 グループは、そのために一般的に使用される2つのパターンのいずれかで使用されます。
+SignalR を使用するアプリケーションは、通常、ユーザーと接続の間の関連付けを追跡して、メッセージを送信したユーザーと、どのユーザーがメッセージを受信する必要があるかを把握する必要があります。 グループは、その目的で一般的に使用される 2 つのパターンのいずれかで使用されます。
 
-- シングルユーザーグループ。
+- シングルユーザー グループ。
 
-    ユーザー名をグループ名として指定し、ユーザーが接続または再接続するたびに現在の接続 ID をグループに追加することができます。 グループに送信するユーザーにメッセージを送信します。 この方法の欠点は、ユーザーがオンラインであるかオフラインであるかを確認する方法がグループに提供されていないことです。
-- ユーザー名と接続 Id の間の関連付けを追跡します。
+    グループ名としてユーザー名を指定し、ユーザーが接続または再接続するたびに、グループに現在の接続 ID を追加できます。 グループに送信するユーザーにメッセージを送信します。 この方法の欠点は、グループがユーザーがオンラインかオフラインかを調べる方法を提供しないということです。
+- ユーザー名と接続 ID の間の関連付けを追跡します。
 
-    各ユーザー名と1つまたは複数の接続 Id の間の関連付けをディクショナリまたはデータベースに格納し、ユーザーが接続または切断するたびに格納されているデータを更新することができます。 ユーザーにメッセージを送信するには、接続 Id を指定します。 この方法の欠点は、より多くのメモリを必要とすることです。
+    各ユーザー名と 1 つ以上の接続 ID の間の関連付けをディクショナリーまたはデータベースに保管し、ユーザーが接続または切断するたびに保管データを更新することができます。 ユーザーにメッセージを送信するには、接続 ID を指定します。 この方法の欠点は、メモリを多く取る点です。
 
 <a id="connectionlifetime"></a>
 
-## <a name="how-to-handle-connection-lifetime-events-in-the-hub-class"></a>ハブクラスで接続の有効期間イベントを処理する方法
+## <a name="how-to-handle-connection-lifetime-events-in-the-hub-class"></a>ハブ クラスで接続の有効期間イベントを処理する方法
 
-接続の有効期間イベントを処理する一般的な理由は、ユーザーが接続されているかどうかを追跡し、ユーザー名と接続 Id の関連付けを追跡することです。 クライアントが接続または切断したときに独自のコードを実行するには、次の例に示すように、ハブクラスの `OnConnected`、`OnDisconnected`、および `OnReconnected` の仮想メソッドをオーバーライドします。
+接続の有効期間イベントを処理する一般的な理由は、ユーザーが接続されているかどうかを追跡し、ユーザー名と接続 ID の間の関連付けを追跡することです。 クライアントが接続または切断するときに独自のコードを実行するには、`OnConnected`次`OnDisconnected`の例`OnReconnected`に示すように、Hub クラスの 、、および 仮想メソッドをオーバーライドします。
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample47.cs?highlight=3,14,22)]
 
 <a id="onreconnected"></a>
 
-### <a name="when-onconnected-ondisconnected-and-onreconnected-are-called"></a>OnConnected、Onconnected、および Onconnected が呼び出されたとき
+### <a name="when-onconnected-ondisconnected-and-onreconnected-are-called"></a>オン接続、オン・オンライン切断、およびオン再接続が呼び出された場合
 
-ブラウザーが新しいページに移動するたびに、新しい接続を確立する必要があります。つまり、SignalR は、`OnDisconnected` メソッドを実行し、その後に `OnConnected` メソッドを実行します。 SignalR は、新しい接続が確立されるときに常に新しい接続 ID を作成します。
+ブラウザが新しいページに移動するたびに、新しい接続を確立`OnDisconnected``OnConnected`する必要があります。 SignalR は、新しい接続が確立されると、常に新しい接続 ID を作成します。
 
-SignalR メソッドは、接続が一時的に切断されたときに呼び出されます。これは、ケーブルが一時的に切断され、接続がタイムアウトする前に再接続された場合などです。 `OnReconnected``OnDisconnected` メソッドは、ブラウザーが新しいページに移動したときなど、クライアントが切断され、SignalR が自動的に再接続できない場合に呼び出されます。 したがって、特定のクライアントに対して考えられる一連のイベントは、`OnConnected`、`OnReconnected`、`OnDisconnected`です。または `OnConnected`、`OnDisconnected`ます。 特定の接続に対して、シーケンス `OnConnected`、`OnDisconnected`、`OnReconnected` は表示されません。
+この`OnReconnected`メソッドは、接続がタイムアウトする前にケーブルが一時的に切断され、再接続された場合など、SignalR が自動的に回復できる接続に一時的な中断が発生した場合に呼び出されます。この`OnDisconnected`メソッドは、クライアントが切断され、ブラウザーが新しいページに移動した場合など、SignalR が自動的に再接続できない場合に呼び出されます。 したがって、特定のクライアントに対して可能な一連`OnConnected`の`OnReconnected`イベント`OnDisconnected`は、 、 、 、 、 、または`OnConnected` `OnDisconnected`、 をクリックします。 指定された接続のシーケンス`OnConnected`、`OnDisconnected`は`OnReconnected`表示されません。
 
-`OnDisconnected` メソッドは、サーバーがダウンしたときやアプリドメインがリサイクルされたときなど、一部のシナリオでは呼び出されません。 別のサーバーがオンラインになるか、アプリケーションドメインがリサイクルを完了すると、一部のクライアントが再接続して `OnReconnected` イベントを発生させることができる場合があります。
+サーバー`OnDisconnected`がダウンしたり、App Domain がリサイクルされたりした場合など、一部のシナリオではこのメソッドは呼び出されません。 別のサーバーがオンラインに接続されたり、App Domain がリサイクルを完了したりすると、一部のクライアントが`OnReconnected`再接続してイベントを発生させる場合があります。
 
 詳細については、「 [SignalR での接続の有効期間イベントの理解と処理](handling-connection-lifetime-events.md)」を参照してください。
 
 <a id="nocallerstate"></a>
 
-### <a name="caller-state-not-populated"></a>呼び出し元の状態が設定されていません
+### <a name="caller-state-not-populated"></a>呼び出し元の状態が入力されていません
 
-接続の有効期間イベントハンドラーメソッドは、サーバーから呼び出されます。つまり、クライアントの `state` オブジェクトに格納されているすべての状態は、サーバーの `Caller` プロパティに設定されません。 `state` オブジェクトと `Caller` プロパティの詳細については、このトピックの「[クライアントとハブクラス間で状態を渡す方法](#passstate)」を参照してください。
+接続有効期間イベント ハンドラ メソッドはサーバーから呼び出されるため、クライアント上の`state`オブジェクトに配置した状態は、サーバーの`Caller`プロパティに設定されません。 オブジェクトと`Caller`プロパティの`state`詳細については、このトピックの後半の[「クライアントとハブ クラス間で状態を渡す方法](#passstate)」を参照してください。
 
 <a id="contextproperty"></a>
 
-## <a name="how-to-get-information-about-the-client-from-the-context-property"></a>コンテキストプロパティからクライアントに関する情報を取得する方法
+## <a name="how-to-get-information-about-the-client-from-the-context-property"></a>Context プロパティからクライアントに関する情報を取得する方法
 
-クライアントに関する情報を取得するには、ハブクラスの `Context` プロパティを使用します。 `Context` プロパティは、次の情報へのアクセスを提供する[HubCallerContext](https://msdn.microsoft.com/library/jj890883(v=vs.111).aspx)オブジェクトを返します。
+クライアントに関する情報を取得するには、Hub クラスの`Context`プロパティを使用します。 プロパティ`Context`は、次の情報へのアクセスを提供する[HubCallerContext](https://msdn.microsoft.com/library/jj890883(v=vs.111).aspx)オブジェクトを返します。
 
 - 呼び出し元クライアントの接続 ID。
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample48.cs?highlight=1)]
 
-    接続 ID は、SignalR によって割り当てられる GUID です (独自のコードで値を指定することはできません)。 接続ごとに1つの接続 ID があり、アプリケーションに複数のハブがある場合は、すべてのハブで同じ接続 ID が使用されます。
-- HTTP ヘッダーデータ。
+    接続 ID は、SignalR によって割り当てられる GUID です (独自のコードで値を指定することはできません)。 接続ごとに 1 つの接続 ID があり、アプリケーションに複数のハブがある場合は、すべてのハブで同じ接続 ID が使用されます。
+- HTTP ヘッダー データ。
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample49.cs?highlight=1)]
 
-    `Context.Headers`から HTTP ヘッダーを取得することもできます。 同じことに対する複数の参照があるのは、`Context.Headers` が先に作成され、`Context.Request` プロパティが後で追加され、`Context.Headers` が旧バージョンとの互換性のために保持されているためです。
-- 文字列データをクエリします。
+    HTTP ヘッダーを から`Context.Headers`取得することもできます。 同じものに対する複数の参照が最初`Context.Headers`に作成された理由は`Context.Request`、プロパティが後で追加`Context.Headers`され、下位互換性のために保持されたためです。
+- クエリ文字列データ。
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample50.cs?highlight=1)]
 
-    `Context.QueryString`からクエリ文字列データを取得することもできます。
+    クエリ文字列データを から`Context.QueryString`取得することもできます。
 
-    このプロパティで取得するクエリ文字列は、SignalR 接続を確立した HTTP 要求で使用されたクエリ文字列です。 クライアントにクエリ文字列パラメーターを追加するには、接続を構成します。これは、クライアントに関するデータをクライアントからサーバーに渡す便利な方法です。 次の例は、生成されたプロキシを使用するときに、JavaScript クライアントにクエリ文字列を追加する方法の1つを示しています。
+    このプロパティで取得するクエリ文字列は、SignalR 接続を確立した HTTP 要求で使用された文字列です。 クライアントからサーバーにクライアントにデータを渡す便利な方法である接続を構成することで、クライアントにクエリ文字列パラメーターを追加できます。 次の例は、生成されたプロキシを使用するときに JavaScript クライアントにクエリ文字列を追加する方法の 1 つを示しています。
 
     [!code-javascript[Main](hubs-api-guide-server/samples/sample51.js?highlight=1)]
 
-    クエリ文字列パラメーターの設定の詳細については、 [JavaScript](hubs-api-guide-javascript-client.md)および[.NET](hubs-api-guide-net-client.md)クライアントの API ガイドを参照してください。
+    クエリ文字列パラメーターの設定の詳細については[、JavaScript](hubs-api-guide-javascript-client.md)クライアントと[.NET](hubs-api-guide-net-client.md)クライアントの API ガイドを参照してください。
 
-    接続に使用されるトランスポートメソッドは、SignalR によって内部的に使用される他の値と共に、クエリ文字列データで確認できます。
+    クエリ文字列データで接続に使用されるトランスポート 方法と、SignalR によって内部的に使用されるその他の値を見つけることができます。
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample52.cs)]
 
-    `transportMethod` の値は、"Websocket"、"Serverのイベント"、"" 前の Verframe "または" longPolling "になります。 `OnConnected` イベントハンドラーメソッドでこの値を確認した場合、一部のシナリオでは、最初に接続に対してネゴシエートされた最後のトランスポートメソッドではないトランスポート値が取得されることがあります。 その場合、メソッドは例外をスローし、最後のトランスポートメソッドが確立されると、後で再度呼び出されます。
-- Cookie.
+    の`transportMethod`値は、「ウェブソケット」、「サーバーSentイベント」、「フォーエバーフレーム」または「ロングポーリング」になります。 イベント ハンドラー メソッドでこの値を`OnConnected`チェックする場合、場合によっては、最初に接続の最終的なネゴシエートされたトランスポート 方法ではないトランスポート値を取得する場合があることに注意してください。 その場合、メソッドは例外をスローし、最終的なトランスポート メソッドが確立されたときに、後で再度呼び出されます。
+- クッキー。
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample53.cs?highlight=1)]
 
-    `Context.RequestCookies`から cookie を取得することもできます。
+    からクッキーを取得することもできます`Context.RequestCookies`。
 - ユーザー情報。
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample54.cs?highlight=1)]
@@ -538,98 +538,98 @@ SignalR メソッドは、接続が一時的に切断されたときに呼び出
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample55.cs?highlight=1)]
 
-    このメソッドは、SignalR 接続の `HttpContext` オブジェクトを取得するために `HttpContext.Current` を取得する代わりに使用します。
+    SignalR 接続のオブジェクト`HttpContext.Current`を取得する`HttpContext`代わりに、このメソッドを使用します。
 
 <a id="passstate"></a>
 
-## <a name="how-to-pass-state-between-clients-and-the-hub-class"></a>クライアントとハブクラスの間で状態を渡す方法
+## <a name="how-to-pass-state-between-clients-and-the-hub-class"></a>クライアントとハブ クラスの間で状態を渡す方法
 
-クライアントプロキシには `state` オブジェクトが用意されており、各メソッド呼び出しでサーバーに送信するデータを格納できます。 サーバーでは、クライアントによって呼び出されるハブメソッドの `Clients.Caller` プロパティで、このデータにアクセスできます。 `Clients.Caller` プロパティは、接続の有効期間イベントハンドラーメソッド `OnConnected`、`OnDisconnected`、および `OnReconnected`には設定されません。
+クライアント プロキシは、`state`メソッド呼び出しごとにサーバーに転送するデータを格納できるオブジェクトを提供します。 サーバーでは、クライアントから呼び出されるハブ`Clients.Caller`メソッドのプロパティでこのデータにアクセスできます。 接続`Clients.Caller`有効期間イベント ハンドラー メソッド`OnConnected`、、`OnDisconnected`および`OnReconnected`のプロパティは設定されません。
 
-`state` オブジェクトと `Clients.Caller` プロパティのデータの作成または更新は、双方向で機能します。 サーバーの値を更新して、クライアントに返されるようにすることができます。
+オブジェクトとプロパティのデータの`state`作成または更新は`Clients.Caller`、両方向で機能します。 サーバーの値を更新すると、値はクライアントに渡されます。
 
-次の例は、すべてのメソッド呼び出しを使用してサーバーに送信するための状態を格納する JavaScript クライアントコードを示しています。
+次の例は、すべてのメソッド呼び出しでサーバーに送信するための状態を格納する JavaScript クライアント コードを示しています。
 
 [!code-javascript[Main](hubs-api-guide-server/samples/sample56.js?highlight=1-2)]
 
-次の例は、.NET クライアントの同等のコードを示しています。
+NET クライアントの同等のコードの例を次に示します。
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample57.cs?highlight=1-2)]
 
-ハブクラスでは、`Clients.Caller` プロパティでこのデータにアクセスできます。 次の例は、前の例で参照されている状態を取得するコードを示しています。
+ハブ クラスでは、`Clients.Caller`このデータにプロパティからアクセスできます。 前の例で参照されている状態を取得するコードを次の例に示します。
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample58.cs?highlight=3-4)]
 
 > [!NOTE]
-> 状態を永続化するためのこのメカニズムは、大量のデータを対象としていません。これは、`state` または `Clients.Caller` プロパティに格納されているすべてのものが、すべてのメソッド呼び出しでラウンドトリップされるためです。 これは、ユーザー名やカウンターなどの小さな項目に便利です。
+> 状態を永続化するためのこのメカニズムは、`state`または`Clients.Caller`プロパティに入れるすべてのメソッド呼び出しでラウンド トリップされるため、大量のデータを対象としていません。 ユーザー名やカウンターなどの小さな項目に便利です。
 
-VB.NET または厳密に型指定されたハブでは、呼び出し元の状態オブジェクトには `Clients.Caller`でアクセスできません。代わりに、`Clients.CallerState` (SignalR 2.1 で導入) を使用します。
+VB.NETまたは厳密に型指定されたハブでは、呼び出し元の状態オブジェクトにアクセス`Clients.Caller`できません。代わりに、(SignalR 2.1 で導入)を使用`Clients.CallerState`してください:
 
-**で CallerState を使用するC#**
+**C での呼び出し元状態の使用#**
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample59.cs?highlight=3-4)]
 
-**Visual Basic での CallerState の使用**
+**呼び出し元の使用状態を Visual Basic で使用する**
 
 [!code-vb[Main](hubs-api-guide-server/samples/sample60.vb)]
 
 <a id="handleErrors"></a>
 
-## <a name="how-to-handle-errors-in-the-hub-class"></a>ハブクラスでエラーを処理する方法
+## <a name="how-to-handle-errors-in-the-hub-class"></a>ハブ クラスのエラーを処理する方法
 
-ハブクラスのメソッドで発生したエラーを処理するには、まず、`await`を使用して、非同期操作 (クライアントメソッドの呼び出しなど) の例外を "観察" します。 その後、次の1つまたは複数の方法を使用します。
+ハブ クラス のメソッドで発生するエラーを処理するには、まず、 を使用`await`して非同期操作 (クライアント メソッドの呼び出しなど) からの例外を "監視" することを確認します。 次に、次の 1 つ以上の方法を使用します。
 
-- Try catch ブロックにメソッドコードをラップし、例外オブジェクトをログに記録します。 デバッグの目的でクライアントに例外を送信することはできますが、セキュリティ上の理由から、実稼働環境でクライアントに詳細情報を送信することはお勧めしません。
-- [OnIncomingError](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.hubpipelinemodule.onincomingerror(v=vs.111).aspx)メソッドを処理するハブパイプラインモジュールを作成します。 次の例は、エラーをログに記録するパイプラインモジュールを示しています。その後、モジュールをハブパイプラインに挿入する Startup.cs のコードを示しています。
+- メソッド コードを try-catch ブロックにラップし、例外オブジェクトをログに記録します。 デバッグの目的で、例外をクライアントに送信できますが、セキュリティ上の理由から、運用環境でクライアントに詳細情報を送信することはお勧めできません。
+- [メソッドを](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.hubpipelinemodule.onincomingerror(v=vs.111).aspx)処理するハブ パイプライン モジュールを作成します。 次の例は、エラーをログに記録するパイプライン モジュールを示し、その後にモジュールを Hubs パイプラインに挿入するコードをStartup.csに示します。
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample61.cs)]
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample62.cs?highlight=4)]
-- `HubException` クラス (SignalR 2 で導入) を使用します。 このエラーは、任意のハブ呼び出しからスローされる可能性があります。 `HubError` コンストラクターは、文字列メッセージと、追加のエラーデータを格納するためのオブジェクトを受け取ります。 SignalR は、例外を自動的にシリアル化してクライアントに送信します。このとき、ハブメソッドの呼び出しを拒否または失敗するために使用されます。
+- クラスを`HubException`使用します (SignalR 2 で導入されました)。 このエラーは、どのハブ呼び出しからでもスローできます。 コンストラクター`HubError`は、文字列メッセージと、余分なエラー データを格納するオブジェクトを受け取ります。 SignalR は、例外を自動シリアル化してクライアントに送信します。
 
-    次のコードサンプルは、ハブの呼び出し中に `HubException` をスローする方法と、JavaScript および .NET クライアントで例外を処理する方法を示しています。
+    次のコード サンプルは、ハブ呼`HubException`び出し中に スローする方法と、JavaScript クライアントと .NET クライアントで例外を処理する方法を示しています。
 
-    **HubException クラスをデモンストレーションするサーバーコード**
+    **クラスを示すサーバー コード**
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample63.cs)]
 
-    **ハブで HubException をスローするための応答を示す JavaScript クライアントコード**
+    **ハブでのハブ例外のスローに対する応答を示す JavaScript クライアント コード**
 
     [!code-html[Main](hubs-api-guide-server/samples/sample64.html)]
 
-    **ハブで HubException をスローするための応答を示す .NET クライアントコード**
+    **ハブでのハブ例外のスローに対する応答を示す .NET クライアント コード**
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample65.cs)]
 
-ハブパイプラインモジュールの詳細については、このトピックで後述[する「ハブパイプラインをカスタマイズする方法](#hubpipeline)」を参照してください。
+ハブ パイプライン モジュールの詳細については、このトピックの[「Hubs パイプラインをカスタマイズする方法](#hubpipeline)」を参照してください。
 
 <a id="tracing"></a>
 
 ## <a name="how-to-enable-tracing"></a>トレースを有効にする方法
 
-サーバー側のトレースを有効にするには、次の例に示すように、web.config ファイルに system.web 要素を追加します。
+サーバー側トレースを有効にするには、次の例に示すように、Web.config ファイルに system.diagnostics 要素を追加します。
 
 [!code-html[Main](hubs-api-guide-server/samples/sample66.html?highlight=17-72)]
 
-Visual Studio でアプリケーションを実行すると、[**出力**] ウィンドウにログが表示されます。
+Visual Studio でアプリケーションを実行すると、**出力**ウィンドウでログを表示できます。
 
 <a id="callfromoutsidehub"></a>
 
-## <a name="how-to-call-client-methods-and-manage-groups-from-outside-the-hub-class"></a>ハブクラスの外部からクライアントメソッドを呼び出し、グループを管理する方法
+## <a name="how-to-call-client-methods-and-manage-groups-from-outside-the-hub-class"></a>ハブ クラスの外部からクライアント メソッドを呼び出し、グループを管理する方法
 
-ハブクラスとは異なるクラスからクライアントメソッドを呼び出すには、ハブの SignalR context オブジェクトへの参照を取得し、それを使用してクライアント上のメソッドを呼び出すか、グループを管理します。
+ハブ クラスとは異なるクラスからクライアント メソッドを呼び出す場合は、ハブの SignalR コンテキスト オブジェクトへの参照を取得し、それを使用してクライアントのメソッドを呼び出すか、グループを管理します。
 
-次のサンプル `StockTicker` クラスは、context オブジェクトを取得し、それをクラスのインスタンスに格納し、そのクラスインスタンスを静的プロパティに格納します。また、シングルトンクラスインスタンスのコンテキストを使用して、`StockTickerHub`という名前のハブに接続されているクライアントで `updateStockPrice` メソッドを呼び出します。
+次のサンプル`StockTicker`クラスは、コンテキスト オブジェクトを取得し、クラスのインスタンスに格納し、クラス インスタンスを静的プロパティに格納し、シングルトン クラス インスタンスのコンテキストを`updateStockPrice`使用して、という名前`StockTickerHub`の Hub に接続されているクライアントのメソッドを呼び出します。
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample67.cs?highlight=8,24)]
 
-有効期間が長いオブジェクトでコンテキストを複数回使用する必要がある場合は、参照を一度取得し、毎回再度取得するのではなく保存します。 コンテキストを一度取得すると、SignalR は、ハブメソッドがクライアントメソッドの呼び出しを行うのと同じ順序で、メッセージをクライアントに送信します。 ハブの SignalR コンテキストの使用方法を示すチュートリアルについては、「 [ASP.NET SignalR を使用したサーバーブロードキャスト](../getting-started/tutorial-server-broadcast-with-signalr.md)」を参照してください。
+長命オブジェクトでコンテキストを複数回使用する必要がある場合は、参照を 1 回取得して、毎回再び取得するのではなく、それを保存します。 コンテキストを取得すると、SignalR は、ハブ メソッドがクライアント メソッドを呼び出すのと同じ順序でクライアントにメッセージを送信します。 ハブの SignalR コンテキストを使用する方法を示すチュートリアルについては、「 [ASP.NET SignalR を使用したサーバー ブロードキャスト](../getting-started/tutorial-server-broadcast-with-signalr.md)」を参照してください。
 
 <a id="callingclientsoutsidehub"></a>
 
-### <a name="calling-client-methods"></a>クライアントメソッドの呼び出し
+### <a name="calling-client-methods"></a>クライアント メソッドの呼び出し
 
-どのクライアントが RPC を受信するかを指定できますが、ハブクラスからを呼び出す場合よりもオプションが少なくて済みます。 その理由は、コンテキストがクライアントからの特定の呼び出しに関連付けられていないため、`Clients.Others`、`Clients.Caller`、`Clients.OthersInGroup`など、現在の接続 ID に関する知識を必要とするメソッドが使用できないことです。 次のオプションを使用できます。
+RPC を受信するクライアントを指定できますが、ハブ クラスから呼び出す場合よりも少ないオプションがあります。 これは、コンテキストがクライアントからの特定の呼び出しに関連付けられていないため、現在の接続 ID`Clients.Others`に関する情報を必要とするメソッド (、`Clients.Caller`または`Clients.OthersInGroup`など) は使用できないからです。 次のオプションを使用できます。
 
 - 接続されたすべてのクライアント。
 
@@ -637,43 +637,43 @@ Visual Studio でアプリケーションを実行すると、[**出力**] ウ�
 - 接続 ID で識別される特定のクライアント。
 
     [!code-css[Main](hubs-api-guide-server/samples/sample69.css)]
-- 指定したクライアントを除くすべての接続されているクライアント。接続 ID で識別されます。
+- 接続 ID で識別される、指定されたクライアントを除くすべての接続クライアント。
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample70.cs)]
-- 指定したグループの接続されているすべてのクライアント。
+- 指定したグループ内のすべての接続クライアント。
 
     [!code-css[Main](hubs-api-guide-server/samples/sample71.css)]
-- 指定されたクライアントを除く、指定されたグループ内のすべての接続されているクライアント。接続 ID で識別されます。
+- 指定されたグループ内のすべての接続クライアント (接続 ID で識別される指定されたクライアントを除く)。
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample72.cs)]
 
-ハブクラスのメソッドから非ハブクラスを呼び出す場合は、現在の接続 ID を渡し、それを `Clients.Client`、`Clients.AllExcept`、または `Clients.Group` と共に使用して、`Clients.Caller`、`Clients.Others`、または `Clients.OthersInGroup`をシミュレートすることができます。 次の例では、`MoveShapeHub` クラスが `Broadcaster` クラスに接続 ID を渡して、`Broadcaster` クラスが `Clients.Others`をシミュレートできるようにします。
+ハブ クラスのメソッドから非ハブ クラスを呼び出す場合は、現在の接続`Clients.Client`ID を渡して、 、、`Clients.AllExcept`または`Clients.Group`、 `Clients.Caller` `Clients.Others`、、`Clients.OthersInGroup`または を使用して、 、 、または を使用できます。 次の例では、クラス`MoveShapeHub`がシミュレートできるように、`Broadcaster`クラスに接続 ID を`Broadcaster`渡`Clients.Others`します。
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample73.cs?highlight=12,36)]
 
 <a id="managinggroupsoutsidehub"></a>
 
-### <a name="managing-group-membership"></a>グループメンバーシップの管理
+### <a name="managing-group-membership"></a>グループ メンバーシップの管理
 
-グループを管理する場合、ハブクラスの場合と同じオプションがあります。
+グループの管理には、ハブ クラスで行うのと同じオプションがあります。
 
-- クライアントをグループに追加する
+- グループにクライアントを追加する
 
     [!code-csharp[Main](hubs-api-guide-server/samples/sample74.cs)]
-- クライアントをグループから削除する
+- グループからクライアントを削除する
 
     [!code-css[Main](hubs-api-guide-server/samples/sample75.css)]
 
 <a id="hubpipeline"></a>
 
-## <a name="how-to-customize-the-hubs-pipeline"></a>ハブパイプラインをカスタマイズする方法
+## <a name="how-to-customize-the-hubs-pipeline"></a>ハブ パイプラインをカスタマイズする方法
 
-SignalR を使用すると、独自のコードをハブパイプラインに挿入できます。 次の例は、クライアントから受信した各受信メソッド呼び出しとクライアントで呼び出された送信メソッド呼び出しをログに記録するカスタムハブパイプラインモジュールを示しています。
+SignalR を使用すると、ハブ パイプラインに独自のコードを挿入できます。 次の例は、クライアントから受信した各受信メソッド呼び出しと、クライアントで呼び出された送信メソッド呼び出しを記録するカスタム ハブ パイプライン モジュールを示しています。
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample76.cs)]
 
-*Startup.cs*ファイル内の次のコードは、ハブパイプラインで実行するモジュールを登録します。
+*Startup.cs*ファイルの次のコードは、ハブ パイプラインで実行するモジュールを登録します。
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample77.cs?highlight=3)]
 
-オーバーライド可能な方法は多数あります。 完全な一覧については、「 [HubPipelineModule メソッド](https://msdn.microsoft.com/library/jj918633(v=vs.111).aspx)」を参照してください。
+オーバーライドできるメソッドは多数あります。 完全なリストについては、「[ハブパイプライン モジュール メソッド](https://msdn.microsoft.com/library/jj918633(v=vs.111).aspx)」を参照してください。

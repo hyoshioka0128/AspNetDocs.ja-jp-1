@@ -1,29 +1,29 @@
 ---
 uid: webhooks/receiving/receivers
-title: ASP.NET Webhook のレシーバー |Microsoft Docs
+title: ASP.NETウェブフック受信機 |マイクロソフトドキュメント
 author: rick-anderson
-description: ASP.NET Webhook レシーバー
+description: ASP.NETウェブフック受信機
 ms.author: riande
 ms.date: 01/17/2012
 ms.assetid: 6cdea089-15b2-4732-8c68-921ca561a8f1
-ms.openlocfilehash: d771a588b23abcd7b1b33e694af17b219683fc48
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 60f46141b59fc3888a6480d8201160420469d1a7
+ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78463462"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80675163"
 ---
-# <a name="aspnet-webhooks-receivers"></a>ASP.NET Webhook レシーバー
+# <a name="aspnet-webhooks-receivers"></a>ASP.NETウェブフック受信機
 
-Webhook の受信は、送信者が誰であるかによって異なります。 場合によっては、サブスクライバーが実際にリッスンしていることを確認するために、WebHook の登録に関する追加の手順があります。 一部の Webhook にはプッシュツープルモデルが用意されています。このモデルでは、HTTP POST 要求には、イベント情報への参照のみが含まれ、その後、個別に取得されます。 多くの場合、セキュリティモデルは少し異なります。
+WebHook を受信する送信者は、送信者が誰であるかによって異なります。 場合によっては、WebHook を登録する追加の手順があり、購読者が本当にリッスンしていることを確認します。 一部の WebHook は、HTTP POST 要求にイベント情報への参照のみを含むプッシュツープル モデルを提供し、その後独立して取得します。 多くの場合、セキュリティ モデルは多少異なります。
 
-Webhook の Microsoft ASP.NET の目的は、特定のバリエーションの Webhook を処理する方法を理解することなく、API を簡単かつ一貫性のある方法で作成できるようにすることです。
+マイクロソフト ASP.NET WebHooks の目的は、特定のバリアントの WebHook を処理する方法を理解するのに多くの時間を費やすことなく、API を結び付けやすく、一貫性を高める方法を提供することです。
 
-WebHook 受信側は、特定の送信元からの webhook を受け入れて検証する役割を担います。 WebHook 受信者は任意の数の webhook をサポートでき、それぞれに独自の構成があります。 たとえば、GitHub WebHook 受信者は、任意の数の GitHub リポジトリからの webhook を受け入れることができます。
+WebHook 受信側は、特定の送信側からの WebHook の受け入れと検証を行います。 WebHook レシーバーは、それぞれ独自の構成を持つ任意の数の WebHook をサポートできます。 たとえば、GitHub WebHook レシーバーは、任意の数の GitHub リポジトリから WebHook を受け入れることができます。
 
-## <a name="webhook-receiver-uris"></a>WebHook 受信者の Uri
+## <a name="webhook-receiver-uris"></a>ウェブフック受信機のURI
 
-Microsoft ASP.NET webhook をインストールすることにより、一般に終了したサービス数から WebHook 要求を受け入れる汎用 WebHook コントローラーを取得できます。 要求が到着すると、特定の WebHook センダーを処理するためにインストールした適切な受信者が選択されます。
+マイクロソフトASP.NETWebHookをインストールすると、オープンエンドのサービスからのWebHook要求を受け入れる一般的なWebHookコントローラが得られます。 要求が到着すると、特定の WebHook 送信側を処理するためにインストールした適切な受信者が選択されます。
 
 このコントローラーの URI は、サービスに登録する WebHook URI であり、次の形式です。
 
@@ -31,11 +31,11 @@ Microsoft ASP.NET webhook をインストールすることにより、一般に
 https://<host>/api/webhooks/incoming/<receiver>/{id}
 ```
 
-セキュリティ上の理由から、多くの WebHook レシーバーでは URI が*https* uri である必要があり、場合によっては、意図したパーティのみが上記の uri に webhook を送信できるようにするために使用される追加のクエリパラメーターも含める必要があります。
+セキュリティ上の理由から、多くの WebHook 受信機は URI が*https* URI であることを要求し、場合によっては、意図されたパーティだけが上記の URI に WebHook を送信できることを強制するために使用される追加のクエリ パラメーターを含める必要があります。
 
-`<receiver>` コンポーネントは、`github` や `slack`など、受信者の名前です。
+コンポーネント`<receiver>`は、受信者の名前`github`です。 `slack`
 
-*{Id}* は、特定の WebHook 受信者の構成を識別するために使用できる、省略可能な識別子です。 これは、特定の受信者に N Webhook を登録するために使用できます。 たとえば、次の3つの Uri を使用して、3つの独立した Webhook を登録できます。
+*{id}* は、特定の WebHook 受信側の構成を識別するために使用できるオプションの識別子です。 これは、特定の受信機にN WebHookを登録するために使用することができます。 たとえば、次の 3 つの URI を使用して、3 つの独立した WebHook に登録できます。
 
 ```
 https://<host>/api/webhooks/incoming/github
@@ -43,17 +43,17 @@ https://<host>/api/webhooks/incoming/github/12345
 https://<host>/api/webhooks/incoming/github/54321
 ```
 
-## <a name="installing-a-webhook-receiver"></a>WebHook 受信側のインストール
+## <a name="installing-a-webhook-receiver"></a>WebHook レシーバーのインストール
 
-Microsoft ASP.NET WebHook を使用して webhook を受信するには、まず WebHook プロバイダーの Nuget パッケージをインストールします。 Nuget パッケージには、" [Microsoft.](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers) .............." という名前が付けられます。最後の部分は、サポートされるサービスを示します。 次に例を示します。
+マイクロソフト ASP.NET WebHook を使用して WebHook を受信するには、まず、WebHook を受信するプロバイダーの Nuget パッケージをインストールします。 Nuget パッケージは、最後の部分がサポートされているサービスを示す[Microsoft.AspNet.WebHooks.Receivers.* という](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers)名前です。 次に例を示します。
 
-ASP.NET webhook によって生成された webhook を受信するためのサポート[を提供します。](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers.GitHub)カスタムは、webhook によって生成される webhook の受信をサポート[し](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers.Custom)ています。
+[ASP.NET WebHook によって](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers.GitHub)生成された WebHook を受信するためのサポートを提供[します](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers.Custom)。
 
-既定では、Dropbox、GitHub、MailChimp、PayPal、Pusher、Salesforce、余裕、ストライプ、Trello、および WordPress がサポートされていますが、他の任意の数のプロバイダーをサポートすることもできます。
+ボックスの一部からは、Dropbox、GitHub、MailChimp、PayPal、プッシャー、セールスフォース、スラック、ストライプ、トレロ、ワードプレスのサポートを見つけることができますが、他のプロバイダの任意の数をサポートすることは可能です。
 
-## <a name="configuring-a-webhook-receiver"></a>WebHook 受信側の構成
+## <a name="configuring-a-webhook-receiver"></a>WebHook レシーバーの構成
 
-WebHook レシーバーは[IWebHookReceiverConfig](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Receivers/WebHooks/IWebHookReceiverConfig.cs)インターフェイスによって構成され、そのインターフェイスの特定の実装は、任意の依存関係挿入モデルを使用して登録できます。 既定の実装では、web.config ファイルで設定できるアプリケーション設定が使用されます。または、Azure Web Apps を使用する場合は、 [Azure Portal](https://portal.azure.com/)で設定できます。
+WebHook レシーバーは[IWebHookReceiverConfig](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Receivers/WebHooks/IWebHookReceiverConfig.cs)を介して構成され、そのインターフェイスの特定の実装は、任意の依存関係の注入モデルを使用して登録できます。 既定の実装では、Web.config ファイルで設定できるアプリケーション設定を使用するか、Azure Web Apps を使用する場合は[Azure ポータル](https://portal.azure.com/)を使用して設定できます。
 
 ![Azure App Settings](_static/AzureAppSettings.png)
 
@@ -63,15 +63,15 @@ WebHook レシーバーは[IWebHookReceiverConfig](https://github.com/aspnet/Web
 MS_WebHookReceiverSecret_<receiver>
 ```
 
-値は、Webhook が登録されている *{id}* 値に一致する値のコンマ区切りのリストです。次に例を示します。
+値は、WebHook が登録されている *{id}* 値に一致する値のコンマ区切りのリストです。
 
 ```
 MS_WebHookReceiverSecret_GitHub = <secret1>, 12345=<secret2>, 54321=<secret3>
 ```
 
-## <a name="initializing-a-webhook-receiver"></a>WebHook 受信側の初期化
+## <a name="initializing-a-webhook-receiver"></a>WebHook レシーバーの初期化
 
-WebHook レシーバーは、次の例のように、 *webapiconfig.cs*静的クラスに登録することによって初期化されます。
+WebHook レシーバーは、通常 *、WebApiConfig*静的クラスで、それらを登録することによって初期化されます。
 
 ```csharp
 namespace WebHookReceivers

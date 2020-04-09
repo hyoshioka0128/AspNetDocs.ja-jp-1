@@ -1,6 +1,6 @@
 ---
 uid: web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api
-title: ASP.NET Web API | でのルーティングMicrosoft Docs
+title: web API でASP.NETルーティング |マイクロソフトドキュメント
 author: MikeWasson
 description: ''
 ms.author: riande
@@ -9,82 +9,82 @@ ms.assetid: 0675bdc7-282f-4f47-b7f3-7e02133940ca
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api
 msc.type: authoredcontent
 ms.openlocfilehash: 85862c094cc54365267b1f21e68d235a15519cda
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78449248"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80675755"
 ---
 # <a name="routing-in-aspnet-web-api"></a>ASP.NET Web API でのルーティング
 
-[Mike Wasson](https://github.com/MikeWasson)
+[マイク・ワッソン](https://github.com/MikeWasson)著
 
-この記事では、ASP.NET Web API が HTTP 要求をコントローラーにルーティングする方法について説明します。
+この記事では、web API ASP.NETが HTTP 要求をコントローラーにルーティングする方法について説明します。
 
 > [!NOTE]
-> ASP.NET MVC を使い慣れている場合、Web API ルーティングは MVC ルーティングとよく似ています。 主な違いは、Web API は URI パスではなく HTTP 動詞を使用してアクションを選択することです。 Web API で MVC スタイルのルーティングを使用することもできます。 この記事では、ASP.NET MVC に関する知識を前提としていません。
+> ASP.NET MVC に精通している場合、Web API ルーティングは MVC ルーティングとよく似ています。 主な違いは、Web API がアクションを選択するために URI パスではなく HTTP 動詞を使用することです。 Web API では MVC 形式のルーティングを使用することもできます。 この記事では、ASP.NET MVC の知識を前提としていません。
 
-## <a name="routing-tables"></a>ルーティングテーブル
+## <a name="routing-tables"></a>ルーティング テーブル
 
-ASP.NET Web API では、*コントローラー*は HTTP 要求を処理するクラスです。 コントローラーのパブリックメソッドは、*アクションメソッド*または単なる*アクション*と呼ばれます。 Web API フレームワークは、要求を受信すると、要求をアクションにルーティングします。
+ASP.NET Web API では、*コントローラ*は HTTP 要求を処理するクラスです。 コントローラのパブリック メソッドは、*アクション メソッド*または単にアクション と呼*ばれます*。 Web API フレームワークは、要求を受信すると、要求をアクションにルーティングします。
 
-呼び出すアクションを決定するために、フレームワークは*ルーティングテーブル*を使用します。 Web API 用の Visual Studio プロジェクトテンプレートでは、既定のルートが作成されます。
+呼び出すアクションを決定するために、フレームワークは*ルーティング テーブル*を使用します。 Web API 用の Visual Studio プロジェクト テンプレートは、既定のルートを作成します。
 
 [!code-csharp[Main](routing-in-aspnet-web-api/samples/sample1.cs)]
 
-このルートは*WebApiConfig.cs*ファイルで定義されています。このファイルは、*アプリ\_の開始*ディレクトリに配置されます。
+このルートは *、WebApiConfig.cs*ファイルで定義され、*\_アプリケーションの開始*ディレクトリに配置されます。
 
 ![](routing-in-aspnet-web-api/_static/image1.png)
 
-`WebApiConfig` クラスの詳細については、「 [ASP.NET Web API の構成](../advanced/configuring-aspnet-web-api.md)」を参照してください。
+クラスの詳細については、「Web API の`WebApiConfig`[構成ASP.NET」](../advanced/configuring-aspnet-web-api.md)を参照してください。
 
-Web API を自己ホストする場合は、`HttpSelfHostConfiguration` オブジェクトでルーティングテーブルを直接設定する必要があります。 詳細については、「 [WEB API をセルフホストする](../older-versions/self-host-a-web-api.md)」を参照してください。
+Web API を自己ホストする場合は、オブジェクトにルーティング テーブルを`HttpSelfHostConfiguration`直接設定する必要があります。 詳細については、「 [Web API のセルフ ホスト](../older-versions/self-host-a-web-api.md)」を参照してください。
 
-ルーティングテーブルの各エントリには、*ルートテンプレート*が含まれています。 Web API の既定のルートテンプレートは &quot;api/{controller}/{id}&quot;です。 このテンプレートでは、&quot;api&quot; はリテラルパスセグメントで、{controller} と {id} はプレースホルダー変数です。
+ルーティング テーブルの各エントリには、*ルート テンプレート*が含まれています。 Web API の既定のルート&quot;テンプレートは、API/{コントローラ}/{id} です&quot;。 このテンプレートでは&quot;、api&quot;はリテラル パス セグメントであり、{controller} と {id} はプレースホルダー変数です。
 
-Web API フレームワークは HTTP 要求を受信すると、URI とルーティングテーブル内のいずれかのルートテンプレートとの照合を試みます。 一致するルートがない場合、クライアントは404エラーを受け取ります。 たとえば、次の Uri は既定のルートと一致します。
+Web API フレームワークは、HTTP 要求を受信すると、ルーティング テーブル内のいずれかのルート テンプレートに対して URI を照合しようとします。 一致するルートがない場合、クライアントは 404 エラーを受け取ります。 たとえば、次の URI は既定のルートと一致します。
 
-- /api/contacts
-- /api/contacts/1
-- /api/products/gizmo1
+- /api/連絡先
+- /api/連絡先/1
+- /api/製品/ギズモ1
 
-ただし、次の URI は一致しません。これは、&quot;api&quot; セグメントがないためです。
+ただし、次の URI は&quot;API&quot;セグメントがないため一致しません。
 
-- /contacts/1
+- /連絡先/1
 
 > [!NOTE]
-> ルートで "api" を使用する理由は、ASP.NET MVC ルーティングとの競合を避けるためです。 このようにして、&quot;/連絡先&quot; MVC コントローラーにアクセスできます。また、Web API コントローラーにアクセス&quot; に &quot;/連絡先を設定することもできます。 もちろん、この規則に満足できない場合は、既定のルートテーブルを変更することができます。
+> ルートで "api" を使用する理由は、MVC ルーティングとの衝突ASP.NET回避するためです。 このようにすると、/contacts&quot;&quot;を MVC コントローラーに移動し&quot;、/api/contact&quot;を Web API コントローラーに移動させることができます。 もちろん、この規則が気に入らない場合は、デフォルトのルートテーブルを変更できます。
 
 一致するルートが見つかると、Web API はコントローラーとアクションを選択します。
 
-- コントローラーを検索するために、Web API は &quot;コントローラーの&quot; を *{controller}* 変数の値に追加します。
-- アクションを検索するために、Web API は HTTP 動詞を参照し、その HTTP 動詞名で始まる名前を持つアクションを検索します。 たとえば、GET 要求では、Web API は &quot;GetContact&quot; や &quot;GetAllContacts&quot;などの &quot;Get&quot;で始まるアクションを検索します。 この規則は、GET、POST、PUT、DELETE、HEAD、OPTIONS、PATCH 動詞にのみ適用されます。 他の HTTP 動詞は、コントローラーの属性を使用して有効にすることができます。 その例については後で説明します。
-- *{Id}* など、ルートテンプレート内のその他のプレースホルダー変数は、アクションパラメーターにマップされます。
+- コントローラーを見つけるために、Web API &quot;&quot;は *{controller}* 変数の値にコントローラーを追加します。
+- アクションを見つけるには、Web API は HTTP 動詞を検索し、その HTTP 動詞名で始まる名前のアクションを探します。 たとえば、GET 要求を使用すると、Web API は GetContact &quot;&quot;や&quot;GetAllContacts&quot;&quot;&quot;などの "Get" というプレフィックスが付いたアクションを検索します。 この規約は、GET、ポスト、プット、削除、ヘッド、オプション、およびパッチの動詞にのみ適用されます。 コントローラーの属性を使用して、他の HTTP 動詞を有効にすることができます。 その例については後で説明します。
+- ルート テンプレート内の他のプレースホルダー変数 *({id}* など) は、アクション パラメーターにマップされます。
 
-1 つ例を見てみましょう。 次のコントローラーを定義するとします。
+1 つ例を見てみましょう。 次のコントローラを定義するとします。
 
 [!code-csharp[Main](routing-in-aspnet-web-api/samples/sample2.cs)]
 
-次に、使用可能な HTTP 要求と、それぞれに対して呼び出されるアクションを示します。
+以下に、考えられる HTTP 要求と、それぞれに対して呼び出されるアクションを示します。
 
 | HTTP 動詞 | URI パス | アクション | パラメーター |
 | --- | --- | --- | --- |
-| GET | api/製品 | GetAllProducts | *存在* |
-| GET | api/製品/4 | GetProductById | 4 |
-| DELETE | api/製品/4 | DeleteProduct | 4 |
-| POST | api/製品 | *(一致なし)* |  |
+| GET | api/製品 | すべての製品を取得します。 | *(なし)* |
+| GET | api/製品/4 | 製品バイId | 4 |
+| DELETE | api/製品/4 | 製品の削除 | 4 |
+| POST | api/製品 | *(一致しない)* |  |
 
-URI の *{id}* セグメント (存在する場合) がアクションの*id*パラメーターにマップされていることに注意してください。 この例では、コントローラーは2つの GET メソッドを定義します。1つは*id*パラメーターを持ち、もう1つはパラメーターを指定しません。
+URI の *{id}* セグメントが存在する場合は、アクションの*id*パラメーターにマップされることに注意してください。 この例では、コントローラは*2*つの GET メソッドを定義します。
 
-また、コントローラーでは &quot;Post...&quot; メソッドが定義されていないため、POST 要求は失敗します。
+また、コントローラは Post.. を定義していないため、POST 要求は&quot;失敗します。&quot;メソッドを使用します。
 
-## <a name="routing-variations"></a>ルーティングのバリエーション
+## <a name="routing-variations"></a>ルーティングバリエーション
 
-前のセクションでは、ASP.NET Web API の基本的なルーティングメカニズムについて説明しています。 ここでは、いくつかのバリエーションについて説明します。
+前のセクションでは、Web API の基本的なルーティングメカニズムASP.NET説明しました。 このセクションでは、いくつかのバリエーションについて説明します。
 
 ### <a name="http-verbs"></a>HTTP 動詞
 
-HTTP 動詞の名前付け規則を使用する代わりに、次のいずれかの属性を使用してアクションメソッドを装飾することで、アクションの HTTP 動詞を明示的に指定できます。
+HTTP 動詞の名前付け規則を使用する代わりに、アクション メソッドを次のいずれかの属性で修飾することで、アクションの HTTP 動詞を明示的に指定できます。
 
 - `[HttpGet]`
 - `[HttpPut]`
@@ -94,37 +94,37 @@ HTTP 動詞の名前付け規則を使用する代わりに、次のいずれか
 - `[HttpOptions]`
 - `[HttpPatch]`
 
-次の例では、`FindProduct` メソッドが GET 要求にマップされます。
+次の例では、`FindProduct`メソッドが GET 要求にマップされています。
 
 [!code-csharp[Main](routing-in-aspnet-web-api/samples/sample3.cs)]
 
-アクションに対して複数の HTTP 動詞を許可したり、GET、PUT、POST、DELETE、HEAD、OPTIONS、PATCH 以外の HTTP 動詞を許可したりするには、`[AcceptVerbs]` 属性を使用します。この属性は、HTTP 動詞の一覧を受け取ります。
+アクションに複数の HTTP 動詞を許可したり、GET、PUT、POST、削除、ヘッド、オプション、および PATCH 以外の HTTP 動詞を`[AcceptVerbs]`許可したりするには、HTTP 動詞のリストを取る属性を使用します。
 
 [!code-csharp[Main](routing-in-aspnet-web-api/samples/sample4.cs)]
 
 <a id="routing_by_action_name"></a>
 ### <a name="routing-by-action-name"></a>アクション名によるルーティング
 
-既定のルーティングテンプレートでは、Web API は HTTP 動詞を使用してアクションを選択します。 ただし、URI にアクション名が含まれているルートを作成することもできます。
+既定のルーティング テンプレートでは、Web API は HTTP 動詞を使用してアクションを選択します。 ただし、アクション名が URI に含まれるルートを作成することもできます。
 
 [!code-csharp[Main](routing-in-aspnet-web-api/samples/sample5.cs)]
 
-このルートテンプレートでは、 *{action}* パラメーターはコントローラーのアクションメソッドに名前を指定します。 このスタイルのルーティングでは、属性を使用して、許可される HTTP 動詞を指定します。 たとえば、コントローラーに次のメソッドがあるとします。
+このルート テンプレートでは *、{action}* パラメーターはコントローラーのアクション メソッドに名前を付けます。 この形式のルーティングでは、属性を使用して、許可される HTTP 動詞を指定します。 たとえば、コントローラーに次のメソッドがあるとします。
 
 [!code-csharp[Main](routing-in-aspnet-web-api/samples/sample6.cs)]
 
-この場合、"api/products/details/1" の GET 要求が `Details` メソッドにマップされます。 このスタイルのルーティングは ASP.NET MVC に似ており、RPC スタイルの API に適している場合があります。
+この場合、GET リクエストの "api/製品/詳細/1" はメソッドに`Details`マップされます。 このルーティングスタイルは、ASP.NET MVC に似ており、RPC スタイルの API に適している場合があります。
 
-アクション名をオーバーライドするには、`[ActionName]` 属性を使用します。 次の例では、&quot;api/製品/サムネイル/*id*にマップされる2つのアクションがあります。GET をサポートし、もう1つは POST をサポートします。
+属性を使用して、アクション名を`[ActionName]`オーバーライドできます。 次の例では、api/製品/サムネイル/ &quot;*id*にマップする 2 つのアクションがあります。1 つは GET をサポートし、もう 1 つは POST をサポートします。
 
 [!code-csharp[Main](routing-in-aspnet-web-api/samples/sample7.cs)]
 
 ### <a name="non-actions"></a>非アクション
 
-メソッドがアクションとして呼び出されないようにするには、`[NonAction]` 属性を使用します。 これは、メソッドがルーティング規則と一致する場合でも、メソッドがアクションではないことをフレームワークに通知します。
+メソッドがアクションとして呼び出されないようにするには、 属性を使用`[NonAction]`します。 これは、メソッドがルーティングルールに一致する場合でも、メソッドがアクションではないことをフレームワークに通知します。
 
 [!code-csharp[Main](routing-in-aspnet-web-api/samples/sample8.cs)]
 
 ## <a name="further-reading"></a>参考資料
 
-このトピックでは、ルーティングの概要について説明しました。 詳細については、「[ルーティングとアクションの選択](routing-and-action-selection.md)」を参照してください。これは、フレームワークがルートと URI を照合する方法を正確に説明し、コントローラーを選択して、呼び出すアクションを選択します。
+このトピックでは、ルーティングの概要を説明しました。 詳細については、「[ルーティングとアクションの選択](routing-and-action-selection.md)」を参照してください。

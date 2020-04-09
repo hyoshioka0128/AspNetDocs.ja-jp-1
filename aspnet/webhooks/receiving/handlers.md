@@ -1,39 +1,39 @@
 ---
 uid: webhooks/receiving/handlers
-title: ASP.NET Webhook ハンドラー |Microsoft Docs
+title: ASP.NETウェブフックハンドラ |マイクロソフトドキュメント
 author: rick-anderson
-description: ASP.NET Webhook で要求を処理する方法。
+description: ASP.NET WebHook で要求を処理する方法。
 ms.author: riande
 ms.date: 01/17/2012
 ms.assetid: a55b0d20-9c90-4bd3-a471-20da6f569f0c
-ms.openlocfilehash: 01c9a283d105c4a0973ff88c8de646c5f49a34db
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: ff12dd8df167eca17ecbd9f03a71807d44af2b30
+ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78518032"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80675213"
 ---
-# <a name="aspnet-webhooks-handlers"></a>ASP.NET Webhook ハンドラー
+# <a name="aspnet-webhooks-handlers"></a>ASP.NETの Web フック ハンドラー
 
-WebHook 受信者によって WebHook 要求が検証されると、ユーザーコードによって処理する準備が整います。 ここで*ハンドラー*が登場します。 ハンドラーは[IWebHookHandler](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Receivers/WebHooks/WebHookHandler.cs)インターフェイスから派生しますが、通常はインターフェイスから直接派生するのではなく、 [WebHookHandler](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Receivers/WebHooks/WebHookHandler.cs)クラスを使用します。
+WebHook 要求が WebHook 受信側によって検証されると、ユーザー コードで処理できるようになります。 これが*ハンドラ*の入ってくる場所です。 ハンドラーは[IWebHookHandler](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Receivers/WebHooks/WebHookHandler.cs)インターフェイスから派生しますが、通常はインターフェイスから直接派生するのではなく[、WebHookHandler](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Receivers/WebHooks/WebHookHandler.cs)クラスを使用します。
 
-WebHook 要求は、1つまたは複数のハンドラーによって処理できます。 ハンドラーは、それぞれの*順序*プロパティに基づいて順に呼び出されます。順序は単純な整数です (1 ~ 100 の範囲で指定することをお勧めします)。
+WebHook 要求は、1 つ以上のハンドラーで処理できます。 ハンドラは、Order が単純な整数である場合、それぞれの*Order*プロパティが、それぞれ最下位から最高の順に呼び出されます (1 ~ 100 の間に推奨されます)。
 
-![WebHook ハンドラーの順序プロパティの図](_static/Handlers.png)
+![WebHook ハンドラー順序プロパティ図](_static/Handlers.png)
 
-ハンドラーでは、必要に応じて WebHookHandlerContext の*response*プロパティを設定できます。これにより、処理が停止し、応答が WebHook への HTTP 応答として返されます。 上記の場合、ハンドラー C は呼び出されません。これは、B よりも上位の順序になっており、B が応答を設定しているためです。
+ハンドラーは、必要に応じて、処理を停止し、応答を WebHook に HTTP 応答として返送する WebHookHandlerContext に*応答プロパティを*設定できます。 上記の場合、ハンドラ C は B より高い順序を持ち、B が応答を設定するため、呼び出されません。
 
-応答の設定は、通常、応答が元の API に情報を伝達できる Webhook にのみ関連します。 これは、たとえば、WebHook が発生したチャネルに応答がポストバックされる、余裕のある webhook があるケースです。 特定の受信側から Webhook を受信するだけの場合、ハンドラーは受信側のプロパティを設定できます。 受信者が設定されていない場合は、すべてのユーザーに対して呼び出されます。
+通常、応答の設定は、応答が元の API に情報を返すことができる WebHook にのみ関連します。 これは、たとえば、応答が WebHook の元のチャネルにポストバックされる Slack WebHook の場合です。 ハンドラは、その特定の受信側からの WebHook のみを受信する場合に、Receiver プロパティを設定できます。 彼らは受信機を設定しない場合、彼らはそれらのすべてのために呼び出されます。
 
-応答のその他の一般的な用途の1つは、 *410*の応答を使用して、WebHook がアクティブでなくなったこと、およびそれ以降の要求を送信しないことを示すことです。
+応答のもう 1 つの一般的な使用は *、WebHook*がアクティブでなくなり、それ以上要求を送信する必要がないことを示すために 410 Gone 応答を使用することです。
 
-既定では、すべての WebHook 受信側によってハンドラーが呼び出されます。 ただし、*受信側*のプロパティがハンドラーの名前に設定されている場合、そのハンドラーは受信側からの WebHook 要求のみを受信します。
+デフォルトでは、ハンドラはすべての WebHook 受信機によって呼び出されます。 ただし *、Receiver*プロパティがハンドラの名前に設定されている場合、そのハンドラはその受信側からの WebHook リクエストのみを受け取ります。
 
-## <a name="processing-a-webhook"></a>WebHook の処理
+## <a name="processing-a-webhook"></a>ウェブフックの処理
 
-ハンドラーが呼び出されると、WebHook 要求に関する情報を含む[WebHookHandlerContext](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Receivers/WebHooks/WebHookHandlerContext.cs)が取得されます。 データ (通常は HTTP 要求本文) は、*データ*プロパティから取得できます。
+ハンドラーが呼び出されると、WebHook 要求に関する情報を含む[WebHookHandlerContext](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Receivers/WebHooks/WebHookHandlerContext.cs)を取得します。 データ (通常は HTTP 要求本文) は *、Data*プロパティから使用できます。
 
-データの型は、通常、JSON または HTML 形式のデータですが、必要に応じて、より具体的な型にキャストすることもできます。 たとえば、ASP.NET Webhook によって生成されるカスタム Webhook は、次のように[customnotifications](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Receivers.Custom/WebHooks/CustomNotifications.cs)型にキャストできます。
+データの型は通常 JSON または HTML フォーム データですが、必要に応じてより具体的な型にキャストできます。 たとえば、ASP.NET WebHook によって生成されたカスタム WebHook は、次のように[カスタム通知](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Receivers.Custom/WebHooks/CustomNotifications.cs)の型にキャストできます。
 
 ```csharp
 public class MyWebHookHandler : WebHookHandler
@@ -55,13 +55,13 @@ public class MyWebHookHandler : WebHookHandler
 }
 ```
 
-  ## <a name="queued-processing"></a>キューに置かれた処理
+  ## <a name="queued-processing"></a>キュー処理
 
-ほとんどの WebHook センダーは、数秒以内に応答が生成されない場合、WebHook を再送信します。 これは、ハンドラーが再度呼び出されないように、その時間枠内の処理を完了する必要があることを意味します。
+ほとんどの WebHook 送信者は、数秒以内に応答が生成されない場合、WebHook を再送信します。 つまり、ハンドラーは、再度呼び出されるのではないために、その時間内に処理を完了する必要があります。
 
-処理に時間がかかる場合、または個別に処理する方がよい場合は、 [WebHookQueueHandler](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Receivers/WebHooks/WebHookQueueHandler.cs)を使用してキューに WebHook 要求を送信することができます ( [Azure Storage queue](https://msdn.microsoft.com/library/azure/dd179353.aspx)など)。
+処理に時間がかかる場合、または別々に処理する方が良い場合は[、WebHook 要求](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Receivers/WebHooks/WebHookQueueHandler.cs)をキュー [(Azure Storage キュー](https://msdn.microsoft.com/library/azure/dd179353.aspx)など) に送信するために使用できます。
 
-[WebHookQueueHandler](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Receivers/WebHooks/WebHookQueueHandler.cs)実装の概要については、次を参照してください。
+[実装](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Receivers/WebHooks/WebHookQueueHandler.cs)の概要は、ここで提供されています。
 
 ```csharp
 public class QueueHandler : WebHookQueueHandler
