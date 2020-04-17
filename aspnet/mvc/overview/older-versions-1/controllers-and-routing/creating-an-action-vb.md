@@ -1,65 +1,65 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/creating-an-action-vb
-title: アクションを作成する (VB) |Microsoft Docs
-author: microsoft
-description: ASP.NET MVC コントローラーに新しいアクションを追加する方法について説明します。 メソッドをアクションとして使用するための要件について説明します。
+title: アクション (VB) を作成する |マイクロソフトドキュメント
+author: rick-anderson
+description: ASP.NET MVC コントローラーに新しいアクションを追加する方法について説明します。 メソッドをアクションにするための要件について説明します。
 ms.author: riande
 ms.date: 03/02/2009
 ms.assetid: c8d93e11-ef78-4a30-afbc-f30419000a60
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-an-action-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b1b53bea899deecef203551b23c087944e3990ab
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: dd651155bdb931cb8358d369b3c0c2c98abb86b2
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78470158"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81542249"
 ---
-# <a name="creating-an-action-vb"></a><span data-ttu-id="37abe-104">アクションを作成する (VB)</span><span class="sxs-lookup"><span data-stu-id="37abe-104">Creating an Action (VB)</span></span>
+# <a name="creating-an-action-vb"></a><span data-ttu-id="d618d-104">アクションを作成する (VB)</span><span class="sxs-lookup"><span data-stu-id="d618d-104">Creating an Action (VB)</span></span>
 
-<span data-ttu-id="37abe-105">[Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="37abe-105">by [Microsoft](https://github.com/microsoft)</span></span>
+<span data-ttu-id="d618d-105">[マイクロソフト](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="d618d-105">by [Microsoft](https://github.com/microsoft)</span></span>
 
-> <span data-ttu-id="37abe-106">ASP.NET MVC コントローラーに新しいアクションを追加する方法について説明します。</span><span class="sxs-lookup"><span data-stu-id="37abe-106">Learn how to add a new action to an ASP.NET MVC controller.</span></span> <span data-ttu-id="37abe-107">メソッドをアクションとして使用するための要件について説明します。</span><span class="sxs-lookup"><span data-stu-id="37abe-107">Learn about the requirements for a method to be an action.</span></span>
+> <span data-ttu-id="d618d-106">ASP.NET MVC コントローラーに新しいアクションを追加する方法について説明します。</span><span class="sxs-lookup"><span data-stu-id="d618d-106">Learn how to add a new action to an ASP.NET MVC controller.</span></span> <span data-ttu-id="d618d-107">メソッドをアクションにするための要件について説明します。</span><span class="sxs-lookup"><span data-stu-id="d618d-107">Learn about the requirements for a method to be an action.</span></span>
 
-<span data-ttu-id="37abe-108">このチュートリアルの目的は、新しいコントローラーアクションを作成する方法を説明することです。</span><span class="sxs-lookup"><span data-stu-id="37abe-108">The goal of this tutorial is to explain how you can create a new controller action.</span></span> <span data-ttu-id="37abe-109">アクションメソッドの要件について説明します。</span><span class="sxs-lookup"><span data-stu-id="37abe-109">You learn about the requirements of an action method.</span></span> <span data-ttu-id="37abe-110">また、メソッドがアクションとして公開されないようにする方法についても説明します。</span><span class="sxs-lookup"><span data-stu-id="37abe-110">You also learn how to prevent a method from being exposed as an action.</span></span>
+<span data-ttu-id="d618d-108">このチュートリアルの目的は、新しいコントローラー アクションを作成する方法を説明することです。</span><span class="sxs-lookup"><span data-stu-id="d618d-108">The goal of this tutorial is to explain how you can create a new controller action.</span></span> <span data-ttu-id="d618d-109">アクション メソッドの要件について学習します。</span><span class="sxs-lookup"><span data-stu-id="d618d-109">You learn about the requirements of an action method.</span></span> <span data-ttu-id="d618d-110">また、メソッドがアクションとして公開されないようにする方法についても学習します。</span><span class="sxs-lookup"><span data-stu-id="d618d-110">You also learn how to prevent a method from being exposed as an action.</span></span>
 
-## <a name="adding-an-action-to-a-controller"></a><span data-ttu-id="37abe-111">コントローラーへのアクションの追加</span><span class="sxs-lookup"><span data-stu-id="37abe-111">Adding an Action to a Controller</span></span>
+## <a name="adding-an-action-to-a-controller"></a><span data-ttu-id="d618d-111">コントローラへのアクションの追加</span><span class="sxs-lookup"><span data-stu-id="d618d-111">Adding an Action to a Controller</span></span>
 
-<span data-ttu-id="37abe-112">コントローラーに新しいアクションを追加するには、コントローラーに新しいメソッドを追加します。</span><span class="sxs-lookup"><span data-stu-id="37abe-112">You add a new action to a controller by adding a new method to the controller.</span></span> <span data-ttu-id="37abe-113">たとえば、リスト1のコントローラーには、Index () という名前のアクションと、SayHello () という名前のアクションが含まれています。</span><span class="sxs-lookup"><span data-stu-id="37abe-113">For example, the controller in Listing 1 contains an action named Index() and an action named SayHello().</span></span> <span data-ttu-id="37abe-114">どちらのメソッドもアクションとして公開されます。</span><span class="sxs-lookup"><span data-stu-id="37abe-114">Both methods are exposed as actions.</span></span>
+<span data-ttu-id="d618d-112">新しいアクションをコントローラーに追加するには、新しいメソッドをコントローラーに追加します。</span><span class="sxs-lookup"><span data-stu-id="d618d-112">You add a new action to a controller by adding a new method to the controller.</span></span> <span data-ttu-id="d618d-113">たとえば、リスト 1 のコントローラには、Index() という名前のアクションと、SayHello() という名前のアクションが含まれています。</span><span class="sxs-lookup"><span data-stu-id="d618d-113">For example, the controller in Listing 1 contains an action named Index() and an action named SayHello().</span></span> <span data-ttu-id="d618d-114">どちらのメソッドもアクションとして公開されます。</span><span class="sxs-lookup"><span data-stu-id="d618d-114">Both methods are exposed as actions.</span></span>
 
-<span data-ttu-id="37abe-115">**リスト 1-Controllers\HomeController.vb**</span><span class="sxs-lookup"><span data-stu-id="37abe-115">**Listing 1 - Controllers\HomeController.vb**</span></span>
+<span data-ttu-id="d618d-115">**リスト 1 - コントローラー\ホームコントローラー.vb**</span><span class="sxs-lookup"><span data-stu-id="d618d-115">**Listing 1 - Controllers\HomeController.vb**</span></span>
 
 [!code-vb[Main](creating-an-action-vb/samples/sample1.vb)]
 
-<span data-ttu-id="37abe-116">アクションとして universe に公開するには、メソッドが特定の要件を満たす必要があります。</span><span class="sxs-lookup"><span data-stu-id="37abe-116">In order to be exposed to the universe as an action, a method must meet certain requirements:</span></span>
+<span data-ttu-id="d618d-116">アクションとして宇宙に公開されるためには、メソッドは特定の要件を満たす必要があります。</span><span class="sxs-lookup"><span data-stu-id="d618d-116">In order to be exposed to the universe as an action, a method must meet certain requirements:</span></span>
 
-- <span data-ttu-id="37abe-117">メソッドはパブリックである必要があります。</span><span class="sxs-lookup"><span data-stu-id="37abe-117">The method must be public.</span></span>
-- <span data-ttu-id="37abe-118">メソッドを静的メソッドにすることはできません。</span><span class="sxs-lookup"><span data-stu-id="37abe-118">The method cannot be a static method.</span></span>
-- <span data-ttu-id="37abe-119">メソッドを拡張メソッドにすることはできません。</span><span class="sxs-lookup"><span data-stu-id="37abe-119">The method cannot be an extension method.</span></span>
-- <span data-ttu-id="37abe-120">メソッドをコンストラクター、getter、または setter にすることはできません。</span><span class="sxs-lookup"><span data-stu-id="37abe-120">The method cannot be a constructor, getter, or setter.</span></span>
-- <span data-ttu-id="37abe-121">メソッドにオープンジェネリック型を含めることはできません。</span><span class="sxs-lookup"><span data-stu-id="37abe-121">The method cannot have open generic types.</span></span>
-- <span data-ttu-id="37abe-122">このメソッドは、コントローラーの基本クラスのメソッドではありません。</span><span class="sxs-lookup"><span data-stu-id="37abe-122">The method is not a method of the controller base class.</span></span>
-- <span data-ttu-id="37abe-123">メソッドに**ref**パラメーターまたは**out**パラメーターを含めることはできません。</span><span class="sxs-lookup"><span data-stu-id="37abe-123">The method cannot contain **ref** or **out** parameters.</span></span>
+- <span data-ttu-id="d618d-117">メソッドはパブリックである必要があります。</span><span class="sxs-lookup"><span data-stu-id="d618d-117">The method must be public.</span></span>
+- <span data-ttu-id="d618d-118">メソッドを静的メソッドにすることはできません。</span><span class="sxs-lookup"><span data-stu-id="d618d-118">The method cannot be a static method.</span></span>
+- <span data-ttu-id="d618d-119">メソッドを拡張メソッドにすることはできません。</span><span class="sxs-lookup"><span data-stu-id="d618d-119">The method cannot be an extension method.</span></span>
+- <span data-ttu-id="d618d-120">メソッドをコンストラクター、取得、またはセッターにすることはできません。</span><span class="sxs-lookup"><span data-stu-id="d618d-120">The method cannot be a constructor, getter, or setter.</span></span>
+- <span data-ttu-id="d618d-121">メソッドにオープン ジェネリック型を指定することはできません。</span><span class="sxs-lookup"><span data-stu-id="d618d-121">The method cannot have open generic types.</span></span>
+- <span data-ttu-id="d618d-122">メソッドは、コントローラーの基本クラスのメソッドではありません。</span><span class="sxs-lookup"><span data-stu-id="d618d-122">The method is not a method of the controller base class.</span></span>
+- <span data-ttu-id="d618d-123">メソッドに**ref**パラメーターまたは out パラメーター**を**含めることはできません。</span><span class="sxs-lookup"><span data-stu-id="d618d-123">The method cannot contain **ref** or **out** parameters.</span></span>
 
-<span data-ttu-id="37abe-124">コントローラーアクションの戻り値の型に制限がないことに注意してください。</span><span class="sxs-lookup"><span data-stu-id="37abe-124">Notice that there are no restrictions on the return type of a controller action.</span></span> <span data-ttu-id="37abe-125">コントローラーアクションは、文字列、日時、ランダムクラスのインスタンス、または void を返すことができます。</span><span class="sxs-lookup"><span data-stu-id="37abe-125">A controller action can return a string, a DateTime, an instance of the Random class, or void.</span></span> <span data-ttu-id="37abe-126">ASP.NET MVC フレームワークは、アクションの結果ではない戻り値の型を文字列に変換し、その文字列をブラウザーに表示します。</span><span class="sxs-lookup"><span data-stu-id="37abe-126">The ASP.NET MVC framework will convert any return type that is not an action result into a string and render the string to the browser.</span></span>
+<span data-ttu-id="d618d-124">コントローラ アクションの戻り値の型に制限はありません。</span><span class="sxs-lookup"><span data-stu-id="d618d-124">Notice that there are no restrictions on the return type of a controller action.</span></span> <span data-ttu-id="d618d-125">コントローラーアクションは、文字列、DateTime、Random クラスのインスタンス、または void を返すことができます。</span><span class="sxs-lookup"><span data-stu-id="d618d-125">A controller action can return a string, a DateTime, an instance of the Random class, or void.</span></span> <span data-ttu-id="d618d-126">ASP.NET MVC フレームワークは、アクションの結果ではない戻り値の型を文字列に変換し、ブラウザーに文字列をレンダリングします。</span><span class="sxs-lookup"><span data-stu-id="d618d-126">The ASP.NET MVC framework will convert any return type that is not an action result into a string and render the string to the browser.</span></span>
 
-<span data-ttu-id="37abe-127">これらの要件に違反しないメソッドをコントローラーに追加すると、そのメソッドはコントローラーアクションとして公開されます。</span><span class="sxs-lookup"><span data-stu-id="37abe-127">When you add any method that does not violate these requirements to a controller, the method is exposed as a controller action.</span></span> <span data-ttu-id="37abe-128">ここで注意してください。</span><span class="sxs-lookup"><span data-stu-id="37abe-128">Be careful here.</span></span> <span data-ttu-id="37abe-129">コントローラーアクションは、インターネットに接続されているすべてのユーザーが呼び出すことができます。</span><span class="sxs-lookup"><span data-stu-id="37abe-129">A controller action can be invoked by anyone connected to the Internet.</span></span> <span data-ttu-id="37abe-130">たとえば、DeleteMyWebsite () コントローラーアクションを作成することはできません。</span><span class="sxs-lookup"><span data-stu-id="37abe-130">Do not, for example, create a DeleteMyWebsite() controller action.</span></span>
+<span data-ttu-id="d618d-127">これらの要件に違反しないメソッドをコントローラに追加すると、そのメソッドはコントローラ アクションとして公開されます。</span><span class="sxs-lookup"><span data-stu-id="d618d-127">When you add any method that does not violate these requirements to a controller, the method is exposed as a controller action.</span></span> <span data-ttu-id="d618d-128">ここで注意してください。</span><span class="sxs-lookup"><span data-stu-id="d618d-128">Be careful here.</span></span> <span data-ttu-id="d618d-129">コントローラアクションは、インターネットに接続しているすべてのユーザーが呼び出すことができます。</span><span class="sxs-lookup"><span data-stu-id="d618d-129">A controller action can be invoked by anyone connected to the Internet.</span></span> <span data-ttu-id="d618d-130">たとえば、DeleteMyWebsite() コントローラ アクションを作成しないでください。</span><span class="sxs-lookup"><span data-stu-id="d618d-130">Do not, for example, create a DeleteMyWebsite() controller action.</span></span>
 
-## <a name="preventing-a-public-method-from-being-invoked"></a><span data-ttu-id="37abe-131">パブリックメソッドが呼び出されないようにする</span><span class="sxs-lookup"><span data-stu-id="37abe-131">Preventing a Public Method from Being Invoked</span></span>
+## <a name="preventing-a-public-method-from-being-invoked"></a><span data-ttu-id="d618d-131">パブリック メソッドが呼び出されないようにする</span><span class="sxs-lookup"><span data-stu-id="d618d-131">Preventing a Public Method from Being Invoked</span></span>
 
-<span data-ttu-id="37abe-132">コントローラークラスでパブリックメソッドを作成する必要があり、そのメソッドをコントローラーアクションとして公開したくない場合は、&lt;NonAction&gt; 属性を使用してメソッドが呼び出されないようにすることができます。</span><span class="sxs-lookup"><span data-stu-id="37abe-132">If you need to create a public method in a controller class and you don't want to expose the method as a controller action then you can prevent the method from being invoked by using the &lt;NonAction&gt; attribute.</span></span> <span data-ttu-id="37abe-133">たとえば、リスト2のコントローラーには、&lt;NonAction&gt; 属性で修飾された、企業秘密 () という名前のパブリックメソッドが含まれています。</span><span class="sxs-lookup"><span data-stu-id="37abe-133">For example, the controller in Listing 2 contains a public method named CompanySecrets() that is decorated with the &lt;NonAction&gt; attribute.</span></span>
+<span data-ttu-id="d618d-132">コントローラ クラスでパブリック メソッドを作成する必要があり、そのメソッドをコントローラ アクションとして公開しない場合は&lt;、NonAction&gt;属性を使用してメソッドが呼び出されないようにできます。</span><span class="sxs-lookup"><span data-stu-id="d618d-132">If you need to create a public method in a controller class and you don't want to expose the method as a controller action then you can prevent the method from being invoked by using the &lt;NonAction&gt; attribute.</span></span> <span data-ttu-id="d618d-133">たとえば、リスト 2 のコントローラには、NonAction&lt;&gt;属性で修飾された CompanySecrets() という名前のパブリック メソッドが含まれています。</span><span class="sxs-lookup"><span data-stu-id="d618d-133">For example, the controller in Listing 2 contains a public method named CompanySecrets() that is decorated with the &lt;NonAction&gt; attribute.</span></span>
 
-<span data-ttu-id="37abe-134">**リスト 2-コントローラーの一覧表示 (vb)**</span><span class="sxs-lookup"><span data-stu-id="37abe-134">**Listing 2 - Controllers\WorkController.vb**</span></span>
+<span data-ttu-id="d618d-134">**リスト 2 - コントローラー\ワークコントローラー.vb**</span><span class="sxs-lookup"><span data-stu-id="d618d-134">**Listing 2 - Controllers\WorkController.vb**</span></span>
 
 [!code-vb[Main](creating-an-action-vb/samples/sample2.vb)]
 
-<span data-ttu-id="37abe-135">ブラウザーのアドレスバーに「/職場/会社のシークレット」と入力して、会社のシークレット () コントローラーの操作を呼び出そうとすると、図1のエラーメッセージが表示されます。</span><span class="sxs-lookup"><span data-stu-id="37abe-135">If you attempt to invoke the CompanySecrets() controller action by typing /Work/CompanySecrets into the address bar of your browser then you'll get the error message in Figure 1.</span></span>
+<span data-ttu-id="d618d-135">ブラウザーのアドレス バーに /Work/CompanySecrets と入力して CompanySecrets() コントローラー アクションを呼び出そうとすると、図 1 のエラー メッセージが表示されます。</span><span class="sxs-lookup"><span data-stu-id="d618d-135">If you attempt to invoke the CompanySecrets() controller action by typing /Work/CompanySecrets into the address bar of your browser then you'll get the error message in Figure 1.</span></span>
 
-<span data-ttu-id="37abe-136">[非アクションメソッドを呼び出す ![](creating-an-action-vb/_static/image1.jpg)](creating-an-action-vb/_static/image1.png)</span><span class="sxs-lookup"><span data-stu-id="37abe-136">[![Invoking a NonAction method](creating-an-action-vb/_static/image1.jpg)](creating-an-action-vb/_static/image1.png)</span></span>
+<span data-ttu-id="d618d-136">[![非アクション メソッドの呼び出し](creating-an-action-vb/_static/image1.jpg)](creating-an-action-vb/_static/image1.png)</span><span class="sxs-lookup"><span data-stu-id="d618d-136">[![Invoking a NonAction method](creating-an-action-vb/_static/image1.jpg)](creating-an-action-vb/_static/image1.png)</span></span>
 
-<span data-ttu-id="37abe-137">**図 01**: 非アクションメソッドの呼び出し ([クリックすると、フルサイズの画像が表示](creating-an-action-vb/_static/image2.png)される)</span><span class="sxs-lookup"><span data-stu-id="37abe-137">**Figure 01**: Invoking a NonAction method([Click to view full-size image](creating-an-action-vb/_static/image2.png))</span></span>
+<span data-ttu-id="d618d-137">**図 01**: NonAction メソッドの呼び出し ([フルサイズの画像を表示する をクリック](creating-an-action-vb/_static/image2.png)して)</span><span class="sxs-lookup"><span data-stu-id="d618d-137">**Figure 01**: Invoking a NonAction method([Click to view full-size image](creating-an-action-vb/_static/image2.png))</span></span>
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="37abe-138">[前へ](creating-a-controller-vb.md)
-> [次へ](aspnet-mvc-controllers-overview-cs.md)</span><span class="sxs-lookup"><span data-stu-id="37abe-138">[Previous](creating-a-controller-vb.md)
+> <span data-ttu-id="d618d-138">[前へ](creating-a-controller-vb.md)
+> [次へ](aspnet-mvc-controllers-overview-cs.md)</span><span class="sxs-lookup"><span data-stu-id="d618d-138">[Previous](creating-a-controller-vb.md)
 [Next](aspnet-mvc-controllers-overview-cs.md)</span></span>
