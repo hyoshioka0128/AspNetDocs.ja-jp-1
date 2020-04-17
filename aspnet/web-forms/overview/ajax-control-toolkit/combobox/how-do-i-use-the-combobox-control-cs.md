@@ -1,155 +1,155 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-cs
-title: ComboBox コントロールを使用操作方法には (C#) |Microsoft Docs
-author: microsoft
-description: ComboBox は、テキストボックスの柔軟性と、ユーザーが選択できるオプションの一覧を組み合わせた ASP.NET AJAX コントロールです。
+title: コンボ ボックス コントロールを使用する方法 (C#) |マイクロソフトドキュメント
+author: rick-anderson
+description: コンボ ボックスは、ユーザーが選択できるオプションのリストとテキスト ボックスの柔軟性を組み合わせたASP.NET AJAX コントロールです。
 ms.author: riande
 ms.date: 05/12/2009
 ms.assetid: 0bbf4134-04df-4226-8930-d5bb99e27128
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1c5fc61300441303b39e348d3eee83b6ee6847b4
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 2adb9663cb7bdc38f28a127f7932f45a3447d1de
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78446542"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81543806"
 ---
-# <a name="how-do-i-use-the-combobox-control-c"></a>ComboBox コントロールを使用操作方法には (C#)
+# <a name="how-do-i-use-the-combobox-control-c"></a>コンボ ボックス コントロールを使用する方法 (C#)
 
-[Microsoft](https://github.com/microsoft)
+[マイクロソフト](https://github.com/microsoft)
 
-> ComboBox は、テキストボックスの柔軟性と、ユーザーが選択できるオプションの一覧を組み合わせた ASP.NET AJAX コントロールです。
+> コンボ ボックスは、ユーザーが選択できるオプションのリストとテキスト ボックスの柔軟性を組み合わせたASP.NET AJAX コントロールです。
 
-このチュートリアルの目的は、AJAX Control Toolkit ComboBox コントロールについて説明することです。 ComboBox は、標準の ASP.NET DropDownList コントロールと TextBox コントロールの組み合わせと同様に機能します。 既存の項目の一覧から選択するか、新しい項目を入力することができます。
+このチュートリアルの目的は、AJAX コントロール ツールキットコンボ ボックス コントロールについて説明することです。 コンボ ボックスは、標準のASP.NETドロップダウン リスト コントロールとテキスト ボックス コントロールの組み合わせのように機能します。 既存の項目リストから選択するか、新しい項目を入力することができます。
 
-ComboBox は AutoComplete コントロールエクステンダーに似ていますが、コントロールはさまざまなシナリオで使用されます。 オートコンプリートエクステンダーは、web サービスに対してクエリを行い、一致するエントリを取得します。 これに対し、ComboBox コントロールは、一連の項目で初期化されます。 オートコンプリートエクステンダーの使用は、大規模なデータセット (何百万もの車の部品) を使用しているときに、ComboBox コントロールを使用しているときに意味があります。これは、少数のデータ (多数の自動車部品) を使用する場合に適しています。
+ComboBox はオートコンプリート コントロール エクステンダに似ていますが、コントロールはさまざまなシナリオで使用されます。 オートコンプリート エクステンダは、Web サービスに対して一致するエントリを取得するクエリを実行します。 これに対し、ComboBox コントロールは項目のセットで初期化されます。 オートコンプリート エクステンダを使用すると、コンボ ボックス コントロールを使用しながら、大量のデータ セット (数百万台の自動車部品) を操作する場合に意味があります。
 
-## <a name="selecting-from-a-static-list-of-items"></a>項目の静的なリストからの選択
+## <a name="selecting-from-a-static-list-of-items"></a>アイテムの静的リストからの選択
 
-まず、ComboBox コントロールを使用した簡単なサンプルを見てみましょう。 ドロップダウンリストに項目の静的なリストを表示する場合を考えてみましょう。 ただし、リストが完全ではない可能性を開いたままにしておく必要があります。 ユーザーがリストにカスタム値を入力できるようにする場合。
+コンボ ボックス コントロールの使用の簡単なサンプルから始めましょう。 ドロップダウン リストに項目の静的な一覧を表示するとします。 ただし、リストが完全でない可能性を開いたままにしておきたい場合は、次の手順に示します。 ユーザーがリストにカスタム値を入力できるようにする場合。
 
-新しい ASP.NET Web フォームページを作成し、ページの ComboBox コントロールを使用します。 新しい ASP.NET ページをプロジェクトに追加し、デザインビューに切り替えます。
+新しい web フォーム ページASP.NET作成し、ページでコンボ ボックス コントロールを使用します。 新しいASP.NET ページをプロジェクトに追加し、デザイン ビューに切り替えます。
 
-ページで ComboBox コントロールを使用する場合は、ScriptManager コントロールをページに追加する必要があります。 [AJAX 拡張] タブの下からデザイナー画面に ScriptManager コントロールをドラッグします。 ページの上部に ScriptManager コントロールを追加する必要があります。&gt; タグを開いているサーバー側 &lt;フォームのすぐ下に追加できます。
+ページで ComboBox コントロールを使用する場合は、ページに ScriptManager コントロールを追加する必要があります。 ScriptManager コントロールを [AJAX 拡張機能] タブの下からデザイナー画面にドラッグします。 ページの上部に ScriptManager コントロールを追加する必要があります。開いているサーバー側&lt;フォーム&gt;タグのすぐ下に追加できます。
 
-次に、ComboBox コントロールをページにドラッグします。 ツールボックスの ComboBox コントロールは、他の AJAX Control Toolkit コントロールとコントロールエクステンダーを使用して見つけることができます (「図1」を参照してください)。
+次に、コンボ ボックス コントロールをページにドラッグします。 他の AJAX コントロール ツールキット コントロールとコントロール エクステンダ (図 1 を参照) と共に、ツールボックスで ComboBox コントロールを見つけることができます。
 
-[名刺を作成するためのシンプルなフォーム ![](how-do-i-use-the-combobox-control-cs/_static/image1.jpg)](how-do-i-use-the-combobox-control-cs/_static/image1.png)
+[![名刺を作成するための簡単なフォーム](how-do-i-use-the-combobox-control-cs/_static/image1.jpg)](how-do-i-use-the-combobox-control-cs/_static/image1.png)
 
-**図 01**: ツールボックスから ComboBox コントロールを選択[する (クリックすると、フルサイズの画像が表示](how-do-i-use-the-combobox-control-cs/_static/image2.png)されます)
+**図 01**: ツールボックスから ComboBox コントロールを選択する ([フルサイズの画像を表示する をクリック](how-do-i-use-the-combobox-control-cs/_static/image2.png)します)
 
-ComboBox コントロールを使用して、選択肢の静的リストを表示します。 ユーザーは、[軽度]、[中]、[ホット] の3つの選択肢の一覧から、食品の特定のレベルの spiciness を選択できます (図2を参照)。
+コンボ ボックス コントロールを使用して、選択肢の静的な一覧を表示します。 ユーザーは、マイルド、ミディアム、ホットの 3 つの選択肢から、食品の特定のレベルのスパイシーを選択できます (図 2 参照)。
 
-[項目の静的なリストから選択 ![](how-do-i-use-the-combobox-control-cs/_static/image2.jpg)](how-do-i-use-the-combobox-control-cs/_static/image3.png)
+[![項目の静的リストからの選択](how-do-i-use-the-combobox-control-cs/_static/image2.jpg)](how-do-i-use-the-combobox-control-cs/_static/image3.png)
 
-**図 02**: 項目の静的なリストから選択[する (クリックすると、フルサイズの画像が表示](how-do-i-use-the-combobox-control-cs/_static/image4.png)される)
+**図 02**: 項目の静的な一覧から選択する ([フルサイズの画像を表示する をクリック](how-do-i-use-the-combobox-control-cs/_static/image4.png)して)
 
-これらの選択肢を ComboBox コントロールに追加するには、次の2つの方法があります。 最初に、デザインビューのコントロールの上にマウスポインターを置いたときに [オプションの編集] タスクオプションを選択し、項目エディターを開きます (図3を参照)。
+これらの選択肢を ComboBox コントロールに追加するには、2 つの方法があります。 まず、デザイン ビューでコントロールの上にマウス を置くときに[オプションの編集]タスク オプションを選択し、アイテム エディタを開きます (図 3 参照)。
 
-[ComboBox 項目の編集 ![](how-do-i-use-the-combobox-control-cs/_static/image3.jpg)](how-do-i-use-the-combobox-control-cs/_static/image5.png)
+[![コンボ ボックス項目の編集](how-do-i-use-the-combobox-control-cs/_static/image3.jpg)](how-do-i-use-the-combobox-control-cs/_static/image5.png)
 
-**図 03**: ComboBox 項目の編集 ([クリックしてフルサイズのイメージを表示する](how-do-i-use-the-combobox-control-cs/_static/image6.png))
+**図 03**: コンボ ボックス項目の編集 ([フルサイズの画像を表示する をクリック](how-do-i-use-the-combobox-control-cs/_static/image6.png))
 
-2つ目の方法は、ソースビューの開始タグと終了 &lt;asp: ComboBox&gt; タグの間に項目の一覧を追加する方法です。 リスト1のページには、項目の一覧を含む更新されたコンボボックスが含まれています。
+2 番目のオプションは、ソース ビューで、開始と終了&lt;の間の項目の&gt;リストを追加します。 リスト 1 のページには、項目の一覧を含む更新された ComboBox が含まれています。
 
-**リスト 1-Static .aspx**
+**リスト 1 - 静的.aspx**
 
 [!code-aspx[Main](how-do-i-use-the-combobox-control-cs/samples/sample1.aspx)]
 
-リスト1のページを開いたときに、コンボボックスから既存のオプションのいずれかを選択できます。 つまり、コンボボックスは DropDownList コントロールと同様に動作します。
+リスト 1 でページを開くと、コンボ ボックスから既存のオプションのいずれかを選択できます。 つまり、コンボ ボックスは、ドロップダウン リスト コントロールと同じように機能します。
 
-ただし、既存のリストに含まれていない新しい選択肢 (たとえば、Super Spicy) を入力することもできます。 そのため、ComboBox は TextBox コントロールと同様に動作します。
+ただし、既存のリストにない新しい選択肢 (スーパースパイシーなど) を入力することもできます。 したがって、コンボ ボックスもテキスト ボックス コントロールのように動作します。
 
-既存の項目を選択するか、カスタム項目を入力するかにかかわらず、フォームを送信すると、ラベルコントロールに選択内容が表示されます。 フォームを送信すると、btnSubmit\_クリックハンドラーが実行され、ラベルが更新されます (図4を参照)。
+既存のアイテムを選択するか、カスタム アイテムを入力するかにかかわらず、フォームを送信すると、選択した項目がラベル コントロールに表示されます。 フォームを送信すると、btnSubmit\_Click ハンドラが実行され、ラベルが更新されます (図 4 参照)。
 
-[選択した項目を表示 ![](how-do-i-use-the-combobox-control-cs/_static/image4.jpg)](how-do-i-use-the-combobox-control-cs/_static/image7.png)
+[![選択した項目の表示](how-do-i-use-the-combobox-control-cs/_static/image4.jpg)](how-do-i-use-the-combobox-control-cs/_static/image7.png)
 
-**図 04**: 選択した項目の表示 ([クリックすると、フルサイズの画像が表示](how-do-i-use-the-combobox-control-cs/_static/image8.png)されます)
+**図04**: 選択した項目を表示する ([フルサイズの画像を表示する をクリック](how-do-i-use-the-combobox-control-cs/_static/image8.png))
 
-コンボボックスでは、フォームの送信後に選択した項目を取得するための DropDownList コントロールと同じプロパティがサポートされています。
+コンボ ボックス (ComboBox) コントロールは、フォームの送信後に選択した項目を取得するための DropDownList コントロールと同じプロパティをサポートしています。
 
-- SelectedItem-選択された項目の Text プロパティの値を表示します。
-- SelectedItem-選択された項目の Value プロパティの値を表示するか、コンボボックスに入力されたテキストを表示します。
-- SelectedValue-SelectedItem と同じですが、このプロパティでは、既定の (初期) 選択された項目を指定できます。
+- 選択項目.テキスト - 選択した項目の Text プロパティの値を表示します。
+- SelectedItem.Value - 選択した項目の Value プロパティの値を表示するか、コンボ ボックスに入力されたテキストを表示します。
+- 選択値 - このプロパティを使用して、既定の (初期) 選択された項目を指定できる点を除いて、SelectedItem.Value と同じです。
 
-カスタムの選択項目をコンボボックスに入力すると、カスタムの選択項目が SelectedItem プロパティと SelectedItem プロパティの両方に割り当てられます。
+コンボ ボックスにカスタム選択を入力すると、カスタムの選択肢が SelectedItem.Text プロパティと SelectedItem.Value プロパティの両方に割り当てられます。
 
-## <a name="selecting-the-list-of-items-from-the-database"></a>データベースから項目の一覧を選択する
+## <a name="selecting-the-list-of-items-from-the-database"></a>データベースから項目のリストを選択する
 
-ComboBox によってデータベースから表示されるアイテムの一覧を取得できます。 たとえば、コンボボックスは、SqlDataSource コントロール、ObjectDataSource コントロール、LinqDataSource、または EntityDataSource にバインドできます。
+コンボ ボックス (ComboBox) コントロールに表示される項目の一覧をデータベースから取得できます。 たとえば、コンボ ボックスを SqlDataSource コントロール、オブジェクトデータ ソース コントロール、LinqDataSource、またはエンティティデータ ソースにバインドできます。
 
-たとえば、一連の映画をコンボボックスに表示したいとします。 ムービーデータベーステーブルからムービーの一覧を取得します。 次の手順に従います。
+コンボ ボックス (ComboBox) コントロールに映画の一覧を表示するとします。 映画の一覧を Movies データベース テーブルから取得する場合。 次の手順に従います。
 
-1. ムービー .aspx という名前のページを作成する
-2. Scriptmanager コントロールをページに追加します。これを行うには、ツールボックスの [AJAX 拡張] タブで ScriptManager をページにドラッグします。
-3. Combobox コントロールをページに追加します。このためには、コンボボックスをページにドラッグします。
-4. デザインビューで、ComboBox コントロールの上にマウスポインターを置き、 **[データソースの選択]** タスクオプションを選択します (図5を参照)。 データソース構成ウィザードが起動されます。
-5. **[データソースの選択]** ステップで、[新しいデータソースを &lt;&gt;] オプションを選択します。
-6. **データソースの種類を選択** ステップで、データベース を選択します。
-7. **[データ接続の選択]** ステップで、データベースを選択します (たとえば、MoviesDB)。
-8. **[アプリケーション構成ファイルへの接続文字列の保存]** ステップで、接続文字列を保存するオプションを選択します。
-9. **[Select ステートメントの構成]** ステップで、[ムービーデータベース] テーブルを選択し、すべての列を選択します。
-10. **クエリのテスト** ステップで、完了 をクリックします。
-11. **データソースの選択** ステップに戻り、表示するフィールドの タイトル 列と、データフィールドの Id 列を選択します (図を参照)。
-12. [OK] ボタンをクリックして、ウィザードを閉じます。
+1. という名前のページを作成します。
+2. ツールボックスの [AJAX 拡張機能] タブの下にあるページに ScriptManager をドラッグして、ScriptManager コントロールをページに追加します。
+3. ページにコンボ ボックス (ComboBox) コントロールを追加します。
+4. デザイン ビューで、コンボ ボックス コントロールの上にマウス を移動し、[**データ ソースの選択]** タスク オプションを選択します (図 5 参照)。 データ ソース構成ウィザードが起動します。
+5. [**データ ソースの選択]** の手順&lt;で、[新&gt;しいデータ ソース] オプションを選択します。
+6. [**データ ソースの種類の選択]** ステップで、[データベース] を選択します。
+7. [**データ接続の選択]** ステップで、データベース (例: MoviesDB.mdf) を選択します。
+8. [**接続文字列をアプリケーション構成ファイルに保存する**] ステップで、接続文字列を保存するオプションを選択します。
+9. 「**ステートメントの選択」ステップで**、Movies データベース表を選択し、すべての列を選択します。
+10. **[クエリのテスト**] ステップで、[完了] ボタンをクリックします。
+11. データ**ソースの選択**手順に戻り、表示するフィールドの [タイトル] 列とデータ フィールドの [Id] 列を選択します (図を参照)。
+12. [OK] をクリックしてウィザードを閉じます。
 
-[データソースの選択 ![](how-do-i-use-the-combobox-control-cs/_static/image5.jpg)](how-do-i-use-the-combobox-control-cs/_static/image9.png)
+[![データ ソースの選択](how-do-i-use-the-combobox-control-cs/_static/image5.jpg)](how-do-i-use-the-combobox-control-cs/_static/image9.png)
 
-**図 05**: データソースを選択[する (クリックすると、フルサイズの画像が表示](how-do-i-use-the-combobox-control-cs/_static/image10.png)される)
+**図 05**: データ ソースの選択 ([フルサイズの画像を表示する をクリック](how-do-i-use-the-combobox-control-cs/_static/image10.png))
 
-[データテキストフィールドと値フィールドを選択 ![には](how-do-i-use-the-combobox-control-cs/_static/image6.jpg)](how-do-i-use-the-combobox-control-cs/_static/image11.png)
+[![データテキストと値フィールドの選択](how-do-i-use-the-combobox-control-cs/_static/image6.jpg)](how-do-i-use-the-combobox-control-cs/_static/image11.png)
 
-**図 06**: データテキストフィールドと値フィールドを選択[する (クリックすると、フルサイズの画像が表示](how-do-i-use-the-combobox-control-cs/_static/image12.png)されます)
+**図 06**: データ テキストと値のフィールドを選択する ([フルサイズの画像を表示する をクリック](how-do-i-use-the-combobox-control-cs/_static/image12.png)して )
 
-上記の手順を完了すると、コンボボックスがムービーデータベーステーブルのムービーを表す SqlDataSource コントロールにバインドされます。 ページのソースは、リスト2のようになります (書式設定を少しずつクリーンアップしました)。
+上記の手順を完了すると、コンボ ボックスは、ムービー データベース テーブルから映画を表す SqlDataSource コントロールにバインドされます。 ページのソースはリスト 2 のようになります (書式設定を少しクリーンアップしました)。
 
-**リスト 2-default.aspx**
+**リスト 2 - 映画.aspx**
 
 [!code-aspx[Main](how-do-i-use-the-combobox-control-cs/samples/sample2.aspx)]
 
-ComboBox コントロールに、SqlDataSource コントロールを指す DataSourceID プロパティがあることに注意してください。 ブラウザーでページを開くと、データベースからのムービーの一覧が表示されます (図7を参照)。 リストからムービーを選択するか、コンボボックスにムービーを入力して新しいムービーを入力することができます。
+コントロールには、コントロールを指すデータ ソース ID プロパティがあることに注意してください。 ブラウザーでページを開くと、データベースからムービーの一覧が表示されます (図 7 参照)。 リストからムービーを選択するか、または ComboBox にムービーを入力して新しいムービーを入力できます。
 
-[ムービーの一覧を表示 ![には](how-do-i-use-the-combobox-control-cs/_static/image7.jpg)](how-do-i-use-the-combobox-control-cs/_static/image13.png)
+[![映画の一覧を表示する](how-do-i-use-the-combobox-control-cs/_static/image7.jpg)](how-do-i-use-the-combobox-control-cs/_static/image13.png)
 
-**図 07**: ムービーの一覧を表示[する (クリックすると、フルサイズの画像が表示](how-do-i-use-the-combobox-control-cs/_static/image14.png)される)
+**図 07**: 動画の一覧を表示する ([フルサイズの画像を表示する をクリック](how-do-i-use-the-combobox-control-cs/_static/image14.png))
 
-## <a name="setting-the-dropdownstyle"></a>DropDownStyle の設定
+## <a name="setting-the-dropdownstyle"></a>ドロップダウンスタイルの設定
 
-Combobox の DropDownStyle プロパティを使用して、コンボボックスの動作を変更できます。 このプロパティは、有効な値を受け入れます。
+コンボ ボックス の動作を変更するには、コンボ ボックスのドロップダウンスタイルプロパティを使用できます。 このプロパティは、次の値を受け取ります。
 
-- ドロップダウン-(既定値) 矢印をクリックするとドロップダウンリストが表示され、カスタム値を入力できます。
-- Simple-ComboBox にはドロップダウンリストが自動的に表示され、カスタム値を入力できます。
-- DropDownList-コンボボックスは、DropDownList コントロールと同様に動作します。
+- ドロップダウン - (既定値) コンボ ボックス (ComboBox) 矢印をクリックすると、ドロップダウン リストが表示され、カスタム値を入力できます。
+- シンプル - コンボボックスは、自動的にドロップダウンリストを表示し、カスタム値を入力することができます。
+- ドロップダウン リスト - コンボ ボックスは、ドロップダウン リスト コントロールと同じように機能します。
 
-ドロップダウンと単純の違いは、項目の一覧が表示されるときです。 Simple の場合、コンボボックスにフォーカスを移動するとすぐに一覧が表示されます。 ドロップダウンの場合は、矢印をクリックして項目の一覧を表示する必要があります。
+ドロップダウンとシンプルの違いは、項目のリストが表示される場合です。 Simple の場合、コンボ ボックスにフォーカスを移動すると、すぐにリストが表示されます。 ドロップダウンの場合は、矢印をクリックして項目の一覧を表示する必要があります。
 
-DropDownList 値を指定すると、ComboBox コントロールは標準の DropDownList コントロールと同じように動作します。 ただし、ここでは重要な違いがあります。 以前のバージョンの Internet Explorer では、最前面に配置されているコントロールの前にコントロールが表示されるように、z インデックスが無制限の DropDownList コントロールが表示されます。 ComboBox では、html &lt;select&gt; タグではなく、HTML &lt;div&gt; タグがレンダリングされるため、ComboBox は z 順序を正しく反映します。
+ドロップダウン リストの値を使用すると、コンボ ボックス コントロールは標準のドロップダウン リスト コントロールと同じように動作します。 しかし、ここで重要な違いがあります。 古いバージョンの Internet Explorer では、無限の z インデックスを持つ DropDownList コントロールが表示されるため、コントロールはその前に配置されたコントロールの前に表示されます。 コンボ ボックス&lt;は HTML&gt;&lt;選択&gt;タグの代わりに HTML div タグを表示するため、コンボ ボックスは z の順序を正しく考慮します。
 
-## <a name="setting-the-autocompletemode"></a>Autocompletemode.none の設定
+## <a name="setting-the-autocompletemode"></a>オートコンプリートモードの設定
 
-Combobox にテキストを入力するとどうなるかを指定するには、ComboBox Autocompletemode.none プロパティを使用します。 このプロパティは、次の有効な値を受け入れます。
+コンボ ボックスのオートコンプリート モード プロパティを使用して、コンボ ボックスにテキストを入力したときに発生する動作を指定します。 このプロパティは、次の値を受け入れます。
 
-- None-(既定値) コンボボックスにオートコンプリートの動作が指定されていません。
-- [提案]-コンボボックスに一覧が表示され、一覧内の一致する項目が強調表示されます (図8を参照)。
-- Append-ComboBox はリストを表示せず、一致する項目をリストから入力したものに追加します (図9を参照)。
-- SuggestAppend-ComboBox は、リストを表示し、一致する項目をリストから入力したものに追加します (図10を参照)。
+- なし - (既定値) コンボ ボックス (ComboBox) はオートコンプリート動作を提供しません。
+- 提案 - コンボ ボックス (ComboBox) コントロールは一覧を表示し、一致する項目をリストに強調表示します (図 8 参照)。
+- 追加 - ComboBox はリストを表示せず、入力した項目に一致する項目をリストから追加します (図 9 参照)。
+- SuggestAppend - コンボ ボックス (ComboBox) コントロールは、リストを表示し、入力した項目に一致する項目をリストから追加します (図 10 参照)。
 
-[ComboBox が提案を ![](how-do-i-use-the-combobox-control-cs/_static/image8.jpg)](how-do-i-use-the-combobox-control-cs/_static/image15.png)
+[![コンボボックスが提案を行います](how-do-i-use-the-combobox-control-cs/_static/image8.jpg)](how-do-i-use-the-combobox-control-cs/_static/image15.png)
 
-**図 08**: コンボボックスを使用して、提案を作成[する (クリックすると、フルサイズの画像が表示](how-do-i-use-the-combobox-control-cs/_static/image16.png)されます)
+**図08**: コンボボックスが提案を行う([フルサイズの画像を表示する をクリック](how-do-i-use-the-combobox-control-cs/_static/image16.png))
 
-[![ComboBox は一致するテキストを追加します](how-do-i-use-the-combobox-control-cs/_static/image9.jpg)](how-do-i-use-the-combobox-control-cs/_static/image17.png)
+[![一致するテキストを追加するコンボ ボックス](how-do-i-use-the-combobox-control-cs/_static/image9.jpg)](how-do-i-use-the-combobox-control-cs/_static/image17.png)
 
-**図 09**: ComboBox によって一致するテキストが追加される ([クリックすると、フルサイズの画像が表示](how-do-i-use-the-combobox-control-cs/_static/image18.png)される)
+**図 09**: ComboBox が一致するテキストを追加します ([フルサイズの画像を表示する をクリック](how-do-i-use-the-combobox-control-cs/_static/image18.png)します)
 
-[ComboBox によって提案され、追加さ ![](how-do-i-use-the-combobox-control-cs/_static/image10.jpg)](how-do-i-use-the-combobox-control-cs/_static/image19.png)
+[![コンボ ボックス (コンボ ボックス) の提案と追加](how-do-i-use-the-combobox-control-cs/_static/image10.jpg)](how-do-i-use-the-combobox-control-cs/_static/image19.png)
 
-**図 10**: コンボボックスが提案して追加[する (クリックすると、フルサイズの画像が表示](how-do-i-use-the-combobox-control-cs/_static/image20.png)されます)
+**図10**: コンボボックスの提案と追加([フルサイズの画像を表示するをクリック](how-do-i-use-the-combobox-control-cs/_static/image20.png))
 
 ## <a name="summary"></a>まとめ
 
-このチュートリアルでは、ComboBox コントロールを使用して、固定された一連の項目を表示する方法について学習しました。 ComboBox コントロールは、項目の静的なセットとデータベーステーブルの両方にバインドされています。 最後に、DropDownStyle プロパティと Autocompletemode.none プロパティを設定して、ComboBox の動作を変更する方法を学習しました。
+このチュートリアルでは、ComboBox コントロールを使用して、固定された項目のセットを表示する方法を学習しました。 ComboBox コントロールを静的な項目セットとデータベース テーブルの両方にバインドしました。 最後に、コンボ ボックスの動作を変更する方法を学習しました。
 
 > [!div class="step-by-step"]
-> [Next](how-do-i-use-the-combobox-control-vb.md)
+> [次へ](how-do-i-use-the-combobox-control-vb.md)

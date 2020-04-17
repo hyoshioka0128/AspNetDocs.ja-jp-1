@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-master-pages-and-site-navigation
-title: '[操作方法:]マスターページとサイトナビゲーションを使用しますか? | Microsoft Docs'
-author: microsoft
-description: ASP.NET 2.0 MasterPages を使用して、レイアウトが一貫し、すべてのページでデザインされた web サイトを作成します。 Web サイトへのナビゲーションの追加がいかに簡単であるかをご覧ください...
+title: '[どのように私は:]マスター ページとサイト ナビゲーションを使用する | Microsoft Docs'
+author: rick-anderson
+description: 2.0 MasterPages を使用して、すべてのページにわたって一貫したレイアウトとデザインを持つ Web サイトASP.NET作成します。 ナビゲーションを Web サイトに追加するのがいかに簡単かを確認してください。
 ms.author: riande
 ms.date: 01/11/2006
 ms.assetid: e598bb3b-4e2e-4a71-a255-3ee89061ce7a
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-master-pages-and-site-navigation
 msc.type: video
-ms.openlocfilehash: f12f2d79577f2cdf18ad668d3e2600cd75d9d10a
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: ec0b90e538384c038809ba7a71884ee84cd7492f
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78488248"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81543536"
 ---
-# <a name="how-do-i-use-master-pages-and-site-navigation"></a>[操作方法:]マスターページとサイトナビゲーションを使用しますか?
+# <a name="how-do-i-use-master-pages-and-site-navigation"></a>[どのように私は:]マスター ページとサイト ナビゲーションを使用する
 
-[Microsoft](https://github.com/microsoft)
+[マイクロソフト](https://github.com/microsoft)
 
-ASP.NET 2.0 MasterPages を使用して、レイアウトが一貫し、すべてのページでデザインされた web サイトを作成します。 新しい TreeView コントロールと SiteMapPath コントロールを使用して、web サイトへのナビゲーションの追加がいかに簡単であるかをご覧ください。
+2.0 MasterPages を使用して、すべてのページにわたって一貫したレイアウトとデザインを持つ Web サイトASP.NET作成します。 新しい TreeView コントロールと SiteMapPath コントロールを使用して、Web サイトにナビゲーションを追加する方法を確認します。
 
-[&#9654;ビデオを見る (13 分)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-master-pages-and-site-navigation)
+[&#9654; ビデオを見る (13 分)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-master-pages-and-site-navigation)

@@ -1,27 +1,27 @@
 ---
 uid: web-forms/videos/sql-2005/what-is-a-database
-title: データベースとは何ですか | Microsoft Docs
-author: microsoft
-description: この概要は、質問を取り上げています、用語の SQL Server の初心者を作成およびなど、データベースを管理する必要があります SQL Server データベースとは何ですか? どう。。。
+title: データベースとは | Microsoft Docs
+author: rick-anderson
+description: ここでは、SQL Server の初心者がデータベースを作成および管理するために必要な質問と用語について説明します。 どう。。。
 ms.author: riande
 ms.date: 03/29/2006
 ms.assetid: 560d2455-ce08-4b2a-900d-7e9ccf82e048
 msc.legacyurl: /web-forms/videos/sql-2005/what-is-a-database
 msc.type: video
-ms.openlocfilehash: 019383897daeb7d8885ea4b9c3609e7f8ef9f827
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: ae7cdc3bfb84bcbf1846a825fd2e41f8c49de1f4
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78517402"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81543198"
 ---
-# <a name="what-is-a-database"></a>データベースとは何ですか
+# <a name="what-is-a-database"></a>データベースとは
 
-[Microsoft](https://github.com/microsoft)
+[マイクロソフト](https://github.com/microsoft)
 
-この概要は、質問を取り上げています、用語の SQL Server の初心者を作成およびなど、データベースを管理する必要があります SQL Server データベースとは何ですか? SQL Server データベースと Excel スプレッドシートの違い Web サイトまたはソフトウェアアプリケーションで SQL Server データベースはどのようなものですか。 Visual Studio Express に対する SQL Server Express の関係 "ADO.NET" という意味は何ですか。
+ここでは、SQL Server の初心者がデータベースを作成および管理するために必要な質問と用語について説明します。 SQL Server データベースと Excel スプレッドシートの違いは何ですか。 SQL Server データベースは、Web サイトやソフトウェア アプリケーションで何をしますか? SQL Server エクスプレスとビジュアル スタジオ エクスプレスとの関係は何ですか? 「ADO.NET」のような用語は何を意味しますか?
 
-[&#9654;ビデオを見る (28 分)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/what-is-a-database)
+[&#9654; ビデオを見る (28 分)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/what-is-a-database)
 
 > [!div class="step-by-step"]
-> [Next](understanding-database-tables-and-records.md)
+> [次へ](understanding-database-tables-and-records.md)

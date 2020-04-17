@@ -1,165 +1,165 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/the-asp-net-2-0-page-model
-title: ASP.NET 2.0 ページモデル |Microsoft Docs
-author: microsoft
-description: ASP.NET 1.x では、開発者はインラインコードモデルとコードビハインドコードモデルのどちらかを選択できました。 分離コードを実装するには、Src attr...
+title: ASP.NET 2.0 ページモデル |マイクロソフトドキュメント
+author: rick-anderson
+description: ASP.NET 1.x では、開発者はインライン コード モデルと分離コード モデルのどちらかを選択しました。 分離コードは、Src attr..のいずれかを使用して実装できます。
 ms.author: riande
 ms.date: 02/20/2005
 ms.assetid: af4575a3-0ae3-4638-ba4d-218fad7a1642
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/the-asp-net-2-0-page-model
 msc.type: authoredcontent
-ms.openlocfilehash: bcb71b2b5a484e8756406867e08e8aa699a9024d
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 6c2435a06d04209db21fb8e075f68ff0b7a9ef7e
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78440710"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81542860"
 ---
-# <a name="the-aspnet-20-page-model"></a>ASP.NET 2.0 ページモデル
+# <a name="the-aspnet-20-page-model"></a>ASP.NET 2.0 ページ モデル
 
-[Microsoft](https://github.com/microsoft)
+[マイクロソフト](https://github.com/microsoft)
 
-> ASP.NET 1.x では、開発者はインラインコードモデルとコードビハインドコードモデルのどちらかを選択できました。 分離コードは、@Page ディレクティブの Src 属性または CodeBehind 属性を使用して実装できます。 ASP.NET 2.0 では、開発者はインラインコードと分離コードのどちらかを選択できますが、分離コードモデルは大幅に拡張されています。
+> ASP.NET 1.x では、開発者はインライン コード モデルと分離コード モデルのどちらかを選択しました。 分離コードは、@Pageディレクティブの Src 属性または分離コード属性を使用して実装できます。 ASP.NET 2.0 では、開発者はインライン コードと分離コードのどちらかを選択できますが、分離コード モデルが大幅に強化されています。
 
-ASP.NET 1.x では、開発者はインラインコードモデルとコードビハインドコードモデルのどちらかを選択できました。 分離コードは、@Page ディレクティブの Src 属性または CodeBehind 属性を使用して実装できます。 ASP.NET 2.0 では、開発者はインラインコードと分離コードのどちらかを選択できますが、分離コードモデルは大幅に拡張されています。
+ASP.NET 1.x では、開発者はインライン コード モデルと分離コード モデルのどちらかを選択しました。 分離コードは、@Pageディレクティブの Src 属性または分離コード属性を使用して実装できます。 ASP.NET 2.0 では、開発者はインライン コードと分離コードのどちらかを選択できますが、分離コード モデルが大幅に強化されています。
 
-## <a name="improvements-in-the-code-behind-model"></a>分離コードモデルの機能強化
+## <a name="improvements-in-the-code-behind-model"></a>分離コード モデルの改善点
 
-ASP.NET 2.0 の分離コードモデルの変更を完全に理解するために、ASP.NET 1.x に存在するモデルをすばやく確認することをお勧めします。
+ASP.NET 2.0 の分離コード モデルの変更点を完全に理解するために、モデルを 1.x に存在する場合は、そのモデルASP.NET迅速に確認することをお勧めします。
 
-## <a name="the-code-behind-model-in-aspnet-1x"></a>ASP.NET 1.x の分離コードモデル
+## <a name="the-code-behind-model-in-aspnet-1x"></a>ASP.NET 1.x の分離コード モデル
 
-ASP.NET 1.x では、分離コードモデルは ASPX ファイル (Web フォーム) とプログラミングコードを含む分離コードファイルで事前に記述されています。 2つのファイルは、ASPX ファイルの @Page ディレクティブを使用して接続されていました。 ASPX ページの各コントロールには、分離コードファイル内の対応する宣言がインスタンス変数として含まれていました。 分離コードファイルには、Visual Studio デザイナーに必要なイベントバインドおよび生成されたコードのコードも含まれています。 このモデルは非常にうまく機能しましたが、ASPX ページのすべての ASP.NET 要素が分離コードファイル内に対応するコードを必要としていたため、コードとコンテンツの分離は実際には行われませんでした。 たとえば、デザイナーが Visual Studio IDE の外部にある ASPX ファイルに新しいサーバーコントロールを追加した場合、分離コードファイル内にそのコントロールの宣言がないため、アプリケーションは中断されます。
+ASP.NET 1.x では、コード ビハインド モデルは ASPX ファイル (Web フォーム) と、プログラミング コードを含む分離コード ファイルで構成されていました。 2 つのファイルは、ASPX@Pageファイル内のディレクティブを使用して接続されています。 ASPX ページの各コントロールには、コード ビハインド ファイル内の対応する宣言がインスタンス変数として含まれています。 分離コード ファイルには、イベント バインディング用のコードと、Visual Studio デザイナーに必要な生成コードも含まれています。 このモデルはかなりうまく機能しましたが、ASPX ページ内のすべてのASP.NET要素は、分離コード ファイル内の対応するコードを必要とするため、コードとコンテンツの実際の分離はありませんでした。 たとえば、デザイナーが Visual Studio IDE の外部の ASPX ファイルに新しいサーバー コントロールを追加した場合、分離コード ファイルにそのコントロールの宣言がないため、アプリケーションが中断します。
 
-## <a name="the-code-behind-model-in-aspnet-20"></a>ASP.NET 2.0 の分離コードモデル
+## <a name="the-code-behind-model-in-aspnet-20"></a>ASP.NET 2.0 の分離コード モデル
 
-このモデルでは、ASP.NET 2.0 が大幅に改善されています。 ASP.NET 2.0 では、ASP.NET 2.0 で提供される新しい*部分クラス*を使用して分離コードが実装されます。 ASP.NET 2.0 の分離コードクラスは部分クラスとして定義されます。これは、クラス定義の一部だけが含まれることを意味します。 クラス定義の残りの部分は、実行時に ASPX ページを使用して ASP.NET 2.0 によって動的に生成されるか、Web サイトがプリコンパイルされます。 分離コードファイルと ASPX ページ間のリンクは、引き続き @ Page ディレクティブを使用して確立されます。 ただし、CodeBehind 属性または Src 属性の代わりに、ASP.NET 2.0 では、CodeFile 属性が使用されるようになりました。 継承属性は、ページのクラス名を指定するためにも使用されます。
+ASP.NET 2.0 はこのモデルを大幅に改善します。 ASP.NET 2.0 では、ASP.NET 2.0 で提供される新しい*部分クラス*を使用して分離コードが実装されます。 ASP.NET 2.0 の分離コード クラスは、部分クラスとして定義されています。 クラス定義の残りの部分は、実行時または Web サイトがプリコンパイルされるときに ASPX ページを使用して ASP.NET 2.0 によって動的に生成されます。 コード ビハインド ファイルと ASPX ページ間のリンクは、 @ Page ディレクティブを使用して確立されます。 ただし、分離コード属性または Src 属性の代わりに、ASP.NET 2.0 では CodeFile 属性が使用されるようになりました。 継承属性は、ページのクラス名を指定するためにも使用されます。
 
 一般的な @ Page ディレクティブは次のようになります。
 
 [!code-aspx[Main](the-asp-net-2-0-page-model/samples/sample1.aspx)]
 
-ASP.NET 2.0 分離コードファイルの一般的なクラス定義は、次のようになります。
+ASP.NET 2.0 の分離コード ファイルの一般的なクラス定義は、次のようになります。
 
 [!code-csharp[Main](the-asp-net-2-0-page-model/samples/sample2.cs)]
 
 > [!NOTE]
-> C#と Visual Basic は、現在部分クラスをサポートしている唯一のマネージ言語です。 そのため、J# を使用する開発者は、ASP.NET 2.0 で分離コードモデルを使用することはできません。
+> C# と Visual Basic は、現在部分クラスをサポートしている唯一のマネージ言語です。 したがって、J# を使用する開発者は、ASP.NET 2.0 で分離コード モデルを使用することはできません。
 
-新しいモデルでは、コードビハインドモデルが拡張されます。これは、開発者が作成したコードのみを含むコードファイルがあるためです。 また、分離コードファイルにインスタンス変数宣言がないため、コードとコンテンツの真の分離も提供します。
+開発者は、作成したコードのみを含むコード ファイルを作成するため、新しいモデルは分離コード モデルを強化します。 また、分離コード ファイルにはインスタンス変数の宣言がないため、コードとコンテンツを実際に分離できます。
 
 > [!NOTE]
-> ASPX ページの部分クラスはイベントバインドが行われる場所であるため、Visual Basic 開発者は、分離コードで Handles キーワードを使用してイベントをバインドすることで、わずかなパフォーマンスの向上を実感できます。 C#には同等のキーワードがありません。
+> ASPX ページの部分クラスはイベント バインディングが行われる場所であるため、Visual Basic の開発者は、分離コード内の Handles キーワードを使用してイベントをバインドすることで、パフォーマンスのわずかな向上を実現できます。 C# には、同等のキーワードはありません。
 
-## <a name="new--page-directive-attributes"></a>新しい @ Page ディレクティブ属性
+## <a name="new--page-directive-attributes"></a>新しい @ ページ ディレクティブ属性
 
-ASP.NET 2.0 では、@ Page ディレクティブに多くの新しい属性が追加されます。 ASP.NET 2.0 では、次の属性が追加されています。
+ASP.NET 2.0 は、 @ Page ディレクティブに多くの新しい属性を追加します。 次の属性は、ASP.NET 2.0 で新しく追加されています。
 
-## <a name="async"></a>非同期
+## <a name="async"></a>Async
 
-Async 属性を使用すると、ページを非同期に実行するように構成できます。 非同期ページについては、このモジュールで後ほど説明します。
+Async 属性を使用すると、非同期で実行されるページを構成できます。 このモジュールの後半で非同期ページを説明します。
 
-## <a name="asynctimeout"></a>AsyncTimeout
+## <a name="asynctimeout"></a>非同期タイムアウト
 
-非同期ページのタイムアウトを指定しました。 既定値は45秒です。
+非同期ページのタイムアウトを指定しました。 デフォルトは 45 秒です。
 
-## <a name="codefile"></a>CodeFile
+## <a name="codefile"></a>Codefile
 
-CodeFile 属性は、Visual Studio 2002/2003 の CodeBehind 属性に代わるものです。
+コード ファイル属性は、Visual Studio 2002/2003 の分離コード属性の代わりです。
 
-### <a name="codefilebaseclass"></a>CodeFileBaseClass
+### <a name="codefilebaseclass"></a>クラス
 
-CodeFileBaseClass 属性は、1つの基底クラスから複数のページを派生させる場合に使用します。 ASP.NET では部分クラスが実装されているため、この属性がないと、共有共通フィールドを使用する基本クラスは、ASPX ページで宣言されたコントロールを参照するために適切に機能しません。これは、ASP.NET コンパイルエンジンがページ内のコントロールに基づいて新しいメンバーを自動的に作成するためです。 このため、ASP.NET の2つ以上のページに共通の基本クラスが必要な場合は、CodeFileBaseClass 属性で基底クラスを指定し、その基底クラスから各 pages クラスを派生させる必要があります。 この属性を使用する場合は、CodeFile 属性も必要です。
+CodeFileBaseClass 属性は、複数のページを 1 つの基本クラスから派生させる場合に使用されます。 この属性を指定せずにASP.NET部分クラスを実装しているため、共有の共通フィールドを使用して ASPX ページで宣言されたコントロールを参照する基本クラスは、ASP.NETs コンパイル エンジンがページ内のコントロールに基づいて新しいメンバーを自動的に作成するため、正しく動作しません。 したがって、ASP.NETで 2 つ以上のページに共通の基本クラスを作成する場合は、CodeFileBaseClass 属性で基本クラスを定義し、その基本クラスから各ページ クラスを派生させる必要があります。 この属性を使用する場合は、CodeFile 属性も必要です。
 
-## <a name="compilationmode"></a>CompilationMode
+## <a name="compilationmode"></a>コンパイルモード
 
-この属性を使用すると、ASPX ページの CompilationMode プロパティを設定できます。 CompilationMode プロパティは、値**Always**、 **Auto**、および**Never**を含む列挙体です。 既定値は**常に**です。 **自動**設定では、可能であれば、ASP.NET がページを動的にコンパイルできないようにします。 動的コンパイルからページを除外すると、パフォーマンスが向上します。 ただし、除外されたページにコンパイルする必要があるコードが含まれている場合、ページが参照されるとエラーがスローされます。
+この属性を使用すると、ASPX ページのコンパイル モード プロパティを設定できます。 プロパティは、**値を含**む列挙体常に、**自動**、および**Never**です。 デフォルトは **[常に]** です。 **自動**設定を使用すると、可能な場合ASP.NETページが動的にコンパイルされるのを防ぐことができます。 動的コンパイルからページを除外すると、パフォーマンスが向上します。 ただし、除外されるページにコンパイルする必要のあるコードが含まれている場合は、ページを参照するときにエラーがスローされます。
 
-## <a name="enableeventvalidation"></a>EnableEventValidation
+## <a name="enableeventvalidation"></a>イベントの検証を有効にする
 
-この属性は、ポストバックイベントとコールバックイベントを検証するかどうかを指定します。 これが有効になっている場合、ポストバックまたはコールバックイベントの引数は、最初に表示されたサーバーコントロールから生成されたものであることを確認するためにチェックされます。
+この属性は、ポストバック イベントとコールバック イベントを検証するかどうかを指定します。 これが有効な場合、ポストバックイベントまたはコールバックイベントの引数がチェックされ、イベントを最初にレンダリングしたサーバー コントロールから発生していることを確認します。
 
-## <a name="enabletheming"></a>EnableTheming
+## <a name="enabletheming"></a>テーマを有効にする
 
-この属性は、ページで ASP.NET テーマを使用するかどうかを指定します。 既定値は **false** です。 ASP.NET のテーマについては、[モジュール 10](profiles-themes-and-web-parts.md)で説明します。
+この属性は、ASP.NETテーマをページで使用するかどうかを指定します。 デフォルトは**false**です。 ASP.NETテーマについては[、モジュール 10](profiles-themes-and-web-parts.md)で説明します。
 
-## <a name="linepragmas"></a>LinePragmas
+## <a name="linepragmas"></a>ラインプラグマ
 
-この属性は、コンパイル時に行プラグマを追加する必要があるかどうかを指定します。 行プラグマは、コードの特定のセクションをマークするためにデバッガーによって使用されるオプションです。
+この属性は、コンパイル時に行プラグマを追加するかどうかを指定します。 行プラグマは、デバッガーがコードの特定のセクションをマークするために使用するオプションです。
 
-## <a name="maintainscrollpositiononpostback"></a>MaintainScrollPositionOnPostback
+## <a name="maintainscrollpositiononpostback"></a>ポストバックのメンテナンススクロール位置
 
-この属性は、ポストバック間のスクロール位置を維持するために、ページに JavaScript を挿入するかどうかを指定します。 既定では、この属性は**false**です。
+この属性は、ポストバック間のスクロール位置を維持するために、ページに JavaScript を挿入するかどうかを指定します。 この属性は、デフォルトでは**false**です。
 
-この属性が**true**の場合、ASP.NET は次のような &lt;スクリプト&gt; ブロックをポストバックに追加します。
+この属性が**true の**場合、ASP.NET&lt;は&gt;次のようなスクリプト ブロックをポストバックに追加します。
 
 [!code-html[Main](the-asp-net-2-0-page-model/samples/sample3.html)]
 
-このスクリプトブロックの src は Webresource.axd です。 このリソースは物理パスではありません。 このスクリプトが要求されると、ASP.NET はスクリプトを動的に構築します。
+このスクリプト ブロックの src は WebResource.axd であることに注意してください。 このリソースは物理パスではありません。 このスクリプトが要求されると、ASP.NET動的にスクリプトが作成されます。
 
-### <a name="masterpagefile"></a>MasterPageFile
+### <a name="masterpagefile"></a>マスターページファイル
 
-この属性は、現在のページのマスターページファイルを指定します。 相対パスと絶対パスのどちらでも構いません。 マスターページについては、[モジュール 4](master-pages.md)で説明します。
+この属性は、現在のページのマスター ページ ファイルを指定します。 相対パスと絶対パスのどちらでも構いません。 マスター ページについては、[モジュール 4](master-pages.md)で説明します。
 
-## <a name="stylesheettheme"></a>StyleSheetTheme
+## <a name="stylesheettheme"></a>スタイルシートテーマ
 
-この属性を使用すると、ASP.NET 2.0 テーマによって定義されたユーザーインターフェイスの外観プロパティをオーバーライドできます。 テーマについては、[モジュール 10](profiles-themes-and-web-parts.md)で説明します。
+この属性を使用すると、ASP.NET 2.0 テーマで定義されたユーザー インターフェイスの外観プロパティをオーバーライドできます。 テーマについては[、モジュール 10](profiles-themes-and-web-parts.md)で説明します。
 
 ## <a name="theme"></a>テーマ
 
-ページのテーマを指定します。 StyleSheetTheme 属性に値が指定されていない場合、ページ上のコントロールに適用されるすべてのスタイルが Theme 属性によってオーバーライドされます。
+ページのテーマを指定します。 StyleSheetTheme 属性に値が指定されていない場合、テーマ属性はページ上のコントロールに適用されているすべてのスタイルをオーバーライドします。
 
 ## <a name="title"></a>タイトル
 
-ページのタイトルを設定します。 ここで指定した値は、表示されるページの &lt;title&gt; 要素に表示されます。
+ページのタイトルを設定します。 ここで指定した値は、レンダリングされた&lt;ページ&gt;の title 要素に表示されます。
 
-### <a name="viewstateencryptionmode"></a>ViewStateEncryptionMode
+### <a name="viewstateencryptionmode"></a>を使用します。
 
-ViewStateEncryptionMode 列挙体の値を設定します。 使用できる値は、**常**に、 **Auto**、および**Never**です。 既定値は**Auto**です。この属性が**Auto**の値に設定されている場合、viewstate は暗号化されます。これは、 **RegisterRequiresViewStateEncryption**メソッドを呼び出すことによってコントロールが要求します。
+列挙体の値を設定します。 使用できる値は **、[常時]、[****自動**]、[**しない**] です。 既定値は **[自動] です**。この属性が**Auto**の値に設定されている場合、ビューステートは暗号化され、コントロールは**RegisterRequiresViewStateEncryption**メソッドを呼び出して要求します。
 
-## <a name="setting-public-property-values-via-the--page-directive"></a>@ Page ディレクティブを使用したパブリックプロパティの値の設定
+## <a name="setting-public-property-values-via-the--page-directive"></a>@ Page ディレクティブを使用したパブリック プロパティ値の設定
 
-ASP.NET 2.0 の @ Page ディレクティブのもう1つの新機能は、基底クラスのパブリックプロパティの初期値を設定できることです。 たとえば、基底クラスに**テキスト**と呼ばれるパブリックプロパティがあり、ページが読み込まれるときに**Hello**に初期化されるとします。 これは、次のように @ Page ディレクティブの値を設定するだけで実現できます。
+ASP.NET 2.0 の @ Page ディレクティブのもう 1 つの新機能は、基本クラスのパブリック プロパティの初期値を設定する機能です。 たとえば、基本クラスに**SomeText**というパブリック プロパティがあり、ページが読み込まれたときに**Hello**に初期化するとします。 これを実現するには、@ Page ディレクティブの値を次のように設定するだけです。
 
 [!code-aspx[Main](the-asp-net-2-0-page-model/samples/sample4.aspx)]
 
-@ Page ディレクティブの**text**属性では、基底クラスのテキストプロパティの初期値が*Hello!* に設定されています。 次のビデオでは、@ Page ディレクティブを使用して基底クラスのパブリックプロパティの初期値を設定する方法を説明しています。
+@ Page ディレクティブの**SomeText**属性は、基本クラスの SomeText プロパティの初期値を*Hello!* に設定します。 次のビデオでは、 @ Page ディレクティブを使用して、基本クラスでパブリック プロパティの初期値を設定するチュートリアルです。
 
 ![](the-asp-net-2-0-page-model/_static/image1.png)
 
-[全画面表示のビデオを開く](the-asp-net-2-0-page-model/_static/setprop1.wmv)
+[フルスクリーンビデオを開く](the-asp-net-2-0-page-model/_static/setprop1.wmv)
 
-## <a name="new-public-properties-of-the-page-class"></a>ページクラスの新しいパブリックプロパティ
+## <a name="new-public-properties-of-the-page-class"></a>ページ クラスの新しいパブリック プロパティ
 
-ASP.NET 2.0 では、次のパブリックプロパティが追加されています。
+次のパブリック プロパティは、ASP.NET 2.0 で新しく追加されました。
 
-## <a name="apprelativetemplatesourcedirectory"></a>AppRelativeTemplateSourceDirectory
+## <a name="apprelativetemplatesourcedirectory"></a>ディレクトリ
 
-ページまたはコントロールへのアプリケーション相対パスを返します。 たとえば、 http://app/folder/page.aspxにあるページの場合、プロパティは ~/folder/. を返します。
+ページまたはコントロールへのアプリケーション相対パスを返します。 たとえば、 にあるhttp://app/folder/page.aspxページの場合、プロパティは ~/folder/ を返します。
 
-## <a name="apprelativevirtualpath"></a>AppRelativeVirtualPath
+## <a name="apprelativevirtualpath"></a>仮想パス
 
-ページまたはコントロールへの相対仮想ディレクトリパスを返します。 たとえば、 http://app/folder/page.aspxにあるページの場合、プロパティは ~/folder/page.aspx. を返します。
+ページまたはコントロールへの相対仮想ディレクトリ パスを返します。 たとえば、 にあるhttp://app/folder/page.aspxページの場合、プロパティは ~/フォルダー/page.aspx を返します。
 
-## <a name="asynctimeout"></a>AsyncTimeout
+## <a name="asynctimeout"></a>非同期タイムアウト
 
-非同期ページ処理に使用されるタイムアウトを取得または設定します。 (非同期ページについては、このモジュールで後ほど説明します)。
+非同期ページ処理に使用されるタイムアウトを取得または設定します。 (非同期ページについては、このモジュールの後半で説明します)。
 
-## <a name="clientquerystring"></a>ClientQueryString
+## <a name="clientquerystring"></a>クライアント文字列
 
-要求された URL のクエリ文字列部分を返す読み取り専用のプロパティ。 この値は、URL でエンコードされます。 設定クラスの UrlDecode メソッドを使用してデコードできます。
+要求された URL のクエリ文字列部分を返す読み取り専用プロパティ。 この値は URL エンコードされます。 クラスの UrlDecode メソッドを使用して、それをデコードできます。
 
-## <a name="clientscript"></a>ClientScript
+## <a name="clientscript"></a>クライアントスクリプト
 
-このプロパティは、クライアント側スクリプトの ClientScriptManager を管理するために使用できる、オブジェクトを返します。 (ClientScriptManager クラスについては、このモジュールで後ほど説明します)。
+このプロパティは、クライアント側スクリプトの ASP.NETs の発行を管理するために使用できる ClientScriptManager オブジェクトを返します。 (このモジュールでは、後でクラスについて説明します)。
 
-## <a name="enableeventvalidation"></a>EnableEventValidation
+## <a name="enableeventvalidation"></a>イベントの検証を有効にする
 
-このプロパティは、ポストバックイベントとコールバックイベントに対してイベントの検証を有効にするかどうかを制御します。 有効にすると、ポストバックまたはコールバックイベントの引数が検証され、最初に表示したサーバーコントロールからのものであることが確認されます。
+このプロパティは、イベントの検証がポストバック イベントとコールバック イベントに対して有効かどうかを制御します。 有効にすると、ポストバックイベントまたはコールバックイベントの引数が検証され、イベントを最初にレンダリングしたサーバー コントロールから発生していることを確認します。
 
-## <a name="enabletheming"></a>EnableTheming
+## <a name="enabletheming"></a>テーマを有効にする
 
-このプロパティは、ASP.NET 2.0 テーマがページに適用されるかどうかを指定するブール値を取得または設定します。
+このプロパティは、2.0 のテーマ ASP.NETをページに適用するかどうかを指定するブール値を取得または設定します。
 
 ## <a name="form"></a>Form
 
@@ -167,420 +167,420 @@ ASP.NET 2.0 では、次のパブリックプロパティが追加されてい�
 
 ## <a name="header"></a>ヘッダー
 
-このプロパティは、ページヘッダーを含む HtmlHead オブジェクトへの参照を返します。 返された HtmlHead オブジェクトを使用して、スタイルシートやメタタグなどを取得/設定できます。
+このプロパティは、ページ ヘッダーを含む HtmlHead オブジェクトへの参照を返します。 返された HtmlHead オブジェクトを使用して、スタイル シートやメタ タグなどを取得/設定できます。
 
-## <a name="idseparator"></a>IdSeparator
+## <a name="idseparator"></a>イドセパレータ
 
-この読み取り専用プロパティは、ASP.NET がページ上のコントロールの一意の ID を作成しているときに、コントロール識別子を区切るために使用される文字を取得します。 コードから直接使用するためのものではありません。
+この読み取り専用プロパティは、ASP.NETがページ上のコントロールの一意の ID を構築するときに、コントロール識別子を区切るために使用される文字を取得します。 コードから直接使用するためのものではありません。
 
 ## <a name="isasync"></a>IsAsync
 
-このプロパティでは、非同期ページを使用できます。 非同期ページについては、このモジュールで後ほど説明します。
+このプロパティは、非同期ページを使用できます。 非同期ページについては、このモジュールで後述します。
 
 ## <a name="iscallback"></a>IsCallback
 
-この読み取り専用プロパティは、ページがコールバックの結果である場合に**true**を返します。 コールバックについては、このモジュールで後ほど説明します。
+この読み取り専用プロパティは、ページがコールバックの結果である場合に**true**を返します。 コールバックについては、このモジュールで後述します。
 
-## <a name="iscrosspagepostback"></a>IsCrossPagePostBack
+## <a name="iscrosspagepostback"></a>ページポストバック
 
-この読み取り専用プロパティは、ページがクロスページポストバックの一部である場合に**true**を返します。 ページ間のポストバックについては、このモジュールで後ほど説明します。
+この読み取り専用プロパティは、ページがページ間ポストバックの一部である場合は**true**を返します。 ページ間のポストバックについては、このモジュールの後半で説明します。
 
 ## <a name="items"></a>アイテム
 
-ページコンテキストに格納されているすべてのオブジェクトを含む IDictionary インスタンスへの参照を返します。 この IDictionary オブジェクトに項目を追加すると、コンテキストの有効期間全体にわたって使用できるようになります。
+ページ コンテキストに格納されているすべてのオブジェクトを含む IDictionary インスタンスへの参照を返します。 この IDictionary オブジェクトに項目を追加すると、コンテキストの有効期間を通じて使用できます。
 
-## <a name="maintainscrollpositiononpostback"></a>MaintainScrollPositionOnPostBack
+## <a name="maintainscrollpositiononpostback"></a>ポストバックを維持します。
 
-このプロパティは、ポストバックが発生した後にブラウザーでページのスクロール位置を保持する JavaScript を ASP.NET が出力するかどうかを制御します。 (このプロパティの詳細については、このモジュールで既に説明しました)。
+このプロパティは、ポストバックASP.NET発生した後に、ブラウザーでページのスクロール位置を維持する JavaScript を出力するかどうかを制御します。 (このプロパティの詳細については、このモジュールで前述しました)。
 
 ## <a name="master"></a>Master
 
-この読み取り専用プロパティは、マスターページが適用されているページのマスターインスタンスへの参照を返します。
+この読み取り専用プロパティは、マスター ページが適用されているページの MasterPage インスタンスへの参照を返します。
 
-## <a name="masterpagefile"></a>MasterPageFile
+## <a name="masterpagefile"></a>マスターページファイル
 
-ページのマスターページのファイル名を取得または設定します。 このプロパティは、PreInit メソッドでのみ設定できます。
+ページのマスター ページのファイル名を取得または設定します。 このプロパティは、PreInit メソッドでのみ設定できます。
 
-## <a name="maxpagestatefieldlength"></a>MaxPageStateFieldLength
+## <a name="maxpagestatefieldlength"></a>フィールドの長さを変更します。
 
-このプロパティは、ページの状態の最大長をバイト単位で取得または設定します。 プロパティが正の値に設定されている場合、ページビューステートは、指定されたバイト数を超えないように、複数の非表示フィールドに分割されます。 プロパティが負の数の場合、ビューステートはチャンクに分割されません。
+このプロパティは、ページの状態の最大長をバイト単位で取得または設定します。 プロパティに正の数を設定すると、ページのビューステートは複数の隠しフィールドに分割され、指定したバイト数を超えないようにします。 プロパティが負の数の場合、ビュー ステートはチャンクに分割されません。
 
-## <a name="pageadapter"></a>PageAdapter
+## <a name="pageadapter"></a>ページアダプター
 
-要求側のブラウザーのページを変更する PageAdapter オブジェクトへの参照を返します。
+要求元のブラウザーのページを変更する PageAdapter オブジェクトへの参照を返します。
 
-## <a name="previouspage"></a>PreviousPage
+## <a name="previouspage"></a>Previouspage
 
-サーバー転送またはクロスページポストバックの場合に、前のページへの参照を返します。
+Server.Transfer またはページ間ポストバックの場合は、前のページへの参照を返します。
 
-## <a name="skinid"></a>SkinID
+## <a name="skinid"></a>Skinid
 
-ページに適用する ASP.NET 2.0 スキンを指定します。
+ページに適用するASP.NET 2.0 スキンを指定します。
 
-## <a name="stylesheettheme"></a>StyleSheetTheme
+## <a name="stylesheettheme"></a>スタイルシートテーマ
 
-このプロパティは、ページに適用されるスタイルシートを取得または設定します。
+このプロパティは、ページに適用されるスタイル シートを取得または設定します。
 
-## <a name="templatecontrol"></a>TemplateControl
+## <a name="templatecontrol"></a>テンプレートコントロール
 
-ページのコントロールを格納しているへの参照を返します。
+ページのコントロールを含むコントロールへの参照を返します。
 
 ## <a name="theme"></a>テーマ
 
-ページに適用される ASP.NET 2.0 テーマの名前を取得または設定します。 この値は、PreInit メソッドの前に設定する必要があります。
+ページに適用されるASP.NET 2.0 テーマの名前を取得または設定します。 この値は PreInit メソッドの前に設定する必要があります。
 
 ## <a name="title"></a>タイトル
 
-このプロパティは、ページヘッダーから取得されたページのタイトルを取得または設定します。
+このプロパティは、ページ ヘッダーから取得されたページのタイトルを取得または設定します。
 
-## <a name="viewstateencryptionmode"></a>ViewStateEncryptionMode
+## <a name="viewstateencryptionmode"></a>を使用します。
 
-ページの ViewStateEncryptionMode を取得または設定します。 このモジュールで前に説明したこのプロパティの詳細については、こちらを参照してください。
+ページのビューステート暗号化モードを取得または設定します。 このモジュールの前のこのプロパティの詳細な説明を参照してください。
 
-## <a name="new-protected-properties-of-the-page-class"></a>ページクラスの新しいプロテクトプロパティ
+## <a name="new-protected-properties-of-the-page-class"></a>ページ クラスの新しい保護されたプロパティ
 
-ASP.NET 2.0 のページクラスの新しいプロテクトプロパティを次に示します。
+次に示す新しい保護された Page クラスの ASP.NET 2.0.
 
 ## <a name="adapter"></a>アダプター
 
-要求したデバイス上でページをレンダリングする ControlAdapter への参照を返します。
+要求したデバイス上でページを表示する ControlAdapter への参照を返します。
 
-## <a name="asyncmode"></a>AsyncMode
+## <a name="asyncmode"></a>非同期モード
 
-このプロパティは、ページが非同期に処理されるかどうかを示します。 これは、コード内で直接使用するのではなく、ランタイムによって使用されることを意図しています。
+このプロパティは、ページが非同期で処理されるかどうかを示します。 これは、コード内で直接使用するものではなく、ランタイムで使用することを目的としています。
 
-## <a name="clientidseparator"></a>ClientIDSeparator
+## <a name="clientidseparator"></a>クライアント ID 区切り記号
 
-このプロパティは、コントロールの一意のクライアント Id を作成するときに区切り記号として使用される文字を返します。 これは、コード内で直接使用するのではなく、ランタイムによって使用されることを意図しています。
+このプロパティは、コントロールの一意のクライアント ID を作成するときに区切り文字として使用される文字を返します。 これは、コード内で直接使用するものではなく、ランタイムで使用することを目的としています。
 
-## <a name="pagestatepersister"></a>PageStatePersister
+## <a name="pagestatepersister"></a>ページステートパーシスター
 
-このプロパティは、ページの PageStatePersister オブジェクトを返します。 このプロパティは、主に ASP.NET コントロールの開発者によって使用されます。
+このプロパティは、ページの PageStatePersister オブジェクトを返します。 このプロパティは、主にASP.NETコントロール開発者によって使用されます。
 
-## <a name="uniquefilepathsuffix"></a>UniqueFilePathSuffix
+## <a name="uniquefilepathsuffix"></a>一意のファイルパスサフィックス
 
-このプロパティは、ブラウザーをキャッシュするためのファイルパスに追加される一意のサフィックスを返します。 既定値は \_\_ufps = および6桁の数字です。
+このプロパティは、ブラウザをキャッシュするためのファイル パスに付加される一意のサフィックスを返します。 デフォルト値は\_\_ufps= と 6 桁の数字です。
 
-## <a name="new-public-methods-for-the-page-class"></a>ページクラスの新しいパブリックメソッド
+## <a name="new-public-methods-for-the-page-class"></a>ページ クラスの新しいパブリック メソッド
 
-次のパブリックメソッドは、ASP.NET 2.0 のページクラスに新しく追加されたものです。
+次のパブリック メソッドは、ASP.NET 2.0 の Page クラスの新機能です。
 
-## <a name="addonprerendercompleteasync"></a>AddOnPreRenderCompleteAsync
+## <a name="addonprerendercompleteasync"></a>コンプリーレンダリングコンプリートアシンク
 
-このメソッドは、非同期ページ実行のイベントハンドラーデリゲートを登録します。 非同期ページについては、このモジュールで後ほど説明します。
+このメソッドは、非同期ページ実行のイベント ハンドラー デリゲートを登録します。 非同期ページについては、このモジュールで後述します。
 
-## <a name="applystylesheetskin"></a>ApplyStyleSheetSkin
+## <a name="applystylesheetskin"></a>スタイルシートスキンを適用する
 
-ページスタイルシートのプロパティをページに適用します。
+ページ スタイル シートのプロパティをページに適用します。
 
-## <a name="executeregisteredasynctasks"></a>ExecuteRegisteredAsyncTasks
+## <a name="executeregisteredasynctasks"></a>登録された非同期タスクを実行します。
 
-このメソッドは非同期タスクです。
+このメソッドは非同期タスクを使用します。
 
-### <a name="getvalidators"></a>GetValidators
+### <a name="getvalidators"></a>検証ツールを取得する
 
-指定された検証グループの検証コントロールのコレクションを返します。何も指定されていない場合は、既定の検証グループを返します。
+指定した検証グループの検証コントロールのコレクションを返します。
 
-## <a name="registerasynctask"></a>RegisterAsyncTask
+## <a name="registerasynctask"></a>同期タスクを登録します。
 
-このメソッドは、新しい非同期タスクを登録します。 非同期ページについては、このモジュールで後ほど説明します。
+このメソッドは、新しい非同期タスクを登録します。 非同期ページについては、このモジュールの後半で説明します。
 
-## <a name="registerrequirescontrolstate"></a>RegisterRequiresControlState
+## <a name="registerrequirescontrolstate"></a>コントロール状態を登録する
 
-このメソッドは、ページコントロールの状態を永続化する必要があることを ASP.NET に通知します。
+このメソッドは、ASP.NETページ コントロールの状態を永続化する必要があることを通知します。
 
-## <a name="registerrequiresviewstateencryption"></a>RegisterRequiresViewStateEncryption
+## <a name="registerrequiresviewstateencryption"></a>を要求します。
 
-このメソッドは、ページ viewstate に暗号化が必要であることを ASP.NET に通知します。
+このメソッドは、ページの viewstate に暗号化が必要であることをASP.NETに通知します。
 
-## <a name="resolveclienturl"></a>ResolveClientUrl
+## <a name="resolveclienturl"></a>クライアント Url を解決します。
 
-イメージに対するクライアント要求に使用できる相対 URL を返します。
+イメージなどのクライアント要求に使用できる相対 URL を返します。
 
 ## <a name="setfocus"></a>SetFocus
 
-このメソッドは、ページが最初に読み込まれるときに指定されるコントロールにフォーカスを設定します。
+このメソッドは、ページが最初に読み込まれるときに指定されたコントロールにフォーカスを設定します。
 
-## <a name="unregisterrequirescontrolstate"></a>UnregisterRequiresControlState
+## <a name="unregisterrequirescontrolstate"></a>登録を解除するコントロール状態を確認します。
 
-このメソッドは、コントロールの状態の永続化を必要としないように、渡されたコントロールの登録を解除します。
+このメソッドは、コントロール状態の永続化を必要としないために渡されたコントロールの登録を解除します。
 
 ## <a name="changes-to-the-page-lifecycle"></a>ページのライフサイクルの変更
 
-ASP.NET 2.0 のページライフサイクルは大幅に変更されていませんが、注意する必要がある新しい方法がいくつかあります。 ASP.NET 2.0 ページのライフサイクルは次のとおりです。
+ASP.NET 2.0 のページライフサイクルは劇的に変化していませんが、注意すべき新しい方法がいくつかあります。 ASP.NET 2.0 ページのライフサイクルについて、以下に概説します。
 
-## <a name="preinit-new-in-aspnet-20"></a>PreInit (ASP.NET 2.0 の新)
+## <a name="preinit-new-in-aspnet-20"></a>プレイニト(ASP.NET 2.0で新しい)
 
-PreInit イベントは、開発者がアクセスできる、ライフサイクルの最も早い段階です。 このイベントを追加すると、ASP.NET 2.0 のテーマ、マスターページ、ASP.NET 2.0 プロファイルのアクセスプロパティをプログラムで変更できるようになります。ポストバック状態の場合、Viewstate は、ライフサイクルのこの時点でコントロールにまだ適用されていないことを認識することが重要です。 このため、開発者がこの段階でコントロールのプロパティを変更すると、後でページのライフサイクルで上書きされる可能性があります。
+PreInit イベントは、開発者がアクセスできるライフサイクルの最も初期のステージです。 このイベントを追加すると、プログラムによって、2.0 のテーマ、マスター ページ、ASP.NET 2.0 プロファイルのプロパティへのアクセスなどをプログラムで ASP.NET変更できます。ポストバック状態にある場合は、ライフサイクルのこの時点で Viewstate がまだコントロールに適用されていないということを理解することが重要です。 したがって、開発者がこの段階でコントロールのプロパティを変更すると、ページのライフサイクルの後半で上書きされる可能性があります。
 
 ## <a name="init"></a>Init
 
-Init イベントは ASP.NET 1.x から変更されていません。 ここでは、ページ上のコントロールのプロパティを読み取りまたは初期化します。 この段階では、マスターページ、テーマなどが既にページに適用されています。
+Init イベントは、ASP.NET 1.x から変更されていません。 ページ上のコントロールのプロパティを読み取りまたは初期化する場所です。 この段階では、マスターページ、テーマなどが既にページに適用されています。
 
-## <a name="initcomplete-new-in-20"></a>InitComplete (2.0 の新)
+## <a name="initcomplete-new-in-20"></a>イニトコンプリート(2.0で新しい)
 
-InitComplete イベントは、ページ初期化ステージの最後に呼び出されます。 ライフサイクルのこの時点では、ページ上のコントロールにアクセスできますが、その状態はまだ設定されていません。
+初期化ステージの最後に InitComplete イベントが呼び出されます。 ライフサイクルのこの時点で、ページ上のコントロールにアクセスできますが、その状態はまだ設定されていません。
 
-## <a name="preload-new-in-20"></a>プリロード (2.0 の新)
+## <a name="preload-new-in-20"></a>プリロード (2.0 での新機能)
 
-このイベントは、すべてのポストバックデータが適用された後、ページ\_の読み込みの直前に呼び出されます。
+このイベントは、すべてのポストバック データが適用された後、ページ\_読み込みの直前に呼び出されます。
 
 ## <a name="load"></a>[読み込み]
 
-Load イベントは ASP.NET 1.x から変更されていません。
+Load イベントは、ASP.NET 1.x から変更されていません。
 
-## <a name="loadcomplete-new-in-20"></a>LoadComplete (2.0 の新)
+## <a name="loadcomplete-new-in-20"></a>ロード完了(2.0 での新機能)
 
-LoadComplete イベントは、ページ読み込みステージの最後のイベントです。 この段階では、すべてのポストバックと viewstate データがページに適用されています。
+LoadComplete イベントは、ページ読み込みステージの最後のイベントです。 この段階では、すべてのポストバックデータとビューステートデータがページに適用されています。
 
-## <a name="prerender"></a>PreRender
+## <a name="prerender"></a>Prerender
 
-ページに動的に追加されるコントロールに対して viewstate を適切に管理するには、PreRender イベントを追加する最後の機会とします。
+動的にページに追加されるコントロールに対してビューステートを適切に維持する場合は、PreRender イベントが最後に追加されます。
 
-## <a name="prerendercomplete-new-in-20"></a>PreRenderComplete (2.0 の新)
+## <a name="prerendercomplete-new-in-20"></a>プレレンダリングコンプリート(2.0で新しい)
 
-PreRenderComplete 段階では、すべてのコントロールがページに追加され、ページを表示する準備ができました。 PreRenderComplete イベントは、ページ viewstate が保存される前に発生する最後のイベントです。
+PreRenderComplete ステージで、すべてのコントロールがページに追加され、ページをレンダリングする準備が整いました。 PreRenderComplete イベントは、ページのビューステートが保存される前に発生する最後のイベントです。
 
-## <a name="savestatecomplete-new-in-20"></a>SaveStateComplete (2.0 の新)
+## <a name="savestatecomplete-new-in-20"></a>セーブステートコンプリート(2.0で新規)
 
-SaveStateComplete イベントは、すべてのページ viewstate とコントロールの状態が保存された直後に呼び出されます。 これは、ページが実際にブラウザーにレンダリングされる前の最後のイベントです。
+SaveStateComplete イベントは、すべてのページのビューステートとコントロールの状態が保存された直後に呼び出されます。 これは、ページが実際にブラウザーにレンダリングされる前の最後のイベントです。
 
 ## <a name="render"></a>レンダー
 
-ASP.NET 1.x 以降、Render メソッドは変更されていません。 ここで HtmlTextWriter が初期化され、ページがブラウザーに表示されます。
+1.x 以降、Render メソッドは変更ASP.NET。 ここで、HtmlTextWriter が初期化され、ページがブラウザーにレンダリングされます。
 
-## <a name="cross-page-postback-in-aspnet-20"></a>ASP.NET 2.0 のクロスページポストバック
+## <a name="cross-page-postback-in-aspnet-20"></a>ASP.NET 2.0 でのページ間のポストバック
 
-ASP.NET 1.x では、同じページにポストバックする必要がありました。 ページ間のポストバックは許可されませんでした。 ASP.NET 2.0 では、IButtonControl インターフェイスを使用して別のページにポストバックする機能が追加されています。 新しい IButtonControl インターフェイス (サードパーティのカスタムコントロールに加えて Button、LinkButton、および ImageButton) を実装するコントロールは、PostBackUrl 属性を使用することによって、この新しい機能を利用できます。 次のコードは、2番目のページにポストバックするボタンコントロールを示しています。
+ASP.NET 1.x では、ポストバックが同じページにポストする必要がありました。 ページ間のポストバックは許可されませんでした。 ASP.NET 2.0 は、IButtonControl インターフェイスを介して別のページにポストバックする機能を追加します。 新しい IButtonControl インターフェイス (ボタン、リンク ボタン、およびサード パーティのカスタム コントロールに加えて、イメージ ボタン) を実装するすべてのコントロールは、PostBackUrl 属性を使用して、この新しい機能を利用できます。 次のコードは、2 番目のページにポストバックする Button コントロールを示しています。
 
 [!code-aspx[Main](the-asp-net-2-0-page-model/samples/sample5.aspx)]
 
-ページがポストバックされると、ポストバックを開始するページは、2ページ目の PreviousPage プロパティを使用してアクセスできます。 この機能は、コントロールが別のページにポストバックしたときに ASP.NET 2.0 がページに表示する新しい Web フォーム\_DoPostBackWithOptions クライアント側関数によって実装されます。 この JavaScript 関数は、クライアントにスクリプトを出力する新しい Webresource.axd ハンドラーによって提供されます。
+ページがポストバックされると、ポストバックを開始する Page には、2 ページ目の PreviousPage プロパティを使用してアクセスできます。 この機能は、コントロールが別のページに\_ポストバックしたときに 2.0 ASP.NETページにレンダリングされる新しい WebForm DoPostBackWithOptions クライアント側の関数を介して実装されます。 この JavaScript 関数は、クライアントにスクリプトを出力する新しい WebResource.axd ハンドラーによって提供されます。
 
-次のビデオは、ページ間のポストバックのチュートリアルです。
+以下のビデオは、ページ間のポストバックのチュートリアルです。
 
 ![](the-asp-net-2-0-page-model/_static/image2.png)
 
-[全画面表示のビデオを開く](the-asp-net-2-0-page-model/_static/xpage1.wmv)
+[フルスクリーンビデオを開く](the-asp-net-2-0-page-model/_static/xpage1.wmv)
 
-## <a name="more-details-on-cross-page-postbacks"></a>クロスページポストバックの詳細
+## <a name="more-details-on-cross-page-postbacks"></a>ページ間ポストバックの詳細
 
 ### <a name="viewstate"></a>Viewstate
 
-クロスページポストバックシナリオでは、最初のページから viewstate に対して何が起こるかについて、既にたずねているかもしれません。 結局のところ、IPostBackDataHandler を実装していないコントロールは viewstate によって状態を保持するので、ページ間のポストバックの2ページ目でそのコントロールのプロパティにアクセスするには、ページの viewstate にアクセスできる必要があります。 ASP.NET 2.0 は、\_\_PREVIOUSPAGE と呼ばれる2番目のページの新しい隠しフィールドを使用して、このシナリオを処理します。 \_\_PREVIOUSPAGE フォームフィールドには、最初のページの viewstate が含まれています。これにより、2番目のページのすべてのコントロールのプロパティにアクセスできるようになります。
+ページ間ポストバック シナリオの最初のページから viewstate に何が起こるかについて、既に自問している可能性があります。 結局のところ、IPostBackDataHandler を実装しないコントロールはビューステートを介してその状態を保持するため、ページ間ポストバックの 2 ページ目でそのコントロールのプロパティにアクセスするには、ページのビューステートにアクセスする必要があります。 ASP.NET 2.0 は PREVIOUSPAGE という 2\_\_番目のページの新しい隠しフィールドを使用して、このシナリオを処理します。 PREVIOUSPAGE\_\_フォーム フィールドには、最初のページのビューステートが含まれているため、2 番目のページのすべてのコントロールのプロパティにアクセスできます。
 
-### <a name="circumventing-findcontrol"></a>FindControl の回避
+### <a name="circumventing-findcontrol"></a>検索コントロールの回避
 
-クロスページポストバックのビデオチュートリアルでは、FindControl メソッドを使用して、最初のページの TextBox コントロールへの参照を取得しました。 この方法は、その目的に適していますが、FindControl は高価であり、追加のコードを記述する必要があります。 幸いにも、ASP.NET 2.0 では、この目的のために FindControl の代わりに、多くのシナリオで動作するようになっています。 PreviousPageType ディレクティブを使用すると、TypeName または VirtualPath 属性を使用して、前のページへの厳密に型指定された参照を持つことができます。 TypeName 属性では、前のページの種類を指定できます。 VirtualPath 属性では、仮想パスを使用して前のページを参照できます。 PreviousPageType ディレクティブを設定したら、パブリックプロパティを使用してアクセスを許可するコントロールなどを公開する必要があります。
+クロスページ ポストバックのビデオ チュートリアルでは、最初のページの TextBox コントロールへの参照を取得するのには FindControl メソッドを使用しました。 このメソッドは、この目的のためにうまく機能しますが、FindControl は高価であり、追加のコードを記述する必要があります。 幸いにも、ASP.NET 2.0 では、この目的のために FindControl の代わりとなるものが用意されています。 PreviousPageType ディレクティブを使用すると、TypeName 属性または VirtualPath 属性を使用して、前のページへの厳密に型指定された参照を持つことができます。 TypeName 属性では、前のページの種類を指定することができますが、VirtualPath 属性を使用すると、仮想パスを使用して前のページを参照できます。 PreviousPageType ディレクティブを設定した後、パブリック プロパティを使用してアクセスを許可するコントロールなどを公開する必要があります。
 
-## <a name="lab-1-cross-page-postback"></a>ラボ1ページ間ポストバック
+## <a name="lab-1-cross-page-postback"></a>ラボ 1 クロスページ ポストバック
 
-このラボでは、ASP.NET 2.0 の新しいクロスページポストバック機能を使用するアプリケーションを作成します。
+このラボでは、ASP.NET 2.0 の新しいページ間ポストバック機能を使用するアプリケーションを作成します。
 
-1. Visual Studio 2005 を開き、新しい ASP.NET Web サイトを作成します。
-2. Page2 という名前の新しい Web フォームを追加します。
-3. デザインビューで default.aspx を開き、ボタンコントロールとテキストボックスコントロールを追加します。 
+1. Visual Studio 2005 を開き、新しいASP.NET Web サイトを作成します。
+2. page2.aspx という名前の新しい Web フォームを追加します。
+3. デザイン ビューで Default.aspx を開き、ボタン コントロールと TextBox コントロールを追加します。 
 
-    1. ボタンコントロールに**Submitbutton**の id を指定し、テキストボックスコントロールに**ユーザー名**の id を指定します。
-    2. ボタンの PostBackUrl プロパティを page2 に設定します。
-4. ソースビューで page2 を開きます。
-5. 次に示すように、@ PreviousPageType ディレクティブを追加します。
-6. ページに次のコードを追加して、page2 の分離コードの\_読み込みます。 
+    1. ボタン コントロールに**送信ボタン**の ID を与え、テキスト ボックス コントロールに**ユーザー名**の ID を与えます。
+    2. ボタンの PostBackUrl プロパティを page2.aspx に設定します。
+4. ソース ビューで page2.aspx を開きます。
+5. 次に示すように、 @ PreviousPageType ディレクティブを追加します。
+6. page2.aspx の分離\_コードのページ読み込みに次のコードを追加します。 
 
     [!code-csharp[Main](the-asp-net-2-0-page-model/samples/sample6.cs)]
 7. [ビルド] メニューの [ビルド] をクリックして、プロジェクトをビルドします。
 8. Default.aspx の分離コードに次のコードを追加します。 
 
     [!code-csharp[Main](the-asp-net-2-0-page-model/samples/sample7.cs)]
-9. Page2 での\_の読み込みページを次のように変更します。 
+9. page2.aspx のページ\_読み込みを次のように変更します。 
 
     [!code-csharp[Main](the-asp-net-2-0-page-model/samples/sample8.cs)]
 10. プロジェクトをビルドします。
 11. プロジェクトを実行します。
-12. テキストボックスに名前を入力し、ボタンをクリックします。
-13. 結果は何ですか。
+12. テキスト ボックスに自分の名前を入力し、ボタンをクリックします。
+13. 結果は何ですか?
 
 ## <a name="asynchronous-pages-in-aspnet-20"></a>ASP.NET 2.0 の非同期ページ
 
-ASP.NET の競合に関する多くの問題は、外部呼び出し (Web サービスやデータベースの呼び出しなど) の待機時間、ファイル IO の待機時間などによって発生します。ASP.NET アプリケーションに対して要求が行われると、ASP.NET はそのワーカースレッドの1つを使用してその要求を処理します。 この要求は、要求が完了し、応答が送信されるまで、そのスレッドを所有します。 ASP.NET 2.0 は、ページを非同期的に実行する機能を追加することで、これらの種類の問題の待機時間の問題を解決することを目指しています。 これは、ワーカースレッドが要求を開始し、別のスレッドに対して追加の実行をハンドオフして、使用可能なスレッドプールにすばやく戻ることができることを意味します。 ファイル IO、データベース呼び出しなどが完了すると、新しいスレッドがスレッドプールから取得され、要求が完了します。
+ASP.NETの競合の問題の多くは、外部呼び出し (Web サービスやデータベース呼び出しなど) の遅延、ファイル IO の待ち時間などによって発生します。ASP.NETアプリケーションに対して要求が行われると、ASP.NETはその要求を処理するためにワーカー スレッドの 1 つを使用します。 要求が完了し、応答が送信されるまで、その要求はそのスレッドを所有します。 ASP.NET 2.0 では、ページを非同期に実行する機能を追加することで、このような種類の問題に関する待ち時間の問題を解決します。 つまり、ワーカー スレッドは要求を開始し、別のスレッドに追加の実行を渡すことができるので、使用可能なスレッド プールにすばやく戻ります。 ファイル IO、データベース呼び出しなどが完了すると、スレッド プールから新しいスレッドを取得して要求を完了します。
 
-ページを非同期で実行するための最初の手順は、次のようにページディレクティブの**Async**属性を設定することです。
+ページを非同期に実行する最初の手順は、次のように page ディレクティブの**Async**属性を設定することです。
 
 [!code-aspx[Main](the-asp-net-2-0-page-model/samples/sample9.aspx)]
 
-この属性は、ページの IHttpAsyncHandler を実装するように ASP.NET に指示します。
+この属性は、ページの IHttpAsyncHandler を実装するASP.NETを指示します。
 
-次の手順では、PreRender の前に、ページのライフサイクルのポイントで AddOnPreRenderCompleteAsync メソッドを呼び出します。 (通常、このメソッドは、ページ\_の読み込み時に呼び出されます)。AddOnPreRenderCompleteAsync メソッドは2つのパラメーターを受け取ります。BeginEventHandler と EndEventHandler。 BeginEventHandler は、パラメーターとして EndEventHandler に渡される IAsyncResult を返します。
+次の手順では、ページのライフサイクル内の 1 つの時点で、PreRender の前に AddOnPreRenderCompleteAsync メソッドを呼び出します。 (このメソッドは通常、ページの\_読み込みで呼び出されます)。メソッドは 2 つのパラメーターを受け取ります。を開始イベント ハンドラーとエンドイベント ハンドラー。 メソッドを返す、 IAsyncResult をパラメーターとして渡します。
 
-次のビデオは、非同期ページ要求のチュートリアルです。
+以下のビデオは、非同期ページ要求のチュートリアルです。
 
 ![](the-asp-net-2-0-page-model/_static/image3.png)
 
-[全画面表示のビデオを開く](the-asp-net-2-0-page-model/_static/async1.wmv)
+[フルスクリーンビデオを開く](the-asp-net-2-0-page-model/_static/async1.wmv)
 
 > [!NOTE]
-> EndEventHandler が完了するまで、非同期ページはブラウザーに表示されません。 当然のことですが、一部の開発者は非同期要求を非同期コールバックに似ていると考えています。 そうではないことに注意することが重要です。 非同期要求の利点は、新しい要求を処理するために最初のワーカースレッドをスレッドプールに返すことができることです。これにより、IO バインドが原因で競合が減少します。
+> 非同期ページは、EndEventHandler が完了するまでブラウザーにレンダリングされません。 間違いなく、一部の開発者は非同期要求を非同期コールバックに似ていると考えます。 彼らがそうではないことを認識することが重要です。 非同期要求の利点は、最初のワーカー スレッドをスレッド プールに返して新しい要求を処理できるため、IO バインドによる競合が軽減されることです。
 
-## <a name="script-callbacks-in-aspnet-20"></a>ASP.NET 2.0 のスクリプトコールバック
+## <a name="script-callbacks-in-aspnet-20"></a>ASP.NET 2.0 のスクリプト コールバック
 
-Web 開発者は、コールバックに関連するちらつきを防ぐ方法を常に探していました。 ASP.NET 1.x では、SmartNavigation はちらつきを避けるための最も一般的な方法でしたが、クライアントでの実装が複雑になるため、SmartNavigation は一部の開発者にとって問題を引き起こしました。 ASP.NET 2.0 では、スクリプトコールバックに関するこの問題に対処しています。 スクリプトコールバックは、XMLHttp を利用して、Web サーバーに対して JavaScript 経由で要求を行います。 XMLHttp 要求は、ブラウザーの DOM を使用して操作できる XML データを返します。 XMLHttp コードは、新しい Webresource.axd ハンドラーによってユーザーに表示されません。
+Web 開発者は、コールバックに関連付けられたちらつきを防ぐ方法を常に探してきました。 ASP.NET 1.x では、SmartNavigation はちらつきを避ける最も一般的な方法でしたが、クライアントでの実装が複雑なため、SmartNavigation が一部の開発者に問題を引き起こしました。 ASP.NET 2.0 は、スクリプト コールバックでこの問題を解決します。 スクリプト コールバックは、XmlHttp を使用して、JavaScript を介して Web サーバーに対して要求を行います。 XMLHttp 要求は、ブラウザーの DOM を介して操作できる XML データを返します。 新しい WebResource.axd ハンドラーによって、ユーザーから XMLHttp コードが非表示になります。
 
-ASP.NET 2.0 でスクリプトコールバックを構成するために必要な手順がいくつかあります。
+スクリプト コールバックを ASP.NET 2.0 で設定するには、いくつかの手順が必要です。
 
-## <a name="step-1--implement-the-icallbackeventhandler-interface"></a>手順 1: ICallbackEventHandler インターフェイスを実装する
+## <a name="step-1--implement-the-icallbackeventhandler-interface"></a>ステップ 1 : インターフェイスを実装します。
 
-ASP.NET がスクリプトコールバックに参加しているとしてページを認識できるようにするには、ICallbackEventHandler インターフェイスを実装する必要があります。 これは、分離コードファイルで次のように実行できます。
+ASP.NETがページをスクリプト コールバックに参加していると認識するには、ICallbackEventHandler インターフェイスを実装する必要があります。 これをコードビハインド ファイルで次のように行うことができます。
 
 [!code-csharp[Main](the-asp-net-2-0-page-model/samples/sample10.cs)]
 
-この操作は、次のように @ Implements ディレクティブを使用して行うこともできます。
+@ Implements ディレクティブを使用して、次のようにすることもできます。
 
 [!code-aspx[Main](the-asp-net-2-0-page-model/samples/sample11.aspx)]
 
-インライン ASP.NET コードを使用する場合は、通常、@ Implements ディレクティブを使用します。
+通常、インラインASP.NETコードを使用する場合は、 @ Implements ディレクティブを使用します。
 
-## <a name="step-2--call-getcallbackeventreference"></a>手順 2: GetCallbackEventReference を呼び出す
+## <a name="step-2--call-getcallbackeventreference"></a>ステップ 2 : 呼び出しを呼び出します。
 
-前述のように、XMLHttp 呼び出しは Webresource.axd ハンドラーにカプセル化されています。 ページが表示されると、ASP.NET は、Webresource.axd によって提供されるクライアントスクリプトである Web フォーム\_DoCallback への呼び出しを追加します。 Web フォーム\_DoCallback 関数は、コールバックの \_\_doPostBack バック関数を置き換えます。 \_\_doPostBack バックは、プログラムによってページにフォームを送信することに注意してください。 コールバックシナリオでは、ポストバックを防止する必要があるため、\_\_doPostBack バックでは十分ではありません。
+前述のように、XMLHttp 呼び出しは WebResource.axd ハンドラーにカプセル化されます。 ページがレンダリングされると、ASP.NETは WebResource.axd\_によって提供されるクライアント スクリプトである WebForm DoCallback への呼び出しを追加します。 \_関数は、コールバックの doPostBack\_\_関数を置き換えます。 doPostBack は\_\_、プログラムによってページ上のフォームを送信します。 コールバック シナリオでは、ポストバックを防ぐ必要があるため\_\_、doPostBack では十分ではありません。
 
 > [!NOTE]
-> \_\_doPostBack バックは、クライアントスクリプトコールバックシナリオのページに引き続き表示されます。 ただし、コールバックには使用されません。
+> \_\_doPostBack は、クライアント スクリプト コールバック シナリオでページにレンダリングされます。 ただし、コールバックには使用されません。
 
-Web フォーム\_DoCallback クライアント側関数の引数は、通常はページ\_読み込みで呼び出されるサーバー側の関数 GetCallbackEventReference を介して提供されます。 GetCallbackEventReference の一般的な呼び出しは次のようになります。
+Web フォーム\_の DoCallback クライアント側関数の引数は、通常ページ\_の読み込みで呼び出されるサーバー側関数 GetCallbackEventReference を介して提供されます。 一般的な呼び出しは次のようになります。
 
 [!code-csharp[Main](the-asp-net-2-0-page-model/samples/sample12.cs)]
 
 > [!NOTE]
-> この場合、cm は ClientScriptManager のインスタンスです。 ClientScriptManager クラスについては、このモジュールで後ほど説明します。
+> この場合、cm はクライアントスクリプト マネージャーのインスタンスです。 このモジュールでは、後ほどクラスについて説明します。
 
-GetCallbackEventReference には、いくつかのオーバーロードされたバージョンがあります。 この場合、引数は次のようになります。
+いくつかのオーバーロードされたバージョンがあります。 この場合、引数は次のようになります。
 
 `this`
 
-GetCallbackEventReference が呼び出されているコントロールへの参照。 この例では、ページ自体です。
+呼び出されているコントロールへの参照。 この場合、ページ自体です。
 
 [!code-javascript[Main](the-asp-net-2-0-page-model/samples/sample13.js)]
 
-クライアント側のコードからサーバー側のイベントに渡される文字列引数。 この場合、Im は ddlCompany というドロップダウンの値を渡します。
+クライアント側のコードからサーバー側のイベントに渡される文字列引数。 この場合、DdlCompany と呼ばれるドロップダウンの値を渡します。
 
 `ShowCompanyName`
 
-サーバー側のコールバックイベントから (文字列として) 戻り値を受け取るクライアント側関数の名前。 この関数は、サーバー側のコールバックが成功した場合にのみ呼び出されます。 そのため、堅牢性を確保するために、通常は、オーバーロードされたバージョンの GetCallbackEventReference を使用することをお勧めします。これは、エラーが発生した場合に実行するクライアント側関数の名前を指定する追加の文字列引数を受け取ります。
+サーバー側のコールバック イベントから戻り値 (文字列) を受け取るクライアント側関数の名前。 この関数は、サーバー側のコールバックが成功した場合にのみ呼び出されます。 したがって、堅牢性のために、通常は、エラーが発生した場合に実行するクライアント側関数の名前を指定する追加の文字列引数を受け取る、オーバーロードされたバージョンの GetCallbackEventReference を使用することをお勧めします。
 
 `null`
 
-サーバーへのコールバックの前に開始したクライアント側の関数を表す文字列。 この場合、このようなスクリプトは存在しないため、引数は null になります。
+サーバーへのコールバックの前に開始したクライアント側の関数を表す文字列。 この場合、そのようなスクリプトは存在しませんので、引数は null です。
 
 `true`
 
-コールバックを非同期的に実行するかどうかを指定するブール値。
+コールバックを非同期に実行するかどうかを指定するブール値。
 
-クライアント上で Web フォーム\_DoCallback を呼び出すと、これらの引数が渡されます。 このため、このページがクライアントに表示されると、そのコードは次のようになります。
+クライアント上の Web\_フォーム DoCallback の呼び出しは、これらの引数を渡します。 したがって、このページがクライアントで表示されるとき、そのコードは次のようになります。
 
 [!code-javascript[Main](the-asp-net-2-0-page-model/samples/sample14.js)]
 
-クライアント上の関数のシグネチャが少し異なることに注意してください。 クライアント側の関数は、5つの文字列とブール値を渡します。 追加の文字列 (上の例では null) には、サーバー側のコールバックからのエラーを処理するクライアント側の関数が含まれています。
+クライアント上の関数のシグネチャが少し異なっていることに注意してください。 クライアント側の関数は、5 つの文字列とブール値を渡します。 追加の文字列 (上記の例では null) には、サーバー側のコールバックからのエラーを処理するクライアント側関数が含まれています。
 
-## <a name="step-3--hook-the-client-side-control-event"></a>手順 3: クライアント側のコントロールイベントをフックする
+## <a name="step-3--hook-the-client-side-control-event"></a>手順 3 : クライアント側コントロール イベントをフックする
 
-上記の GetCallbackEventReference の戻り値が文字列変数に割り当てられていることに注意してください。 この文字列は、コールバックを開始するコントロールのクライアント側イベントをフックするために使用されます。 この例では、コールバックはページのドロップダウンによって開始されるため、 *OnChange*イベントをフックします。
+上記の GetCallbackEventReference の戻り値が文字列変数に割り当てられていることに注意してください。 この文字列は、コールバックを開始するコントロールのクライアント側イベントをフックするために使用されます。 この例では、コールバックはページのドロップダウンによって開始されるため *、OnChange*イベントをフックしたいと思います。
 
-クライアント側のイベントをフックするには、次のように、クライアント側のマークアップにハンドラーを追加するだけです。
+クライアント側のイベントをフックするには、次のように、クライアント側のマークアップにハンドラーを追加します。
 
 [!code-csharp[Main](the-asp-net-2-0-page-model/samples/sample15.cs)]
 
-*CGetCallbackEventReference f*は、呼び出しからの戻り値であることを思い出してください。 これには、上に示した Web フォーム\_DoCallback の呼び出しが含まれています。
+*cbRef*は呼び出しからの戻り値であることを思い出してください。 このファイルには、上記の\_Web フォーム DoCallback への呼び出しが含まれています。
 
-## <a name="step-4--register-the-client-side-script"></a>手順 4: クライアント側のスクリプトを登録する
+## <a name="step-4--register-the-client-side-script"></a>手順 4 : クライアント側スクリプトを登録する
 
-GetCallbackEventReference を呼び出すことで、サーバー側のコールバックが成功したときに**Showcompanyname**というクライアント側のスクリプトが実行されることが指定されたことを思い出してください。 このスクリプトは、ClientScriptManager インスタンスを使用してページに追加する必要があります。 (ClientScriptManager クラスについては、このモジュールで後ほど説明します)。次のようにします。
+呼び出しは、サーバー側のコールバックが成功したときに**ShowCompanyName**という名前のクライアント側スクリプトが実行されることを指定したことを思い出してください。 このスクリプトは、ClientScriptManager インスタンスを使用してページに追加する必要があります。 (このモジュールでは、後でクラスについて説明します)。あなたはそうします:
 
 [!code-javascript[Main](the-asp-net-2-0-page-model/samples/sample16.js)]
 
-## <a name="step-5--call-the-methods-of-the-icallbackeventhandler-interface"></a>手順 5: ICallbackEventHandler インターフェイスのメソッドを呼び出す
+## <a name="step-5--call-the-methods-of-the-icallbackeventhandler-interface"></a>ステップ 5 : インターフェイスのメソッドを呼び出します。
 
-ICallbackEventHandler には、コードに実装する必要がある2つのメソッドが含まれています。 これらは**RaiseCallbackEvent**と**GetCallbackEvent**です。
+コード内で実装する必要がある 2 つのメソッドが含まれています。 これらは **、コールバック イベント**と**コールバック イベントを取得します**。
 
-**RaiseCallbackEvent**は、引数として文字列を受け取り、nothing を返します。 文字列引数は、クライアント側の呼び出しから Web フォーム\_DoCallback に渡されます。 この場合、その値は ddlCompany というドロップダウンリストの*value*属性です。 サーバー側のコードは、RaiseCallbackEvent メソッドに配置する必要があります。 たとえば、コールバックが外部リソースに対して WebRequest を作成する場合、そのコードは RaiseCallbackEvent に配置する必要があります。
+**イベントは**文字列を引数として受け取り、何も返しません。 文字列引数は、クライアント側の呼び出しから Web\_フォームの DoCallback に渡されます。 この場合、その値は ddlCompany と呼ばれるドロップダウンの*値*属性です。 サーバー側のコードは、メソッドに配置する必要があります。 たとえば、コールバックが外部リソースに対して WebRequest を作成している場合、そのコードを RaiseCallbackEvent に配置する必要があります。
 
-**GetCallbackEvent**は、クライアントへのコールバックの戻り値を処理します。 引数を取らず、文字列を返します。 返される文字列は、クライアント側の関数 (この場合は*Showcompanyname*) に引数として渡されます。
+**コールバック**のコールバックのクライアントへの戻り値を処理する役割を持つイベントです。 引数を受け取らず、文字列を返します。 返される文字列は、引数としてクライアント側の関数に渡*されます。*
 
-上記の手順を完了すると、ASP.NET 2.0 でスクリプトコールバックを実行する準備が整います。
+上記の手順を完了したら、スクリプトコールバックを ASP.NET 2.0 で実行する準備が整いました。
 
 ![](the-asp-net-2-0-page-model/_static/image4.png)
 
-[全画面表示のビデオを開く](the-asp-net-2-0-page-model/_static/callback1.wmv)
+[フルスクリーンビデオを開く](the-asp-net-2-0-page-model/_static/callback1.wmv)
 
-ASP.NET のスクリプトコールバックは、XMLHttp 呼び出しをサポートするすべてのブラウザーでサポートされています。 これには、現在使用されているすべての最新のブラウザーが含まれます。 Internet Explorer は、XMLHttp ActiveX オブジェクトを使用しますが、その他の最新のブラウザー (今後の IE 7 を含む) は、組み込みの XMLHttp オブジェクトを使用します。 ブラウザーがコールバックをサポートしているかどうかをプログラムで判断するには、 **SupportCallback**プロパティを使用します。 このプロパティは、要求元のクライアントがスクリプトコールバックをサポートしている場合に**true**を返します。
+ASP.NETのスクリプト コールバックは、XMLHttp 呼び出しをサポートするすべてのブラウザーでサポートされています。 これには、現在使用されているすべての最新のブラウザが含まれます。 インターネット エクスプローラは XMLHttp ActiveX オブジェクトを使用し、他の最新のブラウザ (今後の IE 7 を含む) は組み込みの XMLHttp オブジェクトを使用します。 ブラウザーがコールバックをサポートしているかどうかをプログラムで判断するには **、Request.Browser.SupportCallback**プロパティを使用できます。 要求元のクライアントがスクリプト コールバックをサポートしている場合、このプロパティは**true**を返します。
 
-## <a name="working-with-client-script-in-aspnet-20"></a>ASP.NET 2.0 でのクライアントスクリプトの使用
+## <a name="working-with-client-script-in-aspnet-20"></a>ASP.NET 2.0 でのクライアント スクリプトの操作
 
-ASP.NET 2.0 のクライアントスクリプトは、ClientScriptManager クラスを使用して管理されます。 ClientScriptManager クラスは、型と名前を使用して、クライアントスクリプトを追跡します。 これにより、同じスクリプトが1ページに複数回、プログラムによって挿入されるのを防ぐことができます。
+ASP.NET 2.0 のクライアント スクリプトは、ClientScriptManager クラスを使用して管理されます。 クラスは、型と名前を使用してクライアント スクリプトを追跡します。 これにより、同じスクリプトがプログラムによってページに複数回挿入されるのを防ぎます。
 
 > [!NOTE]
-> ページにスクリプトが正常に登録されると、その後、同じスクリプトを登録しようとすると、スクリプトが2回目に登録されなくなるだけです。 重複するスクリプトは追加されず、例外は発生しません。 不要な計算を避けるために、スクリプトが既に登録されているかどうかを判断するために使用できるメソッドがあります。これにより、スクリプトを複数回登録することはできません。
+> スクリプトがページに正常に登録された後、同じスクリプトを登録しようとすると、スクリプトが 2 回目に登録されなくなるだけです。 重複するスクリプトは追加されず、例外も発生しません。 不要な計算を避けるために、スクリプトが既に登録されているかどうかを判断して、スクリプトを複数回登録しないようにする方法があります。
 
-ClientScriptManager のメソッドは、現在のすべての ASP.NET 開発者を対象としています。
+ClientScriptManager のメソッドは、現在のすべてのASP.NET開発者に精通している必要があります。
 
-## <a name="registerclientscriptblock"></a>RegisterClientScriptBlock
+## <a name="registerclientscriptblock"></a>クライアント スクリプト ブロックを登録します。
 
 このメソッドは、レンダリングされたページの先頭にスクリプトを追加します。 これは、クライアントで明示的に呼び出される関数を追加する場合に便利です。
 
-このメソッドには、2つのオーバーロードされたバージョンがあります。 4つの引数のうち3つは共通です。 これらは次のとおりです。
+このメソッドには、2 つのオーバーロードされたバージョンがあります。 4つの引数のうち3つは、その中で一般的です。 これらは次のとおりです。
 
 `type (string)`
 
-***型***引数は、スクリプトの型を識別します。 一般に、このページの種類を使用することをお勧めします (これは、型に対して GetType ()) を使用します。
+***型***引数は、スクリプトの型を識別します。 一般的には、ページの型 (this.型の GetType())。
 
 `key (string)`
 
-***キー***引数は、スクリプトのユーザー定義キーです。 これは、スクリプトごとに一意である必要があります。 既に追加されているスクリプトと同じキーおよび種類のスクリプトを追加しようとすると、そのスクリプトは追加されません。
+***キー***引数は、スクリプトのユーザー定義キーです。 これは、スクリプトごとに一意である必要があります。 既に追加されたスクリプトと同じキーと種類のスクリプトを追加しようとしても、スクリプトは追加されません。
 
 `script (string)`
 
-***スクリプト***引数は、追加する実際のスクリプトを含む文字列です。 StringBuilder を使用してスクリプトを作成した後、StringBuilder で ToString () メソッドを使用して***スクリプト***の引数を割り当てることをお勧めします。
+***script***引数は、追加する実際のスクリプトを含む文字列です。 スクリプトを作成するには、文字列ビルダーを使用し、***スクリプト引数を***割り当てるには、StringBuilder の ToString() メソッドを使用することをお勧めします。
 
-3つの引数のみを受け取るオーバーロードされた RegisterClientScriptBlock を使用する場合は、スクリプトにスクリプト要素 (&lt;script&gt; と &lt;/script&gt;) を含める必要があります。
+3 つの引数しか取りませんが、オーバーロードされた RegisterClientScriptBlock を使用する場合は&lt;、&gt;スクリプト&lt;にスクリプト&gt;要素 ( スクリプトと /script ) を含める必要があります。
 
-4番目の引数を受け取る RegisterClientScriptBlock のオーバーロードを使用することもできます。 4番目の引数は、ASP.NET がスクリプト要素を追加する必要があるかどうかを指定するブール値です。 この引数が**true**の場合、スクリプトにはスクリプト要素を明示的に含めないでください。
+4 番目の引数を取る RegisterClientScriptBlock のオーバーロードを使用することもできます。 4 番目の引数は、スクリプト要素を追加するかどうかを指定ASP.NETブール型です。 この引数が**true の**場合、スクリプトにスクリプト要素を明示的に含めないようにします。
 
-IsClientScriptBlockRegistered メソッドを使用して、スクリプトが既に登録されているかどうかを確認します。 これにより、既に登録されているスクリプトの再登録を避けることができます。
+スクリプトが既に登録されているかどうかを確認するには、メソッドを使用します。 これにより、すでに登録されているスクリプトを再登録する試みを回避できます。
 
-### <a name="registerclientscriptinclude-new-in-20"></a>RegisterClientScriptInclude (2.0 の新)
+### <a name="registerclientscriptinclude-new-in-20"></a>登録クライアントスクリプトインクルード (2.0 で新しい)
 
-RegisterClientScriptInclude タグは、外部スクリプトファイルにリンクするスクリプトブロックを作成します。 2つのオーバーロードがあります。 1つはキーと URL を受け取ります。 2番目の引数は、型を指定する3番目の引数を追加します。
+タグは、外部スクリプト ファイルにリンクするスクリプト ブロックを作成します。 2 つのオーバーロードがあります。 1 つはキーと URL を受け取ります。 2 つ目は、型を指定する 3 番目の引数を追加します。
 
-たとえば、次のコードでは、アプリケーションの scripts フォルダーのルートにある jsfunctions にリンクするスクリプトブロックが生成されます。
+たとえば、次のコードは、アプリケーションのスクリプト フォルダーのルートにある jsfunctions.js にリンクするスクリプト ブロックを生成します。
 
 [!code-csharp[Main](the-asp-net-2-0-page-model/samples/sample17.cs)]
 
-このコードでは、表示されるページに次のコードが生成されます。
+このコードは、レンダリングされたページに次のコードを生成します。
 
 [!code-html[Main](the-asp-net-2-0-page-model/samples/sample18.html)]
 
 > [!NOTE]
-> スクリプトブロックはページの下部に表示されます。
+> スクリプト ブロックはページの下部に表示されます。
 
-Isclientscriptの登録解除メソッドを使用して、スクリプトが既に登録されているかどうかを確認します。 これにより、スクリプトの再登録が試行されないようにすることができます。
+スクリプトが既に登録されているかどうかを確認するには、メソッドを使用します。 これにより、スクリプトの再登録を回避できます。
 
-## <a name="registerstartupscript"></a>RegisterStartupScript
+## <a name="registerstartupscript"></a>登録スタートアップスクリプト
 
-RegisterStartupScript メソッドは、RegisterClientScriptBlock メソッドと同じ引数を受け取ります。 RegisterStartupScript に登録されているスクリプトは、ページが読み込まれた後、OnLoad クライアント側のイベントの前に実行されます。 1\.x では、RegisterStartupScript に登録されているスクリプトは、RegisterClientScriptBlock に登録されているスクリプトが、開始 &lt;フォーム&gt; タグの直後に配置されている間に、終了 &lt;/&gt; タグの直前に配置されました。 ASP.NET 2.0 では、両方とも、終了 &lt;/&gt; タグの直前に配置されます。
+メソッドは、メソッドと同じ引数を受け取ります。 RegisterStartupScript に登録されたスクリプトは、ページの読み込み後、OnLoad クライアント側イベントの前に実行されます。 1.X では、RegisterStartupScript に登録された&lt;スクリプトは終了 /フォーム&gt;タグの直前に配置され、RegisterClientScriptBlock に登録&lt;された&gt;スクリプトは開始フォーム タグの直後に配置されました。 ASP.NET 2.0 では、両方とも /form&lt;&gt;タグの終了直前に配置されます。
 
 > [!NOTE]
-> RegisterStartupScript に関数を登録すると、その関数は、クライアント側のコードで明示的に呼び出されるまで実行されません。
+> RegisterStartupScript を使用して関数を登録した場合、クライアント側のコードで明示的に呼び出すまで、その関数は実行されません。
 
-IsStartupScriptRegistered メソッドを使用して、スクリプトが既に登録されているかどうかを確認し、スクリプトの再登録を試行しないようにします。
+IsStartupScriptRegistered メソッドを使用して、スクリプトが既に登録されているかどうかを確認し、スクリプトの再登録を回避します。
 
-## <a name="other-clientscriptmanager-methods"></a>その他の ClientScriptManager メソッド
+## <a name="other-clientscriptmanager-methods"></a>その他のクライアントスクリプト マネージャー メソッド
 
-ClientScriptManager クラスのその他の便利なメソッドの一部を次に示します。
+クラスのその他の便利なメソッドのいくつかを次に示します。
 
-|  <strong>GetCallbackEventReference</strong>   |                                                 このモジュールの「スクリプトコールバック」を参照してください。                                                 |
+|  <strong>イベントのリファレンス</strong>   |                                                 このモジュールの前のスクリプト コールバックを参照してください。                                                 |
 |-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-|  <strong>GetPostBackClientHyperlink</strong>  |                クライアント側のイベントからポストバックするために使用できる JavaScript 参照 (javascript:&lt;呼び出し&gt;) を取得します。                 |
-|  <strong>System.web.ui.clientscriptmanager.getpostbackeventreference</strong>   |                                   クライアントからポストバックを開始するために使用できる文字列を取得します。                                    |
-|      <strong>GetWebResourceUrl</strong>       | アセンブリに埋め込まれているリソースへの URL を返します。 <strong>RegisterClientScriptResource</strong>と組み合わせて使用する必要があります。 |
-| <strong>RegisterClientScriptResource</strong> |     Web リソースをページに登録します。 これらは、アセンブリに埋め込まれ、新しい Webresource.axd ハンドラーによって処理されるリソースです。      |
-|     <strong>RegisterHiddenField</strong>      |                                                 非表示のフォームフィールドをページに登録します。                                                 |
-|  <strong>RegisterOnSubmitStatement</strong>   |                                  HTML フォームの送信時に実行されるクライアント側のコードを登録します。                                   |
+|  <strong>クライアントハイパーリンク</strong>  |                クライアント側のイベントからポストバックするために使用&lt;できる&gt;JavaScript 参照 (javascript: call ) を取得します。                 |
+|  <strong>イベントリファレンス</strong>   |                                   クライアントからポストバックを開始するために使用できる文字列を取得します。                                    |
+|      <strong>をクリックします。</strong>       | アセンブリに埋め込まれているリソースへの URL を返します。 を使用して使用<strong>する</strong>必要があります。 |
+| <strong>リソースを登録します。</strong> |     Web リソースをページに登録します。 これらは、アセンブリに埋め込まれ、新しい WebResource.axd ハンドラーによって処理されるリソースです。      |
+|     <strong>隠されたフィールドを登録します。</strong>      |                                                 非表示フォーム フィールドをページに登録します。                                                 |
+|  <strong>ステートメントを登録します。</strong>   |                                  HTML フォームが送信されたときに実行されるクライアント側のコードを登録します。                                   |

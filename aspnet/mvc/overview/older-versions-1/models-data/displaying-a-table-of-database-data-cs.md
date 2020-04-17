@@ -1,170 +1,170 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-cs
-title: データベースデータのテーブルを表示するC#() |Microsoft Docs
-author: microsoft
-description: このチュートリアルでは、一連のデータベースレコードを表示する2つの方法について説明します。 HTML ta でデータベースレコードのセットを書式設定する2つの方法を示しています...
+title: データベース データのテーブルの表示 (C#) |マイクロソフトドキュメント
+author: rick-anderson
+description: このチュートリアルでは、データベース レコードのセットを表示する 2 つの方法を示します。 HTML ta.. でデータベースレコードのセットをフォーマットする 2 つの方法を示します。
 ms.author: riande
 ms.date: 10/07/2008
 ms.assetid: d6e758b6-6571-484d-a132-34ee6c47747a
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3c908d030076fc8400190ef3cf1672632ac1ed6b
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 3fca8ac9e9b4e549ca76ffa282cc03aa4cc50e88
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78436846"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81542055"
 ---
 # <a name="displaying-a-table-of-database-data-c"></a>データベース データの表を表示する (C#)
 
-[Microsoft](https://github.com/microsoft)
+[マイクロソフト](https://github.com/microsoft)
 
-[[Download PDF]\(PDF をダウンロード\)](https://download.microsoft.com/download/1/1/f/11f721aa-d749-4ed7-bb89-a681b68894e6/ASPNET_MVC_Tutorial_11_CS.pdf)
+[PDF のダウンロード](https://download.microsoft.com/download/1/1/f/11f721aa-d749-4ed7-bb89-a681b68894e6/ASPNET_MVC_Tutorial_11_CS.pdf)
 
-> このチュートリアルでは、一連のデータベースレコードを表示する2つの方法について説明します。 ここでは、一連のデータベースレコードを HTML テーブルに書式設定する2つの方法について説明します。 まず、ビュー内でデータベースレコードを直接書式設定する方法を説明します。 次に、データベースレコードを書式設定するときにパーシャルを活用する方法を説明します。
+> このチュートリアルでは、データベース レコードのセットを表示する 2 つの方法を示します。 HTML テーブルのデータベース レコードのセットを書式設定する 2 つの方法を示します。 まず、ビュー内で直接データベース レコードを書式設定する方法を説明します。 次に、データベース レコードの書式設定時に部分を利用する方法を示します。
 
-このチュートリアルの目的は、ASP.NET MVC アプリケーションでデータベースデータの HTML テーブルを表示する方法について説明することです。 まず、Visual Studio に含まれているスキャフォールディングツールを使用して、レコードのセットを自動的に表示するビューを生成する方法について説明します。 次に、データベースレコードを書式設定するときに、部分をテンプレートとして使用する方法について説明します。
+このチュートリアルの目的は、ASP.NET MVC アプリケーションでデータベース データの HTML テーブルを表示する方法を説明することです。 まず、Visual Studio に含まれるスキャフォールディング ツールを使用して、レコードのセットを自動的に表示するビューを生成する方法を学習します。 次に、データベース レコードの書式設定時に部分をテンプレートとして使用する方法について説明します。
 
-## <a name="create-the-model-classes"></a>モデルクラスを作成する
+## <a name="create-the-model-classes"></a>モデル クラスの作成
 
-ここでは、ムービーデータベーステーブルのレコードのセットを表示します。 ムービーデータベーステーブルには、次の列が含まれています。
+映画データベーステーブルからレコードのセットを表示します。 Movies データベース テーブルには、次の列が含まれています。
 
 <a id="0.3_table01"></a>
 
-| **列名** | **[データ型]** | **[NULL を許容]** |
+| **列名** | **[データ型]** | **NULL を許可する** |
 | --- | --- | --- |
 | Id | int | False |
-| タイトル | Nvarchar(200) | False |
-| ディレクター | NVarchar (50) | False |
-| DateReleased | DateTime | False |
+| タイトル | ンヴァルチャル(200) | False |
+| ディレクター | NVarchar(50) | False |
+| 日付リリース済 | DateTime | False |
 
-ASP.NET MVC アプリケーションのムービーテーブルを表すために、モデルクラスを作成する必要があります。 このチュートリアルでは、Microsoft Entity Framework を使用して、モデルクラスを作成します。
+ASP.NET MVC アプリケーションで Movies テーブルを表すために、モデル クラスを作成する必要があります。 このチュートリアルでは、Microsoft エンティティ フレームワークを使用して、モデル クラスを作成します。
 
 > [!NOTE] 
 > 
-> このチュートリアルでは、Microsoft Entity Framework を使用します。 ただし、LINQ to SQL、NHibernate、ADO.NET などの ASP.NET MVC アプリケーションでは、さまざまなテクノロジを使用してデータベースとやり取りできることを理解しておくことが重要です。
+> このチュートリアルでは、マイクロソフト エンティティ フレームワークを使用します。 ただし、LINQ to SQL、NHibernate、またはADO.NETを含む ASP.NET MVC アプリケーションからデータベースを操作するには、さまざまなテクノロジを使用できることを理解することが重要です。
 
-Entity Data Model ウィザードを起動するには、次の手順を実行します。
+エンティティ データ モデル ウィザードを起動するには、次の手順に従います。
 
-1. ソリューションエクスプローラーウィンドウで モデル フォルダーを右クリックし、メニューオプション 追加、**新しい項目** の順に選択します。
-2. **[データ]** カテゴリを選択し、 **[ADO.NET Entity Data Model]** テンプレートを選択します。
-3. データモデルに*MoviesDBModel*という名前を付け、 **[追加]** ボタンをクリックします。
+1. ソリューション エクスプローラ ウィンドウで Models フォルダを右クリックし、メニュー オプションの **[追加]、[新しい項目]** の順に選択します。
+2. **[データ**] カテゴリを選択し **、[ADO.NET エンティティ データ モデル]** テンプレートを選択します。
+3. データ モデルに*MoviesDBModel.edmx*という名前を付け、[**追加**] ボタンをクリックします。
 
-[追加] ボタンをクリックすると、Entity Data Model ウィザードが表示されます (図1を参照)。 ウィザードを完了するには、次の手順を実行します。
+[追加] ボタンをクリックすると、エンティティ データ モデル ウィザードが表示されます (図 1 参照)。 ウィザードを完了するには、次の手順を実行します。
 
-1. **[モデルの内容の選択]** ステップで、 **[データベースから生成]** オプションを選択します。
-2. **[データ接続の選択]** 手順で、 *MoviesDB*データ接続を使用し、接続設定に*MoviesDBEntities*という名前を使用します。 **[次へ]** をクリックします。
-3. **データベースオブジェクトの選択** ステップで、テーブル ノードを展開し、映画 テーブルを選択します。 名前空間*モデル*を入力し、 **[完了]** をクリックします。
+1. [**モデル コンテンツの選択]** ステップで、[**データベースから生成**] オプションを選択します。
+2. [**データ接続の選択]** ステップで *、MoviesDB.mdf*データ接続と、接続設定の*名前を*使用します。 **[次へ]** をクリックします。
+3. [**データベース オブジェクトの選択]** ステップで、[テーブル] ノードを展開し、[Movies] テーブルを選択します。 *名前空間のモデル*を入力し、[**完了**] ボタンをクリックします。
 
-[LINQ to SQL クラスの作成 ![](displaying-a-table-of-database-data-cs/_static/image1.jpg)](displaying-a-table-of-database-data-cs/_static/image1.png)
+[![LINQ to SQL クラスの作成](displaying-a-table-of-database-data-cs/_static/image1.jpg)](displaying-a-table-of-database-data-cs/_static/image1.png)
 
-**図 01**: LINQ to SQL クラスの作成 ([クリックしてフルサイズのイメージを表示する](displaying-a-table-of-database-data-cs/_static/image2.png))
+**図 01**: LINQ to SQL クラスの作成 ([フルサイズの画像を表示する をクリック](displaying-a-table-of-database-data-cs/_static/image2.png)して )
 
-Entity Data Model ウィザードを完了すると、Entity Data Model デザイナーが開きます。 デザイナーには、ムービーエンティティが表示されます (図2を参照)。
+エンティティ データ モデル ウィザードを完了すると、エンティティ データ モデル デザイナーが開きます。 デザイナーは、Movies エンティティを表示する必要があります (図 2 を参照してください)。
 
-[Entity Data Model デザイナーの ![](displaying-a-table-of-database-data-cs/_static/image2.jpg)](displaying-a-table-of-database-data-cs/_static/image3.png)
+[![エンティティ データ モデル デザイナー](displaying-a-table-of-database-data-cs/_static/image2.jpg)](displaying-a-table-of-database-data-cs/_static/image3.png)
 
-**図 02**: Entity Data Model デザイナー ([クリックしてフルサイズのイメージを表示](displaying-a-table-of-database-data-cs/_static/image4.png))
+**図 02**: エンティティ データ モデル デザイナ ([フルサイズの画像を表示する をクリック](displaying-a-table-of-database-data-cs/_static/image4.png)します )
 
-続行する前に、1つの変更を加える必要があります。 Entity Data Wizard では、ムービーデータベーステーブルを表す、*ムービー*という名前のモデルクラスが生成されます。 映画クラスを使用して特定の映画を表現するため、クラスの名前を *、ムービーで*はなく*ムービー* (複数形ではなく単数形) に変更する必要があります。
+続行する前に、1 つの変更を加える必要があります。 エンティティ データ ウィザードは *、Movies*データベース テーブルを表す Movies という名前のモデル クラスを生成します。 映画クラスを使用して特定のムービーを表現するため、クラスの名前を*映画*ではなく*ムービー* (複数形ではなく単数形) に変更する必要があります。
 
-デザイナー画面でクラスの名前をダブルクリックし、ムービーからムービーにクラスの名前を変更します。 この変更を行った後、 **[保存]** ボタン (フロッピーディスクのアイコン) をクリックして、Movie クラスを生成します。
+デザイナー画面でクラスの名前をダブルクリックし、クラスの名前を映画からムービーに変更します。 この変更を行った後、**保存**ボタン (フロッピー ディスクのアイコン) をクリックしてムービー クラスを生成します。
 
-## <a name="create-the-movies-controller"></a>ムービーコントローラーを作成する
+## <a name="create-the-movies-controller"></a>映画コントローラを作成する
 
-これで、データベースレコードを表すことができるようになったので、映画のコレクションを返すコントローラーを作成できます。 Visual Studio のソリューションエクスプローラーウィンドウで、Controllers フォルダーを右クリックし、メニューオプション [**追加]、[コントローラー** ] の順に選択します (図3を参照)。
+データベースレコードを表現する方法ができたので、ムービーのコレクションを返すコントローラを作成できます。 Visual Studio ソリューション エクスプローラー ウィンドウで、[コントローラー] フォルダーを右クリックし、メニュー オプション**の [追加]、[コント ローラー** ] を選択します (図 3 参照)。
 
-[[コントローラーの追加] メニューの ![](displaying-a-table-of-database-data-cs/_static/image3.jpg)](displaying-a-table-of-database-data-cs/_static/image5.png)
+[![[コントローラーの追加] メニュー](displaying-a-table-of-database-data-cs/_static/image3.jpg)](displaying-a-table-of-database-data-cs/_static/image5.png)
 
-**図 03**: [コントローラーの追加] メニュー ([クリックすると、フルサイズのイメージが表示](displaying-a-table-of-database-data-cs/_static/image6.png)されます)
+**図 03**: コントローラの追加メニュー ([フルサイズの画像を表示する をクリック](displaying-a-table-of-database-data-cs/_static/image6.png))
 
-**[コントローラーの追加]** ダイアログが表示されたら、コントローラー名 MovieController を入力します (図4を参照)。 **[追加]** ボタンをクリックして、新しいコントローラーを追加します。
+[**コントローラの追加**] ダイアログが表示されたら、コントローラ名を MovieController に入力します (図 4 を参照)。 [**追加**]ボタンをクリックして、新しいコントローラを追加します。
 
-[[コントローラーの追加] ダイアログ ![](displaying-a-table-of-database-data-cs/_static/image4.jpg)](displaying-a-table-of-database-data-cs/_static/image7.png)
+[![[コントローラの追加] ダイアログ](displaying-a-table-of-database-data-cs/_static/image4.jpg)](displaying-a-table-of-database-data-cs/_static/image7.png)
 
-**図 04**: [コントローラーの追加] ダイアログボックス ([クリックすると、フルサイズの画像が表示](displaying-a-table-of-database-data-cs/_static/image8.png)されます)
+**図 04**: [コントローラの追加] ダイアログボックス ([フルサイズの画像を表示する をクリック](displaying-a-table-of-database-data-cs/_static/image8.png))
 
-データベースレコードのセットを返すように、ムービーコントローラーによって公開されている Index () アクションを変更する必要があります。 リスト1のコントローラーのようにコントローラーを変更します。
+ムービーコントローラが公開する Index() アクションを変更して、データベースレコードのセットを返す必要があります。 リスト 1 のコントローラーのように見えるコントローラーを変更します。
 
-**リスト1– Controllers\MovieController.cs**
+**リスト 1 - コントローラ\ムービーコントローラー.cs**
 
 [!code-csharp[Main](displaying-a-table-of-database-data-cs/samples/sample1.cs)]
 
-リスト1では、MoviesDBEntities クラスを使用して MoviesDB データベースを表します。 このクラスを使用するには、次のように MvcApplication1 名前空間をインポートする必要があります。
+リスト 1 では、MoviesDBEntities クラスを使用して、MoviesDB データベースを表します。 このクラスを使用するには、次のように MvcApplication1.Models 名前空間をインポートする必要があります。
 
-MvcApplication1 を使用する
+モデルを使用しています。
 
-式の*エンティティ。Mo視聴セット。 ToList ()* は、ムービーデータベーステーブルからすべてのムービーのセットを返します。
+式*エンティティ。ムービーセット.ToList()は*、映画データベーステーブルからすべてのムービーのセットを返します。
 
-## <a name="create-the-view"></a>ビューを作成する
+## <a name="create-the-view"></a>ビューの作成
 
-一連のデータベースレコードを HTML テーブルに表示する最も簡単な方法は、Visual Studio に用意されているスキャフォールディングを利用することです。
+HTML テーブルに一連のデータベース レコードを表示する最も簡単な方法は、Visual Studio によって提供されるスキャフォールディングを利用することです。
 
-[ビルド] メニューの [ソリューションの**ビルド**] を選択して、アプリケーションをビルドします。 **[ビューの追加]** ダイアログボックスを開く前にアプリケーションをビルドする必要があります。そうしないと、データクラスがダイアログに表示されません。
+メニュー オプションの [**ビルド]、[ ソリューションのビルド**] の順に選択してアプリケーションをビルドします。 **[ビューの追加]** ダイアログを開く前にアプリケーションをビルドする必要があります。
 
-Index () アクションを右クリックし、 **[ビューの追加]** メニューオプションを選択します (図5を参照)。
+Index() アクションを右クリックし、メニュー オプションの**ビューの追加**を選択します (図 5 を参照)。
 
-[ビューを追加 ![には](displaying-a-table-of-database-data-cs/_static/image5.jpg)](displaying-a-table-of-database-data-cs/_static/image9.png)
+[![ビューの追加](displaying-a-table-of-database-data-cs/_static/image5.jpg)](displaying-a-table-of-database-data-cs/_static/image9.png)
 
-**図 05**: ビューを追加[する (クリックすると、フルサイズの画像が表示](displaying-a-table-of-database-data-cs/_static/image10.png)される)
+**図 05**: ビューの追加 ([フルサイズの画像を表示する をクリック](displaying-a-table-of-database-data-cs/_static/image10.png))
 
-**[ビューの追加]** ダイアログボックスで、 **[厳密に型指定されたビューを作成する]** チェックボックスをオンにします。 [ムービー] クラスを**ビューデータクラス**として選択します。 **ビューコンテンツ**として [*リスト*] を選択します (図6を参照)。 これらのオプションを選択すると、ムービーの一覧を表示する厳密に型指定されたビューが生成されます。
+[**ビューの追加]** ダイアログで、[厳密に**型指定されたビューを作成**する] チェック ボックスをオンにします。 **ビュー データ**クラスとして Movie クラスを選択します。 **ビューの内容**として *[リスト]* を選択します (図 6 を参照)。 これらのオプションを選択すると、ムービーの一覧を表示する厳密に型指定されたビューが生成されます。
 
-[[ビューの追加] ダイアログ ![](displaying-a-table-of-database-data-cs/_static/image6.jpg)](displaying-a-table-of-database-data-cs/_static/image11.png)
+[![[ビューの追加] ダイアログ](displaying-a-table-of-database-data-cs/_static/image6.jpg)](displaying-a-table-of-database-data-cs/_static/image11.png)
 
-**図 06**: [ビューの追加] ダイアログボックス ([クリックすると、フルサイズの画像が表示](displaying-a-table-of-database-data-cs/_static/image12.png)されます)
+**図 06**: [ビューの追加] ダイアログボックス ([フルサイズの画像を表示する をクリック](displaying-a-table-of-database-data-cs/_static/image12.png))
 
-**[追加]** ボタンをクリックすると、リスト2のビューが自動的に生成されます。 このビューには、映画のコレクションを反復処理し、ムービーの各プロパティを表示するために必要なコードが含まれています。
+**[追加**] ボタンをクリックすると、リスト 2 のビューが自動的に生成されます。 このビューには、ムービーのコレクションを反復処理し、ムービーの各プロパティを表示するために必要なコードが含まれています。
 
-**リスト2– Views\Movie\Index.aspx**
+**リスト 2 - ビュー\ムービー\インデックス.aspx**
 
 [!code-aspx[Main](displaying-a-table-of-database-data-cs/samples/sample2.aspx)]
 
-アプリケーションを実行するには、メニューオプション [**デバッグ]、[デバッグの開始**] の順に選択するか、F5 キーを押します。 アプリケーションを実行すると、Internet Explorer が起動します。 /ムービーの URL に移動すると、図7にページが表示されます。
+アプリケーションを実行するには、メニュー オプションの **[デバッグ]、[デバッグの開始**] を選択します (または F5 キーを押します)。 アプリケーションを実行すると、インターネット エクスプローラが起動します。 /Movie URL に移動すると、図 7 のページが表示されます。
 
-[映画のテーブルを ![する](displaying-a-table-of-database-data-cs/_static/image7.jpg)](displaying-a-table-of-database-data-cs/_static/image13.png)
+[![映画のテーブル](displaying-a-table-of-database-data-cs/_static/image7.jpg)](displaying-a-table-of-database-data-cs/_static/image13.png)
 
-**図 07**: ムービーのテーブル ([クリックすると、フルサイズの画像が表示](displaying-a-table-of-database-data-cs/_static/image14.png)される)
+**図07**: 動画の表 ([フルサイズの画像を表示する をクリック](displaying-a-table-of-database-data-cs/_static/image14.png))
 
-図7のデータベースレコードのグリッドの外観について何も気にしない場合は、単純にインデックスビューを変更できます。 たとえば、インデックスビューを変更すると、 *DateReleased*ヘッダーを [*リリース日*] に変更できます。
+図 7 のデータベース レコードのグリッドの外観について何も気に入らない場合は、インデックス ビューを変更するだけです。 たとえば、インデックス ビューを変更して *、DateReleased*ヘッダーを *[リリース日]* に変更できます。
 
-## <a name="create-a-template-with-a-partial"></a>部分的なテンプレートを作成する
+## <a name="create-a-template-with-a-partial"></a>部分を含むテンプレートを作成する
 
-ビューが複雑すぎる場合は、ビューをパーシャルに分割することをお勧めします。 パーシャルを使用すると、ビューの理解と保守が容易になります。 各ムービーデータベースレコードをフォーマットするためのテンプレートとして使用できる部分を作成します。
+ビューが複雑になりすぎる場合は、ビューをパーシャルに分割することをお勧めします。 パーシャルを使用すると、ビューの理解と維持が容易になります。 ムービー データベースの各レコードを書式設定するテンプレートとして使用できる部分を作成します。
 
 部分を作成するには、次の手順に従います。
 
-1. Views\Movie フォルダーを右クリックし、 **[ビューの追加]** メニューオプションを選択します。
-2. [*部分ビュー (.ascx) を作成する*] チェックボックスをオンにします。
-3. 部分的な*テンプレート*に名前を指定します。
-4. **[厳密に型指定されたビューを作成する]** チェックボックスをオンにします。
-5. *ビューデータクラス*として [ムービー] を選択します。
+1. [ビュー]\Movie フォルダを右クリックし、メニュー オプションの [**ビューの追加]** を選択します。
+2. *[部分ビューの作成 (.ascx)]* というラベルの付いたチェック ボックスをオンにします。
+3. 部分的な*ムービーテンプレートに名前を付けます*。
+4. [**厳密に型指定されたビューを作成する**] チェック ボックスをオンにします。
+5. ビュー データ*クラス*として [ムービー] を選択します。
 6. *ビューのコンテンツ*として [空] を選択します。
-7. **[追加]** ボタンをクリックして、プロジェクトに部分を追加します。
+7. [**追加**] ボタンをクリックして、部分をプロジェクトに追加します。
 
-これらの手順を完了したら、リスト3のように Molook テンプレート部分を変更します。
+これらの手順を完了したら、ムービー テンプレートの一部をリスト 3 のように変更します。
 
-**リスト3– Views\Movie\MovieTemplate.ascx**
+**リスト 3 – ビュー\ムービー\ムービーテンプレート.ascx**
 
 [!code-aspx[Main](displaying-a-table-of-database-data-cs/samples/sample3.aspx)]
 
-リスト3の部分には、1行のレコードのテンプレートが含まれています。
+リスト 3 の部分には、1 行のレコードのテンプレートが含まれています。
 
-リスト4の変更されたインデックスビューでは、Mo閲覧テンプレート partial が使用されます。
+リスト 4 の変更されたインデックス ビューでは、ムービー テンプレートの部分を使用します。
 
-**リスト4– Views\Movie\Index.aspx**
+**リスト 4 - ビュー\ムービー\インデックス.aspx**
 
 [!code-aspx[Main](displaying-a-table-of-database-data-cs/samples/sample4.aspx)]
 
-リスト4のビューには、すべてのムービーを反復処理する foreach ループが含まれています。 ムービーのフォーマットには、各ムービーに対して Mo視聴テンプレート部分が使用されます。 MovieTemplate は、RenderPartial () ヘルパーメソッドを呼び出すことによってレンダリングされます。
+リスト 4 のビューには、すべてのムービーを反復処理する foreach ループが含まれています。 ムービーごとに、ムービーテンプレートの部分を使用してムービーのフォーマットを設定します。 レンダリングテンプレートは、ヘルパー メソッドを呼び出すことによってレンダリングされます。
 
-変更されたインデックスビューでは、データベースレコードのまったく同じ HTML テーブルが表示されます。 しかし、ビューは大幅に簡素化されています。
+変更されたインデックス ビューでは、データベース レコードの HTML テーブルとまったく同じものがレンダリングされます。 しかし、ビューは大幅に簡略化されました。
 
-RenderPartial () メソッドは、文字列を返さないため、他のヘルパーメソッドとは異なります。 そのため、&lt;% .Html 部分 () を使用して、RenderPartial () メソッドを呼び出す必要があります。%&gt; &lt;% = Html. RenderPartial ();%&gt;。
+RenderPartial() メソッドは文字列を返さないため、他のほとんどのヘルパー メソッドとは異なります。 したがって、% Html.RenderPartial() を&lt;使用して RenderPartial() メソッドを呼び出す必要があります。%= &lt;Html.RenderPartial() の代わりに %&gt;%&gt;.
 
 ## <a name="summary"></a>まとめ
 
-このチュートリアルの目的は、一連のデータベースレコードを HTML テーブルに表示する方法を説明することでした。 まず、Microsoft Entity Framework を利用して、コントローラーアクションから一連のデータベースレコードを返す方法について学習しました。 次に、Visual Studio のスキャフォールディングを使用して、項目のコレクションを自動的に表示するビューを生成する方法を学習しました。 最後に、部分的なを利用して、ビューを簡略化する方法について学習しました。 各データベースレコードをフォーマットできるように、部分をテンプレートとして使用する方法について学習しました。
+このチュートリアルの目的は、HTML テーブルにデータベース レコードのセットを表示する方法を説明することです。 最初に、Microsoft エンティティ フレームワークを利用して、コントローラー アクションからデータベース レコードのセットを返す方法を学習しました。 次に、Visual Studio スキャフォールディングを使用して、項目のコレクションを自動的に表示するビューを生成する方法について説明しました。 最後に、部分を利用してビューを簡略化する方法を学習しました。 各データベース レコードを書式設定できるように、部分をテンプレートとして使用する方法を学習しました。
 
 > [!div class="step-by-step"]
 > [前へ](creating-model-classes-with-linq-to-sql-cs.md)

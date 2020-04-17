@@ -1,131 +1,131 @@
 ---
 uid: mvc/overview/older-versions-1/views/creating-page-layouts-with-view-master-pages-vb
-title: ビューマスターページを使用したページレイアウトの作成 (VB) |Microsoft Docs
-author: microsoft
-description: このチュートリアルでは、ビューのマスターページを利用して、アプリケーションの複数のページに共通のページレイアウトを作成する方法について説明します。 使用できる...
+title: ビュー マスター ページ (VB) を使用してページ レイアウトを作成する |マイクロソフトドキュメント
+author: rick-anderson
+description: このチュートリアルでは、ビュー マスター ページを利用して、アプリケーション内の複数のページの共通ページ レイアウトを作成する方法を学習します。 あなたは..を使用することができます。
 ms.author: riande
 ms.date: 10/16/2008
 ms.assetid: d34f90a1-6de3-482a-a326-f87fdcbaaaff
 msc.legacyurl: /mvc/overview/older-versions-1/views/creating-page-layouts-with-view-master-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 97c0ecf1953cc54030656dd710a5150243877110
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 37b8d858c72357ebbe51458f76511a9672b01b4d
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78435202"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81542496"
 ---
 # <a name="creating-page-layouts-with-view-master-pages-vb"></a>ビュー マスター ページでページ レイアウトを作成する (VB)
 
-[Microsoft](https://github.com/microsoft)
+[マイクロソフト](https://github.com/microsoft)
 
-[[Download PDF]\(PDF をダウンロード\)](https://download.microsoft.com/download/e/f/3/ef3f2ff6-7424-48f7-bdaa-180ef64c3490/ASPNET_MVC_Tutorial_12_VB.pdf)
+[PDF のダウンロード](https://download.microsoft.com/download/e/f/3/ef3f2ff6-7424-48f7-bdaa-180ef64c3490/ASPNET_MVC_Tutorial_12_VB.pdf)
 
-> このチュートリアルでは、ビューのマスターページを利用して、アプリケーションの複数のページに共通のページレイアウトを作成する方法について説明します。 ビューマスターページを使用すると、たとえば、2列のページレイアウトを定義し、web アプリケーションのすべてのページに2列のレイアウトを使用することができます。
+> このチュートリアルでは、ビュー マスター ページを利用して、アプリケーション内の複数のページの共通ページ レイアウトを作成する方法を学習します。 ビュー マスター ページを使用して、2 列のページ レイアウトを定義し、Web アプリケーションのすべてのページに 2 列のレイアウトを使用できます。
 
-## <a name="creating-page-layouts-with-view-master-pages"></a>ビューマスターページを使用したページレイアウトの作成
+## <a name="creating-page-layouts-with-view-master-pages"></a>ビュー マスター ページを使用したページ レイアウトの作成
 
-このチュートリアルでは、ビューのマスターページを利用して、アプリケーションの複数のページに共通のページレイアウトを作成する方法について説明します。 ビューマスターページを使用すると、たとえば、2列のページレイアウトを定義し、web アプリケーションのすべてのページに2列のレイアウトを使用することができます。
+このチュートリアルでは、ビュー マスター ページを利用して、アプリケーション内の複数のページの共通ページ レイアウトを作成する方法を学習します。 ビュー マスター ページを使用して、2 列のページ レイアウトを定義し、Web アプリケーションのすべてのページに 2 列のレイアウトを使用できます。
 
-また、ビューのマスターページを利用して、アプリケーション内の複数のページで共通のコンテンツを共有することもできます。 たとえば、web サイトのロゴ、ナビゲーションリンク、およびバナー広告をビューマスターページに配置できます。 これにより、アプリケーションのすべてのページにこのコンテンツが自動的に表示されるようになります。
+また、ビュー マスター ページを利用して、アプリケーション内の複数のページで共通のコンテンツを共有することもできます。 たとえば、Web サイトのロゴ、ナビゲーション リンク、バナー広告をビュー マスター ページに配置できます。 これにより、アプリケーションのすべてのページでこのコンテンツが自動的に表示されます。
 
-このチュートリアルでは、新しいビューマスターページを作成し、マスターページに基づいて新しいビューコンテンツページを作成する方法について説明します。
+このチュートリアルでは、新しいビュー マスター ページを作成し、マスター ページに基づいて新しいビュー コンテンツ ページを作成する方法について説明します。
 
-### <a name="creating-a-view-master-page"></a>ビューマスターページの作成
+### <a name="creating-a-view-master-page"></a>ビュー マスター ページの作成
 
-まずは、2列のレイアウトを定義するビューマスターページを作成してみましょう。 MVC プロジェクトに新しいビューマスターページを追加するには、Views\Shared フォルダーを右クリックし、[追加] **、[新しい項目**] の順に選択して、mvc ビューのマスターページテンプレートを選択します (図1を参照)。
+2 列のレイアウトを定義するビュー マスター ページを作成してみましょう。 MVC プロジェクトに新しいビュー マスター ページを追加するには、ビュー\共有フォルダーを右クリックし、メニュー オプション**の追加、新しい項目**を選択し、MVC ビュー マスター ページ テンプレート (図 1 参照) を選択します。
 
-[ビューマスターページを追加 ![には](creating-page-layouts-with-view-master-pages-vb/_static/image2.png)](creating-page-layouts-with-view-master-pages-vb/_static/image1.png)
+[![ビュー マスター ページの追加](creating-page-layouts-with-view-master-pages-vb/_static/image2.png)](creating-page-layouts-with-view-master-pages-vb/_static/image1.png)
 
-**図 01**: ビューマスターページを追加[する (クリックすると、フルサイズの画像が表示](creating-page-layouts-with-view-master-pages-vb/_static/image3.png)される)
+**図 01**: ビュー マスター ページの追加 ([フルサイズの画像を表示する をクリック](creating-page-layouts-with-view-master-pages-vb/_static/image3.png)します )
 
-アプリケーションでは、複数のビューマスターページを作成できます。 各ビューのマスターページでは、異なるページレイアウトを定義できます。 たとえば、特定のページに2列のレイアウトを設定し、他のページに3列のレイアウトを設定することができます。
+アプリケーションでは、複数のビュー マスター ページを作成できます。 各ビューマスターページは、異なるページレイアウトを定義できます。 たとえば、特定のページに 2 列のレイアウトを設定し、その他のページに 3 列のレイアウトを設定する場合があります。
 
-ビューのマスターページは、標準の ASP.NET MVC ビューによく似ています。 ただし、通常のビューとは異なり、ビューのマスターページには `<asp:ContentPlaceHolder>` タグが1つ以上含まれています。 `<contentplaceholder>` タグは、個々のコンテンツページでオーバーライドできるマスターページの領域をマークするために使用されます。
+ビュー マスター ページは、MVC ビューの標準ASP.NET外観が非常に大きく似ています。 ただし、標準ビューとは異なり、ビュー マスター ページには`<asp:ContentPlaceHolder>`1 つ以上のタグが含まれます。 タグ`<contentplaceholder>`は、個々のコンテンツ ページで上書きできるマスター ページの領域をマークするために使用されます。
 
-たとえば、リスト1のビューマスターページでは、2列のレイアウトを定義します。 2つの `<contentplaceholder>` タグが含まれています。 列ごとに1つの `<ContentPlaceHolder>`。
+たとえば、リスト 1 のビュー マスター ページは、2 列のレイアウトを定義します。 これには 2`<contentplaceholder>`つのタグが含まれています。 各`<ContentPlaceHolder>`列に 1 つずつ。
 
-**リスト1– `Views\Shared\Site.master`**
+**リスト1 –`Views\Shared\Site.master`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample1.aspx)]
 
-リスト1のビューマスターページの本文には、2つの列に対応する2つの `<div>` タグが含まれています。 カスケードスタイルシートの列クラスは、両方の `<div>` タグに適用されます。 このクラスは、マスターページの上部で宣言されているスタイルシートで定義されています。 デザインビューに切り替えると、ビューマスターページがどのように表示されるかをプレビューできます。 ソースコードエディターの左下にある [デザイン] タブをクリックします (図2を参照)。
+リスト 1 のビュー マスター ページの本文`<div>`には、2 つの列に対応する 2 つのタグが含まれています。 カスケード スタイル シート列クラスは、両方`<div>`のタグに適用されます。 このクラスは、マスター ページの先頭で宣言されているスタイル シートで定義されます。 デザイン ビューに切り替えると、ビュー マスター ページのレンダリング方法をプレビューできます。 ソース コード エディターの左下にある [デザイン] タブをクリックします (図 2 参照)。
 
-[デザイナーでマスターページをプレビュー ![には](creating-page-layouts-with-view-master-pages-vb/_static/image5.png)](creating-page-layouts-with-view-master-pages-vb/_static/image4.png)
+[![デザイナーでのマスター ページのプレビュー](creating-page-layouts-with-view-master-pages-vb/_static/image5.png)](creating-page-layouts-with-view-master-pages-vb/_static/image4.png)
 
-**図 02**: デザイナーでマスターページをプレビューする ([クリックすると、フルサイズの画像が表示](creating-page-layouts-with-view-master-pages-vb/_static/image6.png)されます)
+**図 02**: デザイナーでマスター ページをプレビューする ([フルサイズのイメージを表示する をクリック](creating-page-layouts-with-view-master-pages-vb/_static/image6.png)して )
 
-### <a name="creating-a-view-content-page"></a>ビューコンテンツページを作成する
+### <a name="creating-a-view-content-page"></a>ビュー コンテンツ ページの作成
 
-ビューマスターページを作成した後、ビューマスターページに基づいて1つまたは複数のビューコンテンツページを作成できます。 たとえば、Home コントローラーのインデックスビューコンテンツページを作成するには、Views\Home フォルダーを右クリックし、[**追加]、[新しい項目**] の順に選択して、 **MVC ビューコンテンツページ**テンプレートを選択し、「」と入力して、[追加] ボタンをクリックします (図3を参照)。
+ビュー マスター ページを作成した後、ビュー マスター ページに基づいて 1 つ以上のビュー コンテンツ ページを作成できます。 たとえば、ホーム コントローラーのインデックス ビュー コンテンツ ページを作成するには、ビュー\ホーム フォルダを右クリックし **、[追加]、[新しい項目**] の順に選択し **、MVC ビュー コンテンツ ページ**テンプレートを選択して Index.aspx という名前を入力し、[追加] ボタンをクリックします (図 3 参照)。
 
-[ビューコンテンツページを追加 ![には](creating-page-layouts-with-view-master-pages-vb/_static/image8.png)](creating-page-layouts-with-view-master-pages-vb/_static/image7.png)
+[![ビュー コンテンツ ページの追加](creating-page-layouts-with-view-master-pages-vb/_static/image8.png)](creating-page-layouts-with-view-master-pages-vb/_static/image7.png)
 
-**図 03**: ビューコンテンツページを追加[する (クリックすると、フルサイズの画像が表示](creating-page-layouts-with-view-master-pages-vb/_static/image9.png)される)
+**図 03**: ビュー コンテンツ ページを追加する ([フルサイズの画像を表示するには [ ] をクリック](creating-page-layouts-with-view-master-pages-vb/_static/image9.png)します )
 
-[追加] ボタンをクリックすると、新しいダイアログが表示され、[ビューのコンテンツ] ページに関連付けるビューマスターページを選択できます (図4を参照)。 前のセクションで作成したサイトのマスタービューマスターページに移動できます。
+[追加] ボタンをクリックすると、新しいダイアログが表示され、ビュー のマスター ページを選択してビュー コンテンツ ページに関連付けることができます (図 4 参照)。 前のセクションで作成した Site.master ビュー マスター ページに移動できます。
 
-[マスターページを選択 ![には](creating-page-layouts-with-view-master-pages-vb/_static/image11.png)](creating-page-layouts-with-view-master-pages-vb/_static/image10.png)
+[![マスター ページの選択](creating-page-layouts-with-view-master-pages-vb/_static/image11.png)](creating-page-layouts-with-view-master-pages-vb/_static/image10.png)
 
-**図 04**: マスターページを選択[する (クリックすると、フルサイズの画像が表示](creating-page-layouts-with-view-master-pages-vb/_static/image12.png)される)
+**図 04**: マスタ ページの選択 ([フルサイズの画像を表示する をクリック](creating-page-layouts-with-view-master-pages-vb/_static/image12.png)します )
 
-新しいビューコンテンツページを作成した後に、そのマスターページをリスト2で取得します。
+Site.master マスター ページに基づいて新しいビュー コンテンツ ページを作成すると、リスト 2 でファイルが取得されます。
 
-**リスト2– `Views\Home\Index.aspx`**
+**リスト2 –`Views\Home\Index.aspx`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample2.aspx)]
 
-このビューには、ビューマスターページの `<asp:ContentPlaceHolder>` 各タグに対応する `<asp:Content>` タグが含まれていることに注意してください。 各 `<asp:Content>` タグには、オーバーライドする特定の `<asp:ContentPlaceHolder>` を指す ContentPlaceHolderID 属性が含まれています。
+このビューには、`<asp:Content>`ビュー マスター ページの各`<asp:ContentPlaceHolder>`タグに対応するタグが含まれています。 各`<asp:Content>`タグには、オーバーライドする特定`<asp:ContentPlaceHolder>`のタグを指す ContentPlaceHolderID 属性が含まれています。
 
-さらに、リスト2の [コンテンツビュー] ページには、通常のオープンおよび終了 HTML タグは含まれていません。 たとえば、開始タグと終了 `<html>` タグや `<head>` タグは含まれません。 通常の開始タグと終了タグはすべて、ビューマスターページに含まれています。
+さらに、リスト 2 のコンテンツ ビュー ページには、通常の開始 HTML タグと終了 HTML タグが含まれていないことに注意してください。 たとえば、開始タグと終了`<html>``<head>`タグは含まれません。 通常の開始タグと終了タグはすべて、ビュー マスター ページに含まれます。
 
-ビューコンテンツページに表示するコンテンツは、`<asp:Content>` タグ内に配置する必要があります。 これらのタグの外側に HTML またはその他のコンテンツを配置すると、ページを表示しようとしたときにエラーが表示されます。
+ビューコンテンツページに表示するコンテンツは、タグ内に`<asp:Content>`配置する必要があります。 これらのタグの外部に HTML やその他のコンテンツを配置すると、ページを表示しようとするとエラーが発生します。
 
-コンテンツビューページのマスターページから、すべての `<asp:ContentPlaceHolder>` タグをオーバーライドする必要はありません。 タグを特定のコンテンツに置き換える場合にのみ、`<asp:ContentPlaceHolder>` タグをオーバーライドする必要があります。
+コンテンツ ビュー ページのマスター`<asp:ContentPlaceHolder>`ページのすべてのタグを上書きする必要はありません。 タグを特定のコンテンツで`<asp:ContentPlaceHolder>`置き換える場合にのみ、タグをオーバーライドする必要があります。
 
-たとえば、リスト3の変更されたインデックスビューに含まれる `<asp:Content>` タグは2つだけです。 `<asp:Content>` の各タグには、いくつかのテキストが含まれています。
+たとえば、リスト 3 で変更したインデックス ビューには`<asp:Content>`、2 つのタグしか含めなされません。 各タグには`<asp:Content>`、いくつかのテキストが含まれています。
 
-**リスト3– `Views\Home\Index.aspx (modified)`**
+**リスト3 –`Views\Home\Index.aspx (modified)`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample3.aspx)]
 
-リスト3のビューが要求されると、図5のページが表示されます。 ビューでは、2つの列を含むページが表示されることに注意してください。 さらに、[ビューコンテンツ] ページのコンテンツがビューマスターページのコンテンツとマージされていることにも注意してください。
+リスト 3 のビューが要求されると、図 5 のページが表示されます。 ビューは、2 つの列を持つページをレンダリングします。 さらに、ビュー コンテンツ ページのコンテンツがビュー マスター ページのコンテンツとマージされることにも注意してください。
 
-[インデックスビューのコンテンツページの ![](creating-page-layouts-with-view-master-pages-vb/_static/image14.png)](creating-page-layouts-with-view-master-pages-vb/_static/image13.png)
+[![インデックス ビューのコンテンツ ページ](creating-page-layouts-with-view-master-pages-vb/_static/image14.png)](creating-page-layouts-with-view-master-pages-vb/_static/image13.png)
 
-**図 05**: インデックスビューのコンテンツページ ([クリックすると、フルサイズの画像が表示](creating-page-layouts-with-view-master-pages-vb/_static/image15.png)されます)
+**図 05**: インデックス ビューのコンテンツ ページ ([フルサイズの画像を表示する をクリック](creating-page-layouts-with-view-master-pages-vb/_static/image15.png)します )
 
-### <a name="modifying-view-master-page-content"></a>ビューマスターページのコンテンツの変更
+### <a name="modifying-view-master-page-content"></a>マスター ページの表示コンテンツの変更
 
-ビューのマスターページを操作するときにほぼ即座に発生する問題の1つは、異なるビューコンテンツページが要求されたときにビューマスターページのコンテンツを変更するという問題です。 たとえば、web アプリケーションの各ページに一意のタイトルを付けることができます。 ただし、タイトルはビューの [コンテンツ] ページではなく、ビューマスターページで宣言されています。 では、各ビューコンテンツページのページタイトルをカスタマイズするにはどうすればよいでしょうか。
+ビュー マスター ページを操作するときに直ちに発生する問題の 1 つは、異なるビュー コンテンツ ページが要求されたときにビュー マスター ページのコンテンツを変更する問題です。 たとえば、Web アプリケーションの各ページに固有のタイトルを設定します。 ただし、タイトルはビュー のマスター ページで宣言され、ビュー コンテンツ ページでは宣言されません。 では、各ビュー コンテンツ ページのページ タイトルをどのようにカスタマイズすればよいでしょうか。
 
-ビューコンテンツページに表示されるタイトルを変更するには、2つの方法があります。 まず、ビューコンテンツページの上部で宣言されている `<%@ page %>` ディレクティブの title 属性にページタイトルを割り当てることができます。 たとえば、ページタイトル "Super 素晴らしい Web サイト" をインデックスビューに割り当てる場合は、インデックスビューの先頭に次のディレクティブを含めることができます。
+ビュー コンテンツ ページで表示されるタイトルを変更するには、2 つの方法があります。 まず、ビュー コンテンツ ページの上部で宣言された`<%@ page %>`ディレクティブの title 属性にページ タイトルを割り当てます。 たとえば、ページタイトル「スーパーグレートWebサイト」をインデックスビューに割り当てる場合、インデックスビューの上部に次のディレクティブを含めることができます。
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample4.aspx)]
 
-インデックスビューがブラウザーに表示されると、ブラウザーのタイトルバーに必要なタイトルが表示されます。
+インデックス ビューがブラウザにレンダリングされると、ブラウザのタイトル バーに目的のタイトルが表示されます。
 
-[![ブラウザーのタイトルバー](creating-page-layouts-with-view-master-pages-vb/_static/image17.png)](creating-page-layouts-with-view-master-pages-vb/_static/image16.png)
+[![ブラウザーのタイトル バー](creating-page-layouts-with-view-master-pages-vb/_static/image17.png)](creating-page-layouts-with-view-master-pages-vb/_static/image16.png)
 
-Title 属性が機能するためには、マスタービューページが満たす必要のある重要な要件が1つあります。 ビューマスターページには、ヘッダーの通常の `<head>` タグではなく、`<head runat="server">` タグが含まれている必要があります。 `<head>` タグに runat = "server" 属性が含まれていない場合、タイトルは表示されません。 既定のビューマスターページには、必須の `<head runat="server">` タグが含まれています。
+title 属性が機能するためにマスター ビュー ページが満たす必要がある重要な要件が 1 つあります。 ビュー マスター ページには、`<head runat="server">`ヘッダーの通常`<head>`のタグではなく、タグが含まれている必要があります。 タグに`<head>`runat="server" 属性が含まれていない場合、タイトルは表示されません。 既定のビュー マスター ページには`<head runat="server">`、必要なタグが含まれています。
 
-個々のビューコンテンツページからマスターページのコンテンツを変更する別の方法として、`<asp:ContentPlaceHolder>` タグで変更する領域をラップすることもできます。 たとえば、タイトルだけでなく、meta タグもマスタービューページによって表示されるように変更する場合を考えてみます。 リスト4のマスタービューページには、`<head>` タグ内の `<asp:ContentPlaceHolder>` タグが含まれています。
+個々のビュー コンテンツ ページからマスター ページのコンテンツを変更する別の方法として、`<asp:ContentPlaceHolder>`タグで変更する領域をラップします。 たとえば、マスター ビュー ページによってレンダリングされるタイトルだけでなく、メタ タグも変更するとします。 リスト 4 のマスター ビュー`<asp:ContentPlaceHolder>`ページには、`<head>`そのタグ内にタグが含まれています。
 
-**リスト4– `Views\Shared\Site2.master`**
+**リスト4 –`Views\Shared\Site2.master`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample5.aspx)]
 
-リスト4の `<asp:ContentPlaceHolder>` タグに既定のコンテンツ (既定のタイトルと既定のメタタグ) が含まれていることに注意してください。 個々のビューコンテンツページでこの `<asp:ContentPlaceHolder>` タグをオーバーライドしない場合、既定のコンテンツが表示されます。
+リスト 4`<asp:ContentPlaceHolder>`のタグには、デフォルトのタイトルとデフォルトのメタタグのデフォルトコンテンツが含まれていることに注意してください。 個々のビューコンテンツページでこの`<asp:ContentPlaceHolder>`タグを上書きしない場合は、デフォルトのコンテンツが表示されます。
 
-リスト5の [コンテンツビュー] ページでは、カスタムタイトルとカスタムメタタグを表示するために `<asp:ContentPlaceHolder>` タグがオーバーライドされます。
+リスト 5 のコンテンツ ビュー ページ`<asp:ContentPlaceHolder>`は、カスタム タイトルとカスタム メタ タグを表示するためにタグを上書きします。
 
-**リスト5– `Views\Home\Index2.aspx`**
+**リスト5 –`Views\Home\Index2.aspx`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample6.aspx)]
 
 ### <a name="summary"></a>まとめ
 
-このチュートリアルでは、マスターページの表示とコンテンツページの表示の基本的な概要について説明しました。 新しいビューマスターページを作成し、それらに基づいてビューコンテンツページを作成する方法について学習しました。 また、特定のビューコンテンツページからビューマスターページのコンテンツを変更する方法についても説明します。
+このチュートリアルでは、マスター ページの表示とコンテンツ ページの表示に関する基本的な概要を説明しました。 新しいビュー マスター ページを作成し、そのマスター ページに基づいてコンテンツ ページを作成する方法について説明しました。 また、特定のビュー コンテンツ ページからビュー マスター ページのコンテンツを変更する方法についても説明しました。
 
 > [!div class="step-by-step"]
 > [前へ](using-the-tagbuilder-class-to-build-html-helpers-vb.md)

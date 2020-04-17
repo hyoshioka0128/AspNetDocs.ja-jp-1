@@ -1,153 +1,153 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/use-ajax-to-deliver-dynamic-updates
-title: AJAX を使用して動的更新を配信する |Microsoft Docs
-author: microsoft
-description: 手順10では、ログインしているユーザーが、ディナーの詳細に統合された Ajax ベースのアプローチを使用して、ディナーに参加することに関心があることを RSVP に対してサポートします。
+title: AJAX を使用して動的更新を配信する |マイクロソフトドキュメント
+author: rick-anderson
+description: ステップ 10 は、ディナーの詳細に統合された Ajax ベースのアプローチを使用して、RSVP にログインしたユーザーがディナーに参加するサポートを実装します。
 ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: 18700815-8e6c-4489-91af-7ea9dab6529e
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-ajax-to-deliver-dynamic-updates
 msc.type: authoredcontent
-ms.openlocfilehash: 3edc02fec546609505b5e085440fa684abe7acd0
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 13680b91edc665852fd4af56e4fc79551e6de15e
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78486310"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81541248"
 ---
 # <a name="use-ajax-to-deliver-dynamic-updates"></a>AJAX を使用し、動的更新を配信する
 
-[Microsoft](https://github.com/microsoft)
+[マイクロソフト](https://github.com/microsoft)
 
-[[Download PDF]\(PDF をダウンロード\)](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
+[PDF のダウンロード](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
-> これは、ASP.NET MVC 1 を使用して小規模で完成した web アプリケーションを構築する方法について説明する無料の["" アプリケーションのチュートリアル](introducing-the-nerddinner-tutorial.md)の手順10です。
+> これは、MVC 1 を使用して小さいが完全な Web アプリケーションを構築する方法を説明する無料の["NerdDinner" アプリケーション チュートリアル](introducing-the-nerddinner-tutorial.md)のステップ 10 ASP.NETです。
 > 
-> 手順10では、ログインしているユーザーが、ディナーの詳細ページに統合された Ajax ベースのアプローチを使用して、ディナーに参加することを目的として RSVP を管理します。
+> ステップ 10 では、ディナーの詳細ページに統合された Ajax ベースのアプローチを使用して、RSVP にログインしたユーザーのサポートを実装します。
 > 
-> ASP.NET MVC 3 を使用している場合は、MVC 3 または[Mvc ミュージックストア](../../older-versions/mvc-music-store/mvc-music-store-part-1.md)[のチュートリアルではじめに](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md)に従うことをお勧めします。
+> mvc 3 ASP.NET使用している場合は、MVC 3 または[MVC ミュージック ストア](../../older-versions/mvc-music-store/mvc-music-store-part-1.md)[チュートリアルの概要に](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md)従うことをお勧めします。
 
-## <a name="nerddinner-step-10-ajax-enabling-rsvps-accepts"></a>ステップ 10: AJAX で RSVPs を有効にする
+## <a name="nerddinner-step-10-ajax-enabling-rsvps-accepts"></a>NerdDinner ステップ 10: RsAP を有効にする AJAX が受け入れる
 
-次に、ログインしているユーザーのサポートを実装して、ディナーに参加することを目的としています。 これは、ディナーの詳細ページで統合された AJAX ベースのアプローチを使用して有効にします。
+それでは、RSVPにログインしているユーザーが夕食会に出席することに興味を持つサポートを実装しましょう。 夕食の詳細ページに統合された AJAX ベースのアプローチを使用して、これを有効にします。
 
-### <a name="indicating-whether-the-user-is-rsvpd"></a>ユーザーが RSVP であるかどうかを示す
+### <a name="indicating-whether-the-user-is-rsvpd"></a>ユーザーが RSVP'd であるかどうかを示す
 
-ユーザーは、 *[id*] の URL にアクセスして、特定のディナーに関する詳細を確認できます。
+ユーザーは */Dinners/Details/[id]* URL にアクセスして、特定のディナーの詳細を確認できます。
 
 ![](use-ajax-to-deliver-dynamic-updates/_static/image1.png)
 
-Details () アクションメソッドは、次のように実装されます。
+Details() アクションメソッドは次のように実装されています。
 
 [!code-csharp[Main](use-ajax-to-deliver-dynamic-updates/samples/sample1.cs)]
 
-RSVP サポートを実装する最初の手順として、先ほど作成した Dinner.cs 部分クラス内で、"IsUserRegistered (username)" ヘルパーメソッドをディナーオブジェクトに追加します。 このヘルパーメソッドは、ユーザーが現在ディナーであるかどうかによって、true または false を返します。
+RSVP サポートを実装する最初のステップは、(以前に構築したDinner.cs部分クラス内で) Dinner オブジェクトに "IsUserRegistered(ユーザー名)" ヘルパー メソッドを追加することです。 このヘルパー メソッドは、ユーザーが現在、Dinner の RSVP の有無に応じて true または false を返します。
 
 [!code-csharp[Main](use-ajax-to-deliver-dynamic-updates/samples/sample2.cs)]
 
-その後、次のコードを Details ビューテンプレートに追加して、ユーザーがイベントに対して登録されているかどうかを示す適切なメッセージを表示することができます。
+その後、Details.aspx ビュー テンプレートに次のコードを追加して、ユーザーがイベントに登録されているかどうかを示す適切なメッセージを表示できます。
 
 [!code-html[Main](use-ajax-to-deliver-dynamic-updates/samples/sample3.html)]
 
-これで、ユーザーがディナーにアクセスすると、次のメッセージが表示されます。
+そして今、ユーザーが夕食を訪問すると、彼らはこのメッセージが表示されます:
 
 ![](use-ajax-to-deliver-dynamic-updates/_static/image2.png)
 
-また、お客様がディナーにアクセスすると、次のメッセージが表示されます。
+そして、彼らは夕食を訪問すると、彼らは次のメッセージが表示されますのために登録されていません:
 
 ![](use-ajax-to-deliver-dynamic-updates/_static/image3.png)
 
-### <a name="implementing-the-register-action-method"></a>Register アクションメソッドの実装
+### <a name="implementing-the-register-action-method"></a>登録アクション メソッドの実装
 
-次に、ユーザーが [詳細] ページからディナーを使用できるようにするために必要な機能を追加してみましょう。
+ここで、詳細ページから、ディナーに RSVP にユーザーを有効にするために必要な機能を追加してみましょう。
 
-これを実装するには、新しい "RSVPController" クラスを作成します。そのためには、\ Controllers ディレクトリを右クリックし、[&gt;コントローラー] メニューコマンドを選択します。
+これを実装するには、\Controllersディレクトリを右クリックし、&gt;コントローラメニューコマンドを選択して、新しい "RSVPController"クラスを作成します。
 
-新しい RSVPController クラス内に "Register" アクションメソッドを実装します。このクラスは、ディナーの id を引数として受け取り、適切なディナーオブジェクトを取得し、ログインしているユーザーが現在、登録されているユーザーの一覧にあるかどうかを確認します。では、次のように RSVP オブジェクトが追加されません。
+新しい RSVPController クラス内に、引数として Dinner の ID を取得し、適切な Dinner オブジェクトを取得し、ログインしているユーザーが現在登録しているユーザーの一覧に含まれているかどうかを確認し、RSVP オブジェクトを追加しない場合は、そのクラスに "Register" アクション メソッドを実装します。
 
 [!code-csharp[Main](use-ajax-to-deliver-dynamic-updates/samples/sample4.cs)]
 
-ここでは、アクションメソッドの出力として簡単な文字列を返す方法について説明します。 ビューテンプレート内にこのメッセージを埋め込むこともできますが、そのため、コントローラーの基本クラスで Content () ヘルパーメソッドを使用し、上記のような文字列メッセージを返すだけです。
+アクションメソッドの出力として単純な文字列を返す方法の上に注意してください。 このメッセージをビューテンプレートに埋め込むこともできますが、とても小さいため、コントローラの基本クラスで Content() ヘルパーメソッドを使用し、上記のような文字列メッセージを返します。
 
-### <a name="calling-the-rsvpforevent-action-method-using-ajax"></a>AJAX を使用した RSVPForEvent アクションメソッドの呼び出し
+### <a name="calling-the-rsvpforevent-action-method-using-ajax"></a>AJAX を使用して RSVPForEvent アクション メソッドを呼び出す
 
-AJAX を使用して、詳細ビューからレジスタアクションメソッドを呼び出します。 この実装は非常に簡単です。 まず、2つのスクリプトライブラリ参照を追加します。
+AJAX を使用して、詳細ビューから Register アクション メソッドを呼び出します。 これを実装することは非常に簡単です。 最初に、2 つのスクリプト ライブラリ参照を追加します。
 
 [!code-html[Main](use-ajax-to-deliver-dynamic-updates/samples/sample5.html)]
 
-最初のライブラリは、中核となる ASP.NET AJAX クライアント側スクリプトライブラリを参照します。 このファイルのサイズは約24k で、クライアント側の AJAX のコア機能が含まれています。 2番目のライブラリには、ASP.NET MVC の組み込み AJAX ヘルパーメソッドと統合するユーティリティ関数が含まれています (これはすぐに使用します)。
+最初のライブラリは、AJAX クライアント側スクリプト ライブラリASP.NETコアを参照します。 このファイルは約 24 k のサイズ (圧縮) で、コア クライアント側の AJAX 機能が含まれています。 2 番目のライブラリには、MVC の組み込みの AJAX ヘルパー メソッド (まもなく使用) ASP.NET統合するユーティリティ関数が含まれています。
 
-その後、先ほど追加したビューテンプレートコードを更新して、"このイベントに登録されていません" というメッセージを出力するのではなく、プッシュ時に、その RSVP コントローラーで RSVPForEvent アクションメソッドを呼び出す AJAX 呼び出しを実行するリンクをレンダリングします。ユーザーを RSVPs します。
+その後、先ほど追加したビュー テンプレート コードを更新して、"このイベントに登録されていません" というメッセージを出力する代わりに、プッシュされたときに RSVPForEvent アクション メソッドを呼び出す AJAX 呼び出しを実行するリンクをレンダリングします。
 
 [!code-aspx[Main](use-ajax-to-deliver-dynamic-updates/samples/sample6.aspx)]
 
-上記で使用した Html.actionlink () ヘルパーメソッドは ASP.NET MVC に組み込まれており、Html.actionlink () ヘルパーメソッドに似ています。ただし、標準ナビゲーションを実行する代わりに、リンクをクリックすると、AJAX 呼び出しがアクションメソッドに対して行われる点が異なります。 上記の例では、"RSVP" コントローラーで "Register" アクションメソッドを呼び出し、その Id を "id" パラメーターとして渡しています。 渡される最後の AjaxOptions パラメーターは、アクションメソッドから返されたコンテンツを取得し、id が "rsvpmsg" であるページの HTML &lt;div&gt; 要素を更新することを示します。
+上記で使用した Ajax.ActionLink() ヘルパー メソッドは、MVC ASP.NET組み込まれており、標準ナビゲーションを実行する代わりに、リンクがクリックされたときにアクション メソッドに AJAX 呼び出しを行う点を除いて、Html.ActionLink() ヘルパー メソッドに似ています。 上記では、「RSVP」コントローラ上の"登録"アクションメソッドを呼び出し、それに「id」パラメータとしてDinnerIDを渡しています。 最後に渡す AjaxOptions パラメータは、アクション メソッドから返されたコンテンツを取得し、ID が&lt;&gt; "rsvpmsg" であるページの HTML div 要素を更新することを示します。
 
-これで、ユーザーが夕食に登録されていない場合は、それに対する RSVP へのリンクが表示されます。
+そして今、ユーザーがディナーを閲覧すると、彼らはまだ登録されていません、彼らはそれのためにRSVPへのリンクが表示されます:
 
 ![](use-ajax-to-deliver-dynamic-updates/_static/image4.png)
 
-これらのユーザーが "このイベントの RSVP" リンクをクリックすると、次のようなメッセージが表示され、それが完了すると、次のようなメッセージが表示されます。
+彼らは「このイベントのRSVP」リンクをクリックすると、RSVPコントローラ上の登録アクションメソッドにAJAX呼び出しを行い、それが完了すると、次のような更新されたメッセージが表示されます。
 
 ![](use-ajax-to-deliver-dynamic-updates/_static/image5.png)
 
-この AJAX 呼び出しを行う際に関係するネットワーク帯域幅とトラフィックは、非常に軽量です。 ユーザーが [このイベントの RSVP] リンクをクリックすると、次のような */Dinners/Register/1* URL に対して小さな HTTP POST ネットワーク要求が行われます。
+この AJAX 呼び出しを行う際に関係するネットワーク帯域幅とトラフィックは、実際には軽量です。 ユーザーが [このイベントの RSVP] リンクをクリックすると、次のような */Dinners/Register/1* URL に対して、小さな HTTP POST ネットワーク要求が送信されます。
 
 [!code-console[Main](use-ajax-to-deliver-dynamic-updates/samples/sample7.cmd)]
 
-また、登録アクションメソッドからの応答は、単純に次のようになります。
+そして、私たちの登録アクションメソッドからの応答は、単純です:
 
 [!code-console[Main](use-ajax-to-deliver-dynamic-updates/samples/sample8.cmd)]
 
-この軽量な呼び出しは高速で、低速のネットワークでも機能します。
+この軽量の呼び出しは高速であり、低速のネットワークでも動作します。
 
-### <a name="adding-a-jquery-animation"></a>JQuery アニメーションの追加
+### <a name="adding-a-jquery-animation"></a>jQuery アニメーションの追加
 
-実装した AJAX の機能は、適切で高速に動作します。 場合によっては、RSVP リンクが新しいテキストに置き換えられたことがユーザーに通知されないことがあります。 結果を少し明確にするために、更新メッセージに注目する単純なアニメーションを追加できます。
+実装した AJAX 機能は、適切かつ高速に機能します。 しかし、RSVP リンクが新しいテキストに置き換えられたことにユーザーが気付かないほど高速に発生する場合があります。 結果をもう少し明確にするために、更新メッセージに注意を引く簡単なアニメーションを追加できます。
 
-既定の ASP.NET MVC プロジェクトテンプレートには、jQuery – Microsoft でもサポートされている、優れた (かつ人気のある) オープンソース JavaScript ライブラリが含まれています。 jQuery には、優れた HTML DOM の選択や効果ライブラリなど、さまざまな機能が用意されています。
+既定のASP.NET MVC プロジェクト テンプレートには、優れた (そして非常に人気のある) オープンソースの JavaScript ライブラリが含まれています。 jQuery は、素敵な HTML DOM の選択やエフェクトライブラリなど、多くの機能を提供します。
 
-JQuery を使用するには、まずスクリプト参照を追加します。 ここでは、サイト内のさまざまな場所で jQuery を使用します。そのため、すべてのページで使用できるように、サイトのマスターページファイルにスクリプト参照を追加します。
+jQuery を使用するには、まずスクリプト参照を追加します。 サイト内のさまざまな場所で jQuery を使用するため、Site.master マスター ページ ファイル内にスクリプト参照を追加して、すべてのページで使用できるようにします。
 
 [!code-html[Main](use-ajax-to-deliver-dynamic-updates/samples/sample9.html)]
 
-*ヒント: JavaScript ファイル (jQuery を含む) に対するより高度な intellisense のサポートを有効にする、VS 2008 SP1 用の JavaScript intellisense 修正プログラムがインストールされていることを確認します。次のものからダウンロードできます: http://tinyurl.com/vs2008javascripthotfix*
+*ヒント: Vs 2008 SP1 用の JavaScript インテリセンス修正プログラムがインストールされていることを確認してください。ダウンロードは次のどこからでも行うことができます。http://tinyurl.com/vs2008javascripthotfix*
 
-JQuery を使用して記述されたコードは、多くの場合、CSS セレクターを使用して1つ以上の HTML 要素を取得する、グローバルな "$ ()" JavaScript メソッドを使用します。 たとえば、 *$ ("#rsvpmsg")* は、rsvpmsg の id を持つ HTML 要素を選択します。 *$ ("...")* は、CSS クラス名が "何か" のすべての要素を選択します。 また、次のようなセレクタークエリ *("input [@type= radio] [@checked]")* を使用して、"チェックされたすべてのラジオボタンを返す" など、より高度なクエリを作成することもできます。
+JQuery を使用して記述されたコードは、CSS セレクタを使用して 1 つ以上の HTML 要素を取得する、グローバルな "$()" JavaScript メソッドを使用することがよくあります。 たとえば *、$("#rsvpmsg")は*rsvpmsg の ID を持つ HTML 要素を選択し *、$(".something") は*"何か" CSS クラス名を持つすべての要素を選択します。 また、次のようなセレクタークエリを使用して、「チェックされたすべてのラジオボタンを返す」のようなより高度なクエリを書くことができます: *@type$("input[@checked=radio][])*
 
-要素を選択したら、それらのメソッドを呼び出して、 *$ ("#rsvpmsg"). hide ();* を非表示にするなどの操作を行うことができます。
+要素を選択したら、メソッドを呼び出して、要素を非表示にするようなアクションを実行できます *#rsvpmsg。*
 
-ここでは、"AnimateRSVPMessage" という名前の単純な JavaScript 関数を定義します。この関数は、"rsvpmsg" &lt;div&gt; を選択し、テキストコンテンツのサイズをアニメーション化します。 次のコードでは、テキストを小さくしてから、400ミリ秒の期間を増やしています。
+RSVP のシナリオでは、"rsvpmsg" div&lt;&gt;を選択し、そのテキスト コンテンツのサイズをアニメーション化する"AnimateRSVPMessage"という名前の単純な JavaScript 関数を定義します。 次のコードは、テキストを小さく開始し、400 ミリ秒の時間枠を超えて増加させます。
 
 [!code-html[Main](use-ajax-to-deliver-dynamic-updates/samples/sample10.html)]
 
-次に、AJAX 呼び出しが正常に完了した後に呼び出されるように、この JavaScript 関数を接続できます。これを行うには、Html.actionlink () ヘルパーメソッド (AjaxOptions "OnSuccess" イベントプロパティを使用) に名前を渡します。
+AJAX 呼び出しが正常に完了した後に呼び出されるこの JavaScript 関数を、Ajax.ActionLink() ヘルパー メソッドに渡して (AjaxOptions "OnSuccess" イベント プロパティを使用して) ワイヤアップできます。
 
 [!code-aspx[Main](use-ajax-to-deliver-dynamic-updates/samples/sample11.aspx)]
 
-これで、"このイベントの RSVP" リンクがクリックされ、AJAX 呼び出しが正常に完了すると、返送されたコンテンツメッセージはアニメーション化され、大きくなります。
+そして今、「このイベントのRSVP」リンクがクリックされ、AJAXコールが正常に完了すると、送信されたコンテンツメッセージはアニメーション化され、大きくなります。
 
 ![](use-ajax-to-deliver-dynamic-updates/_static/image6.png)
 
-AjaxOptions オブジェクトは、"OnSuccess" イベントを提供するだけでなく、(他のさまざまなプロパティや便利なオプションと共に) 処理できる OnBegin、OnFailure、および Onbegin イベントを公開します。
+"OnSuccess" イベントを提供するだけでなく、AjaxOptions オブジェクトは、処理できる OnBegin イベント、OnFailure イベント、および OnComplete イベントを公開します。
 
-### <a name="cleanup---refactor-out-a-rsvp-partial-view"></a>クリーンアップ-RSVP 部分ビューをリファクターします。
+### <a name="cleanup---refactor-out-a-rsvp-partial-view"></a>クリーンアップ - RSVP 部分ビューのリファクタリング
 
-詳細ビューのテンプレートは少し時間がかかります。そのため、超過しても理解が困難になります。 コードの読みやすさを向上させるために、詳細ページのすべての RSVP ビューコードをカプセル化する部分ビュー (RSVPStatus. .ascx) を作成してみましょう。
+詳細ビュー テンプレートは少し長くなり始めていますが、残業は少し理解しにくくなります。 コードの読みやすさを向上させるために、詳細ページのすべての RSVP ビュー コードをカプセル化する部分ビュー RSVPStatus.ascx を作成して完了します。
 
-これを行うには、\Views\Dinners フォルダーを右クリックし、[&gt;ビューの追加] メニューコマンドを選択します。 ここでは、厳密に型指定されたビューモデルとしてディナーオブジェクトを取得します。 その後、詳細 .aspx ビューの RSVP コンテンツをコピーして、それに貼り付けることができます。
+これを行うには、\Views\Dinners フォルダを右クリックし、[追加-&gt;表示] メニュー コマンドを選択します。 厳密に型指定された ViewModel として Dinner オブジェクトを取得します。 その後、Details.aspx ビューから RSVP コンテンツをコピー/貼り付けることができます。
 
-これが完了したら、編集と削除のリンクビューコードをカプセル化するもう1つの部分ビュー (EditAndDeleteLinks) も作成します。 また、このメソッドは、厳密に型指定されたビューモデルとしてディナーオブジェクトを取得し、詳細な .aspx ビューから編集および削除ロジックをコピー/貼り付けます。
+これを完了したら、編集と削除のリンク ビュー コードをカプセル化する別の部分ビュー (EditAndDeleteLinks.ascx) も作成しましょう。 また、Dinner オブジェクトを厳密に型指定された ViewModel として取得し、Details.aspx ビューから編集と削除のロジックをコピー/貼り付けます。
 
-詳細ビューテンプレートでは、次の2つの Html. RenderPartial () メソッドの呼び出しを一番下に含めることができます。
+詳細ビュー テンプレートには、次の 2 つの Html.RenderPartial() メソッド呼び出しを下部に含めることができます。
 
 [!code-aspx[Main](use-ajax-to-deliver-dynamic-updates/samples/sample12.aspx)]
 
-これにより、コードが読みやすくなり、維持されます。
+これにより、コードの読み取りや保守がきれいになります。
 
 ### <a name="next-step"></a>次の手順
 
-AJAX をさらに使用して、対話的なマッピングのサポートをアプリケーションに追加する方法を見てみましょう。
+ここで、AJAX をさらに活用して、アプリケーションに対話的なマッピングサポートを追加する方法を見てみましょう。
 
 > [!div class="step-by-step"]
 > [前へ](secure-applications-using-authentication-and-authorization.md)

@@ -1,27 +1,27 @@
 ---
 uid: web-forms/videos/migrating/intro-to-aspnet-for-jsp-developers-building-applications
-title: 'JSP 開発者向けの ASP.NET 入門: アプリケーションの構築 |Microsoft Docs'
-author: microsoft
-description: この Web キャストでは、ASP.NET 2.0 での Web アプリケーションの構築と Java を使用した Web アプリケーションの構築の両方について、類似点と相違点を考察しています。
+title: 'JSP開発者向けASP.NETの紹介: アプリケーションの構築 |マイクロソフトドキュメント'
+author: rick-anderson
+description: この Web キャストでは、ASP.NET 2.0 で Web アプリケーションを構築することと、Java を使用して Web アプリケーションを構築する場合の類似点と相違点の両方について説明します。
 ms.author: riande
 ms.date: 07/25/2006
 ms.assetid: 826b9a37-0bc3-4405-92fb-d8dc87db195e
 msc.legacyurl: /web-forms/videos/migrating/intro-to-aspnet-for-jsp-developers-building-applications
 msc.type: video
-ms.openlocfilehash: a63573b0e15dfbf710f6f4b793257246ad3d307b
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: c1a9b4729c3f8a95bb3f00429958df820ce84ba4
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78518806"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81543406"
 ---
-# <a name="intro-to-aspnet-for-jsp-developers-building-applications"></a>JSP 開発者向けの ASP.NET 入門: アプリケーションの構築
+# <a name="intro-to-aspnet-for-jsp-developers-building-applications"></a>JSP 開発者向け ASP.NET 入門: アプリケーションをビルドする
 
-[Microsoft](https://github.com/microsoft)
+[マイクロソフト](https://github.com/microsoft)
 
-この Web キャストでは、ASP.NET 2.0 での Web アプリケーションの構築と Java を使用した Web アプリケーションの構築の両方について、類似点と相違点を考察しています。
+この Web キャストでは、ASP.NET 2.0 で Web アプリケーションを構築することと、Java を使用して Web アプリケーションを構築する場合の類似点と相違点の両方について説明します。
 
-[&#9654;ビデオを見る (62 分)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/intro-to-aspnet-for-jsp-developers-building-applications)
+[&#9654; ビデオを見る (62 分)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/intro-to-aspnet-for-jsp-developers-building-applications)
 
 > [!div class="step-by-step"]
 > [前へ](intro-to-aspnet-for-jsp-developers-welcome-to-aspnet-20.md)

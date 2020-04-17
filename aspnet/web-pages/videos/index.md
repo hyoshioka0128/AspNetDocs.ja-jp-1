@@ -1,6 +1,6 @@
 ---
 uid: web-pages/videos/index
-title: ビデオ |Microsoft Docs
+title: ビデオ |マイクロソフトドキュメント
 author: rick-anderson
 description: ''
 ms.author: riande
@@ -8,17 +8,17 @@ ms.date: 05/18/2012
 ms.assetid: febf2824-4e3d-4dc6-84c5-f99777ec6144
 msc.legacyurl: /web-pages/videos
 msc.type: book
-ms.openlocfilehash: 4c22b024240740d971740e9f043231ccbcdc47fb
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 8c24a01b592bead86369a0a9cebeca05f566de53
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78512782"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81543042"
 ---
 # <a name="videos"></a>ビデオ
 
 > [!NOTE] 
-> WebMatrix はASP.NET Webページの統合開発環境としては推奨されなくなりました。 [Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio)または[Visual Studio Code](https://code.visualstudio.com/)を使用します。
+> WebMatrix は、web ページをASP.NETするための統合開発環境として推奨されなくなりました。 [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio)またはビジュアル[スタジオ コードを](https://code.visualstudio.com/)使用する 。
 
 - [はじめに](introduction/index.md)
 
@@ -32,7 +32,7 @@ ms.locfileid: "78512782"
     - [WebMatrix でデータ編集ページを作成する](introduction/create-an-edit-data-page-in-webmatrix.md)
     - [WebMatrix でデータ削除ページを作成する](introduction/create-a-delete-data-page-in-webmatrix.md)
     - [WebMatrix を使用してインターネットに Web サイトを公開する](introduction/publish-a-website-to-the-internet-using-webmatrix.md)
-- [ASP.NET Razor Pages](aspnet-razor-pages/index.md)
+- [ASP.NETカミソリページ](aspnet-razor-pages/index.md)
 
     - [WebMatrix と ASP.NET Web ページの概要](aspnet-razor-pages/getting-started-with-webmatrix-and-aspnet-web-pages.md)
     - [ASP.NET Web プログラミング Razor 構文入門](aspnet-razor-pages/introduction-to-aspnet-web-programming-using-the-razor-syntax.md)
@@ -46,7 +46,7 @@ ms.locfileid: "78512782"
     - [グラフでデータを表示する (パート 1)](aspnet-razor-pages/displaying-data-in-a-chart-part-1.md)
     - [グラフでデータを表示する (パート 2)](aspnet-razor-pages/displaying-data-in-a-chart-part-2.md)
     - [ファイルの処理](aspnet-razor-pages/working-with-files.md)
-    - [イメージの処理](aspnet-razor-pages/working-with-images.md)
+    - [イメージの操作](aspnet-razor-pages/working-with-images.md)
     - [ビデオの操作](aspnet-razor-pages/working-with-video.md)
     - [Web サイトに電子メールを追加する](aspnet-razor-pages/adding-email-to-your-web-site.md)
     - [Web サイトに検索を追加する](aspnet-razor-pages/adding-search-to-your-web-site.md)

@@ -1,27 +1,27 @@
 ---
 uid: web-forms/videos/building-20-applications/lesson-2-creating-a-web-forms-user-interface
-title: '[レッスン 2:]Web フォームユーザーインターフェイスを作成する |Microsoft Docs'
-author: microsoft
-description: このレッスンでは、Visual Web Developer Express Edition&#160;で使用できるさまざまな ASP.NET 2.0 サーバーコントロールについて説明します。 さらに、最初に...
+title: '[レッスン2:]Web フォームのユーザー インターフェイスを作成する |マイクロソフトドキュメント'
+author: rick-anderson
+description: このレッスンでは、Visual Web 開発者 Express エディションで使用できる、&#160;2.0 サーバー コントロールのさまざまなASP.NETについて説明します。 さらに、あなたは始めます.
 ms.author: riande
 ms.date: 11/25/2005
 ms.assetid: 7eac8f6b-6911-4585-87e8-ba662c1578fb
 msc.legacyurl: /web-forms/videos/building-20-applications/lesson-2-creating-a-web-forms-user-interface
 msc.type: video
-ms.openlocfilehash: bc4a4aeb6311c67e465068f507492bffd22c2b37
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 991a7694db8c41e7f0ca391a88988aa640e91801
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78455686"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81539831"
 ---
 # <a name="lesson-2-creating-a-web-forms-user-interface"></a>[レッスン 2:] Web フォーム ユーザー インターフェイスを作成する
 
-[Microsoft](https://github.com/microsoft)
+[マイクロソフト](https://github.com/microsoft)
 
-このレッスンでは、Visual Web Developer Express Edition で使用できるさまざまな ASP .NET 2.0 サーバーコントロールについて説明します。 さらに、Visual Web Developer のウィンドウに慣れることができます。
+このレッスンでは、Visual Web 開発者 Express エディションで使用できるさまざまな ASP.NET2.0 サーバー コントロールについて説明します。 さらに、ビジュアル Web 開発者のウィンドウについて理解し始める予定です。
 
-[&#9654;ビデオを見る (49 分)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/lesson-2-creating-a-web-forms-user-interface)
+[&#9654; ビデオを見る (49 分)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/lesson-2-creating-a-web-forms-user-interface)
 
 > [!div class="step-by-step"]
 > [前へ](lesson-1-getting-started-with-visual-web-developer-express.md)

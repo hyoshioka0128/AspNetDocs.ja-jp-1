@@ -1,27 +1,27 @@
 ---
 uid: web-forms/videos/sql-2005/creating-and-using-stored-procedures
-title: ストアドプロシージャの作成と使用 |Microsoft Docs
-author: microsoft
-description: このビデオは、いくつかのレッスンの前に紹介したストアドプロシージャのトピックで拡張されています。 このビデオでは、作成と更新を行う基本的な構文について説明します。
+title: ストアド プロシージャの作成と使用 |マイクロソフトドキュメント
+author: rick-anderson
+description: このビデオでは、いくつかのレッスンを前に導入されたストアド プロシージャのトピックを拡張します。 このビデオでは、作成および更新するための基本的な構文について説明します。
 ms.author: riande
 ms.date: 11/14/2006
 ms.assetid: 817bc763-7faa-4ac5-880b-b3f5531e9d07
 msc.legacyurl: /web-forms/videos/sql-2005/creating-and-using-stored-procedures
 msc.type: video
-ms.openlocfilehash: ee6735e406cc28370b9b5a91611c686ad0f39260
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: fb05c12a56e9702da059ad952a58de0405ac37f2
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78438460"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81543328"
 ---
 # <a name="creating-and-using-stored-procedures"></a>ストアド プロシージャを作成し、使用する
 
-[Microsoft](https://github.com/microsoft)
+[マイクロソフト](https://github.com/microsoft)
 
-このビデオは、いくつかのレッスンの前に紹介したストアドプロシージャのトピックで拡張されています。 このビデオでは、ストアドプロシージャを作成および更新するための基本的な構文について説明します。これには、入力パラメーターと出力パラメーター、戻り値、変数の宣言、ストアドプロシージャへの他の T-sql プログラミング要素の追加、クエリウィンドウC#からのストアドプロシージャの実行方法、および独自のアプリケーションでストアドプロシージャを使用するために必要な Visual Basic と構文
+このビデオでは、いくつかのレッスンを前に導入されたストアド プロシージャのトピックを拡張します。 このビデオでは、ストアド プロシージャを作成および更新するための基本的な構文、入力および出力パラメーター、戻り値、変数の宣言、その他の T-SQL プログラミング要素のストアド プロシージャへの追加、クエリ ウィンドウからストアド プロシージャを実行する方法、および独自のアプリケーションでストアド プロシージャを利用するために必要な Visual Basic および C# 構文について説明します。
 
-[&#9654;ビデオを見る (42 分)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/creating-and-using-stored-procedures)
+[&#9654; ビデオを見る (42 分)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/creating-and-using-stored-procedures)
 
 > [!div class="step-by-step"]
 > [前へ](building-and-customizing-reports-in-business-intelligence-development-studio.md)

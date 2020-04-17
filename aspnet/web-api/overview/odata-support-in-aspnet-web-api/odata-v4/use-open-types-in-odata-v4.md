@@ -1,123 +1,123 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/use-open-types-in-odata-v4
-title: ASP.NET Web API | を使用した OData v4 のオープン型Microsoft Docs
-author: microsoft
-description: OData v4 では、オープン型は、型定義で宣言されているすべてのプロパティに加えて、動的プロパティを含む構造化された型です。 開く...
+title: Web API を使用した OData v4 でのオープン ASP.NET型 |マイクロソフトドキュメント
+author: rick-anderson
+description: OData v4 では、オープン タイプは、型定義で宣言されたプロパティに加えて、動的プロパティを含む構造化型です。 開く...
 ms.author: riande
 ms.date: 09/15/2014
 ms.assetid: f25f5ac5-4800-4950-abe5-c97750a27fc6
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/use-open-types-in-odata-v4
 msc.type: authoredcontent
-ms.openlocfilehash: 950442c071bf50d2c8c1588971f13f85c4891436
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: d63c96df6614896b3b67eef94a8907e528572567
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78504580"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81543731"
 ---
-# <a name="open-types-in-odata-v4-with-aspnet-web-api"></a>ASP.NET Web API を使用した OData v4 でのオープン型
+# <a name="open-types-in-odata-v4-with-aspnet-web-api"></a>Web API を使用した OData v4 でのオープンASP.NET型
 
-[Microsoft](https://github.com/microsoft)
+[マイクロソフト](https://github.com/microsoft)
 
-> OData v4 では、*オープン型*は、型定義で宣言されているすべてのプロパティに加えて、動的プロパティを含む構造化された型です。 オープン型を使用すると、データモデルに柔軟性を追加できます。 このチュートリアルでは、ASP.NET Web API OData で open types を使用する方法について説明します。
+> OData v4 では、*オープン タイプ*は、型定義で宣言されたプロパティに加えて、動的プロパティを含む構造化型です。 オープンタイプを使用すると、データモデルに柔軟性を追加できます。 このチュートリアルでは、Web API OData でオープン型ASP.NET使用する方法を示します。
 > 
-> このチュートリアルでは、ASP.NET Web API で OData エンドポイントを作成する方法を既に理解していることを前提としています。 それ以外の場合は、まず「 [Create a OData V4 Endpoint](create-an-odata-v4-endpoint.md) first」を参照してください。
+> このチュートリアルでは、Web API で OData エンドポイントを作成する方法ASP.NET既に理解していることを前提としています。 ない場合は、まず[OData v4 エンドポイントの作成を](create-an-odata-v4-endpoint.md)読み取ります。
 > 
-> ## <a name="software-versions-used-in-the-tutorial"></a>このチュートリアルで使用されているソフトウェアのバージョン
+> ## <a name="software-versions-used-in-the-tutorial"></a>チュートリアルで使用するソフトウェアバージョン
 > 
 > 
-> - Web API OData 5.3
+> - ウェブ API OData 5.3
 > - OData v4
 
-まず、OData のいくつかの用語を次に示します。
+まず、いくつかの OData 用語:
 
-- エンティティ型: キーを持つ構造化型。
-- 複合型: キーを持たない構造化された型。
-- Open type: 動的プロパティを持つ型。 エンティティ型と複合型の両方を開くことができます。
+- エンティティタイプ: キーを持つ構造化タイプ。
+- 複合型: キーのない構造化タイプ。
+- オープンタイプ: 動的プロパティを持つタイプ。 エンティティ型と複合型の両方を開くことができます。
 
-動的プロパティの値には、プリミティブ型、複合型、または列挙型を指定できます。または、これらの型のいずれかのコレクション。 オープン型の詳細については、 [OData v4 仕様](http://www.odata.org/documentation/odata-version-4-0/)を参照してください。
+動的プロパティの値は、プリミティブ型、複合型、または列挙型のいずれかです。または、これらの型のコレクション。 オープン型の詳細については[、OData v4 仕様](http://www.odata.org/documentation/odata-version-4-0/)を参照してください。
 
-## <a name="install-the-web-odata-libraries"></a>Web OData ライブラリをインストールする
+## <a name="install-the-web-odata-libraries"></a>Web OData ライブラリのインストール
 
-NuGet パッケージマネージャーを使用して、最新の Web API OData ライブラリをインストールします。 [パッケージマネージャーコンソール] ウィンドウから次のようにします。
+NuGet パッケージ マネージャーを使用して、最新の Web API OData ライブラリをインストールします。 [パッケージ マネージャー コンソール] ウィンドウから:
 
 [!code-console[Main](use-open-types-in-odata-v4/samples/sample1.cmd)]
 
-## <a name="define-the-clr-types"></a>CLR 型を定義する
+## <a name="define-the-clr-types"></a>CLR 型の定義
 
 まず、EDM モデルを CLR 型として定義します。
 
 [!code-csharp[Main](use-open-types-in-odata-v4/samples/sample2.cs)]
 
-Entity Data Model (EDM) が作成されると、
+エンティティ データ モデル (EDM) が作成されると、
 
-- `Category` は列挙型です。
-- `Address` は複合型です。 (キーがないため、エンティティ型ではありません)。
-- `Customer` はエンティティ型です。 (キーがあります)。
-- `Press` はオープン複合型です。
-- `Book` はオープンエンティティ型です。
+- `Category`は列挙型です。
+- `Address`は複合型です。 (キーを持たないため、エンティティ型ではありません)。
+- `Customer`はエンティティ型です。 (キーがあります。
+- `Press`はオープンな複合型です。
+- `Book`は開いているエンティティ型です。
 
-オープン型を作成するには、CLR 型に、動的プロパティを保持する `IDictionary<string, object>`型のプロパティが含まれている必要があります。
+オープン型を作成するには、CLR 型に動的プロパティを保持する`IDictionary<string, object>`type のプロパティが必要です。
 
 ## <a name="build-the-edm-model"></a>EDM モデルの構築
 
-**ODataConventionModelBuilder**を使用して EDM を作成する場合は、`IDictionary<string, object>` プロパティの存在に基づいて、`Press` と `Book` がオープン型として自動的に追加されます。
+**ODataConventionModelBuilder**を使用して EDM を`Press`作成`Book`し、`IDictionary<string, object>`プロパティの存在に基づいてオープン型として自動的に追加する場合。
 
 [!code-csharp[Main](use-open-types-in-odata-v4/samples/sample3.cs)]
 
-**使用**を使用して、EDM を明示的に構築することもできます。
+また **、ODataModelBuilder**を使用して、EDM を明示的にビルドすることもできます。
 
 [!code-csharp[Main](use-open-types-in-odata-v4/samples/sample4.cs)]
 
-## <a name="add-an-odata-controller"></a>OData コントローラーを追加する
+## <a name="add-an-odata-controller"></a>OData コントローラーの追加
 
-次に、OData コントローラーを追加します。 このチュートリアルでは、GET および POST 要求をサポートする単純なコントローラーを使用し、メモリ内のリストを使用してエンティティを格納します。
+次に、OData コント ローラーを追加します。 このチュートリアルでは、GET と POST 要求をサポートし、インメモリ リストを使用してエンティティを格納する単純なコントローラーを使用します。
 
 [!code-csharp[Main](use-open-types-in-odata-v4/samples/sample5.cs)]
 
-最初の `Book` インスタンスに動的プロパティがないことに注意してください。 2番目の `Book` インスタンスには、次の動的プロパティがあります。
+最初`Book`のインスタンスには動的プロパティが存在しません。 2`Book`番目のインスタンスには、次の動的プロパティがあります。
 
 - "公開済み": プリミティブ型
-- "Authors": プリミティブ型のコレクション
-- "OtherCategories": 列挙型のコレクション。
+- 「著者」:プリミティブ型のコレクション
+- "その他のカテゴリ": 列挙型のコレクション。
 
-また、その `Book` インスタンスの `Press` プロパティには、次の動的プロパティがあります。
+また、その`Press``Book`インスタンスのプロパティには、次の動的プロパティがあります。
 
-- "ブログ": プリミティブ型
-- "Address": Complex type
+- 「ブログ」:プリミティブ型
+- "アドレス": 複合型
 
 ## <a name="query-the-metadata"></a>メタデータのクエリ
 
-OData メタデータドキュメントを取得するには、GET 要求を `~/$metadata`に送信します。 応答本文は次のようになります。
+OData メタデータ ドキュメントを取得するには、GET 要求を`~/$metadata`に送信します。 応答本文は次のようになります。
 
 [!code-xml[Main](use-open-types-in-odata-v4/samples/sample6.xml?highlight=5,21)]
 
-メタデータドキュメントから、次のことを確認できます。
+メタデータ ドキュメントからは、次のことがわかります。
 
-- `Book` 型および `Press` 型の場合、`OpenType` 属性の値は true になります。 `Customer` 型と `Address` 型には、この属性がありません。
-- `Book` エンティティ型には、ISBN、Title、および Press という3つの宣言されたプロパティがあります。 OData メタデータには、CLR クラスの `Book.Properties` プロパティは含まれません。
-- 同様に、`Press` 複合型には、名前とカテゴリの2つの宣言されたプロパティのみがあります。 メタデータには、CLR クラスの `Press.DynamicProperties` プロパティは含まれません。
+- および の型の場合、属性の`OpenType`値は true です。 `Press` `Book` `Customer`と`Address`の型には、この属性はありません。
+- エンティティ`Book`型には、ISBN、タイトル、およびプレスという 3 つの宣言済みプロパティがあります。 OData メタデータには、CLR クラス`Book.Properties`のプロパティは含まれません。
+- 同様に`Press`、複合型には、宣言されたプロパティが 2 つだけ( Name と Category) があります。 メタデータには、CLR クラスの`Press.DynamicProperties`プロパティは含まれません。
 
 ## <a name="query-an-entity"></a>エンティティのクエリ
 
-ISBN が "978-0-7356-7942-9" である書籍を取得するには、GET 要求を `~/Books('978-0-7356-7942-9')`に送信します。 応答本文は次のようになります。 (読みやすくするためにインデントが設定されています)。
+ISBN が "978-0-7356-7942-9" の書籍を入手するには、 GET`~/Books('978-0-7356-7942-9')`要求を 送信します。 応答本文は、次のようになります。 (読みやすくするためにインデントされます。
 
 [!code-console[Main](use-open-types-in-odata-v4/samples/sample7.cmd?highlight=8-13,15-23)]
 
-動的プロパティは、宣言されたプロパティと共にインラインに含まれることに注意してください。
+動的プロパティは、宣言されたプロパティとインラインで含まれることに注意してください。
 
-## <a name="post-an-entity"></a>エンティティを投稿する
+## <a name="post-an-entity"></a>エンティティの投稿
 
-Book エンティティを追加するには、POST 要求を `~/Books`に送信します。 クライアントは、要求ペイロードに動的なプロパティを設定できます。
+Book エンティティを追加するには、POST 要求を`~/Books`に送信します。 クライアントは、要求ペイロードに動的プロパティを設定できます。
 
-要求の例を次に示します。 "Price" プロパティと "発行済み" プロパティに注意してください。
+リクエストの例を次に示します。 "価格" と "公開済み" プロパティに注意してください。
 
 [!code-console[Main](use-open-types-in-odata-v4/samples/sample8.cmd?highlight=10)]
 
-コントローラーメソッドにブレークポイントを設定すると、Web API によってこれらのプロパティが `Properties` ディクショナリに追加されたことがわかります。
+コントローラー メソッドにブレークポイントを設定すると、Web API によってこれらのプロパティがディクショナリに追加されている`Properties`ことがわかります。
 
 ![](use-open-types-in-odata-v4/_static/image1.png)
 
 ## <a name="additional-resources"></a>その他のリソース
 
-[OData オープン型のサンプル](http://aspnet.codeplex.com/sourcecontrol/latest#Samples/WebApi/OData/v4/ODataOpenTypeSample/ReadMe.txt)
+[OData オープンタイプのサンプル](http://aspnet.codeplex.com/sourcecontrol/latest#Samples/WebApi/OData/v4/ODataOpenTypeSample/ReadMe.txt)

@@ -1,145 +1,145 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-vb
-title: データ注釈検証コントロールを使用した検証 (VB) |Microsoft Docs
-author: microsoft
-description: データ注釈モデルバインダーを利用して、ASP.NET MVC アプリケーション内で検証を実行します。 さまざまな種類の検証コントロールの使用方法について説明します。
+title: データ注釈検証 (VB) を使用した検証 |マイクロソフトドキュメント
+author: rick-anderson
+description: データ注釈モデル バインダーを利用して、ASP.NET MVC アプリケーション内で検証を実行します。 さまざまな種類の検証コントロールの使用方法を説明します。
 ms.author: riande
 ms.date: 05/29/2009
 ms.assetid: 0d23ff2b-f2ec-434a-be3b-1180beeccba3
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 00150575baabc659f7dd0c07349cde52105f6c8b
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: cabdf6dab9e5de53a45adcf126705533fca02de7
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78435940"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81542639"
 ---
 # <a name="validation-with-the-data-annotation-validators-vb"></a>データ検証注釈コントロールの検証 (VB)
 
-[Microsoft](https://github.com/microsoft)
+[マイクロソフト](https://github.com/microsoft)
 
-> データ注釈モデルバインダーを利用して、ASP.NET MVC アプリケーション内で検証を実行します。 さまざまな種類の検証コントロール属性を使用して、Microsoft Entity Framework でそれらを操作する方法について説明します。
+> データ注釈モデル バインダーを利用して、ASP.NET MVC アプリケーション内で検証を実行します。 さまざまな種類の検証コントロール属性を使用し、Microsoft エンティティ フレームワークで使用する方法について説明します。
 
-このチュートリアルでは、データ注釈検証コントロールを使用して、ASP.NET MVC アプリケーションで検証を実行する方法について説明します。 データ注釈検証コントロールを使用する利点は、必須または StringLength 属性などの1つ以上の属性をクラスプロパティに追加するだけで検証を実行できることです。
+このチュートリアルでは、データ注釈検証を使用して、ASP.NET MVC アプリケーションで検証を実行する方法について説明します。 データ注釈検証コントロールを使用する利点は、クラス プロパティに 1 つ以上の属性 (Required 属性や StringLength 属性など) を追加するだけで、検証を実行できる点です。
 
-データ注釈検証コントロールを使用するには、データ注釈モデルバインダーをダウンロードする必要があります。 データ注釈モデルバインダーのサンプルは、CodePlex web サイトからダウンロードできます。これを行うには、[ここ](http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=24471)をクリックします。
+データ注釈検証コントロールを使用する前に、データ注釈モデル バインダーをダウンロードする必要があります。 [CodePlex](http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=24471)Web サイトからデータ注釈モデル バインダーのサンプルをダウンロードするには、 ここをクリックしてください。
 
-データ注釈モデルバインダーは Microsoft ASP.NET MVC フレームワークの正式な部分ではないことを理解しておくことが重要です。 データ注釈モデルバインダーは Microsoft ASP.NET MVC チームによって作成されましたが、Microsoft では、このチュートリアルで説明されているデータ注釈モデルバインダーの公式製品サポートを提供していません。
+データ注釈モデル バインダーは Microsoft ASP.NET MVC フレームワークの公式部分ではないことを理解することが重要です。 データ注釈モデル バインダーは Microsoft ASP.NET MVC チームによって作成されましたが、Microsoft では、このチュートリアルで説明し、使用するデータ注釈モデル バインダーの公式製品サポートを提供していません。
 
-## <a name="using-the-data-annotation-model-binder"></a>データ注釈モデルバインダーの使用
+## <a name="using-the-data-annotation-model-binder"></a>データ注釈モデル バインダーの使用
 
-ASP.NET MVC アプリケーションでデータ注釈モデルバインダーを使用するには、最初に、System.componentmodel アセンブリおよびアセンブリへの参照を追加する必要がありますので、この方法は必要ありません。 メニューオプションプロジェクトの **[参照の追加]** を選択します。 次に、 **[参照]** タブをクリックし、データ注釈モデルバインダーサンプルをダウンロード (および解凍) した場所を参照します (**図 1**を参照)。
+ASP.NET MVC アプリケーションでデータ注釈モデル バインダーを使用するには、まず、Microsoft.Web.Mvc.DataAnnotations.dll アセンブリと System.ComponentModel.DataAnnotations.dll アセンブリへの参照を追加する必要があります。 メニュー オプションの **[プロジェクト]、[参照の追加]** を選択します。 次に、[**参照**] タブをクリックし、データ注釈モデル バインダーのサンプルをダウンロード (および解凍) した場所を参照します (**図 1**を参照)。
 
 [![](validation-with-the-data-annotation-validators-vb/_static/image2.png)](validation-with-the-data-annotation-validators-vb/_static/image1.png)
 
-**図 1**: データ注釈モデルバインダーへの参照の追加 ([クリックすると、フルサイズの画像が表示](validation-with-the-data-annotation-validators-vb/_static/image3.png)されます)
+**図 1**: データ注釈モデル バインダーへの参照の追加 ([フルサイズの画像を表示する をクリック](validation-with-the-data-annotation-validators-vb/_static/image3.png))
 
-System.componentmodel アセンブリとアセンブリの両方を選択し、**OK** ボタンをクリックします。 をクリックします。
+アセンブリとシステム.コンポーネントモデル.データアノテーション.dll アセンブリの両方を選択し **、[OK]** ボタンをクリックします。
 
-.NET Framework Service Pack 1 に含まれている System.componentmodel アセンブリをデータ注釈モデルバインダーと共に使用することはできません。 データ注釈モデルバインダーサンプルのダウンロードに含まれているバージョンの System.componentmodel アセンブリを使用する必要があります。
+データ注釈モデル バインダーでは、.NET Framework サービス パック 1 に含まれる System.ComponentModel.DataAnnotations.dll アセンブリを使用することはできません。 データ注釈モデル バインダーサンプルに含まれるバージョンの System.ComponentModel.DataAnnotations.dll アセンブリを使用する必要があります。
 
-最後に、DataAnnotations モデルバインダーを global.asax ファイルに登録する必要があります。 Application\_Start () イベントハンドラーに次のコード行を追加して、アプリケーション\_Start () メソッドが次のようになるようにします。
+最後に、データ注釈モデル バインダーを Global.asax ファイルに登録する必要があります。 アプリケーション Start() イベント\_ハンドラに次のコード行を追加して、\_アプリケーション Start() メソッドを次のようにします。
 
 [!code-vb[Main](validation-with-the-data-annotation-validators-vb/samples/sample1.vb)]
 
-このコード行では、ASP.NET MVC アプリケーション全体の既定のモデルバインダーとして Data注釈を登録します。
+このコード行は、mvc アプリケーション全体の既定のモデル バインダーとして DataAnnotationsModelBinder ASP.NET登録します。
 
 ## <a name="using-the-data-annotation-validator-attributes"></a>データ注釈検証コントロール属性の使用
 
-データ注釈モデルバインダーを使用する場合は、検証を実行するために検証属性を使用します。 System.componentmodel 名前空間には、次のバリデーター属性が含まれています。
+データ注釈モデル バインダーを使用する場合は、検証を実行するためにバリデータ属性を使用します。 名前空間には、次の検証属性が含まれています。
 
-- 範囲–プロパティの値が、指定された値の範囲に収まるかどうかを検証できます。
-- RegularExpression –プロパティの値が指定した正規表現パターンと一致するかどうかを検証できます。
-- 必須–プロパティを必要に応じてマークできます。
-- StringLength –文字列プロパティの最大長を指定できます。
-- 検証: すべての検証コントロール属性の基本クラス。
+- Range – プロパティの値が指定した範囲の値の間に収まっているかどうかを検証できます。
+- 正規表現 – プロパティの値が指定した正規表現パターンと一致するかどうかを検証できます。
+- [必須] – 必要に応じてプロパティをマークできます。
+- StringLength – 文字列プロパティの最大長を指定できます。
+- 検証 – すべての検証コントロール属性の基本クラス。
 
 > [!NOTE] 
 > 
-> 標準の検証コントロールで検証のニーズが満たされない場合、基本検証属性から新しい検証属性を継承することによって、カスタム検証属性を作成するオプションが常にあります。
+> 標準の検証コントロールのいずれでも検証のニーズが満たされない場合は、基本検証属性から新しい検証属性を継承してカスタム検証属性を作成するオプションが常にあります。
 
-**リスト 1**の Product クラスは、これらの検証属性の使用方法を示しています。 Name、Description、および UnitPrice プロパティは必須としてマークされています。 Name プロパティの文字列の長さは10文字未満である必要があります。 最後に、UnitPrice プロパティは、通貨金額を表す正規表現パターンと一致する必要があります。
+**リスト 1**の Product クラスは、これらのバリデータ属性の使用方法を示しています。 [名前]、[説明]、および [単価] プロパティは必須としてマークされます。 Name プロパティには、10 文字未満の文字列長を指定する必要があります。 最後に、UnitPrice プロパティは、通貨金額を表す正規表現パターンと一致する必要があります。
 
 [!code-vb[Main](validation-with-the-data-annotation-validators-vb/samples/sample2.vb)]
 
-**リスト 1**: modelproductproduct. vb
+**リスト 1**: モデル\製品.vb
 
-Product クラスは、1つの追加の属性 (DisplayName 属性) の使用方法を示しています。 DisplayName 属性を使用すると、プロパティがエラーメッセージに表示されたときにプロパティの名前を変更できます。 "UnitPrice フィールドが必要です" というエラーメッセージが表示されるのではなく、"価格フィールドが必要です" というエラーメッセージを表示できます。
+Product クラスは、1 つの追加属性を使用する方法を示しています。 DisplayName 属性を使用すると、プロパティがエラー メッセージに表示されるときに、プロパティの名前を変更できます。 "単価フィールドが必要です" というエラー メッセージを表示する代わりに、エラー メッセージ "価格フィールドが必要です" を表示できます。
 
 > [!NOTE] 
 > 
-> バリデーターによって表示されるエラーメッセージを完全にカスタマイズする場合は、次のように、カスタムエラーメッセージを検証コントロールの ErrorMessage プロパティに割り当てることができ `<Required(ErrorMessage:="This field needs a value!")>`
+> 検証コントロールによって表示されるエラー メッセージを完全にカスタマイズする場合は、次のように、検証コントロールの ErrorMessage プロパティにカスタム エラー メッセージを割り当てることができます。`<Required(ErrorMessage:="This field needs a value!")>`
 
-リスト**2**の [作成] () コントローラーアクションを使用して、**リスト 1**の Product クラスを使用できます。 このコントローラーアクションは、モデルの状態にエラーが含まれている場合に、Create ビューを再表示します。
+リスト 1 の Product クラスは **、リスト** **2**の Create() コントローラ アクションで使用できます。 このコントローラアクションは、モデルの状態にエラーが含まれる場合に[作成]ビューを再表示します。
 
 [!code-vb[Main](validation-with-the-data-annotation-validators-vb/samples/sample3.vb)]
 
-**リスト 2**: コントローラーと vb
+**リスト 2**: コントローラー\製品コントローラー.vb
 
-最後に、**リスト 3**のビューを作成するには、作成 () アクションを右クリックし、**ビューの追加** メニューオプションを選択します。 Product クラスをモデルクラスとして使用して、厳密に型指定されたビューを作成します。 ビューコンテンツ ドロップダウンリストから **作成** を選択します (**図 2**を参照)。
+最後に、**リスト 3**でビューを作成するには、Create() アクションを右クリックし、メニューオプションの **[ビューの追加]** を選択します。 Product クラスをモデル クラスとして使用して、厳密に型指定されたビューを作成します。 [ビュー コンテンツ] ドロップダウン リストから [**作成**] を選択します (**図 2**を参照)。
 
 [![](validation-with-the-data-annotation-validators-vb/_static/image5.png)](validation-with-the-data-annotation-validators-vb/_static/image4.png)
 
-**図 2**: Create ビューの追加
+**図2**: 作成ビューの追加
 
 [!code-aspx[Main](validation-with-the-data-annotation-validators-vb/samples/sample4.aspx)]
 
-**リスト 3**: Views\Product\Create.aspx
+**リスト 3**: ビュー\製品\作成.aspx
 
 > [!NOTE] 
 > 
-> **[ビューの追加]** メニューオプションで生成された作成フォームから Id フィールドを削除します。 Id フィールドは Id 列に対応しているため、このフィールドに値を入力することをユーザーに許可しないようにします。
+> [**ビューの追加**] メニュー オプションで生成された [作成] フォームから [ID] フィールドを削除します。 Id フィールドは ID 列に対応するため、ユーザーがこのフィールドに値を入力できないようにします。
 
-製品を作成するためのフォームを送信し、必須フィールドに値を入力しない場合、**図 3**の検証エラーメッセージが表示されます。
+製品を作成するフォームを送信し、必須フィールドの値を入力しない場合は、**図 3**の検証エラー メッセージが表示されます。
 
 [![](validation-with-the-data-annotation-validators-vb/_static/image7.png)](validation-with-the-data-annotation-validators-vb/_static/image6.png)
 
-**図 3**: 必要なフィールドがない
+**図 3**: 必須フィールドが見つからない
 
-無効な通貨金額を入力すると、**図 4**のエラーメッセージが表示されます。
+無効な通貨金額を入力すると、**図 4**のエラー メッセージが表示されます。
 
 [![](validation-with-the-data-annotation-validators-vb/_static/image9.png)](validation-with-the-data-annotation-validators-vb/_static/image8.png)
 
-**図 4**: 通貨金額が無効である
+**図4**: 無効な通貨金額
 
-## <a name="using-data-annotation-validators-with-the-entity-framework"></a>Entity Framework と共にデータ注釈検証コントロールを使用する
+## <a name="using-data-annotation-validators-with-the-entity-framework"></a>エンティティ フレームワークでのデータ注釈検証コントロールの使用
 
-Microsoft Entity Framework を使用してデータモデルクラスを生成する場合は、クラスにバリデーター属性を直接適用することはできません。 Entity Framework Designer によってモデルクラスが生成されるため、モデルクラスに加えた変更は、デザイナーで次に変更を行ったときに上書きされます。
+Microsoft Entity Framework を使用してデータ モデル クラスを生成する場合は、検証コントロール属性をクラスに直接適用することはできません。 Entity Framework デザイナーはモデル クラスを生成するため、モデル クラスに加えた変更は、次にデザイナーで変更を加えた時点で上書きされます。
 
-Entity Framework によって生成されたクラスで検証コントロールを使用する場合は、メタデータクラスを作成する必要があります。 検証コントロールは、実際のクラスに適用するのではなく、メタデータクラスに適用します。
+Entity Framework によって生成されたクラスで検証コントロールを使用する場合は、メタ データ クラスを作成する必要があります。 検証コントロールを実際のクラスに適用する代わりに、メタ データ クラスに検証コントロールを適用します。
 
-たとえば、Entity Framework を使用して Movie クラスを作成したとします (**図 5**を参照)。 さらに、ムービータイトルとディレクタープロパティに必要なプロパティを設定するとします。 その場合は、**リスト 4**で部分クラスとメタデータクラスを作成できます。
+たとえば、Entity Framework を使用して Movie クラスを作成したとします (**図 5**を参照)。 さらに、ムービータイトルとディレクターのプロパティを必要なプロパティにしたいと考えてください。 この場合は、**リスト 4**で部分クラスとメタ データ クラスを作成できます。
 
 [![](validation-with-the-data-annotation-validators-vb/_static/image11.png)](validation-with-the-data-annotation-validators-vb/_static/image10.png)
 
-**図 5**: Entity Framework によって生成されたムービークラス
+**図 5**: エンティティ フレームワークによって生成されたムービー クラス
 
 [!code-vb[Main](validation-with-the-data-annotation-validators-vb/samples/sample5.vb)]
 
-**リスト 4**: modelmo? vb
+**リスト4**: モデル\Movie.vb
 
-**リスト 4**のファイルには、Movie と MovieMetaData という名前の2つのクラスが含まれています。 Movie クラスは、部分クラスです。 これは、DataModel ファイルに格納されている Entity Framework によって生成される部分クラスに対応します。
+**リスト 4**のファイルには、ムービーとムービーメタデータという名前の 2 つのクラスが含まれています。 Movie クラスは部分クラスです。 これは、DataModel.Designer.vb ファイルに含まれるエンティティ フレームワークによって生成された部分クラスに対応します。
 
-現在、.NET framework では部分的なプロパティはサポートされていません。 したがって、DataModel ファイルで定義されている Movie クラスのプロパティにバリデーター属性を適用する方法はありません。これには、**リスト 4**のファイルで定義されている movie クラスのプロパティにバリデーター属性を適用します。
+現在、.NET フレームワークは部分的なプロパティをサポートしていません。 したがって、**リスト 4**で定義されているムービー クラスのプロパティにバリデータ属性を適用することによって、DataModel.Designer.vb ファイルで定義されているムービー クラスのプロパティに検証コントロール属性を適用する方法はありません。
 
-Movie 部分クラスは、MovieMetaData クラスをポイントする MetadataType 属性で修飾されていることに注意してください。 MovieMetaData クラスには、Movie クラスのプロパティのプロキシプロパティが含まれています。
+ムービー部分クラスは、MovieMetaData クラスを指すメタデータ型属性で修飾されていることに注意してください。 クラスには、ムービー クラスのプロパティのプロキシ プロパティが含まれています。
 
-バリデーターの属性は、MovieMetaData クラスのプロパティに適用されます。 Title、Director、および DateReleased の各プロパティはすべて必須プロパティとしてマークされます。 Director プロパティには、5文字未満の文字列を割り当てる必要があります。 最後に、DisplayName 属性が DateReleased プロパティに適用され、"リリース日フィールドが必要です。" のようなエラーメッセージが表示されます。 "DateReleased" フィールドは必須です。
+検証コントロール属性は、MovieMetaData クラスのプロパティに適用されます。 タイトル、ディレクター、および日付リリースのプロパティはすべて必須プロパティとしてマークされます。 Director プロパティには、5 文字未満の文字列を割り当てる必要があります。 最後に、"日付解放日フィールドが必要です" などのエラー メッセージを表示するには、"DateReleased/日付のリリース" プロパティに "DisplayName/ 表示名" 属性が適用されます。 エラーの代わりに"日付がリリースされました" フィールドが必要です。
 
 > [!NOTE] 
 > 
-> MovieMetaData クラスのプロキシプロパティは、Movie クラスの対応するプロパティと同じ型を表す必要がないことに注意してください。 たとえば、"Director" プロパティは、Movie クラスの文字列プロパティと、MovieMetaData クラスのオブジェクトプロパティです。
+> MovieMetaData クラスのプロキシ プロパティは、ムービー クラスの対応するプロパティと同じ型を表す必要はありません。 たとえば、Director プロパティは、Movie クラスの文字列プロパティと MovieMetaData クラスのオブジェクト プロパティです。
 
-**図 6**のページは、ムービープロパティに無効な値を入力したときに返されるエラーメッセージを示しています。
+**図 6**のページは、ムービーのプロパティに無効な値を入力したときに返されるエラー メッセージを示しています。
 
 [![](validation-with-the-data-annotation-validators-vb/_static/image13.png)](validation-with-the-data-annotation-validators-vb/_static/image12.png)
 
-**図 6**: Entity Framework での検証コントロールの使用 ([クリックしてフルサイズのイメージを表示する](validation-with-the-data-annotation-validators-vb/_static/image14.png))
+**図 6**: エンティティ フレームワークで検証コントロールを使用する ([フルサイズの画像を表示する をクリック](validation-with-the-data-annotation-validators-vb/_static/image14.png))
 
 ## <a name="summary"></a>まとめ
 
-このチュートリアルでは、データ注釈モデルバインダーを利用して、ASP.NET MVC アプリケーション内で検証を実行する方法について学習しました。 必須の属性や StringLength 属性など、さまざまな種類の検証コントロール属性の使用方法について学習しました。 また、Microsoft Entity Framework の使用時にこれらの属性を使用する方法についても学習しました。
+このチュートリアルでは、データ注釈モデル バインダーを利用して、ASP.NET MVC アプリケーション内で検証を実行する方法を学習しました。 次の手順では、Required 属性や StringLength 属性など、さまざまな種類のバリデータ属性の使用方法について説明しました。 また、Microsoft エンティティ フレームワークを使用する際にこれらの属性を使用する方法についても説明しました。
 
 > [!div class="step-by-step"]
-> [[戻る]](validating-with-a-service-layer-vb.md)
+> [前へ](validating-with-a-service-layer-vb.md)
