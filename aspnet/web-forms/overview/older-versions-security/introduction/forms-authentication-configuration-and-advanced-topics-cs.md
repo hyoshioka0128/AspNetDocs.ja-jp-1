@@ -53,10 +53,10 @@ ASP.NET フォーム認証システムは、アプリケーションごとにカ
 
 **表 1**: &lt;フォーム&gt; 要素の属性の概要
 
-ASP.NET 2.0 以降では、既定のフォーム認証値は、.NET Framework のフォーム Authenticationconfiguration クラスにハードコーディングされています。 変更は、web.config ファイルでアプリケーションごとに適用する必要があります。 これは ASP.NET 1.x とは異なり、既定のフォーム認証値は machine.config ファイルに格納されています (したがって、machine.config の編集によって変更できます)。 ASP.NET のトピックで説明することは、1.x では、さまざまなフォーム認証システムの設定がある ASP.NET 2.0 では、異なる既定値の ASP.NET よりも拡張 1.x します。 ASP.NET 1.x 環境からアプリケーションを移行する場合は、これらの違いに注意することが重要です。 相違点の一覧について[は、&lt;forms&gt; 要素の技術ドキュメント](https://msdn.microsoft.com/library/1d3t3c61.aspx)を参照してください。
+ASP.NET 2.0 以降では、既定のフォーム認証値は、.NET Framework のフォーム Authenticationconfiguration クラスにハードコーディングされています。 変更は、web.config ファイルでアプリケーションごとに適用する必要があります。 これは ASP.NET 1.x とは異なり、既定のフォーム認証値は machine.config ファイルに格納されています (したがって、machine.config の編集によって変更できます)。 ASP.NET のトピックで説明することは、1.x では、さまざまなフォーム認証システムの設定がある ASP.NET 2.0 では、異なる既定値の ASP.NET よりも拡張 1.x します。 ASP.NET 1.x 環境からアプリケーションを移行する場合は、これらの違いに注意することが重要です。 相違点の一覧については、[&lt;forms&gt; 要素の技術ドキュメント](https://msdn.microsoft.com/library/1d3t3c61.aspx)を参照してください。
 
 > [!NOTE]
-> timeout、domain、および、path など、いくつかのフォーム認証設定は、結果として得られるフォーム認証チケット Cookie の詳細を指定します。 Cookie、そのしくみ、およびさまざまなプロパティの詳細については、[この cookie](http://www.quirksmode.org/js/cookies.html)に関するチュートリアルを参照してください。
+> timeout、domain、および、path など、いくつかのフォーム認証設定は、結果として得られるフォーム認証チケット Cookie の詳細を指定します。 Cookie、そのしくみ、およびさまざまなプロパティの詳細については、この [cookie](http://www.quirksmode.org/js/cookies.html)に関するチュートリアルを参照してください。
 
 ### <a name="specifying-the-tickets-timeout-value"></a>チケットのタイムアウト値の指定
 
