@@ -8,12 +8,12 @@ ms.date: 06/11/2014
 ms.assetid: 43a6cce7-a3ef-42aa-ad06-90d36d49f098
 msc.legacyurl: /web-api/overview/testing-and-debugging/unit-testing-controllers-in-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: cdb1700537021e276669de1a9e0330a62659746c
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 3b89009a375e766f1c5b439dfe3fffd43b4963b3
+ms.sourcegitcommit: a4c3c7e04e5f53cf8cd334f036d324976b78d154
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78447004"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84172927"
 ---
 # <a name="unit-testing-controllers-in-aspnet-web-api-2"></a>ASP.NET Web API 2 の単体テスト コントローラー
 
@@ -30,7 +30,7 @@ ms.locfileid: "78447004"
 > [!NOTE]
 > Moq を使用しましたが、モックフレームワークにも同じアイデアが適用されます。 Moq 4.5.30 (以降) は、Visual Studio 2017、Roslyn、.NET 4.5 以降のバージョンをサポートしています。
 
-単体テストの一般的なパターンは、&quot;&quot;:
+単体テストの一般的なパターンは、 &quot; 次のとおりです &quot; 。
 
 - 配置: テストを実行するための前提条件を設定します。
 - Act: テストを実行します。
@@ -53,7 +53,7 @@ ms.locfileid: "78447004"
 
 [!code-csharp[Main](unit-testing-controllers-in-web-api/samples/sample1.cs)]
 
-コントローラーは、依存関係の挿入を使用して `IProductRepository`を挿入することに注意してください。 これにより、モックリポジトリを挿入できるため、コントローラーのテストが容易になります。 次の単体テストでは、`Get` メソッドが応答本文に `Product` を書き込むかどうかを確認します。 `repository` がモック `IProductRepository`であると仮定します。
+コントローラーは、依存関係の挿入を使用してを挿入することに注意して `IProductRepository` ください。 これにより、モックリポジトリを挿入できるため、コントローラーのテストが容易になります。 次の単体テストでは、 `Get` メソッドがを応答本文に書き込むことを確認し `Product` ます。 がモックであると仮定 `repository` `IProductRepository` します。
 
 [!code-csharp[Main](unit-testing-controllers-in-web-api/samples/sample2.cs)]
 
@@ -61,13 +61,13 @@ ms.locfileid: "78447004"
 
 ## <a name="testing-link-generation"></a>リンク生成のテスト
 
-`Post` メソッドは、 **Urlhelper. リンク**を呼び出して、応答内にリンクを作成します。 そのためには、単体テストでもう少しセットアップする必要があります。
+`Post`メソッドは、 **urlhelper. リンク**を呼び出して、応答内にリンクを作成します。 そのためには、単体テストでもう少しセットアップする必要があります。
 
 [!code-csharp[Main](unit-testing-controllers-in-web-api/samples/sample3.cs)]
 
 **Urlhelper**クラスには要求 URL とルートデータが必要であるため、テストでこれらの値を設定する必要があります。 もう1つのオプションは、モックまたはスタブ**Urlhelper**です。 この方法では、ApiController の既定値を、固定値を返すモックまたはスタブバージョンに置き換え[ます](https://msdn.microsoft.com/library/system.web.http.apicontroller.url.aspx)。
 
-[Moq](https://github.com/Moq)フレームワークを使用してテストを書き直してみましょう。 テストプロジェクトに `Moq` NuGet パッケージをインストールします。
+[Moq](https://github.com/Moq)フレームワークを使用してテストを書き直してみましょう。 `Moq`テストプロジェクトに NuGet パッケージをインストールします。
 
 [!code-csharp[Main](unit-testing-controllers-in-web-api/samples/sample4.cs)]
 
@@ -85,7 +85,7 @@ Web API 2 では、コントローラーアクションは**Ihttpactionresult**�
 
 ### <a name="action-returns-200-ok-with-a-response-body"></a>アクションは、応答本文で 200 (OK) を返します
 
-`Get` メソッドは、製品が見つかった場合に `Ok(product)` を呼び出します。 単体テストで、戻り値の型が**OkNegotiatedContentResult**で、返された製品の ID が正しいことを確認します。
+`Get` `Ok(product)` 製品が見つかった場合、メソッドはを呼び出します。 単体テストで、戻り値の型が**OkNegotiatedContentResult**で、返された製品の ID が正しいことを確認します。
 
 [!code-csharp[Main](unit-testing-controllers-in-web-api/samples/sample6.cs)]
 
@@ -93,30 +93,30 @@ Web API 2 では、コントローラーアクションは**Ihttpactionresult**�
 
 ### <a name="action-returns-404-not-found"></a>アクションは 404 (見つかりません) を返します
 
-`Get` メソッドは、製品が見つからない場合に `NotFound()` を呼び出します。 この場合、単体テストでは、戻り値の型が**notfound の結果**であるかどうかのみをチェックします。
+`Get` `NotFound()` 製品が見つからない場合、メソッドはを呼び出します。 この場合、単体テストでは、戻り値の型が**notfound の結果**であるかどうかのみをチェックします。
 
 [!code-csharp[Main](unit-testing-controllers-in-web-api/samples/sample7.cs)]
 
 ### <a name="action-returns-200-ok-with-no-response-body"></a>アクションは、応答本文なしで 200 (OK) を返します
 
-`Delete` メソッドは、`Ok()` を呼び出して、空の HTTP 200 応答を返します。 前の例と同様に、単体テストは戻り値の型をチェックします。この場合は**Okresult**です。
+`Delete`メソッドは、 `Ok()` 空の HTTP 200 応答を返すを呼び出します。 前の例と同様に、単体テストは戻り値の型をチェックします。この場合は**Okresult**です。
 
 [!code-csharp[Main](unit-testing-controllers-in-web-api/samples/sample8.cs)]
 
 ### <a name="action-returns-201-created-with-a-location-header"></a>アクションは、Location ヘッダーを含む 201 (Created) を返します
 
-`Post` メソッドは、`CreatedAtRoute` を呼び出して、Location ヘッダーに URI と共に HTTP 201 応答を返します。 単体テストで、アクションによって正しいルーティング値が設定されていることを確認します。
+メソッドは、 `Post` を呼び出して、 `CreatedAtRoute` Location ヘッダーに URI を含む HTTP 201 応答を返します。 単体テストで、アクションによって正しいルーティング値が設定されていることを確認します。
 
 [!code-csharp[Main](unit-testing-controllers-in-web-api/samples/sample9.cs)]
 
 ### <a name="action-returns-another-2xx-with-a-response-body"></a>アクションは、応答本文を含む別の2xx を返します
 
-`Put` メソッドは、`Content` を呼び出して、応答本文と共に HTTP 202 (受理) 応答を返します。 この例は、200 (OK) を返すのと似ていますが、単体テストでも状態コードを確認する必要があります。
+`Put`メソッドはを呼び出して、 `Content` 応答本文と共に HTTP 202 (受理) 応答を返します。 この例は、200 (OK) を返すのと似ていますが、単体テストでも状態コードを確認する必要があります。
 
 [!code-csharp[Main](unit-testing-controllers-in-web-api/samples/sample10.cs)]
 
 ## <a name="additional-resources"></a>その他のリソース
 
 - [単体テスト時のモック Entity Framework ASP.NET Web API 2](mocking-entity-framework-when-unit-testing-aspnet-web-api-2.md)
-- [ASP.NET Web API サービスのテストの作成](https://blogs.msdn.com/b/youssefm/archive/2013/01/28/writing-tests-for-an-asp-net-webapi-service.aspx)(Youssef Moussaoui によるブログ投稿)
-- [ルートデバッガーを使用した ASP.NET Web API のデバッグ](https://blogs.msdn.com/b/webdev/archive/2013/04/04/debugging-asp-net-web-api-with-route-debugger.aspx)
+- [ASP.NET Web API サービスのテストの作成](https://docs.microsoft.com/en-gb/archive/blogs/youssefm/writing-tests-for-an-asp-net-web-api-service)(Youssef Moussaoui によるブログ投稿)
+- [ルート デバッグを使用した ASP.NET Web API のデバッグ](https://blogs.msdn.com/b/webdev/archive/2013/04/04/debugging-asp-net-web-api-with-route-debugger.aspx)
