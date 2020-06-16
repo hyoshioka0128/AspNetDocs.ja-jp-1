@@ -19,7 +19,7 @@ ms.locfileid: "78471562"
 
 ## <a name="develop-mobile-apps"></a>Mobile Apps の開発
 
-### <a name="cloud-connected-mobile-apps---create-a-web-service-with-azure-web-apps-and-webjobspart-1"></a>[クラウドに接続された Mobile Apps-Azure Web Apps と web ジョブを使用して Web サービスを作成する](https://msdn.microsoft.com/magazine/mt185572)(パート 1)
+### <a name="cloud-connected-mobile-apps---create-a-web-service-with-azure-web-apps-and-webjobspart-1"></a>[クラウドに接続された Mobile Apps-Azure Web Apps と WebJobs を使用して Web サービスを作成する](https://msdn.microsoft.com/magazine/mt185572)(パート 1)
 
 2部構成の記事の最初の部分では、データを集約して処理し、モバイルクライアントに提供するクラウドバックエンドの作成に関連するいくつかの問題について説明します。
 
