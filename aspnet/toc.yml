@@ -1,4 +1,4 @@
-- name: ASP.NET ドキュメント
+- name: ASP.NET Core ドキュメント
   href: /aspnet/core/
 - name: ASP.NET 概要
   href: overview.md
@@ -72,9 +72,9 @@
         - name: セキュリティ、認証、承認
           href: web-forms/overview/security/index.md
           items:
-            - name: 'ユーザー登録、電子メール確認、パスワード リセットを利用し、安全な ASP.NET Web フォームを作成する (C#)'
+            - name: ユーザー登録、電子メール確認、パスワード リセットを利用し、安全な ASP.NET Web フォームを作成する (C#)
               href: web-forms/overview/security/create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset.md
-            - name: 'SMS 2 要素認証を利用し、ASP.NET Web フォームを作成する (C#)'
+            - name: SMS 2 要素認証を利用し、ASP.NET Web フォームを作成する (C#)
               href: web-forms/overview/security/create-an-aspnet-web-forms-app-with-sms-two-factor-authentication.md
         - name: パフォーマンス
           href: web-forms/overview/performance-and-caching/index.md
@@ -314,25 +314,25 @@
             - name: ASP.NET 3.5 - Web フォーム マスター ページ
               href: web-forms/overview/older-versions-getting-started/master-pages/index.md
               items:
-                - name: 'マスター ページを利用してサイト全体レイアウトを作成する (C#)'
+                - name: マスター ページを利用してサイト全体レイアウトを作成する (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/creating-a-site-wide-layout-using-master-pages-cs.md
-                - name: '複数の ContentPlaceHolders と既定のコンテンツ (C#)'
+                - name: 複数の ContentPlaceHolders と既定のコンテンツ (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/multiple-contentplaceholders-and-default-content-cs.md
-                - name: 'マスター ページでタイトル、メタ タグ、その他の HTML ヘッダーを指定する (C#)'
+                - name: マスター ページでタイトル、メタ タグ、その他の HTML ヘッダーを指定する (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md
-                - name: 'マスター ページの URL (C#)'
+                - name: マスター ページの URL (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/urls-in-master-pages-cs.md
-                - name: 'コンテンツ ページのコントロール ID の名前付け (C#)'
+                - name: コンテンツ ページのコントロール ID の名前付け (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/control-id-naming-in-content-pages-cs.md
-                - name: 'コンテンツ ページからマスター ページと対話する (C#)'
+                - name: コンテンツ ページからマスター ページと対話する (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-cs.md
-                - name: 'マスター ページからコンテンツ ページと対話する (C#)'
+                - name: マスター ページからコンテンツ ページと対話する (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-cs.md
-                - name: 'マスター ページと ASP.NET AJAX (C#)'
+                - name: マスター ページと ASP.NET AJAX (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/master-pages-and-asp-net-ajax-cs.md
-                - name: 'プログラムでマスター ページを指定する (C#)'
+                - name: プログラムでマスター ページを指定する (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/specifying-the-master-page-programmatically-cs.md
-                - name: '入れ子にされたマスター ページ (C#)'
+                - name: 入れ子にされたマスター ページ (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/nested-master-pages-cs.md
                 - name: マスター ページを利用してサイト全体レイアウトを作成する (VB)
                   href: web-forms/overview/older-versions-getting-started/master-pages/creating-a-site-wide-layout-using-master-pages-vb.md
@@ -357,37 +357,37 @@
             - name: Visual Studio 2008 以前で Web サイト プロジェクトを配置する
               href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/index.md
               items:
-                - name: 'ASP.NET ホスティングのオプション (C#)'
+                - name: ASP.NET ホスティングのオプション (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-cs.md
-                - name: '配置が必要なファイルを決定する (C#)'
+                - name: 配置が必要なファイルを決定する (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-cs.md
-                - name: 'FTP クライアントを使用してサイトを配置する (C#)'
+                - name: FTP クライアントを使用してサイトを配置する (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-an-ftp-client-cs.md
-                - name: 'Visual Studio を使用してサイトを配置する (C#)'
+                - name: Visual Studio を使用してサイトを配置する (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-visual-studio-cs.md
-                - name: '開発と運用の間の一般的な構成の違い (C#)'
+                - name: 開発と運用の間の一般的な構成の違い (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-cs.md
-                - name: 'IIS と ASP.NET 開発サーバーの間の中心的違い (C#)'
+                - name: IIS と ASP.NET 開発サーバーの間の中心的違い (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-cs.md
-                - name: 'データベースを配置する (C#)'
+                - name: データベースを配置する (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-a-database-cs.md
-                - name: '実稼働データベースを使用するように Web アプリケーションを構成する (C#)'
+                - name: 実稼働データベースを使用するように Web アプリケーションを構成する (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-cs.md
-                - name: 'アプリケーション サービスを使用する Web サイトを構成する (C#)'
+                - name: アプリケーション サービスを使用する Web サイトを構成する (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-a-website-that-uses-application-services-cs.md
-                - name: 'データベースの開発と配置のための戦略 (C#)'
+                - name: データベースの開発と配置のための戦略 (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/strategies-for-database-development-and-deployment-cs.md
-                - name: 'カスタム エラー ページを表示する (C#)'
+                - name: カスタム エラー ページを表示する (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-cs.md
-                - name: '未処理の例外を処理する (C#)'
+                - name: 未処理の例外を処理する (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-cs.md
-                - name: 'ASP.NET の状態監視でエラーの詳細をログに記録する (C#)'
+                - name: ASP.NET の状態監視でエラーの詳細をログに記録する (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-cs.md
-                - name: 'ELMAH でエラーの詳細をログに記録する (C#)'
+                - name: ELMAH でエラーの詳細をログに記録する (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-elmah-cs.md
-                - name: 'Web サイトを事前コンパイルする (C#)'
+                - name: Web サイトを事前コンパイルする (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/precompiling-your-website-cs.md
-                - name: '運用 Web サイトのユーザーとロール (C#)'
+                - name: 運用 Web サイトのユーザーとロール (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/users-and-roles-on-the-production-website-cs.md
                 - name: ASP.NET ホスティングのオプション (VB)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-vb.md
@@ -427,11 +427,11 @@
             - name: 作業の開始
               href: web-forms/overview/ajax-control-toolkit/getting-started/index.md
               items:
-                - name: 'AJAX Control Toolkit の概要 (C#)'
+                - name: AJAX Control Toolkit の概要 (C#)
                   href: web-forms/overview/ajax-control-toolkit/getting-started/get-started-with-the-ajax-control-toolkit-cs.md
-                - name: 'AJAX Control Toolkit のコントロールとコントロール エクステンダーを使用する (C#)'
+                - name: AJAX Control Toolkit のコントロールとコントロール エクステンダーを使用する (C#)
                   href: web-forms/overview/ajax-control-toolkit/getting-started/using-ajax-control-toolkit-controls-and-control-extenders-cs.md
-                - name: 'カスタム AJAX Control Toolkit コントロール エクステンダーを作成する (C#)'
+                - name: カスタム AJAX Control Toolkit コントロール エクステンダーを作成する (C#)
                   href: web-forms/overview/ajax-control-toolkit/getting-started/creating-a-custom-ajax-control-toolkit-control-extender-cs.md
                 - name: AJAX Control Toolkit の概要 (VB)
                   href: web-forms/overview/ajax-control-toolkit/getting-started/get-started-with-the-ajax-control-toolkit-vb.md
@@ -442,9 +442,9 @@
             - name: アコーディオン
               href: web-forms/overview/ajax-control-toolkit/accordion/index.md
               items:
-                - name: 'アコーディオンにデータバインドする (C#)'
+                - name: アコーディオンにデータバインドする (C#)
                   href: web-forms/overview/ajax-control-toolkit/accordion/databinding-to-an-accordion-cs.md
-                - name: 'アコーディオン ウィンドウを動的に追加する (C#)'
+                - name: アコーディオン ウィンドウを動的に追加する (C#)
                   href: web-forms/overview/ajax-control-toolkit/accordion/dynamically-adding-an-accordion-pane-cs.md
                 - name: アコーディオンにデータバインドする (VB)
                   href: web-forms/overview/ajax-control-toolkit/accordion/databinding-to-an-accordion-vb.md
@@ -453,31 +453,31 @@
             - name: アニメーション
               href: web-forms/overview/ajax-control-toolkit/animation/index.md
               items:
-                - name: 'コントロールにアニメーションを追加する (C#)'
+                - name: コントロールにアニメーションを追加する (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/adding-animation-to-a-control-cs.md
-                - name: '複数のアニメーションを同時に実行する (C#)'
+                - name: 複数のアニメーションを同時に実行する (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-at-the-same-time-cs.md
-                - name: '複数のアニメーションを順番に実行する (C#)'
+                - name: 複数のアニメーションを順番に実行する (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-after-each-other-cs.md
-                - name: '条件に基づくアニメーション (C#)'
+                - name: 条件に基づくアニメーション (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/animation-depending-on-a-condition-cs.md
-                - name: '一覧からアニメーションを 1 つ選択する (C#)'
+                - name: 一覧からアニメーションを 1 つ選択する (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/picking-one-animation-out-of-a-list-cs.md
-                - name: 'ユーザー操作に対してアニメーションを返す (C#)'
+                - name: ユーザー操作に対してアニメーションを返す (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/animating-in-response-to-user-interaction-cs.md
-                - name: 'アニメーション中のアクションを無効にする (C#)'
+                - name: アニメーション中のアクションを無効にする (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/disabling-actions-during-animation-cs.md
-                - name: '別のコントロールでアニメーションをトリガーする (C#)'
+                - name: 別のコントロールでアニメーションをトリガーする (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/triggering-an-animation-in-another-control-cs.md
-                - name: 'サーバー側からアニメーションを変更する (C#)'
+                - name: サーバー側からアニメーションを変更する (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/modifying-animations-from-the-server-side-cs.md
-                - name: 'クライアント側コードを使用してアニメーションを実行する (C#)'
+                - name: クライアント側コードを使用してアニメーションを実行する (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/executing-animations-using-client-side-code-cs.md
-                - name: 'クライアント側コードを使用してアニメーションを変更する (C#)'
+                - name: クライアント側コードを使用してアニメーションを変更する (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/changing-an-animation-using-client-side-code-cs.md
-                - name: 'UpdatePanel コントロールをアニメーションにする (C#)'
+                - name: UpdatePanel コントロールをアニメーションにする (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/animating-an-updatepanel-control-cs.md
-                - name: 'UpdatePanel アニメーションを動的に制御する (C#)'
+                - name: UpdatePanel アニメーションを動的に制御する (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/dynamically-controlling-updatepanel-animations-cs.md
                 - name: コントロールにアニメーションを追加する (VB)
                   href: web-forms/overview/ajax-control-toolkit/animation/adding-animation-to-a-control-vb.md
@@ -508,13 +508,13 @@
             - name: CascadingDropdown
               href: web-forms/overview/ajax-control-toolkit/cascadingdropdown/index.md
               items:
-                - name: 'CascadingDropDown を使用して一覧に入力する (C#)'
+                - name: CascadingDropDown を使用して一覧に入力する (C#)
                   href: web-forms/overview/ajax-control-toolkit/cascadingdropdown/filling-a-list-using-cascadingdropdown-cs.md
-                - name: 'データベースで CascadingDropDown を使用する (C#)'
+                - name: データベースで CascadingDropDown を使用する (C#)
                   href: web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-cascadingdropdown-with-a-database-cs.md
-                - name: 'CascadingDropDown で一覧のエントリを事前設定する (C#)'
+                - name: CascadingDropDown で一覧のエントリを事前設定する (C#)
                   href: web-forms/overview/ajax-control-toolkit/cascadingdropdown/presetting-list-entries-with-cascadingdropdown-cs.md
-                - name: 'CascadingDropDown で自動ポストバックを使用する (C#)'
+                - name: CascadingDropDown で自動ポストバックを使用する (C#)
                   href: web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-auto-postback-with-cascadingdropdown-cs.md
                 - name: CascadingDropDown を使用して一覧に入力する (VB)
                   href: web-forms/overview/ajax-control-toolkit/cascadingdropdown/filling-a-list-using-cascadingdropdown-vb.md
@@ -527,37 +527,37 @@
             - name: CollapsiblePanel
               href: web-forms/overview/ajax-control-toolkit/collapsiblepanel/index.md
               items:
-                - name: 'JavaScript からパネルを折りたたむ/展開する (C#)'
+                - name: JavaScript からパネルを折りたたむ/展開する (C#)
                   href: web-forms/overview/ajax-control-toolkit/collapsiblepanel/collapsing-and-expanding-a-panel-from-javascript-cs.md
                 - name: JavaScript からパネルを折りたたむ/展開する (VB)
                   href: web-forms/overview/ajax-control-toolkit/collapsiblepanel/collapsing-and-expanding-a-panel-from-javascript-vb.md
             - name: ColorPicker
               href: web-forms/overview/ajax-control-toolkit/colorpicker/index.md
               items:
-                - name: 'ColorPicker コントロール エクステンダー (C#)'
+                - name: ColorPicker コントロール エクステンダー (C#)
                   href: web-forms/overview/ajax-control-toolkit/colorpicker/using-the-colorpicker-control-extender-cs.md
                 - name: ColorPicker コントロール エクステンダー (VB)
                   href: web-forms/overview/ajax-control-toolkit/colorpicker/using-the-colorpicker-control-extender-vb.md
             - name: ComboBox
               href: web-forms/overview/ajax-control-toolkit/combobox/index.md
               items:
-                - name: 'ComboBox コントロール (C#)'
+                - name: ComboBox コントロール (C#)
                   href: web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-cs.md
                 - name: ComboBox コントロール (VB)
                   href: web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-vb.md
             - name: ConfirmButton
               href: web-forms/overview/ajax-control-toolkit/confirmbutton/index.md
               items:
-                - name: 'Repeater で ConfirmButton を使用する (C#)'
+                - name: Repeater で ConfirmButton を使用する (C#)
                   href: web-forms/overview/ajax-control-toolkit/confirmbutton/using-a-confirmbutton-in-a-repeater-cs.md
                 - name: Repeater で ConfirmButton を使用する (VB)
                   href: web-forms/overview/ajax-control-toolkit/confirmbutton/using-a-confirmbutton-in-a-repeater-vb.md
             - name: DropShadow
               href: web-forms/overview/ajax-control-toolkit/dropshadow/index.md
               items:
-                - name: 'DropShadow の Z インデックスを調整する (C#)'
+                - name: DropShadow の Z インデックスを調整する (C#)
                   href: web-forms/overview/ajax-control-toolkit/dropshadow/adjusting-the-z-index-of-a-dropshadow-cs.md
-                - name: 'クライアント コードから DropShadow プロパティを操作する (C#)'
+                - name: クライアント コードから DropShadow プロパティを操作する (C#)
                   href: web-forms/overview/ajax-control-toolkit/dropshadow/manipulating-dropshadow-properties-from-client-code-cs.md
                 - name: DropShadow の Z インデックスを調整する (VB)
                   href: web-forms/overview/ajax-control-toolkit/dropshadow/adjusting-the-z-index-of-a-dropshadow-vb.md
@@ -566,11 +566,11 @@
             - name: DynamicPopulate
               href: web-forms/overview/ajax-control-toolkit/dynamicpopulate/index.md
               items:
-                - name: 'コントロールに動的に入力する (C#)'
+                - name: コントロールに動的に入力する (C#)
                   href: web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-cs.md
-                - name: 'JavaScript コードを使用してコントロールに動的に入力する (C#)'
+                - name: JavaScript コードを使用してコントロールに動的に入力する (C#)
                   href: web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-using-javascript-code-cs.md
-                - name: 'ユーザー コントロールと JavaScript で DynamicPopulate を使用する (C#)'
+                - name: ユーザー コントロールと JavaScript で DynamicPopulate を使用する (C#)
                   href: web-forms/overview/ajax-control-toolkit/dynamicpopulate/using-dynamicpopulate-with-a-user-control-and-javascript-cs.md
                 - name: コントロールに動的に入力する (VB)
                   href: web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-vb.md
@@ -581,34 +581,34 @@
             - name: FilteredTextBox
               href: web-forms/overview/ajax-control-toolkit/filteredtextbox/index.md
               items:
-                - name: 'テキスト ボックスで特定の文字だけを許可する (C#)'
+                - name: テキスト ボックスで特定の文字だけを許可する (C#)
                   href: web-forms/overview/ajax-control-toolkit/filteredtextbox/allowing-only-certain-characters-in-a-text-box-cs.md
                 - name: テキスト ボックスで特定の文字だけを許可する (VB)
                   href: web-forms/overview/ajax-control-toolkit/filteredtextbox/allowing-only-certain-characters-in-a-text-box-vb.md
             - name: HoverMenu
               href: web-forms/overview/ajax-control-toolkit/hovermenu/index.md
               items:
-                - name: 'Repeater コントロールで HoverMenu を使用する (C#)'
+                - name: Repeater コントロールで HoverMenu を使用する (C#)
                   href: web-forms/overview/ajax-control-toolkit/hovermenu/using-hovermenu-with-a-repeater-control-cs.md
                 - name: Repeater コントロールで HoverMenu を使用する (VB)
                   href: web-forms/overview/ajax-control-toolkit/hovermenu/using-hovermenu-with-a-repeater-control-vb.md
             - name: HTMLEditor
               href: web-forms/overview/ajax-control-toolkit/htmleditor/index.md
               items:
-                - name: 'HTML エディター コントロール (C#)'
+                - name: HTML エディター コントロール (C#)
                   href: web-forms/overview/ajax-control-toolkit/htmleditor/how-do-i-use-the-html-editor-control-cs.md
                 - name: HTML エディター コントロール (VB)
                   href: web-forms/overview/ajax-control-toolkit/htmleditor/how-do-i-use-the-html-editor-control-vb.md
             - name: ModalPopup
               href: web-forms/overview/ajax-control-toolkit/modalpopup/index.md
               items:
-                - name: 'サーバー コードからモーダル ポップアップ ウィンドウを起動する (C#)'
+                - name: サーバー コードからモーダル ポップアップ ウィンドウを起動する (C#)
                   href: web-forms/overview/ajax-control-toolkit/modalpopup/launching-a-modal-popup-window-from-server-code-cs.md
-                - name: 'Repeater コントロールで ModalPopup を使用する (C#)'
+                - name: Repeater コントロールで ModalPopup を使用する (C#)
                   href: web-forms/overview/ajax-control-toolkit/modalpopup/using-modalpopup-with-a-repeater-control-cs.md
-                - name: 'ModalPopup からポストバックを処理する (C#)'
+                - name: ModalPopup からポストバックを処理する (C#)
                   href: web-forms/overview/ajax-control-toolkit/modalpopup/handling-postbacks-from-a-modalpopup-cs.md
-                - name: 'ModalPopup の位置を決める (C#)'
+                - name: ModalPopup の位置を決める (C#)
                   href: web-forms/overview/ajax-control-toolkit/modalpopup/positioning-a-modalpopup-cs.md
                 - name: サーバー コードからモーダル ポップアップ ウィンドウを起動する (VB)
                   href: web-forms/overview/ajax-control-toolkit/modalpopup/launching-a-modal-popup-window-from-server-code-vb.md
@@ -621,39 +621,39 @@
             - name: MutuallyExclusiveCheckbox
               href: web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbox/index.md
               items:
-                - name: '相互に排他的なチェックボックスを作成する (C#)'
+                - name: 相互に排他的なチェックボックスを作成する (C#)
                   href: web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbox/creating-mutually-exclusive-checkboxes-cs.md
                 - name: 相互に排他的なチェックボックスを作成する (VB)
                   href: web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbox/creating-mutually-exclusive-checkboxes-vb.md
             - name: NoBot
               href: web-forms/overview/ajax-control-toolkit/nobot/index.md
               items:
-                - name: 'ボットと戦う (C#)'
+                - name: ボットと戦う (C#)
                   href: web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-cs.md
                 - name: ボットと戦う (VB)
                   href: web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-vb.md
             - name: NumericUpDown
               href: web-forms/overview/ajax-control-toolkit/numericupdown/index.md
               items:
-                - name: 'Web サービス バックエンドで数値を上げ下げするコントロールを作成する (C#)'
+                - name: Web サービス バックエンドで数値を上げ下げするコントロールを作成する (C#)
                   href: web-forms/overview/ajax-control-toolkit/numericupdown/creating-a-numeric-up-down-control-with-a-web-service-backend-cs.md
                 - name: Web サービス バックエンドで数値を上げ下げするコントロールを作成する (VB)
                   href: web-forms/overview/ajax-control-toolkit/numericupdown/creating-a-numeric-up-down-control-with-a-web-service-backend-vb.md
             - name: PasswordStrength
               href: web-forms/overview/ajax-control-toolkit/passwordstrength/index.md
               items:
-                - name: 'パスワードの強度をテストする (C#)'
+                - name: パスワードの強度をテストする (C#)
                   href: web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-cs.md
                 - name: パスワードの強度をテストする (VB)
                   href: web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-vb.md
             - name: ポップアップ
               href: web-forms/overview/ajax-control-toolkit/popup/index.md
               items:
-                - name: '複数のポップアップ コントロールを使用する (C#)'
+                - name: 複数のポップアップ コントロールを使用する (C#)
                   href: web-forms/overview/ajax-control-toolkit/popup/using-multiple-popup-controls-cs.md
-                - name: 'ポップアップ コントロールからポストバックを処理する (UpdatePanel あり) (C#)'
+                - name: ポップアップ コントロールからポストバックを処理する (UpdatePanel あり) (C#)
                   href: web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md
-                - name: 'ポップアップ コントロールからポストバックを処理する (UpdatePanel なし) (C#)'
+                - name: ポップアップ コントロールからポストバックを処理する (UpdatePanel なし) (C#)
                   href: web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-cs.md
                 - name: 複数のポップアップ コントロールを使用する (VB)
                   href: web-forms/overview/ajax-control-toolkit/popup/using-multiple-popup-controls-vb.md
@@ -664,16 +664,16 @@
             - name: 年齢区分
               href: web-forms/overview/ajax-control-toolkit/rating/index.md
               items:
-                - name: '評価コントロールを作成する (C#)'
+                - name: 評価コントロールを作成する (C#)
                   href: web-forms/overview/ajax-control-toolkit/rating/creating-a-rating-control-cs.md
                 - name: 評価コントロールを作成する (VB)
                   href: web-forms/overview/ajax-control-toolkit/rating/creating-a-rating-control-vb.md
             - name: ReorderList
               href: web-forms/overview/ajax-control-toolkit/reorderlist/index.md
               items:
-                - name: 'ReorderList でポストバックを使用する (C#)'
+                - name: ReorderList でポストバックを使用する (C#)
                   href: web-forms/overview/ajax-control-toolkit/reorderlist/using-postbacks-with-reorderlist-cs.md
-                - name: 'ReorderList 経由でドラッグ アンド ドロップする (C#)'
+                - name: ReorderList 経由でドラッグ アンド ドロップする (C#)
                   href: web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-cs.md
                 - name: ReorderList でポストバックを使用する (VB)
                   href: web-forms/overview/ajax-control-toolkit/reorderlist/using-postbacks-with-reorderlist-vb.md
@@ -682,9 +682,9 @@
             - name: Slider
               href: web-forms/overview/ajax-control-toolkit/slider/index.md
               items:
-                - name: 'スライダー コントロール (自動ポストバックあり) (C#)'
+                - name: スライダー コントロール (自動ポストバックあり) (C#)
                   href: web-forms/overview/ajax-control-toolkit/slider/using-the-slider-control-with-auto-postback-cs.md
-                - name: 'スライダー コントロールをデータバインドする (C#)'
+                - name: スライダー コントロールをデータバインドする (C#)
                   href: web-forms/overview/ajax-control-toolkit/slider/databinding-the-slider-control-cs.md
                 - name: スライダー コントロール (自動ポストバックあり) (VB)
                   href: web-forms/overview/ajax-control-toolkit/slider/using-the-slider-control-with-auto-postback-vb.md
@@ -693,9 +693,9 @@
             - name: TextBoxWatermark
               href: web-forms/overview/ajax-control-toolkit/textboxwatermark/index.md
               items:
-                - name: 'FormView で TextBoxWatermark を使用する (C#)'
+                - name: FormView で TextBoxWatermark を使用する (C#)
                   href: web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwatermark-in-a-formview-cs.md
-                - name: '検証コントロールと共に TextBoxWatermark を使用する (C#)'
+                - name: 検証コントロールと共に TextBoxWatermark を使用する (C#)
                   href: web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwatermark-with-validation-controls-cs.md
                 - name: FormView で TextBoxWatermark を使用する (VB)
                   href: web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwatermark-in-a-formview-vb.md
@@ -707,11 +707,11 @@
             - name: はじめに
               href: web-forms/overview/data-access/introduction/index.md
               items:
-                - name: 'データ アクセス層を作成する (C#)'
+                - name: データ アクセス層を作成する (C#)
                   href: web-forms/overview/data-access/introduction/creating-a-data-access-layer-cs.md
-                - name: 'ビジネス ロジック層を作成する (C#)'
+                - name: ビジネス ロジック層を作成する (C#)
                   href: web-forms/overview/data-access/introduction/creating-a-business-logic-layer-cs.md
-                - name: 'マスター ページとサイト ナビゲーション (C#)'
+                - name: マスター ページとサイト ナビゲーション (C#)
                   href: web-forms/overview/data-access/introduction/master-pages-and-site-navigation-cs.md
                 - name: データ アクセス層を作成する (VB)
                   href: web-forms/overview/data-access/introduction/creating-a-data-access-layer-vb.md
@@ -722,11 +722,11 @@
             - name: 基本レポート
               href: web-forms/overview/data-access/basic-reporting/index.md
               items:
-                - name: 'ObjectDataSource でデータを表示する (C#)'
+                - name: ObjectDataSource でデータを表示する (C#)
                   href: web-forms/overview/data-access/basic-reporting/displaying-data-with-the-objectdatasource-cs.md
-                - name: '宣言パラメーター (C#)'
+                - name: 宣言パラメーター (C#)
                   href: web-forms/overview/data-access/basic-reporting/declarative-parameters-cs.md
-                - name: 'ObjectDataSource のパラメーター値をプログラムで設定する (C#)'
+                - name: ObjectDataSource のパラメーター値をプログラムで設定する (C#)
                   href: web-forms/overview/data-access/basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-cs.md
                 - name: ObjectDataSource でデータを表示する (VB)
                   href: web-forms/overview/data-access/basic-reporting/displaying-data-with-the-objectdatasource-vb.md
@@ -737,13 +737,13 @@
             - name: マスター/詳細
               href: web-forms/overview/data-access/masterdetail/index.md
               items:
-                - name: 'DropDownList でマスター/詳細をフィルター処理する (C#)'
+                - name: DropDownList でマスター/詳細をフィルター処理する (C#)
                   href: web-forms/overview/data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-cs.md
-                - name: '2 つの DropDownList でマスター/詳細をフィルター処理する (C#)'
+                - name: 2 つの DropDownList でマスター/詳細をフィルター処理する (C#)
                   href: web-forms/overview/data-access/masterdetail/master-detail-filtering-with-two-dropdownlists-cs.md
-                - name: '2 つのページでマスター/詳細をフィルター処理する (C#)'
+                - name: 2 つのページでマスター/詳細をフィルター処理する (C#)
                   href: web-forms/overview/data-access/masterdetail/master-detail-filtering-across-two-pages-cs.md
-                - name: '選択可能なマスター GridView と詳細 DetailView を使用してマスター/詳細を表示する (C#)'
+                - name: 選択可能なマスター GridView と詳細 DetailView を使用してマスター/詳細を表示する (C#)
                   href: web-forms/overview/data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md
                 - name: DropDownList でマスター/詳細をフィルター処理する (VB)
                   href: web-forms/overview/data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-vb.md
@@ -756,15 +756,15 @@
             - name: カスタム書式設定
               href: web-forms/overview/data-access/custom-formatting/index.md
               items:
-                - name: 'データに基づくカスタム書式設定 (C#)'
+                - name: データに基づくカスタム書式設定 (C#)
                   href: web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-cs.md
-                - name: 'GridView コントロールで TemplateFields を使用する (C#)'
+                - name: GridView コントロールで TemplateFields を使用する (C#)
                   href: web-forms/overview/data-access/custom-formatting/using-templatefields-in-the-gridview-control-cs.md
-                - name: 'DetailsView コントロールで TemplateFields を使用する (C#)'
+                - name: DetailsView コントロールで TemplateFields を使用する (C#)
                   href: web-forms/overview/data-access/custom-formatting/using-templatefields-in-the-detailsview-control-cs.md
-                - name: 'FormView のテンプレート (C#)'
+                - name: FormView のテンプレート (C#)
                   href: web-forms/overview/data-access/custom-formatting/using-the-formview-s-templates-cs.md
-                - name: 'GridView のフッターに概要情報を表示する (C#)'
+                - name: GridView のフッターに概要情報を表示する (C#)
                   href: web-forms/overview/data-access/custom-formatting/displaying-summary-information-in-the-gridview-s-footer-cs.md
                 - name: データに基づくカスタム書式設定 (VB)
                   href: web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-vb.md
@@ -779,21 +779,21 @@
             - name: データの編集、挿入、削除
               href: web-forms/overview/data-access/editing-inserting-and-deleting-data/index.md
               items:
-                - name: 'データの挿入、更新、削除の概要 (C#)'
+                - name: データの挿入、更新、削除の概要 (C#)
                   href: web-forms/overview/data-access/editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-cs.md
-                - name: '挿入、更新、削除に関連付けられているイベントを調べる (C#)'
+                - name: 挿入、更新、削除に関連付けられているイベントを調べる (C#)
                   href: web-forms/overview/data-access/editing-inserting-and-deleting-data/examining-the-events-associated-with-inserting-updating-and-deleting-cs.md
-                - name: 'ASP.NET ページで BLL レベルと DAL レベルの例外を処理する (C#)'
+                - name: ASP.NET ページで BLL レベルと DAL レベルの例外を処理する (C#)
                   href: web-forms/overview/data-access/editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs.md
-                - name: '編集および挿入インターフェイスに検証コントロールを追加する (C#)'
+                - name: 編集および挿入インターフェイスに検証コントロールを追加する (C#)
                   href: web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-validation-controls-to-the-editing-and-inserting-interfaces-cs.md
-                - name: 'データ変更インターフェイスをカスタマイズする (C#)'
+                - name: データ変更インターフェイスをカスタマイズする (C#)
                   href: web-forms/overview/data-access/editing-inserting-and-deleting-data/customizing-the-data-modification-interface-cs.md
-                - name: 'オプティミスティック同時実行制御を実装する (C#)'
+                - name: オプティミスティック同時実行制御を実装する (C#)
                   href: web-forms/overview/data-access/editing-inserting-and-deleting-data/implementing-optimistic-concurrency-cs.md
-                - name: '削除時、クライアント側の確認を追加する (C#)'
+                - name: 削除時、クライアント側の確認を追加する (C#)
                   href: web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-cs.md
-                - name: 'ユーザーに基づいてデータ編集機能を制限する (C#)'
+                - name: ユーザーに基づいてデータ編集機能を制限する (C#)
                   href: web-forms/overview/data-access/editing-inserting-and-deleting-data/limiting-data-modification-functionality-based-on-the-user-cs.md
                 - name: データの挿入、更新、削除の概要 (VB)
                   href: web-forms/overview/data-access/editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-vb.md
@@ -814,13 +814,13 @@
             - name: ページングと並べ替え
               href: web-forms/overview/data-access/paging-and-sorting/index.md
               items:
-                - name: 'レポート データのページングと並べ替え (C#)'
+                - name: レポート データのページングと並べ替え (C#)
                   href: web-forms/overview/data-access/paging-and-sorting/paging-and-sorting-report-data-cs.md
-                - name: '大量のデータを効率的にページングする (C#)'
+                - name: 大量のデータを効率的にページングする (C#)
                   href: web-forms/overview/data-access/paging-and-sorting/efficiently-paging-through-large-amounts-of-data-cs.md
-                - name: 'カスタム ページングを適用したデータを並べ替える (C#)'
+                - name: カスタム ページングを適用したデータを並べ替える (C#)
                   href: web-forms/overview/data-access/paging-and-sorting/sorting-custom-paged-data-cs.md
-                - name: 'カスタマイズされた並べ替えユーザー インターフェイスを作成する (C#)'
+                - name: カスタマイズされた並べ替えユーザー インターフェイスを作成する (C#)
                   href: web-forms/overview/data-access/paging-and-sorting/creating-a-customized-sorting-user-interface-cs.md
                 - name: レポート データのページングと並べ替え (VB)
                   href: web-forms/overview/data-access/paging-and-sorting/paging-and-sorting-report-data-vb.md
@@ -833,20 +833,20 @@
             - name: カスタム ボタン アクション
               href: web-forms/overview/data-access/custom-button-actions/index.md
               items:
-                - name: 'GridView にボタンを追加し、応答する (C#)'
+                - name: GridView にボタンを追加し、応答する (C#)
                   href: web-forms/overview/data-access/custom-button-actions/adding-and-responding-to-buttons-to-a-gridview-cs.md
                 - name: GridView にボタンを追加し、応答する (VB)
                   href: web-forms/overview/data-access/custom-button-actions/adding-and-responding-to-buttons-to-a-gridview-vb.md
             - name: DataList と Repeater でデータを表示する
               href: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/index.md
               items:
-                - name: 'DataList および Repeater コントロールでデータを表示する (C#)'
+                - name: DataList および Repeater コントロールでデータを表示する (C#)
                   href: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-cs.md
-                - name: 'データに基づいて DataList と Repeater を書式設定する (C#)'
+                - name: データに基づいて DataList と Repeater を書式設定する (C#)
                   href: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/formatting-the-datalist-and-repeater-based-upon-data-cs.md
-                - name: 'DataList コントロールで複数のレコードを行ごとに表示する (C#)'
+                - name: DataList コントロールで複数のレコードを行ごとに表示する (C#)
                   href: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/showing-multiple-records-per-row-with-the-datalist-control-cs.md
-                - name: '入れ子になったデータ Web コントロール (C#)'
+                - name: 入れ子になったデータ Web コントロール (C#)
                   href: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/nested-data-web-controls-cs.md
                 - name: DataList および Repeater コントロールでデータを表示する (VB)
                   href: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-vb.md
@@ -859,11 +859,11 @@
             - name: DataList と Repeater でシナリオをフィルター処理する
               href: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/index.md
               items:
-                - name: 'DropDownList でマスター/詳細をフィルター処理する (C#)'
+                - name: DropDownList でマスター/詳細をフィルター処理する (C#)
                   href: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-cs.md
-                - name: '2 つのページでマスター/詳細をフィルター処理する (C#)'
+                - name: 2 つのページでマスター/詳細をフィルター処理する (C#)
                   href: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-cs.md
-                - name: 'マスター レコードの箇条書きと詳細 DataList を使用してマスター/詳細を表示する (C#)'
+                - name: マスター レコードの箇条書きと詳細 DataList を使用してマスター/詳細を表示する (C#)
                   href: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md
                 - name: DropDownList でマスター/詳細をフィルター処理する (VB)
                   href: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-vb.md
@@ -874,15 +874,15 @@
             - name: DataList でデータを編集し、削除する
               href: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/index.md
               items:
-                - name: 'DataList のデータの編集と削除の概要 (C#)'
+                - name: DataList のデータの編集と削除の概要 (C#)
                   href: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-cs.md
-                - name: 'バッチ更新を実行する (C#)'
+                - name: バッチ更新を実行する (C#)
                   href: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/performing-batch-updates-cs.md
-                - name: 'BLL レベルと DAL レベルの例外を処理する (C#)'
+                - name: BLL レベルと DAL レベルの例外を処理する (C#)
                   href: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/handling-bll-and-dal-level-exceptions-cs.md
-                - name: 'DataList の編集インターフェイスに検証コントロールを追加する (C#)'
+                - name: DataList の編集インターフェイスに検証コントロールを追加する (C#)
                   href: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/adding-validation-controls-to-the-datalist-s-editing-interface-cs.md
-                - name: 'DataList の編集インターフェイスをカスタマイズする (C#)'
+                - name: DataList の編集インターフェイスをカスタマイズする (C#)
                   href: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/customizing-the-datalist-s-editing-interface-cs.md
                 - name: DataList のデータの編集と削除の概要 (VB)
                   href: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-vb.md
@@ -897,9 +897,9 @@
             - name: DataList と Repeater によるページングと並べ替え
               href: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/index.md
               items:
-                - name: 'DataList または Repeater コントロールのレポート データをページングする (C#)'
+                - name: DataList または Repeater コントロールのレポート データをページングする (C#)
                   href: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/paging-report-data-in-a-datalist-or-repeater-control-cs.md
-                - name: 'DataList または Repeater コントロールのデータを並べ替える (C#)'
+                - name: DataList または Repeater コントロールのデータを並べ替える (C#)
                   href: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/sorting-data-in-a-datalist-or-repeater-control-cs.md
                 - name: DataList または Repeater コントロールのレポート データをページングする (VB)
                   href: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/paging-report-data-in-a-datalist-or-repeater-control-vb.md
@@ -908,20 +908,20 @@
             - name: DataList と Repeater によるカスタム ボタン アクション
               href: web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater/index.md
               items:
-                - name: 'DataList と Repeater のカスタム ボタン (C#)'
+                - name: DataList と Repeater のカスタム ボタン (C#)
                   href: web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater/custom-buttons-in-the-datalist-and-repeater-cs.md
                 - name: DataList と Repeater のカスタム ボタン (VB)
                   href: web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater/custom-buttons-in-the-datalist-and-repeater-vb.md
             - name: ASP.NET ページからデータベースに直接アクセスする
               href: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/index.md
               items:
-                - name: 'SqlDataSource コントロールでデータにクエリを実行する (C#)'
+                - name: SqlDataSource コントロールでデータにクエリを実行する (C#)
                   href: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/querying-data-with-the-sqldatasource-control-cs.md
-                - name: 'パラメーター化されたクエリと SqlDataSource を使用する (C#)'
+                - name: パラメーター化されたクエリと SqlDataSource を使用する (C#)
                   href: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/using-parameterized-queries-with-the-sqldatasource-cs.md
-                - name: 'SqlDataSource でデータを挿入、更新、削除する (C#)'
+                - name: SqlDataSource でデータを挿入、更新、削除する (C#)
                   href: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/inserting-updating-and-deleting-data-with-the-sqldatasource-cs.md
-                - name: 'SqlDataSource でオプティミスティック同時実行制御を実装する (C#)'
+                - name: SqlDataSource でオプティミスティック同時実行制御を実装する (C#)
                   href: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/implementing-optimistic-concurrency-with-the-sqldatasource-cs.md
                 - name: SqlDataSource コントロールでデータにクエリを実行する (VB)
                   href: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/querying-data-with-the-sqldatasource-control-vb.md
@@ -934,11 +934,11 @@
             - name: GridView を拡張する
               href: web-forms/overview/data-access/enhancing-the-gridview/index.md
               items:
-                - name: 'ラジオ ボタンの GridView 列を追加する (C#)'
+                - name: ラジオ ボタンの GridView 列を追加する (C#)
                   href: web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-radio-buttons-cs.md
-                - name: 'チェックボックスの GridView 列を追加する (C#)'
+                - name: チェックボックスの GridView 列を追加する (C#)
                   href: web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-checkboxes-cs.md
-                - name: 'GridView のフッターから新しいレコードを挿入する (C#)'
+                - name: GridView のフッターから新しいレコードを挿入する (C#)
                   href: web-forms/overview/data-access/enhancing-the-gridview/inserting-a-new-record-from-the-gridview-s-footer-cs.md
                 - name: ラジオ ボタンの GridView 列を追加する (VB)
                   href: web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-radio-buttons-vb.md
@@ -949,13 +949,13 @@
             - name: バイナリ ファイルの操作
               href: web-forms/overview/data-access/working-with-binary-files/index.md
               items:
-                - name: 'ファイルのアップロード (C#)'
+                - name: ファイルのアップロード (C#)
                   href: web-forms/overview/data-access/working-with-binary-files/uploading-files-cs.md
-                - name: 'データ Web コントロールにバイナリ データを表示する (C#)'
+                - name: データ Web コントロールにバイナリ データを表示する (C#)
                   href: web-forms/overview/data-access/working-with-binary-files/displaying-binary-data-in-the-data-web-controls-cs.md
-                - name: '新しいレコードを追加するとき、ファイル アップロード オプションを含める (C#)'
+                - name: 新しいレコードを追加するとき、ファイル アップロード オプションを含める (C#)
                   href: web-forms/overview/data-access/working-with-binary-files/including-a-file-upload-option-when-adding-a-new-record-cs.md
-                - name: '既存のバイナリ データの更新と削除 (C#)'
+                - name: 既存のバイナリ データの更新と削除 (C#)
                   href: web-forms/overview/data-access/working-with-binary-files/updating-and-deleting-existing-binary-data-cs.md
                 - name: ファイルのアップロード (VB)
                   href: web-forms/overview/data-access/working-with-binary-files/uploading-files-vb.md
@@ -968,13 +968,13 @@
             - name: キャッシュされたデータ
               href: web-forms/overview/data-access/caching-data/index.md
               items:
-                - name: 'ObjectDataSource でデータをキャッシュする (C#)'
+                - name: ObjectDataSource でデータをキャッシュする (C#)
                   href: web-forms/overview/data-access/caching-data/caching-data-with-the-objectdatasource-cs.md
-                - name: 'アーキテクチャでデータをキャッシュする (C#)'
+                - name: アーキテクチャでデータをキャッシュする (C#)
                   href: web-forms/overview/data-access/caching-data/caching-data-in-the-architecture-cs.md
-                - name: 'アプリケーションの起動時にデータをキャッシュする (C#)'
+                - name: アプリケーションの起動時にデータをキャッシュする (C#)
                   href: web-forms/overview/data-access/caching-data/caching-data-at-application-startup-cs.md
-                - name: 'SQL キャッシュ依存関係を使用する (C#)'
+                - name: SQL キャッシュ依存関係を使用する (C#)
                   href: web-forms/overview/data-access/caching-data/using-sql-cache-dependencies-cs.md
                 - name: ObjectDataSource でデータをキャッシュする (VB)
                   href: web-forms/overview/data-access/caching-data/caching-data-with-the-objectdatasource-vb.md
@@ -987,20 +987,20 @@
             - name: データベース駆動型サイト マップ
               href: web-forms/overview/data-access/database-driven-site-maps/index.md
               items:
-                - name: 'カスタム データベース駆動型サイト マップ プロバイダーを構築する (C#)'
+                - name: カスタム データベース駆動型サイト マップ プロバイダーを構築する (C#)
                   href: web-forms/overview/data-access/database-driven-site-maps/building-a-custom-database-driven-site-map-provider-cs.md
                 - name: カスタム データベース駆動型サイト マップ プロバイダーを構築する (VB)
                   href: web-forms/overview/data-access/database-driven-site-maps/building-a-custom-database-driven-site-map-provider-vb.md
             - name: バッチ処理されたデータの操作
               href: web-forms/overview/data-access/working-with-batched-data/index.md
               items:
-                - name: 'トランザクション内のデータベース変更をラップする (C#)'
+                - name: トランザクション内のデータベース変更をラップする (C#)
                   href: web-forms/overview/data-access/working-with-batched-data/wrapping-database-modifications-within-a-transaction-cs.md
-                - name: '一括更新 (C#)'
+                - name: 一括更新 (C#)
                   href: web-forms/overview/data-access/working-with-batched-data/batch-updating-cs.md
-                - name: '一括削除 (C#)'
+                - name: 一括削除 (C#)
                   href: web-forms/overview/data-access/working-with-batched-data/batch-deleting-cs.md
-                - name: '一括挿入 (C#)'
+                - name: 一括挿入 (C#)
                   href: web-forms/overview/data-access/working-with-batched-data/batch-inserting-cs.md
                 - name: トランザクション内のデータベース変更をラップする (VB)
                   href: web-forms/overview/data-access/working-with-batched-data/wrapping-database-modifications-within-a-transaction-vb.md
@@ -1013,23 +1013,23 @@
             - name: 高度なデータ アクセス シナリオ
               href: web-forms/overview/data-access/advanced-data-access-scenarios/index.md
               items:
-                - name: '型指定された DataSet の TableAdapters に新しいストアド プロシージャを作成する (C#)'
+                - name: 型指定された DataSet の TableAdapters に新しいストアド プロシージャを作成する (C#)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md
-                - name: '型指定された DataSet の TableAdapters に既存のストアド プロシージャを使用する (C#)'
+                - name: 型指定された DataSet の TableAdapters に既存のストアド プロシージャを使用する (C#)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md
-                - name: 'JOIN を使用するように TableAdapter を更新する (C#)'
+                - name: JOIN を使用するように TableAdapter を更新する (C#)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/updating-the-tableadapter-to-use-joins-cs.md
-                - name: 'その他の DataTable 列を追加する (C#)'
+                - name: その他の DataTable 列を追加する (C#)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/adding-additional-datatable-columns-cs.md
-                - name: '計算列を使用する (C#)'
+                - name: 計算列を使用する (C#)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/working-with-computed-columns-cs.md
-                - name: 'データ アクセス層の接続レベルとコマンド レベルの設定を構成する (C#)'
+                - name: データ アクセス層の接続レベルとコマンド レベルの設定を構成する (C#)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/configuring-the-data-access-layer-s-connection-and-command-level-settings-cs.md
-                - name: '接続文字列とその他の構成情報を保護する (C#)'
+                - name: 接続文字列とその他の構成情報を保護する (C#)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-cs.md
-                - name: 'ストアド プロシージャのデバッグ (C#)'
+                - name: ストアド プロシージャのデバッグ (C#)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/debugging-stored-procedures-cs.md
-                - name: 'マネージド コードでストアド プロシージャとユーザー定義関数を作成する (C#)'
+                - name: マネージド コードでストアド プロシージャとユーザー定義関数を作成する (C#)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/creating-stored-procedures-and-user-defined-functions-with-managed-code-cs.md
                 - name: 型指定された DataSet の TableAdapters に新しいストアド プロシージャを作成する (VB)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md
@@ -1055,11 +1055,11 @@
             - name: ASP.NET 3.5 - セキュリティの概要
               href: web-forms/overview/older-versions-security/introduction/index.md
               items:
-                - name: 'セキュリティの基礎と ASP.NET のサポート (C#)'
+                - name: セキュリティの基礎と ASP.NET のサポート (C#)
                   href: web-forms/overview/older-versions-security/introduction/security-basics-and-asp-net-support-cs.md
-                - name: 'フォーム認証の概要 (C#)'
+                - name: フォーム認証の概要 (C#)
                   href: web-forms/overview/older-versions-security/introduction/an-overview-of-forms-authentication-cs.md
-                - name: 'フォーム認証構成と高度なトピック (C#)'
+                - name: フォーム認証構成と高度なトピック (C#)
                   href: web-forms/overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-cs.md
                 - name: セキュリティの基礎と ASP.NET のサポート (VB)
                   href: web-forms/overview/older-versions-security/introduction/security-basics-and-asp-net-support-vb.md
@@ -1070,15 +1070,15 @@
             - name: ASP.NET 3.5 - メンバーシップ
               href: web-forms/overview/older-versions-security/membership/index.md
               items:
-                - name: 'SQL Server でメンバーシップ スキーマを作成する (C#)'
+                - name: SQL Server でメンバーシップ スキーマを作成する (C#)
                   href: web-forms/overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-cs.md
-                - name: 'ユーザー アカウントを作成する (C#)'
+                - name: ユーザー アカウントを作成する (C#)
                   href: web-forms/overview/older-versions-security/membership/creating-user-accounts-cs.md
-                - name: 'メンバーシップ ユーザー ストアに対してユーザー資格情報を確認する (C#)'
+                - name: メンバーシップ ユーザー ストアに対してユーザー資格情報を確認する (C#)
                   href: web-forms/overview/older-versions-security/membership/validating-user-credentials-against-the-membership-user-store-cs.md
-                - name: 'ユーザー ベースの承認 (C#)'
+                - name: ユーザー ベースの承認 (C#)
                   href: web-forms/overview/older-versions-security/membership/user-based-authorization-cs.md
-                - name: '追加のユーザー情報を格納する (C#)'
+                - name: 追加のユーザー情報を格納する (C#)
                   href: web-forms/overview/older-versions-security/membership/storing-additional-user-information-cs.md
                 - name: SQL Server でメンバーシップ スキーマを作成する (VB)
                   href: web-forms/overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-vb.md
@@ -1093,11 +1093,11 @@
             - name: ASP.NET 3.5 - ロール
               href: web-forms/overview/older-versions-security/roles/index.md
               items:
-                - name: 'ロールを作成し、管理する (C#)'
+                - name: ロールを作成し、管理する (C#)
                   href: web-forms/overview/older-versions-security/roles/creating-and-managing-roles-cs.md
-                - name: 'ユーザーにロールを割り当てる (C#)'
+                - name: ユーザーにロールを割り当てる (C#)
                   href: web-forms/overview/older-versions-security/roles/assigning-roles-to-users-cs.md
-                - name: 'ロールベースの承認 (C#)'
+                - name: ロールベースの承認 (C#)
                   href: web-forms/overview/older-versions-security/roles/role-based-authorization-cs.md
                 - name: ロールを作成し、管理する (VB)
                   href: web-forms/overview/older-versions-security/roles/creating-and-managing-roles-vb.md
@@ -1108,11 +1108,11 @@
             - name: ASP.NET 3.5 - セキュリティ管理
               href: web-forms/overview/older-versions-security/admin/index.md
               items:
-                - name: '多くの中からユーザー アカウントを 1 つ選択するインターフェイスを構築する (C#)'
+                - name: 多くの中からユーザー アカウントを 1 つ選択するインターフェイスを構築する (C#)
                   href: web-forms/overview/older-versions-security/admin/building-an-interface-to-select-one-user-account-from-many-cs.md
-                - name: 'パスワードを復元し、変更する (C#)'
+                - name: パスワードを復元し、変更する (C#)
                   href: web-forms/overview/older-versions-security/admin/recovering-and-changing-passwords-cs.md
-                - name: 'ユーザー アカウントをロック解除し、承認する (C#)'
+                - name: ユーザー アカウントをロック解除し、承認する (C#)
                   href: web-forms/overview/older-versions-security/admin/unlocking-and-approving-user-accounts-cs.md
                 - name: 多くの中からユーザー アカウントを 1 つ選択するインターフェイスを構築する (VB)
                   href: web-forms/overview/older-versions-security/admin/building-an-interface-to-select-one-user-account-from-many-vb.md
@@ -1867,7 +1867,7 @@
               href: web-forms/videos/aspnet-dynamic-data/how-to-enable-table-specific-routing-in-dynamic-data-applications.md
             - name: ASP.NET 動的データ アプリケーションで属性評価を使用する
               href: web-forms/videos/aspnet-dynamic-data/how-to-use-attribute-validation-in-aspnet-dynamic-data-applications.md
-            - name: 'VB または C# の命令ロジックによるカスタム フィールド検証を実装する'
+            - name: VB または C# の命令ロジックによるカスタム フィールド検証を実装する
               href: web-forms/videos/aspnet-dynamic-data/how-to-implement-custom-field-validation-with-imperative-logic-in-vb-or-c.md
             - name: DynamicData データ グリッドから列を削除する
               href: web-forms/videos/aspnet-dynamic-data/how-to-remove-columns-from-your-dynamicdata-data-grids.md
@@ -2150,15 +2150,15 @@
         - name: セキュリティ、認証、承認
           href: mvc/overview/security/index.md
           items:
-            - name: 'Facebook、Twitter、LinkedIn、Google の OAuth2 サインオンを使用して ASP.NET MVC 5 アプリを作成する (C#)'
+            - name: Facebook、Twitter、LinkedIn、Google の OAuth2 サインオンを使用して ASP.NET MVC 5 アプリを作成する (C#)
               href: mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md
-            - name: 'ログイン、電子メール確認、パスワード リセットを使用して安全な ASP.NET MVC 5 Web アプリを作成する (C#)'
+            - name: ログイン、電子メール確認、パスワード リセットを使用して安全な ASP.NET MVC 5 Web アプリを作成する (C#)
               href: mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md
             - name: SMS や電子メールで 2 要素認証する ASP.NET MVC 5 アプリ
               href: mvc/overview/security/aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication.md
             - name: ASP.NET MVC と Web ページの XSRF/CSRF 防止
               href: mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages.md
-            - name: 'オープン リダイレクト攻撃の防止 (C#)'
+            - name: オープン リダイレクト攻撃の防止 (C#)
               href: mvc/overview/security/preventing-open-redirection-attacks.md
         - name: 配置
           href: mvc/overview/deployment/index.md
@@ -2261,26 +2261,26 @@
             - name: ASP.NET MVC 3 の概要
               href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/index.md
               items:
-                - name: 'ASP.NET MVC 3 の概要 (C#)'
+                - name: ASP.NET MVC 3 の概要 (C#)
                   href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/index.md
                   items:
-                    - name: 'ASP.NET MVC 3 入門 (C#)'
+                    - name: ASP.NET MVC 3 入門 (C#)
                       href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md
-                    - name: 'コントローラーの追加 (C#)'
+                    - name: コントローラーの追加 (C#)
                       href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-controller.md
-                    - name: 'ビューの追加 (C#)'
+                    - name: ビューの追加 (C#)
                       href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-view.md
-                    - name: 'モデルの追加 (C#)'
+                    - name: モデルの追加 (C#)
                       href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-model.md
-                    - name: 'コントローラーからモデルのデータにアクセスする (C#)'
+                    - name: コントローラーからモデルのデータにアクセスする (C#)
                       href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/accessing-your-models-data-from-a-controller.md
-                    - name: 'Edit メソッドと Edit ビューの確認 (C#)'
+                    - name: Edit メソッドと Edit ビューの確認 (C#)
                       href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/examining-the-edit-methods-and-edit-view.md
-                    - name: 'Movie モデルとテーブルに新しいフィールドを追加する (C#)'
+                    - name: Movie モデルとテーブルに新しいフィールドを追加する (C#)
                       href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-new-field.md
-                    - name: 'モデルに検証を追加する (C#)'
+                    - name: モデルに検証を追加する (C#)
                       href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-validation-to-the-model.md
-                    - name: 'Details メソッドと Delete メソッドの改善 (C#)'
+                    - name: Details メソッドと Delete メソッドの改善 (C#)
                       href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/improving-the-details-and-delete-methods.md
                 - name: ASP.NET MVC 3 の概要 (VB.NET)
                   href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/index.md
@@ -2356,7 +2356,7 @@
                   href: mvc/overview/older-versions-1/overview/asp-net-mvc-overview.md
                 - name: ASP.NET MVC 実行プロセスを理解する
                   href: mvc/overview/older-versions-1/overview/understanding-the-asp-net-mvc-execution-process.md
-                - name: 'モデル、ビュー、コントローラーを理解する (C#)'
+                - name: モデル、ビュー、コントローラーを理解する (C#)
                   href: mvc/overview/older-versions-1/overview/understanding-models-views-and-controllers-cs.md
                 - name: モデル、ビュー、コントローラーを理解する (VB)
                   href: mvc/overview/older-versions-1/overview/understanding-models-views-and-controllers-vb.md
@@ -2382,19 +2382,19 @@
             - name: モデル (データ)
               href: mvc/overview/older-versions-1/models-data/index.md
               items:
-                - name: 'Entity Framework でモデル クラスを作成する (C#)'
+                - name: Entity Framework でモデル クラスを作成する (C#)
                   href: mvc/overview/older-versions-1/models-data/creating-model-classes-with-the-entity-framework-cs.md
-                - name: 'LINQ to SQL でモデル クラスを作成する (C#)'
+                - name: LINQ to SQL でモデル クラスを作成する (C#)
                   href: mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-cs.md
-                - name: 'データベース データの表を表示する (C#)'
+                - name: データベース データの表を表示する (C#)
                   href: mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-cs.md
-                - name: '簡易検証を実行する (C#)'
+                - name: 簡易検証を実行する (C#)
                   href: mvc/overview/older-versions-1/models-data/performing-simple-validation-cs.md
-                - name: 'IDataErrorInfo インターフェイスの検証 (C#)'
+                - name: IDataErrorInfo インターフェイスの検証 (C#)
                   href: mvc/overview/older-versions-1/models-data/validating-with-the-idataerrorinfo-interface-cs.md
-                - name: 'サービス層の検証 (C#)'
+                - name: サービス層の検証 (C#)
                   href: mvc/overview/older-versions-1/models-data/validating-with-a-service-layer-cs.md
-                - name: 'データ検証注釈コントロールの検証 (C#)'
+                - name: データ検証注釈コントロールの検証 (C#)
                   href: mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-cs.md
                 - name: Entity Framework でモデル クラスを作成する (VB)
                   href: mvc/overview/older-versions-1/models-data/creating-model-classes-with-the-entity-framework-vb.md
@@ -2413,15 +2413,15 @@
             - name: ASP.NET MVC ビュー
               href: mvc/overview/older-versions-1/views/index.md
               items:
-                - name: 'ASP.NET MVC ビュー概要 (C#)'
+                - name: ASP.NET MVC ビュー概要 (C#)
                   href: mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-cs.md
-                - name: 'カスタム HTML ヘルパーの作成 (C#)'
+                - name: カスタム HTML ヘルパーの作成 (C#)
                   href: mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs.md
-                - name: 'TagBuilder クラスで HTML ヘルパーをビルドする (C#)'
+                - name: TagBuilder クラスで HTML ヘルパーをビルドする (C#)
                   href: mvc/overview/older-versions-1/views/using-the-tagbuilder-class-to-build-html-helpers-cs.md
-                - name: 'ビュー マスター ページでページ レイアウトを作成する (C#)'
+                - name: ビュー マスター ページでページ レイアウトを作成する (C#)
                   href: mvc/overview/older-versions-1/views/creating-page-layouts-with-view-master-pages-cs.md
-                - name: 'ビュー マスター ページにデータを渡す (C#)'
+                - name: ビュー マスター ページにデータを渡す (C#)
                   href: mvc/overview/older-versions-1/views/passing-data-to-view-master-pages-cs.md
                 - name: ASP.NET MVC ビュー概要 (VB)
                   href: mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-vb.md
@@ -2436,17 +2436,17 @@
             - name: コントローラーとルーティング
               href: mvc/overview/older-versions-1/controllers-and-routing/index.md
               items:
-                - name: 'ASP.NET MVC ルーティング概要 (C#)'
+                - name: ASP.NET MVC ルーティング概要 (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-routing-overview-cs.md
-                - name: 'アクション フィルターについて理解する (C#)'
+                - name: アクション フィルターについて理解する (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/understanding-action-filters-cs.md
-                - name: '出力キャッシュでパフォーマンスを改善する (C#)'
+                - name: 出力キャッシュでパフォーマンスを改善する (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/improving-performance-with-output-caching-cs.md
-                - name: 'キャッシュされたページに動的コンテンツを追加する (C#)'
+                - name: キャッシュされたページに動的コンテンツを追加する (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/adding-dynamic-content-to-a-cached-page-cs.md
-                - name: 'コントローラーを作成する (C#)'
+                - name: コントローラーを作成する (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/creating-a-controller-cs.md
-                - name: 'アクションを作成する (C#)'
+                - name: アクションを作成する (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/creating-an-action-cs.md
                 - name: ASP.NET MVC ルーティング概要 (VB)
                   href: mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-routing-overview-vb.md
@@ -2460,13 +2460,13 @@
                   href: mvc/overview/older-versions-1/controllers-and-routing/creating-a-controller-vb.md
                 - name: アクションを作成する (VB)
                   href: mvc/overview/older-versions-1/controllers-and-routing/creating-an-action-vb.md
-                - name: 'ASP.NET MVC コントローラーの概要 (C#)'
+                - name: ASP.NET MVC コントローラーの概要 (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/aspnet-mvc-controllers-overview-cs.md
-                - name: 'カスタム ルートを作成する (C#)'
+                - name: カスタム ルートを作成する (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/creating-custom-routes-cs.md
-                - name: 'ルート制約を作成する (C#)'
+                - name: ルート制約を作成する (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/creating-a-route-constraint-cs.md
-                - name: 'カスタム ルート制約を作成する (C#)'
+                - name: カスタム ルート制約を作成する (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/creating-a-custom-route-constraint-cs.md
                 - name: ASP.NET MVC コントローラーの概要 (VB)
                   href: mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-controller-overview-vb.md
@@ -2479,18 +2479,18 @@
             - name: 配置
               href: mvc/overview/older-versions-1/deployment/index.md
               items:
-                - name: 'さまざまなバージョンの IIS と共に ASP.NET MVC を使用する (C#)'
+                - name: さまざまなバージョンの IIS と共に ASP.NET MVC を使用する (C#)
                   href: mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-cs.md
                 - name: さまざまなバージョンの IIS と共に ASP.NET MVC を使用する (VB)
                   href: mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-vb.md
             - name: セキュリティ
               href: mvc/overview/older-versions-1/security/index.md
               items:
-                - name: 'フォーム認証でユーザーを認証する (C#)'
+                - name: フォーム認証でユーザーを認証する (C#)
                   href: mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-cs.md
-                - name: 'Windows 認証でユーザーを認証する (C#)'
+                - name: Windows 認証でユーザーを認証する (C#)
                   href: mvc/overview/older-versions-1/security/authenticating-users-with-windows-authentication-cs.md
-                - name: 'JavaScript インジェクション攻撃を防ぐ (C#)'
+                - name: JavaScript インジェクション攻撃を防ぐ (C#)
                   href: mvc/overview/older-versions-1/security/preventing-javascript-injection-attacks-cs.md
                 - name: フォーム認証でユーザーを認証する (VB)
                   href: mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-vb.md
@@ -2501,7 +2501,7 @@
             - name: 単体テスト
               href: mvc/overview/older-versions-1/unit-testing/index.md
               items:
-                - name: 'ASP.NET MVC アプリケーションの単体テストを作成する (C#)'
+                - name: ASP.NET MVC アプリケーションの単体テストを作成する (C#)
                   href: mvc/overview/older-versions-1/unit-testing/creating-unit-tests-for-asp-net-mvc-applications-cs.md
                 - name: ASP.NET MVC アプリケーションの単体テストを作成する (VB)
                   href: mvc/overview/older-versions-1/unit-testing/creating-unit-tests-for-asp-net-mvc-applications-vb.md
@@ -2570,7 +2570,7 @@
             - name: 映画データベース
               href: mvc/overview/older-versions-1/movie-database/index.md
               items:
-                - name: 'ASP.NET MVC を使用し、映画データベース アプリケーションを 15 分で作成する (C#)'
+                - name: ASP.NET MVC を使用し、映画データベース アプリケーションを 15 分で作成する (C#)
                   href: mvc/overview/older-versions-1/movie-database/create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs.md
                 - name: ASP.NET MVC を使用し、映画データベース アプリケーションを 15 分で作成する (VB)
                   href: mvc/overview/older-versions-1/movie-database/create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-vb.md
@@ -2757,7 +2757,7 @@
         - name: 作業の開始
           href: web-api/overview/getting-started-with-aspnet-web-api/index.md
           items:
-            - name: 'Web API 2 の概要 (C#)'
+            - name: Web API 2 の概要 (C#)
               href: web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md
             - name: Web API 2 のアクションの結果
               href: web-api/overview/getting-started-with-aspnet-web-api/action-results.md
@@ -2807,7 +2807,7 @@
         - name: モバイル クライアント
           href: web-api/overview/mobile-clients/index.md
           items:
-            - name: 'Windows Phone 8 アプリケーションから Web API を呼び出す (C#)'
+            - name: Windows Phone 8 アプリケーションから Web API を呼び出す (C#)
               href: web-api/overview/mobile-clients/calling-web-api-from-a-windows-phone-8-application.md
         - name: OData
           href: web-api/overview/odata-support-in-aspnet-web-api/index.md
@@ -2817,7 +2817,7 @@
               items:
                 - name: OData v4 エンドポイントを作成する
                   href: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-endpoint.md
-                - name: 'OData v4 クライアント アプリを作成する (C#)'
+                - name: OData v4 クライアント アプリを作成する (C#)
                   href: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-client-app.md
                 - name: OData v4 のエンティティ関係
                   href: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/entity-relations-in-odata-v4.md
@@ -2840,7 +2840,7 @@
                   href: web-api/overview/odata-support-in-aspnet-web-api/odata-v3/working-with-entity-relations.md
                 - name: Web API 2 の OData アクション
                   href: web-api/overview/odata-support-in-aspnet-web-api/odata-v3/odata-actions.md
-                - name: '.NET クライアントから OData サービスを呼び出す (C#)'
+                - name: .NET クライアントから OData サービスを呼び出す (C#)
                   href: web-api/overview/odata-support-in-aspnet-web-api/odata-v3/calling-an-odata-service-from-a-net-client.md
             - name: Web API 2 の OData クエリ オプション サポート
               href: web-api/overview/odata-support-in-aspnet-web-api/supporting-odata-query-options.md
@@ -2892,7 +2892,7 @@
               href: web-api/overview/security/authentication-and-authorization-in-aspnet-web-api.md
             - name: Web API 2.2 で個別アカウントを利用し、Web API をセキュリティ保護する
               href: web-api/overview/security/individual-accounts-in-web-api.md
-            - name: '外部認証サービスと Web API (C#)'
+            - name: 外部認証サービスと Web API (C#)
               href: web-api/overview/security/external-authentication-services.md
             - name: Web API でクロスサイト リクエスト フォージェリ (CSRF) 攻撃を防ぐ
               href: web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks.md
@@ -2922,7 +2922,7 @@
               href: web-api/overview/advanced/configuring-aspnet-web-api.md
             - name: Web API 2 の依存関係挿入
               href: web-api/overview/advanced/dependency-injection.md
-            - name: '.NET クライアントから Web API を呼び出す (C#)'
+            - name: .NET クライアントから Web API を呼び出す (C#)
               href: web-api/overview/advanced/calling-a-web-api-from-a-net-client.md
             - name: Web API の HTTP メッセージ ハンドラー
               href: web-api/overview/advanced/http-message-handlers.md
@@ -2965,7 +2965,7 @@
                   href: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-6.md
                 - name: メイン ページの作成
                   href: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-7.md
-            - name: 'Web API 1 をセルフホストする (C#)'
+            - name: Web API 1 をセルフホストする (C#)
               href: web-api/overview/older-versions/self-host-a-web-api.md
             - name: ASP.NET Web API で RESTful API をビルドする
               href: web-api/overview/older-versions/build-restful-apis-with-aspnet-web-api.md
@@ -3220,11 +3220,11 @@
         - name: API ガイド
           href: signalr/overview/guide-to-the-api/index.md
           items:
-            - name: 'ハブ API ガイド - サーバー (C#)'
+            - name: ハブ API ガイド - サーバー (C#)
               href: signalr/overview/guide-to-the-api/hubs-api-guide-server.md
             - name: ハブ API ガイド - JavaScript クライアント
               href: signalr/overview/guide-to-the-api/hubs-api-guide-javascript-client.md
-            - name: 'ハブ API ガイド - .NET クライアント (C#)'
+            - name: ハブ API ガイド - .NET クライアント (C#)
               href: signalr/overview/guide-to-the-api/hubs-api-guide-net-client.md
             - name: SignalR の接続有効期間イベントについて理解し、処理する
               href: signalr/overview/guide-to-the-api/handling-connection-lifetime-events.md
@@ -3487,7 +3487,7 @@
           items:
             - name: ASP.NET と Azure App Service にパスワードやその他の機密データを配置するためのベスト プラクティス
               href: identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md
-            - name: 'ASP.NET Identity でのアカウントの確認とパスワードの回復 (C#)'
+            - name: ASP.NET Identity でのアカウントの確認とパスワードの回復 (C#)
               href: identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md
             - name: ASP.NET Identity で SMS と電子メールを利用して 2 要素認証を行う
               href: identity/overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity.md
@@ -3505,7 +3505,7 @@
           items:
             - name: 既存 Web サイトを SQL メンバーシップから ASP.NET Identity に移行する
               href: identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md
-            - name: 'メンバーシップとユーザー プロファイルのユニバーサル プロバイダー データを ASP.NET Identity に移行する (C#)'
+            - name: メンバーシップとユーザー プロファイルのユニバーサル プロバイダー データを ASP.NET Identity に移行する (C#)
               href: identity/overview/migrations/migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity.md
 - name: Ajax
   href: ajax/index.md
@@ -3775,9 +3775,9 @@
           href: SameSite/system-web-samesite.md
         - name: SameSite のサポート技術情報の記事
           uid: samesite/kbs-samesite
-        - name: 'C# MVC'
+        - name: C# MVC
           uid: samesite/csMVC
-        - name: 'C# WebForms'
+        - name: C# WebForms
           uid: samesite/CSharpWebForms
         - name: VB WebForms
           uid: samesite/vbWF
