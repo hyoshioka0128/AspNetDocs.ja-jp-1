@@ -8,12 +8,12 @@ ms.date: 10/14/2017
 ms.assetid: 8935bf14-ca6d-4a4e-9dbe-b96ce74cef49
 msc.legacyurl: /ajax/cdn
 msc.type: content
-ms.openlocfilehash: 27b1ca8567e29fa4bca0ae9f32e0c904ad54ba8f
-ms.sourcegitcommit: a4c3c7e04e5f53cf8cd334f036d324976b78d154
+ms.openlocfilehash: b66e812f0324be95effdd8d232baa6a59302b9df
+ms.sourcegitcommit: 0cf7d06071a8ff986e6c028ac9daf0c0e7490412
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172953"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85240598"
 ---
 # <a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax Content Delivery Network
 
@@ -48,7 +48,7 @@ ms.locfileid: "84172953"
  [CDN でのリリースの応答](#Respond_Releases_on_the_CDN_13)  
  [CDN でのブートストラップリリース](#Bootstrap_Releases_on_the_CDN_14)  
  [CDN でのブートストラップ TouchCarousel のリリース](#BootstrapTouchCarousel_Releases_on_the_CDN_18)  
- [CDN でのハンマーのリリース](#Hammerjs_Releases_on_the_CDN_19)  
+ [CDN でのHammer.js リリース](#Hammerjs_Releases_on_the_CDN_19)  
  [CDN での ASP.NET Web フォームと Ajax リリース](#ASPNET_Web_Forms_and_Ajax_Releases_on_the_CDN_15)  
  [CDN での ASP.NET MVC リリース](#ASPNET_MVC_Releases_on_the_CDN_16)  
  [CDN での ASP.NET SignalR リリース](#ASPNET_SignalR_Releases_on_the_CDN_17)
@@ -627,6 +627,7 @@ JQuery UI ライブラリの次のリリースは、この CDN でホストさ�
 
 [JQuery Validation](https://jqueryvalidation.org/ "jQuery 検証プラグイン")プラグインの次のリリースは、この CDN でホストされています。 各リンクをクリックすると、ファイルの実際の一覧が表示されます。
 
+- [jQuery Validate 1.19.2](jquery-validate/cdnjqueryvalidate1192.md "jQuery Validation 1.19.2")
 - [jQuery Validate 1.19.1](jquery-validate/cdnjqueryvalidate1191.md "jQuery Validation 1.19.1")
 - [jQuery Validate 1.19.0](jquery-validate/cdnjqueryvalidate1190.md "jQuery Validation 1.19.0")
 - [jQuery Validate 1.17.0 以降](jquery-validate/cdnjqueryvalidate1170.md "jQuery Validation 1.17.0 以降")
@@ -779,7 +780,7 @@ JQuery Datatable プラグインの次のリリースは、この CDN でホス�
     - すべてのカルチャ
 - https://ajax.aspnetcdn.com/ajax/globalize/0.1.1/cultures/globalize.culture.{culture-code}.js
 
-    - "{Culture-code}" を目的のカルチャコード (たとえば、en-GB = = CDN = = の Microsoft ファイル) に置き換えます。これらのライブラリは、Microsoft によってアップロードされました。
+    - "{Culture-code}" を目的のカルチャコードに置き換えます。たとえば、CDN = = では、これらのライブラリは Microsoft によってアップロードされた globalize.culture.en-GB.js= = Microsoft Files です。
 
 <a id="Respond_Releases_on_the_CDN_13"></a>
 
@@ -1186,11 +1187,11 @@ JQuery Datatable プラグインの次のリリースは、この CDN でホス�
 
 <a id="Hammerjs_Releases_on_the_CDN_19"></a>
 
-### <a name="hammerjs-releases-on-the-cdn"></a>CDN でのハンマーのリリース
+### <a name="hammerjs-releases-on-the-cdn"></a>CDN での Hammer.js リリース
 
-次のようなバージョンの [http://hammerjs.github.io/](http://hammerjs.github.io/ "http://hammerjs.github.io/") node.js リリースは CDN でホストされます。
+次のリリースの [http://hammerjs.github.io/](http://hammerjs.github.io/ "http://hammerjs.github.io/") Hammer.js リリースは CDN でホストされています。
 
-#### <a name="hammerjs-version-204"></a>2.0.4 のバージョン
+#### <a name="hammerjs-version-204"></a>Hammer.js バージョン2.0.4
 
 - https://ajax.aspnetcdn.com/ajax/hammer.js/2.0.4/hammer.js
 - https://ajax.aspnetcdn.com/ajax/hammer.js/2.0.4/hammer.min.js

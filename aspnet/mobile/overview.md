@@ -8,12 +8,12 @@ ms.date: 01/28/2011
 ms.assetid: 1febce65-cdd4-47da-bdb5-1e6022ccd20a
 msc.legacyurl: /mobile
 msc.type: content
-ms.openlocfilehash: 7f631f5052060b3523a23fb8ee7799cc07a68e1c
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 769484ee505599eef48ff4a106ddd4f7ec7d99af
+ms.sourcegitcommit: 0cf7d06071a8ff986e6c028ac9daf0c0e7490412
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78471562"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85240732"
 ---
 # <a name="mobile-apps--sites-with-aspnet"></a>ASP.NET を使用して & サイトを Mobile Apps する
 
@@ -61,6 +61,6 @@ Azure Mobile Services を使用して、モバイルデバイスにプッシュ�
 
 この講演では、Microsoft MIX のカンファレンスで、ASP.NET MVC を使用してモバイルデバイスのフレンドリな web サイトを作成する方法について説明します。
 
-### <a name="develop-iphone-applications-with-aspnet"></a>[ASP.NET を使用して iPhone アプリケーションを開発する](http://labs.componentone.com/iPhone/)
+### <a name="develop-iphone-applications-with-aspnet"></a>[ASP.NET を使用して iPhone アプリケーションを開発する](https://www.componentsource.com/product/componentone-studio-for-iphone)
 
 ComponentOne Studio for iPhone は、Mobile Safari でレンダリングされるときに iPhone と iPod touch ユーザーインターフェイスの外観を模倣する ASP.NET コントロールのスイートです。

@@ -2,18 +2,18 @@
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/getting-started
 title: はじめに | Microsoft Docs
 author: Rick-Anderson
-description: WebMatrix はASP.NET Webページの統合開発環境としては推奨されなくなりました。 Visual Studio または Visual Studio Code を使用します。 このガイドの内容...
+description: WebMatrix は、ASP.NET Web ページ用の統合開発環境として推奨されなくなりました。 Visual Studio または Visual Studio Code を使用します。 このガイドの内容...
 ms.author: riande
 ms.date: 05/28/2015
 ms.assetid: a36d3bdf-ef1b-47a4-b932-3a0cf4cad716
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: bb863f8605e6f8faca3b285607b63a3e88e83012
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: ac2111980e6393388a0530375fb9ef78dbbfaff6
+ms.sourcegitcommit: 0cf7d06071a8ff986e6c028ac9daf0c0e7490412
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78440242"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85240760"
 ---
 # <a name="getting-started"></a>作業の開始
 
@@ -23,7 +23,7 @@ ms.locfileid: "78440242"
 
 > > [!NOTE] 
 > > 
-> > WebMatrix はASP.NET Webページの統合開発環境としては推奨されなくなりました。 [Visual Studio](../program-asp-net-web-pages-in-visual-studio.md)または[Visual Studio Code](https://code.visualstudio.com/)を使用します。
+> > WebMatrix は、ASP.NET Web ページ用の統合開発環境として推奨されなくなりました。 [Visual Studio](../program-asp-net-web-pages-in-visual-studio.md)または[Visual Studio Code](https://code.visualstudio.com/)を使用します。
 > 
 > 
 > このガイダンスとアプリケーションでは、動的 web サイトを作成するための軽量フレームワークである ASP.NET Web ページ (バージョン2以降) と Razor 構文の概要を説明します。 また、ページやサイトを作成するためのツールである WebMatrix も導入されています。
@@ -59,10 +59,10 @@ ms.locfileid: "78440242"
 次のことを理解していることを前提としています。
 
 - **HTML**。 詳細な専門知識は必要ありません。 HTML については説明しませんが、複雑なものは使用しません。 HTML チュートリアルへのリンクが用意されているので、それが役に立つと思います。
-- **カスケードスタイルシート (CSS)** 。 HTML の場合と同じです。
+- **カスケードスタイルシート (CSS)**。 HTML の場合と同じです。
 - **基本的なデータベースアイデア**。 データにスプレッドシートを使用し、データの並べ替えとフィルター処理を行った経験があれば、このチュートリアルセットでは一般的に想定しています。
 
-また、基本的なプログラミングの学習に関心があることを前提としています。 ASP.NET Web ページは、C# と呼ばれるプログラミング言語を使用します。 プログラミングの背景を必要とすることはありません。 以前に web ページで JavaScript を記述したことがある場合は、背景が十分にあります。
+また、基本的なプログラミングの学習に関心があることを前提としています。 ASP.NET Web ページ C# と呼ばれるプログラミング言語を使用します。 プログラミングの背景を必要とすることはありません。 以前に web ページで JavaScript を記述したことがある場合は、背景が十分にあります。
 
 プログラミングに習熟している場合は、このチュートリアルの初期段階では、新しいプログラマが速度を向上させるため、このチュートリアルの設定が遅くなる可能性があることに注意してください。 ただし、最初のいくつかのチュートリアルでは説明しませんが、基本的なプログラミングについては説明しません。
 
@@ -131,15 +131,15 @@ Microsoft の Web Platform Installer を使用して、すべてをインスト�
 
 Web ページを使用するには、Windows XP SP3 以降、または Windows Server 2008 以降がインストールされている必要があります。
 
-ASP.NET web サイトの [ [Web ページ] ページ](../../../index.md)で、 **[インストール]** をクリックします。
+ASP.NET web サイトの [ [Web ページ] ページ](../../../index.md)で、[**インストール**] をクリックします。
 
-![ASP.NET Web サイトを表示 &quot;WebMatrix&quot; ボタンをインストールする](getting-started/_static/image3.png)
+![&quot;[WebMatrix のインストール &quot; ] ボタンが表示されている ASP.NET Web サイト](getting-started/_static/image3.png)
 
 WebMatrix をインストールする前に、ライセンス条項およびプライバシーに関する声明に同意するように求められます。
 
 ![条項に同意してインストールを開始する](getting-started/_static/image4.png)
 
-**[実行]** をクリックしてインストールを開始します。 (インストーラーを保存する場合は、 **[保存]** をクリックし、保存したフォルダーからインストーラーを実行します)。
+[**実行**] をクリックしてインストールを開始します。 (インストーラーを保存する場合は、[**保存**] をクリックし、保存したフォルダーからインストーラーを実行します)。
 
 ![](getting-started/_static/image5.png)
 
@@ -151,9 +151,9 @@ Web Platform Installer が表示され、WebMatrix をインストールでき�
 
 ## <a name="hello-webmatrix"></a>Hello, WebMatrix
 
-完了すると、インストールプロセスによって WebMatrix が自動的に起動されます。 そうでない場合は、Windows の **[スタート]** メニューから**Microsoft WebMatrix**を起動します。
+完了すると、インストールプロセスによって WebMatrix が自動的に起動されます。 そうでない場合は、Windows の [**スタート**] メニューから**Microsoft WebMatrix**を起動します。
 
-WebMatrix を初めて起動すると、Microsoft アカウントで Microsoft Azure にサインインする機会が与えられます。 サインインすると、Azure を通じて10個の無料 web アプリを受け取ることができます。 これらの無料の web アプリは、アプリをテストするための便利な方法を提供します。 まだ Azure アカウントを持っていないが、MSDN サブスクリプションをお持ちの場合は、 [msdn サブスクリプションの特典を有効](https://www.windowsazure.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A443DD604)にすることができます。 それ以外の場合は、無料試用版アカウントを数分で作成できます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/free/?WT.mc_id=A443DD604)」を参照してください。
+WebMatrix を初めて起動すると、Microsoft アカウントで Microsoft Azure にサインインする機会が与えられます。 サインインすると、Azure を通じて10個の無料 web アプリを受け取ることができます。 これらの無料の web アプリは、アプリをテストするための便利な方法を提供します。 まだ Azure アカウントを持っていないが、MSDN サブスクリプションをお持ちの場合は、 [msdn サブスクリプションの特典を有効](https://www.windowsazure.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A443DD604)にすることができます。 それ以外の場合は、無料試用版アカウントを数分で作成できます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/free/dotnet/)」を参照してください。
 
 このチュートリアルを続行するには、すぐにサインインする必要はありません。 サインインしていない場合でも、後でサインインすることができます。 このチュートリアルシリーズの最後の[トピック](publishing.md)では、web サイトを Azure にデプロイする方法について説明します。そのため、このトピックを完了するにはサインインする必要があります。
 
@@ -163,7 +163,7 @@ WebMatrix を初めて起動すると、Microsoft アカウントで Microsoft A
 
 まず、空の web サイトを作成し、ページを追加します。 このセットの後のチュートリアルでは、組み込みの web サイトテンプレートの1つを使用します。
 
-開始 ウィンドウで、**新規** をクリックします。
+[開始] ウィンドウで、[**新規**] をクリックします。
 
 ![WebMatrix の起動画面](getting-started/_static/image8.png)
 
@@ -171,13 +171,13 @@ WebMatrix を初めて起動すると、Microsoft アカウントで Microsoft A
 
 ![テンプレートギャラリーの選択](getting-started/_static/image9.png)
 
-**[クイックスタート]** ウィンドウで、 **ASP.NET**グループの **[空のサイト]** を選択し、新しいサイトに "web 映画" という名前を指定します。
+[**クイックスタート**] ウィンドウで、 **ASP.NET**グループの [**空のサイト**] を選択し、新しいサイトに "web 映画" という名前を指定します。
 
 ![空のサイトテンプレートが選択されている WebMatrix クイックスタートウィンドウ](getting-started/_static/image10.png)
 
 **[次へ]** をクリックします。
 
-Microsoft アカウントにサインインしている場合は、Azure にサイトを作成する機会が与えられます。 サイトの名前に基づいて、 **WebPagesMovies.azurewebsites.net**の既定の名前が推奨されます。ただし、感嘆符は、この名前が Windows Azure で使用できないことを示します。 わかりやすくするために、 **[スキップ]** を選択して、今すぐ Azure での web サイトの作成をバイパスします。 このシリーズの後半では、このサイトを Azure に発行します。
+Microsoft アカウントにサインインしている場合は、Azure にサイトを作成する機会が与えられます。 サイトの名前に基づいて、 **WebPagesMovies.azurewebsites.net**の既定の名前が推奨されます。ただし、感嘆符は、この名前が Windows Azure で使用できないことを示します。 わかりやすくするために、[**スキップ**] を選択して、今すぐ Azure での web サイトの作成をバイパスします。 このシリーズの後半では、このサイトを Azure に発行します。
 
 ![azure サイトの作成](getting-started/_static/image11.png)
 
@@ -193,15 +193,15 @@ WebMatrix とその機能の詳細については、これらのチュートリ�
 
 WebMatrix と ASP.NET Web ページについて理解を深めるには、簡単なページを作成します。
 
-ワークスペースセレクターで、 **[ファイル]** ワークスペースを選択します。 このワークスペースを使用すると、ファイルとフォルダーを操作できます。 左側のウィンドウには、サイトのファイル構造が表示されます。 リボンが変更され、ファイル関連のタスクが表示されます。
+ワークスペースセレクターで、[**ファイル**] ワークスペースを選択します。 このワークスペースを使用すると、ファイルとフォルダーを操作できます。 左側のウィンドウには、サイトのファイル構造が表示されます。 リボンが変更され、ファイル関連のタスクが表示されます。
 
 ![WebMatrix のファイルワークスペース](getting-started/_static/image13.png)
 
-リボンで、 **[新規]** の下の矢印をクリックし、 **[新しいファイル]** をクリックします。
+リボンで、[**新規**] の下の矢印をクリックし、[**新しいファイル**] をクリックします。
 
-![リボンの [新しい&quot; の &quot;] コマンドを使用して新しいファイルを作成する](getting-started/_static/image14.png)
+![&quot;リボンの新しいコマンドを使用して &quot; 新しいファイルを作成する](getting-started/_static/image14.png)
 
-WebMatrix では、ファイルの種類の一覧が表示されます。 **[CSHTML]** を選択し、 **[名前]** ボックスに「HelloWorld」と入力します。 CSHTML ページは ASP.NET Web ページページです。
+WebMatrix では、ファイルの種類の一覧が表示されます。 [ **CSHTML**] を選択し、[**名前**] ボックスに「HelloWorld」と入力します。 CSHTML ページは ASP.NET Web ページページです。
 
 ![HelloWorld という名前の新しい CSHTML ページを作成します。](getting-started/_static/image15.png)
 
@@ -217,31 +217,31 @@ WebMatrix によってページが作成され、エディターで開かれま�
 
 これはコードを追加するためのものです。後で説明します。
 
-ページのさまざまな部分には、要素名、属性、テキスト、および上部にあるブロック &mdash;、すべて異なる色が付いていることに注意してください。 これを*構文の強調表示*と呼びます。これにより、すべてを明確に保つことができます。 これは、WebMatrix で web ページを簡単に操作できるようにする機能の1つです。
+ページのさまざまな部分には、 &mdash; 要素名、属性、テキスト、および上部にあるブロックがすべて異なる色であることに注意してください。 これを*構文の強調表示*と呼びます。これにより、すべてを明確に保つことができます。 これは、WebMatrix で web ページを簡単に操作できるようにする機能の1つです。
 
-次の例のように、`<head>` と `<body>` の要素の内容を追加します。 (必要に応じて、次のブロックをコピーし、既存のページ全体をこのコードで置き換えることができます)。
+次の例の `<head>` ように、要素と要素のコンテンツを追加し `<body>` ます。 (必要に応じて、次のブロックをコピーし、既存のページ全体をこのコードで置き換えることができます)。
 
 [!code-cshtml[Main](getting-started/samples/sample2.cshtml)]
 
-クイックアクセスツールバーまたは **[ファイル]** メニューの **[保存]** をクリックします。
+クイックアクセスツールバーまたは [**ファイル**] メニューの [**保存**] をクリックします。
 
 ![WebMatrix クイックアクセスツールバーの [保存] ボタン](getting-started/_static/image17.png)
 
 ## <a name="testing-the-page"></a>ページのテスト
 
-**[ファイル]** ワークスペースで、 *HelloWorld*ページを右クリックし、 **[ブラウザーで起動]** をクリックします。
+[**ファイル**] ワークスペースで、 *HelloWorld*ページを右クリックし、[**ブラウザーで起動**] をクリックします。
 
 ![WebMatrix リボンの [実行] ボタンを使用したページの実行](getting-started/_static/image18.png)
 
 WebMatrix では、コンピューター上のページをテストするために使用できる、組み込みの web サーバー (IIS Express) を起動します。 (WebMatrix で IIS Express を使用しない場合は、テストする前に、web サーバーにページを発行する必要があります)。ページが既定のブラウザーに表示されます。
 
-![ブラウザーで実行されている Hello World&quot; ページの &quot;](getting-started/_static/image19.png)
+![&quot;&quot;ブラウザーで実行されている Hello World ページ](getting-started/_static/image19.png)
 
-WebMatrix でページをテストすると、ブラウザーの URL は、 *localhost*がローカルサーバーを参照する `http://localhost:33651/HelloWorld.cshtml.` のようになります。つまり、ページは自分のコンピューター上の web サーバーによって処理されることに注意してください。 前述のように、WebMatrix には、ページの起動時に実行される IIS Express という名前の web サーバープログラムが含まれています。
+WebMatrix でページをテストする場合、ブラウザーの URL は localhost という名前になり `http://localhost:33651/HelloWorld.cshtml.` ます。 *localhost*つまり、ローカルサーバーを指します。つまり、ページは自分のコンピューター上の web サーバーによって処理されることに注意してください。 前述のように、WebMatrix には、ページの起動時に実行される IIS Express という名前の web サーバープログラムが含まれています。
 
 *Localhost*の後の番号 ( *localhost: 33651*など) は、コンピューター上の*ポート番号*を参照します。 これは、この特定の web サイトに IIS Express が使用する "チャネル" の番号です。 ポート番号は、サイトの作成時に 1024 ~ 65536 の範囲でランダムに選択されます。これは、作成するサイトごとに異なります。 (独自のサイトをテストする場合、ポート番号は、ほぼ確実に33561とは異なる数値になります)。Web サイトごとに異なるポートを使用することにより、IIS Express は、通信先のサイトを直接保つことができます。
 
-後でパブリック web サーバーにサイトを発行すると、URL に*localhost*が表示されなくなります。 その時点で、`http://myhostingsite/mywebsite/HelloWorld.cshtml` などの一般的な URL やページが表示されます。 サイトの発行の詳細については、このチュートリアルシリーズの後半で説明します。
+後でパブリック web サーバーにサイトを発行すると、URL に*localhost*が表示されなくなります。 その時点で、ページのような一般的な URL `http://myhostingsite/mywebsite/HelloWorld.cshtml` が表示されます。 サイトの発行の詳細については、このチュートリアルシリーズの後半で説明します。
 
 ## <a name="adding-some-server-side-code"></a>サーバー側コードの追加
 
@@ -251,17 +251,17 @@ WebMatrix でページをテストすると、ブラウザーの URL は、 *loc
 
 [!code-cshtml[Main](getting-started/samples/sample3.cshtml)]
 
-これは、いくつかの Razor コードです。 現在の日付と時刻が取得され、その値が `currentDateTime`という名前の*変数*に格納されていることは明らかです。 Razor 構文の詳細については、次のチュートリアルを参照してください。
+これは、いくつかの Razor コードです。 現在の日付と時刻が取得され、その値がという名前の*変数*に格納されていることが明らかな場合があり `currentDateTime` ます。 Razor 構文の詳細については、次のチュートリアルを参照してください。
 
-ページの本文で、`<p>Hello World!</p>` 要素の後に次を追加します。
+ページの本文で、要素の後に `<p>Hello World!</p>` 次の内容を追加します。
 
 [!code-html[Main](getting-started/samples/sample4.html)]
 
-このコードは、`currentDateTime` 変数に格納した値を上部に取得し、その値をページのマークアップに挿入します。 `@` 文字は、ページ内の ASP.NET Web ページコードをマークします。
+このコードは、最初に変数に格納した値を取得 `currentDateTime` し、ページのマークアップに挿入します。 文字は、 `@` ページ内の ASP.NET Web ページコードをマークします。
 
 ページをもう一度実行します (WebMatrix はページを実行する前に変更を保存します)。 今度は、ページに日付と時刻が表示されます。
 
-![動的に生成された時間表示でブラウザーで実行されている Hello World&quot; ページを &quot;](getting-started/_static/image20.png)
+![&quot;&quot;動的に生成された時間表示でブラウザーで実行されている Hello World ページ](getting-started/_static/image20.png)
 
 しばらく待ってから、ブラウザーでページを更新してください。 日付と時刻の表示が更新されます。
 
@@ -269,7 +269,7 @@ WebMatrix でページをテストすると、ブラウザーの URL は、 *loc
 
 [!code-html[Main](getting-started/samples/sample5.html)]
 
-上部に `@{ }` ブロックがないことに注意してください。 また、日付と時刻`1/18/2012 2:49:50 PM` 表示に `@currentDateTime` は、 *..........................................* ここでの変更点は、ページを実行したときに、`@`でマークされたすべてのコード (この場合はごくわずか) が ASP.NET によって処理されたことです。 コードによって出力が生成され、その出力がページに挿入されました。
+一番上のブロックが表示されていないことに注意 `@{ }` してください。 また、[日付と時刻] 表示には、[ `1/18/2012 2:49:50 PM` `@currentDateTime` *...* ] ページではなく、実際の文字文字列 (またはその他) が表示されます。 ここでの変更点は、ページを実行したときに、ASP.NET が、でマークされたすべてのコード (この場合はごくわずか) を処理したことです `@` 。 コードによって出力が生成され、その出力がページに挿入されました。
 
 ## <a name="this-is-what-aspnet-web-pages-are-about"></a>ASP.NET Web ページは次のとおりです。
 
@@ -288,4 +288,4 @@ WebMatrix でページをテストすると、ブラウザーの URL は、 *loc
 [ASP.NET web サイトを最初から作成](https://www.microsoft.com/web/post/create-an-aspnet-website-from-scratch)します。 これは、(ASP.NET Web ページではなく) WebMatrix の使用について具体的に説明したチュートリアルです。 このチュートリアルでは説明しませんが、WebMatrix の追加機能のいくつかについてもう少し詳しく説明します。
 
 > [!div class="step-by-step"]
-> [Next](intro-to-web-pages-programming.md)
+> [次へ](intro-to-web-pages-programming.md)

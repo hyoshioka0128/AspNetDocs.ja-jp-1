@@ -8,20 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: 400db427-27af-4f2f-abf0-5486d5e024b5
 msc.legacyurl: /signalr/overview/deployment/tutorial-signalr-self-host
 msc.type: authoredcontent
-ms.openlocfilehash: 41c8c3803923e76ef238a5c5937cbe7f81e6aa82
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 7470e0d6b68772ccfd979c834b7db81fbba3ca78
+ms.sourcegitcommit: 0cf7d06071a8ff986e6c028ac9daf0c0e7490412
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78450166"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85240619"
 ---
-# <a name="tutorial-signalr-self-host"></a>チュートリアル: SignalR 自己ホスト
+# <a name="tutorial-signalr-self-host"></a>チュートリアル: SignalR セルフホスト
 
 ([パトリック Fletcher](https://github.com/pfletcher) )
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
-
-[完成したプロジェクトのダウンロード](https://code.msdn.microsoft.com/SignalR-Self-Host-Sample-6da0f383)
 
 > このチュートリアルでは、自己ホスト型 SignalR 2 サーバーを作成する方法と、JavaScript クライアントを使用してそれに接続する方法について説明します。
 >
@@ -47,7 +45,7 @@ ms.locfileid: "78450166"
 >
 > ## <a name="questions-and-comments"></a>質問とコメント
 >
-> このチュートリアルの良い点に関するフィードバックや、ページ下部にあるコメントで改善できる点をお知らせください。 チュートリアルに直接関係のない質問がある場合は、 [ASP.NET SignalR フォーラム](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)または[StackOverflow.com](http://stackoverflow.com/)に投稿できます。
+> このチュートリアルの気に入った点と、ページの下部にあるコメントで改善できることについて、フィードバックをお寄せください。 チュートリアルに直接関係のない質問がある場合は、 [ASP.NET SignalR フォーラム](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)または[StackOverflow.com](http://stackoverflow.com/)に投稿できます。
 
 ## <a name="overview"></a>概要
 
@@ -72,10 +70,10 @@ IIS でホストしない理由には、次のようなものがあります。
 
 このチュートリアルでは、コンソールアプリケーションでホストされているサーバーを作成しますが、サーバーは、Windows サービスや Azure worker ロールなどの任意の種類のプロセスでホストすることができます。 Windows サービスで SignalR サーバーをホストするためのサンプルコードについては、「 [Windows サービスでの自己ホスト SignalR](https://code.msdn.microsoft.com/SignalR-self-hosted-in-6ff7e6c3)」を参照してください。
 
-1. 管理者特権で Visual Studio 2013 を開きます。 **[ファイル]** 、 **[新しいプロジェクト]** を選択します。 **[テンプレート]** ウィンドウで、**ビジュアルC#** ノードの下にある **[Windows]** を選択し、 **[コンソールアプリケーション]** テンプレートを選択します。 新しいプロジェクトに "SignalRSelfHost" という名前を指定し、[ **OK]** をクリックします。
+1. 管理者特権で Visual Studio 2013 を開きます。 [**ファイル**]、[**新しいプロジェクト**] を選択します。 [**テンプレート**] ペインで [ **Visual C#** ] ノードの下にある [ **Windows** ] を選択し、[**コンソールアプリケーション**] テンプレートを選択します。 新しいプロジェクトに "SignalRSelfHost" という名前を指定し、[ **OK]** をクリックします。
 
     ![](tutorial-signalr-self-host/_static/image1.png)
-2. **[ツール]**  >  **[nuget パッケージマネージャー]**  >  **[パッケージマネージャーコンソール]** の順に選択して、nuget パッケージマネージャーコンソールを開きます。
+2. [**ツール**] [  >  **nuget パッケージ**マネージャー] [  >  **パッケージマネージャーコンソール**] の順に選択して、nuget パッケージマネージャーコンソールを開きます。
 3. パッケージマネージャーコンソールで、次のコマンドを入力します。
 
     [!code-powershell[Main](tutorial-signalr-self-host/samples/sample1.ps1)]
@@ -92,13 +90,13 @@ IIS でホストしない理由には、次のようなものがあります。
 
     上記のコードには、次の3つのクラスがあります。
 
-    - 実行のプライマリパスを定義する**Main**メソッドを含む**プログラム**。 このメソッドでは、 **Startup**という種類の web アプリケーションが、指定された URL (`http://localhost:8080`) で開始されます。 エンドポイントでセキュリティが必要な場合は、SSL を実装できます。 詳細については[、「方法: SSL 証明書を使用してポートを構成する](https://msdn.microsoft.com/library/ms733791.aspx)」を参照してください。
-    - SignalR サーバーの構成を含むクラス (**このチュートリアル**で使用される唯一の構成は `UseCors`) と、`MapSignalR`への呼び出しで、プロジェクト内の任意のハブオブジェクトのルートが作成されます。
+    - 実行のプライマリパスを定義する**Main**メソッドを含む**プログラム**。 このメソッドでは、 **Startup**という種類の web アプリケーションが、指定された URL () で開始され `http://localhost:8080` ます。 エンドポイントでセキュリティが必要な場合は、SSL を実装できます。 詳細については[、「方法: SSL 証明書を使用してポートを構成する](https://msdn.microsoft.com/library/ms733791.aspx)」を参照してください。
+    - **スタートアップ**、SignalR サーバーの構成を含むクラス (このチュートリアルで使用される唯一の構成はへの呼び出しです `UseCors` ) と、 `MapSignalR` プロジェクト内の任意のハブオブジェクトのルートを作成するへの呼び出しです。
     - **Myhub**。アプリケーションがクライアントに提供する SignalR Hub クラスです。 このクラスには、**送信**される1つのメソッドがあります。このメソッドは、クライアントがを呼び出して、接続されている他のすべてのクライアントにメッセージをブロードキャストします。
 6. アプリケーションをコンパイルして実行します。 サーバーが実行されているアドレスは、コンソールウィンドウに表示されます。
 
     ![](tutorial-signalr-self-host/_static/image2.png)
-7. 例外 `System.Reflection.TargetInvocationException was unhandled`で実行が失敗した場合は、管理者特権で Visual Studio を再起動する必要があります。
+7. 例外が発生して実行が失敗した場合 `System.Reflection.TargetInvocationException was unhandled` は、管理者特権で Visual Studio を再起動する必要があります。
 8. 次のセクションに進む前に、アプリケーションを停止します。
 
 <a id="js"></a>
@@ -107,18 +105,18 @@ IIS でホストしない理由には、次のようなものがあります。
 
 このセクションでは、[はじめにチュートリアル](../getting-started/tutorial-getting-started-with-signalr.md)と同じ JavaScript クライアントを使用します。 クライアントに対して変更を1つだけ行います。これは、ハブの URL を明示的に定義するためのものです。 自己ホスト型アプリケーションでは、サーバーが接続 URL と (リバースプロキシおよびロードバランサーによる) 同じアドレスにあるとは限りません。そのため、URL を明示的に定義する必要があります。
 
-1. **ソリューションエクスプローラー**で、ソリューションを右クリックし、 **[追加]** 、 **[新しいプロジェクト]** の順に選択します。 **[Web]** ノードを選択し、 **[ASP.NET web アプリケーション]** テンプレートを選択します。 プロジェクトに "JavascriptClient" という名前を指定し、[ **OK]** をクリックします。
+1. **ソリューションエクスプローラー**で、ソリューションを右クリックし、[**追加**]、[**新しいプロジェクト**] の順に選択します。 [ **Web** ] ノードを選択し、[ **ASP.NET web アプリケーション**] テンプレートを選択します。 プロジェクトに "JavascriptClient" という名前を指定し、[ **OK]** をクリックします。
 
     ![](tutorial-signalr-self-host/_static/image3.png)
-2. **空**のテンプレートを選択し、残りのオプションは選択解除したままにします。 **[プロジェクトの作成]** を選択します。
+2. **空**のテンプレートを選択し、残りのオプションは選択解除したままにします。 [**プロジェクトの作成**] を選択します。
 
     ![](tutorial-signalr-self-host/_static/image4.png)
-3. パッケージマネージャーコンソールで、 **[既定のプロジェクト]** ドロップダウンで "JavascriptClient" プロジェクトを選択し、次のコマンドを実行します。
+3. パッケージマネージャーコンソールで、[**既定のプロジェクト**] ドロップダウンで "JavascriptClient" プロジェクトを選択し、次のコマンドを実行します。
 
     [!code-powershell[Main](tutorial-signalr-self-host/samples/sample4.ps1)]
 
     このコマンドを実行すると、クライアントに必要な SignalR および JQuery ライブラリがインストールされます。
-4. プロジェクトを右クリックし、 **[追加]** 、 **[新しい項目]** の順に選択します。 **[Web]** ノードを選択し、[HTML ページ] を選択します。 ページに「 **Default .html**」という名前を指定します。
+4. プロジェクトを右クリックし、[**追加**]、[**新しい項目**] の順に選択します。 [ **Web** ] ノードを選択し、[HTML ページ] を選択します。 ページに**Default.html**という名前を指定します。
 
     ![](tutorial-signalr-self-host/_static/image5.png)
 5. 新しい HTML ページの内容を次のコードに置き換えます。 ここで参照されているスクリプトが、プロジェクトの Scripts フォルダー内のスクリプトと一致していることを確認します。
@@ -128,9 +126,9 @@ IIS でホストしない理由には、次のようなものがあります。
     次のコード (上記のコードサンプルで強調表示されています) は、「SignalR バージョン 2 beta」にコードをアップグレードするだけでなく、入門チュートリアルで使用したクライアントに対する追加のコードです。 このコード行は、サーバー上の SignalR のベース接続 URL を明示的に設定します。
 
     [!code-javascript[Main](tutorial-signalr-self-host/samples/sample6.js)]
-6. ソリューションを右クリックし、 **[スタートアッププロジェクトの設定]** ... を選択します。 **[マルチスタートアッププロジェクト]** オプションボタンを選択し、両方のプロジェクトの **[アクション]** を **[開始]** に設定します。
+6. ソリューションを右クリックし、[**スタートアッププロジェクトの設定**...] を選択します。[**マルチスタートアッププロジェクト**] オプションボタンを選択し、両方のプロジェクトの [**アクション**] を [**開始**] に設定します。
 
     ![](tutorial-signalr-self-host/_static/image6.png)
-7. "Default .html" を右クリックし、 **[スタートページとして設定]** を選択します。
-8. アプリケーションを実行します。 サーバーとページが起動します。 サーバーが起動する前にページが読み込まれた場合は、web ページの再読み込みが必要になることがあります (または、デバッガーで **[続行]** を選択します)。
+7. [Default.html] を右クリックし、[**スタートページとして設定**] を選択します。
+8. アプリケーションを実行します。 サーバーとページが起動します。 サーバーが起動する前にページが読み込まれた場合は、web ページの再読み込みが必要になることがあります (または、デバッガーで [**続行**] を選択します)。
 9. ブラウザーで、プロンプトが表示されたらユーザー名を入力します。 ページの URL を別のブラウザータブまたはウィンドウにコピーし、別のユーザー名を指定します。 はじめにのチュートリアルのように、ブラウザーウィンドウ間でメッセージを送信することができます。
