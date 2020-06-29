@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.assetid: d4dfc435-bda6-4621-9762-9ba270f8de4e
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 21a3efa865e5b5498dfb0f2adec199800fc70c58
-ms.sourcegitcommit: a4c3c7e04e5f53cf8cd334f036d324976b78d154
+ms.openlocfilehash: 2f3a6d57a7963eb7aafde62e344ae6b970af87e2
+ms.sourcegitcommit: 8d34fb54e790cfba2d64097afc8276da5b22283e
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172973"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85484231"
 ---
 # <a name="tutorial-use-ef-migrations-in-an-aspnet-mvc-app-and-deploy-to-azure"></a>チュートリアル: ASP.NET MVC アプリで EF の移行を使用して Azure にデプロイする
 
@@ -25,15 +25,15 @@ ms.locfileid: "84172973"
 
 デプロイにはソース管理と継続的インテグレーションプロセスを使用することをお勧めしますが、このチュートリアルではこれらのトピックについては説明しません。 詳細については、「 [Azure を使用した実際のクラウドアプリの構築](xref:aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction)」の[ソース管理](xref:aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)と[継続的インテグレーション](xref:aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)に関する章を参照してください。
 
-このチュートリアルでは、次の作業を行いました。
+このチュートリアルでは、次のことを行いました。
 
 > [!div class="checklist"]
 > * Code First 移行を有効にする
 > * Azure にアプリをデプロイする (省略可能)
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>必須コンポーネント
 
-- [接続復元性とコマンド傍受](connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+- [接続回復性とコマンド傍受](connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application.md)
 
 ## <a name="enable-code-first-migrations"></a>Code First 移行を有効にする
 
@@ -41,10 +41,10 @@ ms.locfileid: "84172973"
 
 このメソッドは、実稼働環境にアプリケーションを展開するまで、データベースとデータ モデルの同期の維持がうまく機能します。 アプリケーションが運用環境で実行されている場合、通常は保持するデータを格納し、新しい列の追加などの変更を行うたびにすべてのデータを失わないようにします。 [Code First Migrations](https://msdn.microsoft.com/data/jj591621)機能では、データベースを削除して再作成するのではなく、Code First でデータベーススキーマを更新できるようにすることで、この問題を解決します。 このチュートリアルでは、アプリケーションを展開し、移行を有効にする準備をします。
 
-1. 前の手順で設定した初期化子を無効にするには、 `contexts` アプリケーションの web.config ファイルに追加した要素をコメントアウトするか削除します。
+1. 前の手順で設定した初期化子を無効にするには、 `contexts` アプリケーション Web.config ファイルに追加した要素をコメントアウトするか削除します。
 
     [!code-xml[Main](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.xml?highlight=2,6)]
-2. また、アプリケーションの*web.config*ファイルで、接続文字列内のデータベースの名前を ContosoUniversity2 に変更します。
+2. また、アプリケーション*Web.config*ファイルで、接続文字列内のデータベースの名前を ContosoUniversity2 に変更します。
 
     [!code-xml[Main](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample2.xml?highlight=2)]
 
@@ -123,13 +123,13 @@ ms.locfileid: "84172973"
     このコマンドは、メソッドを実行して `update-database` データベースを `Up` 作成し、メソッドを実行して `Seed` データベースを設定します。 アプリケーションを展開した後、次のセクションに示すように、同じプロセスが運用環境で自動的に実行されます。
 2. 最初のチュートリアルで行ったように、**サーバーエクスプローラー**を使用してデータベースを検査し、アプリケーションを実行して、すべてが以前と同じように動作することを確認します。
 
-## <a name="deploy-to-azure"></a>Azure にデプロイ
+## <a name="deploy-to-azure"></a>Deploy to Azure (Azure へのデプロイ)
 
 これまでは、アプリケーションは開発用コンピューターの IIS Express でローカルに実行されていました。 他のユーザーがインターネット経由で使用できるようにするには、それを web ホスティングプロバイダーに展開する必要があります。 チュートリアルのこのセクションでは、Azure にデプロイします。 このセクションは省略可能です。これをスキップして次のチュートリアルに進むことができます。また、このセクションの手順は、選択した別のホスティングプロバイダーに合わせて変更することもできます。
 
 ### <a name="use-code-first-migrations-to-deploy-the-database"></a>Code First の移行を使用してデータベースを展開する
 
-データベースを配置するには、Code First Migrations を使用します。 Visual Studio からデプロイするための設定を構成するために使用する発行プロファイルを作成するときに、[**データベースの更新**] というチェックボックスをオンにします。 この設定により、配置プロセスでは、Code First が初期化子クラスを使用するように、移行先サーバー上のアプリケーションの*web.config*ファイルが自動的に構成されます `MigrateDatabaseToLatestVersion` 。
+データベースを配置するには、Code First Migrations を使用します。 Visual Studio からデプロイするための設定を構成するために使用する発行プロファイルを作成するときに、[**データベースの更新**] というチェックボックスをオンにします。 この設定により、配置プロセスでは、Code First が初期化子クラスを使用するように、移行先サーバー上のアプリケーション*Web.config*ファイルが自動的に構成され `MigrateDatabaseToLatestVersion` ます。
 
 プロジェクトを移行先サーバーにコピーしている間、Visual Studio は配置プロセス中にデータベースに対して何も実行しません。 配置後に配置されたアプリケーションを実行し、データベースに初めてアクセスすると、Code First データベースがデータモデルと一致するかどうかがチェックされます。 不一致がある場合、Code First によってデータベースが自動的に作成されます (まだ存在しない場合)。またはデータベーススキーマを最新バージョンに更新します (データベースが存在するがモデルに一致しない場合)。 アプリケーションが移行方法を実装している場合 `Seed` 、メソッドは、データベースが作成された後、またはスキーマが更新された後に実行されます。
 
@@ -138,7 +138,7 @@ ms.locfileid: "84172973"
 ### <a name="get-an-azure-account"></a>Azure アカウントを取得する
 
 Azure アカウントが必要です。 まだお持ちでない場合は、Visual Studio サブスクリプションをお持ちの場合は、[サブスクリプションの特典を有効](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/
-)にすることができます。 それ以外の場合は、無料試用版アカウントを数分で作成できます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/free/)」を参照してください。
+)にすることができます。 それ以外の場合は、無料試用版アカウントを数分で作成できます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/free/dotnet/)」を参照してください。
 
 ### <a name="create-a-web-site-and-a-sql-database-in-azure"></a>Azure で web サイトと SQL データベースを作成する
 
@@ -176,7 +176,7 @@ Azure の web アプリは共有ホスティング環境で実行されます。
 
     管理ポータルによって [ダッシュボード] ページに戻り、ページの上部にある [**通知**] 領域にサイトが作成されていることが示されます。 しばらくすると (通常は1分未満)、デプロイが成功したことを示す通知があります。 左側のナビゲーションバーの [ **App Services** ] セクションに新しい App Service が表示され、[ **sql**データベース] セクションに新しい sql データベースが表示されます。
 
-### <a name="deploy-the-app-to-azure"></a>Azure にアプリを配置する
+### <a name="deploy-the-app-to-azure"></a>Azure にアプリケーションをデプロイする
 
 1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
 
@@ -196,7 +196,7 @@ Azure の web アプリは共有ホスティング環境で実行されます。
 
     これで、アプリはクラウドで実行されています。
 
-この時点で、[ **Code First Migrations の実行 (アプリの起動時に実行)**] を選択したため、Azure SQL Database に*schoolcontext.cs*データベースが作成されました。 デプロイされた web サイトの*web.config ファイルが*変更され、コードがデータベース内のデータの読み取りまたは書き込みを初めて実行するとき ([ **Students** ] タブを選択したときに[発生しまし](https://msdn.microsoft.com/library/hh829476(v=vs.103).aspx)た) に変わりました。
+この時点で、[ **Code First Migrations の実行 (アプリの起動時に実行)**] を選択したため、Azure SQL Database に*schoolcontext.cs*データベースが作成されました。 デプロイされた web サイトの*Web.config*ファイルが変更され、コードがデータベース内のデータの読み取りまたは書き込みを初めて実行するとき ([ **Students** ] タブを選択したときに[発生しまし](https://msdn.microsoft.com/library/hh829476(v=vs.103).aspx)た) になりました。
 
 ![Web.config ファイルの抜粋](https://asp.net/media/4367421/mig.png)
 
@@ -204,7 +204,7 @@ Azure の web アプリは共有ホスティング環境で実行されます。
 
 ![Web.config ファイル内の接続文字列](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image26.png)
 
-配置された web.config ファイルのバージョンは、自分のコンピューターのユーザーのコンピューターに配置されていることがわかります。詳細については、 *「」を*参照してください。配置された*web.config*ファイル自体には、FTP を使用してアクセスできます。 手順については、「 [ASP.NET Web Deployment Using Visual Studio: Code Update のデプロイ](xref:web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-code-update)」を参照してください。 「FTP ツールを使用するには」で始まる指示に従って、FTP URL、ユーザー名、およびパスワードの3つが必要になります。
+Web.config ファイルの展開されたバージョンは、自分のコンピューターの*ContosoUniversity\obj\Release\Package\PackageTmp\Web.config*で見つけることができます。FTP を使用して、展開された*Web.config*ファイル自体にアクセスできます。 手順については、「 [ASP.NET Web Deployment Using Visual Studio: Code Update のデプロイ](xref:web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-code-update)」を参照してください。 「FTP ツールを使用するには」で始まる指示に従って、FTP URL、ユーザー名、およびパスワードの3つが必要になります。
 
 > [!NOTE]
 > Web アプリはセキュリティを実装していないので、URL を見つけたすべてのユーザーがデータを変更できます。 Web サイトをセキュリティで保護する方法については、「[メンバーシップ、OAuth、SQL database を使用した secure ASP.NET MVC アプリの Azure へのデプロイ](/aspnet/core/security/authorization/secure-data)」を参照してください。 Azure 管理ポータルまたは Visual Studio で**サーバーエクスプローラー**を使用してサービスを停止することで、他のユーザーがサイトを使用できないようにすることができます。
@@ -213,7 +213,7 @@ Azure の web アプリは共有ホスティング環境で実行されます。
 
 ## <a name="advanced-migrations-scenarios"></a>高度な移行シナリオ
 
-このチュートリアルに示されているように、移行を自動的に実行してデータベースを配置し、複数のサーバーで実行される web サイトに配置する場合は、複数のサーバーが同時に移行を実行しようとする可能性があります。 移行はアトミックであるため、2台のサーバーが同じ移行を実行しようとすると、1つが成功し、もう一方は失敗します (操作を2回実行することはできません)。 このような問題を回避する場合は、手動で移行を呼び出し、独自のコードを設定して1回だけ発生するようにします。 詳細については、「Rowan 明美のブログの[コードからの移行の実行とスクリプト作成](http://romiller.com/2012/02/09/running-scripting-migrations-from-code/)」と「 [.exe](/ef/ef6/modeling/code-first/migrations/migrate-exe) (コマンドラインからの移行の実行用)」を参照してください。
+このチュートリアルに示されているように、移行を自動的に実行してデータベースを配置し、複数のサーバーで実行される web サイトに配置する場合は、複数のサーバーが同時に移行を実行しようとする可能性があります。 移行はアトミックであるため、2台のサーバーが同じ移行を実行しようとすると、1つが成功し、もう一方は失敗します (操作を2回実行することはできません)。 このような問題を回避する場合は、手動で移行を呼び出し、独自のコードを設定して1回だけ発生するようにします。 詳細については、「行の[コードからの移行の実行とスクリプト作成](http://romiller.com/2012/02/09/running-scripting-migrations-from-code/)」と「 [Migrate.exe](/ef/ef6/modeling/code-first/migrations/migrate-exe) (コマンドラインからの移行の実行用)」を参照してください。
 
 その他の移行シナリオの詳細については、「[スクリーンキャスト Series の移行](https://blogs.msdn.com/b/adonet/archive/2014/03/12/migrations-screencast-series.aspx)」を参照してください。
 
@@ -235,17 +235,17 @@ Azure の web アプリは共有ホスティング環境で実行されます。
 
 初期化子の詳細については、「 [Entity Framework Code First でのデータベース初期化子](http://www.codeguru.com/csharp/article.php/c19999/Understanding-Database-Initializers-in-Entity-Framework-Code-First.htm)について」および「書籍の[プログラミング Entity Framework:](http://shop.oreilly.com/product/0636920022220.do)ジュリー Lerman と rowan 明美による Code First」を参照してください。
 
-## <a name="get-the-code"></a>コードを入手する
+## <a name="get-the-code"></a>コードを取得する
 
 [完成したプロジェクトをダウンロードする](https://webpifeed.blob.core.windows.net/webpifeed/Partners/ASP.NET%20MVC%20Application%20Using%20Entity%20Framework%20Code%20First.zip)
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="additional-resources"></a>その他の技術情報
 
 その他の Entity Framework リソースへのリンクについては[、「ASP.NET Data Access-推奨リソース](xref:whitepapers/aspnet-data-access-content-map)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、次の作業を行いました。
+このチュートリアルでは、次のことを行いました。
 
 > [!div class="checklist"]
 > * Code First 移行を有効にする
