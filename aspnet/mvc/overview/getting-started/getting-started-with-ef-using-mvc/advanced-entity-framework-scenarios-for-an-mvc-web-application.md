@@ -10,11 +10,11 @@ ms.assetid: f35a9b0c-49ef-4cde-b06d-19d1543feb0b
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
 ms.openlocfilehash: d7cc83a5b78a60f575f5c3065079679189296a0c
-ms.sourcegitcommit: 4b324a11131e38f920126066b94ff478aa9927f8
+ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "58425276"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "86188732"
 ---
 # <a name="tutorial-learn-about-advanced-ef-scenarios-for-an-mvc-5-web-app"></a>チュートリアル: MVC 5 Web アプリの高度な EF シナリオについて説明します。
 
@@ -41,17 +41,17 @@ ms.locfileid: "58425276"
 > * Entity Framework パワーツール
 > * Entity Framework ソースコード
 
-## <a name="prerequisite"></a>必須コンポーネント
+## <a name="prerequisite"></a>前提条件
 
 * [継承の実装](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)
 
 ## <a name="perform-raw-sql-queries"></a>生 SQL クエリを実行する
 
-Entity Framework Code First API には、SQL コマンドをデータベースに直接渡すことができるようにするメソッドが含まれています。 次のオプションがあります。
+Entity Framework Code First API には、SQL コマンドをデータベースに直接渡すことができるようにするメソッドが含まれています。 次のようなオプションがあります。
 
-- エンティティ型を返すクエリには、 [Dbset SqlQuery](https://msdn.microsoft.com/library/system.data.entity.dbset.sqlquery.aspx)メソッドを使用します。 返されるオブジェクトは、 `DbSet`オブジェクトによって予期される型である必要があります。また、追跡をオフにしない限り、データベースコンテキストによって自動的に追跡されます。 ( [Asnotracking](https://msdn.microsoft.com/library/system.data.entity.dbextensions.asnotracking.aspx)メソッドについては、次のセクションを参照してください)。
+- エンティティ型を返すクエリには、 [Dbset SqlQuery](https://msdn.microsoft.com/library/system.data.entity.dbset.sqlquery.aspx)メソッドを使用します。 返されるオブジェクトは、オブジェクトによって予期される型である必要があり `DbSet` ます。また、追跡をオフにしない限り、データベースコンテキストによって自動的に追跡されます。 ( [Asnotracking](https://msdn.microsoft.com/library/system.data.entity.dbextensions.asnotracking.aspx)メソッドについては、次のセクションを参照してください)。
 - エンティティではない型を返すクエリには、[データベースの SqlQuery](https://msdn.microsoft.com/library/system.data.entity.database.sqlquery.aspx)メソッドを使用します。 このメソッドを使用してエンティティ型を取得する場合でも、返されるデータはデータベース コンテキストによって追跡されません。
-- クエリ以外のコマンドには、[データベースの ExecuteSqlCommand](https://msdn.microsoft.com/library/gg679456.aspx)を使用します。
+- クエリ以外のコマンドには、 [Database.Exeのコマンド](https://msdn.microsoft.com/library/gg679456.aspx)を使用します。
 
 Entity Framework を使用する利点の 1 つは、データを格納する特定のメソッドにコードを過度に接近させなくてもよい点です。 SQL クエリとコマンドが生成されるため、自分でこれらを記述する必要がなくなります。 ただし、手動で作成した特定の SQL クエリを実行する必要がある場合は、例外的なシナリオがあります。これらのメソッドを使用すると、このような例外を処理できます。
 
@@ -59,9 +59,9 @@ Web アプリケーションで SQL コマンドを実行する場合は常に�
 
 ### <a name="calling-a-query-that-returns-entities"></a>エンティティを返すクエリの呼び出し
 
-[&lt;DbsetTEntity&gt; ](https://msdn.microsoft.com/library/gg696460.aspx)クラスには、型`TEntity`のエンティティを返すクエリを実行するために使用できるメソッドが用意されています。 このしくみを確認するには、 `Details` `Department`コントローラーのメソッドのコードを変更します。
+[Dbset &lt; TEntity &gt; ](https://msdn.microsoft.com/library/gg696460.aspx)クラスには、型のエンティティを返すクエリを実行するために使用できるメソッドが用意されて `TEntity` います。 このしくみを確認するには、コントローラーのメソッドのコードを変更し `Details` `Department` ます。
 
-*DepartmentController.cs* `Details`のメソッドで`db.Departments.SqlQuery` 、次の強調表示されたコードに示すように、メソッドの呼び出しをメソッドの呼び出しに置き換えます。`db.Departments.FindAsync`
+*DepartmentController.cs*のメソッドで、 `Details` `db.Departments.FindAsync` 次の `db.Departments.SqlQuery` 強調表示されたコードに示すように、メソッドの呼び出しをメソッドの呼び出しに置き換えます。
 
 [!code-csharp[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample1.cs?highlight=8-14)]
 
@@ -75,7 +75,7 @@ Web アプリケーションで SQL コマンドを実行する場合は常に�
 
 LINQ を使用するのではなく、このデータを直接 SQL で取得するコードを記述するとします。 そのためには、エンティティオブジェクト以外のものを返すクエリを実行する必要があります。これは、[データベースの SqlQuery](https://msdn.microsoft.com/library/system.data.entity.database.sqlquery(v=VS.103).aspx)メソッドを使用する必要があることを意味します。
 
-*HomeController.cs*で、次の強調表示され`About`たコードに示すように、メソッド内の LINQ ステートメントを SQL ステートメントに置き換えます。
+*HomeController.cs*で、 `About` 次の強調表示されたコードに示すように、メソッド内の LINQ ステートメントを SQL ステートメントに置き換えます。
 
 [!code-csharp[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample3.cs?highlight=3-18)]
 
@@ -83,17 +83,17 @@ LINQ を使用するのではなく、このデータを直接 SQL で取得す�
 
 ### <a name="calling-an-update-query"></a>更新クエリの呼び出し
 
-Contoso 大学の管理者が、すべてのコースのクレジットの数を変更するなど、データベースで一括変更を実行できるようにするとします。 大学に多くのコースがある場合は、それらすべてをエンティティとして取得し、それらを個別に変更するのは非効率的です。 このセクションでは、すべてのコースのクレジット数を変更する要素をユーザーが指定できるようにする web ページを実装します。これにより、SQL `UPDATE`ステートメントを実行して変更を行うことができます。 
+Contoso 大学の管理者が、すべてのコースのクレジットの数を変更するなど、データベースで一括変更を実行できるようにするとします。 大学に多くのコースがある場合は、それらすべてをエンティティとして取得し、それらを個別に変更するのは非効率的です。 このセクションでは、すべてのコースのクレジット数を変更する要素をユーザーが指定できるようにする web ページを実装します。これにより、SQL ステートメントを実行して変更を行うことができ `UPDATE` ます。 
 
-*CourseController.cs*で、と`UpdateCourseCredits`の`HttpGet`メソッドを`HttpPost`追加します。
+*CourseController.cs*で、 `UpdateCourseCredits` とのメソッドを追加 `HttpGet` し `HttpPost` ます。
 
 [!code-csharp[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample4.cs)]
 
-コントローラーが`HttpGet`要求を処理すると、 `ViewBag.RowsAffected`変数に何も返されず、ビューに空のテキストボックスと [送信] ボタンが表示されます。
+コントローラーが要求を処理すると `HttpGet` 、変数に何も返され `ViewBag.RowsAffected` ず、ビューに空のテキストボックスと [送信] ボタンが表示されます。
 
-**[更新]** ボタンをクリック`HttpPost`すると、メソッド`multiplier`が呼び出され、テキストボックスに値が入力されます。 次に、このコードは、コースを更新する SQL を実行し、影響を受ける行の`ViewBag.RowsAffected`数を変数のビューに返します。 ビューがその変数の値を取得すると、テキストボックスと送信ボタンではなく、更新された行の数が表示されます。
+[**更新**] ボタンをクリックすると、 `HttpPost` メソッドが呼び出され、 `multiplier` テキストボックスに値が入力されます。 次に、このコードは、コースを更新する SQL を実行し、影響を受ける行の数を変数のビューに返し `ViewBag.RowsAffected` ます。 ビューがその変数の値を取得すると、テキストボックスと送信ボタンではなく、更新された行の数が表示されます。
 
-*CourseController.cs*で、いずれかの`UpdateCourseCredits`メソッドを右クリックし、[ビューの**追加**] をクリックします。 **[ビューの追加]** ダイアログボックスが表示されます。 既定値のままにして、 **[追加]** を選択します。
+*CourseController.cs*で、いずれかのメソッドを右クリックし、 `UpdateCourseCredits` [**ビューの追加**] をクリックします。 [**ビューの追加**] ダイアログボックスが表示されます。 既定値のままにして、[**追加**] を選択します。
 
 *Views\Course\UpdateCourseCredits.cshtml*で、テンプレートコードを次のコードに置き換えます。
 
@@ -116,19 +116,19 @@ Contoso 大学の管理者が、すべてのコースのクレジットの数を
 [Asnotracking](https://msdn.microsoft.com/library/gg679352(v=vs.103).aspx)メソッドを使用して、メモリ内のエンティティオブジェクトの追跡を無効にすることができます。 追跡を無効にした方がよい一般的なシナリオを以下に示します。
 
 - クエリでは、追跡を無効にする大量のデータを取得すると、パフォーマンスが著しく向上する可能性があります。
-- エンティティを更新するためにアタッチする必要があるが、以前に別の目的で同じエンティティを取得した場合。 エンティティはデータベース コンテキストによって既に追跡されているため、変更するエンティティをアタッチできません。 この状況に対処する方法の`AsNoTracking` 1 つは、前のクエリでオプションを使用することです。
+- エンティティを更新するためにアタッチする必要があるが、以前に別の目的で同じエンティティを取得した場合。 エンティティはデータベース コンテキストによって既に追跡されているため、変更するエンティティをアタッチできません。 この状況に対処する方法の1つは、 `AsNoTracking` 前のクエリでオプションを使用することです。
 
-[Asnotracking](https://msdn.microsoft.com/library/gg679352(v=vs.103).aspx)メソッドの使用方法を示す例については、[このチュートリアルの前のバージョン](../../older-versions/getting-started-with-ef-5-using-mvc-4/advanced-entity-framework-scenarios-for-an-mvc-web-application.md)を参照してください。 このバージョンのチュートリアルでは、編集メソッドでモデルバインダーによって作成されたエンティティに変更フラグが設定され`AsNoTracking`ていないため、必要ありません。
+[Asnotracking](https://msdn.microsoft.com/library/gg679352(v=vs.103).aspx)メソッドの使用方法を示す例については、[このチュートリアルの前のバージョン](../../older-versions/getting-started-with-ef-5-using-mvc-4/advanced-entity-framework-scenarios-for-an-mvc-web-application.md)を参照してください。 このバージョンのチュートリアルでは、編集メソッドでモデルバインダーによって作成されたエンティティに変更フラグが設定されていないため、必要ありません `AsNoTracking` 。
 
 ## <a name="examine-sql-sent-to-database"></a>データベースに送信された SQL を調べる
 
 データベースに送信される実際の SQL クエリを確認できると役立つ場合があります。 前のチュートリアルでは、インターセプターコードでこれを行う方法を説明しました。ここで、インターセプターコードを記述せずにこれを実行するいくつかの方法について説明します。 これを試すには、単純なクエリを見て、一括読み込み、フィルター処理、並べ替えなどのオプションを追加したときに何が起こるかを見てみましょう。
 
-の一括読み込みを一時的に停止`Index`するには、 *Controllers/CourseController*で、メソッドを次のコードに置き換えます。
+の一括読み込みを一時的に停止するには、 *Controllers/CourseController*で、 `Index` メソッドを次のコードに置き換えます。
 
 [!code-csharp[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample6.cs)]
 
-次に、 `return`ステートメントにブレークポイントを設定します (その行のカーソルを使用して、F9 キーを押します)。 **F5**キーを押してプロジェクトをデバッグモードで実行し、[Course Index] ページを選択します。 コードがブレークポイントに到達したら、 `sql`変数を調べます。 SQL Server に送信されるクエリが表示されます。 これは単純な`Select`ステートメントです。
+次に、ステートメントにブレークポイントを設定し `return` ます (その行のカーソルを使用して、F9 キーを押します)。 **F5**キーを押してプロジェクトをデバッグモードで実行し、[Course Index] ページを選択します。 コードがブレークポイントに到達したら、 `sql` 変数を調べます。 SQL Server に送信されるクエリが表示されます。 これは単純な `Select` ステートメントです。
 
 [!code-json[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample7.json)]
 
@@ -136,33 +136,33 @@ Contoso 大学の管理者が、すべてのコースのクレジットの数を
 
 ![](advanced-entity-framework-scenarios-for-an-mvc-web-application/_static/image10.png)
 
-次に、ユーザーが特定の部門をフィルター処理できるように、[コースのインデックス] ページにドロップダウンリストを追加します。 コースはタイトルで並べ替えることができ、 `Department`ナビゲーションプロパティの一括読み込みを指定します。
+次に、ユーザーが特定の部門をフィルター処理できるように、[コースのインデックス] ページにドロップダウンリストを追加します。 コースはタイトルで並べ替えることができ、ナビゲーションプロパティの一括読み込みを指定し `Department` ます。
 
-*CourseController.cs*で、 `Index`メソッドを次のコードに置き換えます。
+*CourseController.cs*で、メソッドを `Index` 次のコードに置き換えます。
 
 [!code-csharp[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample8.cs)]
 
-`return`ステートメントにブレークポイントを復元します。
+ステートメントにブレークポイントを復元し `return` ます。
 
-メソッドは、 `SelectedDepartment`パラメーターのドロップダウンリストの選択された値を受け取ります。 何も選択されていない場合、このパラメーターは null になります。
+メソッドは、パラメーターのドロップダウンリストの選択された値を受け取り `SelectedDepartment` ます。 何も選択されていない場合、このパラメーターは null になります。
 
-すべての部門を含むコレクションがドロップダウンリストのビューに渡されます。`SelectList` `SelectList`コンストラクターに渡されるパラメーターは、値フィールド名、テキストフィールド名、および選択された項目を指定します。
+`SelectList`すべての部門を含むコレクションがドロップダウンリストのビューに渡されます。 コンストラクターに渡されるパラメーターは、 `SelectList` 値フィールド名、テキストフィールド名、および選択された項目を指定します。
 
-このコードでは、 `Course`リポジトリの`Department` メソッドに対して、ナビゲーションプロパティのフィルター式、並べ替え順序、および一括読み込みを指定しています。`Get` ドロップダウンリストで何`true`も選択されていない場合 (つまり、 `SelectedDepartment`が null の場合)、フィルター式は常にを返します。
+このコードでは、リポジトリのメソッドに対して、 `Get` `Course` ナビゲーションプロパティのフィルター式、並べ替え順序、および一括読み込みを指定して `Department` います。 `true`ドロップダウンリストで何も選択されていない場合 (つまり、が null の場合)、フィルター式は常にを返し `SelectedDepartment` ます。
 
-*Views\Course\Index.cshtml*の開始`table`タグの直前に、ドロップダウンリストと [送信] ボタンを作成する次のコードを追加します。
+*Views\Course\Index.cshtml*の開始タグの直前に、 `table` ドロップダウンリストと [送信] ボタンを作成する次のコードを追加します。
 
 [!code-cshtml[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample9.cshtml)]
 
-ブレークポイントを設定したまま、[コースのインデックス] ページを実行します。 コードが最初にブレークポイントにヒットしたときに、ページがブラウザーに表示されるようにします。 ドロップダウンリストから部門を選択し、 **[フィルター]** をクリックします。
+ブレークポイントを設定したまま、[コースのインデックス] ページを実行します。 コードが最初にブレークポイントにヒットしたときに、ページがブラウザーに表示されるようにします。 ドロップダウンリストから部門を選択し、[**フィルター**] をクリックします。
 
-今回は、ドロップダウンリストの部門クエリの最初のブレークポイントになります。 これをスキップし、 `query`次にコードがブレークポイントに到達したときに変数を表示`Course`して、クエリがどのように見えるかを確認します。 次のような内容が表示されます。
+今回は、ドロップダウンリストの部門クエリの最初のブレークポイントになります。 これをスキップし、 `query` 次にコードがブレークポイントに到達したときに変数を表示して、クエリがどのように見えるかを確認し `Course` ます。 次のような内容が表示されます。
 
 [!code-sql[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample10.sql)]
 
-クエリが`JOIN` データと`Course`共にデータを読み込み`Department` 、句を`WHERE`含むクエリであることがわかります。
+クエリが `JOIN` `Department` データと共にデータを読み込み `Course` 、句を含むクエリであることがわかります `WHERE` 。
 
-行を`var sql = courses.ToString()`削除します。
+行を削除 `var sql = courses.ToString()` します。
 
 ## <a name="create-an-abstraction-layer"></a>抽象化レイヤーを作成する
 
@@ -182,7 +182,7 @@ Contoso 大学の管理者が、すべてのコースのクレジットの数を
 
 ## <a name="proxy-classes"></a>プロキシクラス
 
-Entity Framework がエンティティインスタンスを作成するとき (たとえば、クエリの実行時)、エンティティのプロキシとして機能する動的に生成された派生型のインスタンスとして作成されることがよくあります。 たとえば、次の2つのデバッガーイメージを参照してください。 最初の図では、エンティティをインスタンス`student`化した直後`Student`に変数が予期される型であることがわかります。 2番目のイメージでは、EF を使用してデータベースから student エンティティを読み取ると、プロキシクラスが表示されます。
+Entity Framework がエンティティインスタンスを作成するとき (たとえば、クエリの実行時)、エンティティのプロキシとして機能する動的に生成された派生型のインスタンスとして作成されることがよくあります。 たとえば、次の2つのデバッガーイメージを参照してください。 最初の図で `student` は、 `Student` エンティティをインスタンス化した直後に変数が予期される型であることがわかります。 2番目のイメージでは、EF を使用してデータベースから student エンティティを読み取ると、プロキシクラスが表示されます。
 
 ![Before プロキシクラス](advanced-entity-framework-scenarios-for-an-mvc-web-application/_static/image12.png)
 
@@ -193,8 +193,8 @@ Entity Framework がエンティティインスタンスを作成するとき (�
 ほとんどの場合、このプロキシの使用を意識する必要はありませんが、例外があります。
 
 - 場合によっては、Entity Framework がプロキシインスタンスを作成できないようにする必要があります。 たとえば、エンティティをシリアル化する場合、通常はプロキシクラスではなく、POCO クラスが必要です。 シリアル化の問題を回避する1つの方法は、「 [Using WEB API with Entity Framework](../../../../web-api/overview/data/using-web-api-with-entity-framework/part-1.md)チュートリアル」に示されているように、エンティティオブジェクトではなくデータ転送オブジェクト (dto) をシリアル化することです。 もう1つの方法は、[プロキシの作成を無効](https://msdn.microsoft.com/data/jj592886.aspx)にすることです。
-- `new`演算子を使用してエンティティクラスをインスタンス化する場合、プロキシインスタンスは取得されません。 これは、遅延読み込みや自動変更追跡などの機能を利用できないことを意味します。 これは通常は問題ありません。通常、遅延読み込みは必要ありません。これは、データベースに存在しない新しいエンティティを作成しているためです。また、エンティティをとして`Added`明示的にマークしている場合は、通常、変更の追跡は必要ありません。 ただし、遅延読み込みが必要で、変更の追跡が必要な場合は、 `DbSet`クラスの[create](https://msdn.microsoft.com/library/gg679504.aspx)メソッドを使用して、プロキシを使用して新しいエンティティインスタンスを作成できます。
-- プロキシ型から実際のエンティティ型を取得することもできます。 `ObjectContext`クラスの[GetObjectType](https://msdn.microsoft.com/library/system.data.objects.objectcontext.getobjecttype.aspx)メソッドを使用して、プロキシ型インスタンスの実際のエンティティ型を取得できます。
+- 演算子を使用してエンティティクラスをインスタンス化する場合 `new` 、プロキシインスタンスは取得されません。 これは、遅延読み込みや自動変更追跡などの機能を利用できないことを意味します。 これは通常は問題ありません。通常、遅延読み込みは必要ありません。これは、データベースに存在しない新しいエンティティを作成しているためです。また、エンティティをとして明示的にマークしている場合は、通常、変更の追跡は必要ありません `Added` 。 ただし、遅延読み込みが必要で、変更の追跡が必要な場合は、クラスの[create](https://msdn.microsoft.com/library/gg679504.aspx)メソッドを使用して、プロキシを使用して新しいエンティティインスタンスを作成でき `DbSet` ます。
+- プロキシ型から実際のエンティティ型を取得することもできます。 クラスの[GetObjectType](https://msdn.microsoft.com/library/system.data.objects.objectcontext.getobjecttype.aspx)メソッドを使用して、 `ObjectContext` プロキシ型インスタンスの実際のエンティティ型を取得できます。
 
 詳細については、MSDN の「[プロキシの](https://msdn.microsoft.com/data/JJ592886.aspx)使用」を参照してください。
 
@@ -216,11 +216,11 @@ Entity Framework では、エンティティの現在の値と元の値を比較
 
 ## <a name="automatic-validation"></a>自動検証
 
-`SaveChanges`メソッドを呼び出すと、既定では、Entity Framework は、データベースを更新する前に、変更されたすべてのエンティティのすべてのプロパティのデータを検証します。 多数のエンティティを更新していて、既にデータを検証している場合、この作業は不要であり、変更の保存プロセスを一時的に無効にすることによって時間を短縮することができます。 これは、 [Validateonsaveenabled](https://msdn.microsoft.com/library/system.data.entity.infrastructure.dbcontextconfiguration.validateonsaveenabled.aspx)プロパティを使用して行うことができます。 詳細については、MSDN の「[検証](https://msdn.microsoft.com/data/gg193959)」を参照してください。
+メソッドを呼び出すと、 `SaveChanges` 既定では、Entity Framework は、データベースを更新する前に、変更されたすべてのエンティティのすべてのプロパティのデータを検証します。 多数のエンティティを更新していて、既にデータを検証している場合、この作業は不要であり、変更の保存プロセスを一時的に無効にすることによって時間を短縮することができます。 これは、 [Validateonsaveenabled](https://msdn.microsoft.com/library/system.data.entity.infrastructure.dbcontextconfiguration.validateonsaveenabled.aspx)プロパティを使用して行うことができます。 詳細については、MSDN の「[検証](https://msdn.microsoft.com/data/gg193959)」を参照してください。
 
 ## <a name="entity-framework-power-tools"></a>Entity Framework パワーツール
 
-[Entity Framework パワーツール](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EntityFramework6PowerToolsCommunityEdition)は、これらのチュートリアルで示すデータモデルダイアグラムを作成するために使用された Visual Studio アドインです。 また、このツールでは、既存のデータベース内のテーブルに基づいてエンティティクラスを生成するなど、他の機能を実行して、Code First でデータベースを使用できるようにすることもできます。 ツールをインストールすると、いくつかの追加オプションがコンテキストメニューに表示されます。 たとえば、**ソリューションエクスプローラー**でコンテキストクラスを右クリックすると、と**Entity Framework**  オプションが表示されます。 これにより、図を生成することができます。 Code First を使用している場合、図のデータモデルを変更することはできませんが、わかりやすくするために移動することができます。
+[Entity Framework パワーツール](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EntityFramework6PowerToolsCommunityEdition)は、これらのチュートリアルで示すデータモデルダイアグラムを作成するために使用された Visual Studio アドインです。 また、このツールでは、既存のデータベース内のテーブルに基づいてエンティティクラスを生成するなど、他の機能を実行して、Code First でデータベースを使用できるようにすることもできます。 ツールをインストールすると、いくつかの追加オプションがコンテキストメニューに表示されます。 たとえば、**ソリューションエクスプローラー**でコンテキストクラスを右クリックすると、と**Entity Framework** ] オプションが表示されます。 これにより、図を生成することができます。 Code First を使用している場合、図のデータモデルを変更することはできませんが、わかりやすくするために移動することができます。
 
 ![EF の図](advanced-entity-framework-scenarios-for-an-mvc-web-application/_static/image15.png)
 
@@ -233,7 +233,7 @@ Entity Framework 6 のソースコードは、 [GitHub](https://github.com/aspne
 ## <a name="acknowledgments"></a>謝辞
 
 - Tom Dykstra は、このチュートリアルの元のバージョンを作成し、EF 5 更新プログラムを併置し、EF 6 更新プログラムを記述しました。 Tom は、Microsoft Web Platform and Tools コンテンツチームのシニアプログラミングライターです。
-- [Rick Anderson](https://blogs.msdn.com/b/rickandy/)(twitter [@RickAndMSFT](http://twitter.com/RickAndMSFT)) は、ef 5 および MVC 4 のチュートリアルを更新し、ef 6 更新プログラムを共同作成しました。 Rick は、Microsoft が Azure と MVC に注力するシニアプログラミングライターです。
+- [Rick Anderson](https://blogs.msdn.com/b/rickandy/) (twitter [@RickAndMSFT](http://twitter.com/RickAndMSFT) ) は、EF 5 および MVC 4 のチュートリアルを更新し、ef 6 更新プログラムを共同作成しました。 Rick は、Microsoft が Azure と MVC に注力するシニアプログラミングライターです。
 - Entity Framework チームの[Rowan 明美](http://www.romiller.com)とその他のメンバーは、コードレビューを支援し、ef 5 および ef 6 のチュートリアルを更新している間に発生した移行に関する多くの問題のデバッグを支援しました。
 
 ## <a name="troubleshoot-common-errors"></a>一般的なエラーのトラブルシューティング
@@ -242,31 +242,31 @@ Entity Framework 6 のソースコードは、 [GitHub](https://github.com/aspne
 
 エラー メッセージ:
 
-> ファイルが既に存在する&lt;場合&gt;は、' filename ' を作成/シャドウコピーできません。
+> &lt; &gt; ファイルが既に存在する場合は、' filename ' を作成/シャドウコピーできません。
 
-ソリューション
+解決策
 
 数秒待ってから、ページを更新してください。
 
 ### <a name="update-database-not-recognized"></a>更新-データベースを認識できません
 
-エラーメッセージ (PMC の`Update-Database`コマンドから):
+エラーメッセージ (PMC の `Update-Database` コマンドから):
 
 > "データベースの更新" という用語は、コマンドレット、関数、スクリプトファイル、または操作可能なプログラムの名前として認識されません。 名前が正しく記述されていることを確認し、パスが含まれている場合はそのパスが正しいことを確認してから、再試行してください。
 
-ソリューション
+解決策
 
 Visual Studio を終了します。 プロジェクトを再度開き、もう一度やり直してください。
 
-### <a name="validation-failed"></a>検証失敗
+### <a name="validation-failed"></a>検証に失敗しました
 
-エラーメッセージ (PMC の`Update-Database`コマンドから):
+エラーメッセージ (PMC の `Update-Database` コマンドから):
 
 > 1つ以上のエンティティの検証に失敗しました。 詳細については、' EntityValidationErrors ' プロパティを参照してください。
 
-ソリューション
+解決策
 
-この問題の原因の1つは、メソッド`Seed`の実行時の検証エラーです。 メソッドのデバッグに関するヒントについては、 `Seed` 「 [Entity Framework (EF) db のシード処理とデバッグ](https://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx)」を参照してください。
+この問題の原因の1つは、メソッドの実行時の検証エラーです `Seed` 。 メソッドのデバッグに関するヒントについては、「 [Entity Framework (EF) db のシード処理とデバッグ](https://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx)」を参照してください `Seed` 。
 
 ### <a name="http-50019-error"></a>HTTP 500.19 エラー
 
@@ -274,9 +274,9 @@ Visual Studio を終了します。 プロジェクトを再度開き、もう�
 
 > HTTP エラー 500.19-内部サーバーエラーページの関連する構成データが無効なため、要求されたページにアクセスできません。
 
-ソリューション
+解決策
 
-このエラーを発生させる1つの方法は、ソリューションの複数のコピーを保持し、それぞれが同じポート番号を使用することです。 通常、この問題を解決するには、Visual Studio のすべてのインスタンスを終了し、作業中のプロジェクトを再起動します。 それでもうまくいかない場合は、ポート番号を変更してみてください。 プロジェクトファイルを右クリックし、[プロパティ] をクリックします。 **[Web]** タブを選択し、 **[プロジェクトの Url]** テキストボックスでポート番号を変更します。
+このエラーを発生させる1つの方法は、ソリューションの複数のコピーを保持し、それぞれが同じポート番号を使用することです。 通常、この問題を解決するには、Visual Studio のすべてのインスタンスを終了し、作業中のプロジェクトを再起動します。 それでもうまくいかない場合は、ポート番号を変更してみてください。 プロジェクトファイルを右クリックし、[プロパティ] をクリックします。 [ **Web** ] タブを選択し、[**プロジェクトの Url** ] テキストボックスでポート番号を変更します。
 
 ### <a name="error-locating-sql-server-instance"></a>SQL Server インスタンスの位置を特定しているときのエラー
 
@@ -284,7 +284,7 @@ Visual Studio を終了します。 プロジェクトを再度開き、もう�
 
 > SQL Server への接続を確立しているときに、ネットワーク関連またはインスタンス固有のエラーが発生しました。 サーバーが見つからないかアクセスできません。 インスタンス名が正しいこと、および SQL Server がリモート接続を許可するように構成されていることを確認してください。 (プロバイダー:SQL ネットワーク インターフェイス、エラー:26 - 指定されたサーバーまたはインスタンスの位置を特定しているときにエラーが発生しました)
 
-ソリューション
+解決策
 
 接続文字列を確認します。 データベースを手動で削除した場合は、構築文字列内のデータベースの名前を変更します。
 

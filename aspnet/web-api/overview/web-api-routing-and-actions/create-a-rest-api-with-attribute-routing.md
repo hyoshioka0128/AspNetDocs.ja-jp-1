@@ -1,6 +1,6 @@
 ---
 uid: web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
-title: 属性ルーティングで ASP.NET Web API 2 で REST API の作成 |Microsoft Docs
+title: ASP.NET Web API 2 | で属性ルーティングを使用して REST API を作成します。Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: riande
@@ -8,244 +8,243 @@ ms.date: 06/26/2013
 ms.assetid: 23fc77da-2725-4434-99a0-ff872d96336b
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
 msc.type: authoredcontent
-ms.openlocfilehash: a58daa96410de734619bf65f84346137c7d3cf44
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 6eac36767bf34857d5341188d0653e7fec7cade2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59393302"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "86188849"
 ---
-# <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>ASP.NET Web API 2 で属性ルーティングで REST API を作成します。
+# <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>ASP.NET Web API 2 で属性ルーティングを使用して REST API を作成する
 
-作成者[Mike Wasson](https://github.com/MikeWasson)
+[Mike Wasson](https://github.com/MikeWasson)
 
-新しい型をサポートする web API 2 のルーティングと呼ばれる*属性ルーティング*します。 属性ルーティングの一般的な概要については、次を参照してください。[属性は、Web API 2 でルーティング](attribute-routing-in-web-api-2.md)します。 このチュートリアルではルーティングを使用して属性のブックの「コレクションの REST API を作成します。 API は、次の操作をサポートします。
+Web API 2 では、*属性ルーティング*と呼ばれる新しい種類のルーティングがサポートされています。 属性ルーティングの一般的な概要については、「 [WEB API 2 での属性ルーティング](attribute-routing-in-web-api-2.md)」を参照してください。 このチュートリアルでは、属性ルーティングを使用して、書籍のコレクションの REST API を作成します。 API は、次のアクションをサポートします。
 
 | アクション | URI の例 |
 | --- | --- |
-| すべての書籍の一覧を取得します。 | /api/books |
-| ID での書籍を入手します。 | /api/books/1 |
-| 書籍の詳細を取得します。 | /api/books/1/details |
-| ジャンルによる書籍の一覧を取得します。 | /api/books/fantasy |
-| 発行日によって、書籍の一覧を取得します。 | /api/books/date/2013-02-16 /api/books/date/2013/02/16 (alternate form) |
-| 特定の作成者によって書籍の一覧を取得します。 | /api/authors/1/books |
+| すべての本の一覧を取得します。 | /api/books |
+| ID でブックを取得します。 | /api/books/1 |
+| ブックの詳細を取得します。 | 詳細情報 (& s) |
+| ジャンル別の書籍の一覧を取得します。 | /api/books/fantasy |
+| 出版日別の書籍の一覧を取得します。 | /api02-16/api/books/date/2013/02/16 (代替形式) (& 3) |
+| 特定の作成者による書籍の一覧を取得します。 | ///ブック (& s) |
 
-すべてのメソッドは、読み取り専用 (HTTP GET 要求) です。
+すべてのメソッドは読み取り専用 (HTTP GET 要求) です。
 
-データ層に Entity Framework を使用します。 書籍のレコードには、次のフィールドがあります。
+データ層については、Entity Framework を使用します。 書籍のレコードには、次のフィールドがあります。
 
 - ID
-- Title
+- タイトル
 - Genre
-- 発行日
+- 公開日
 - 価格
 - 説明
-- 著者 (Authors テーブルへの外部キー) の Id
+- AuthorID (Authors テーブルへの外部キー)
 
-ほとんどの要求に対してただし、API では返します (タイトル、作成者、およびジャンル) は、このデータのサブセットです。 完全なレコードをクライアント要求を取得する`/api/books/{id}/details`します。
+ただし、ほとんどの要求では、このデータのサブセット (タイトル、作成者、ジャンル) が返されます。 完全なレコードを取得するために、クライアントはを要求し `/api/books/{id}/details` ます。
 
-## <a name="prerequisites"></a>必須コンポーネント
+## <a name="prerequisites"></a>前提条件
 
-[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) Community、Professional または Enterprise edition。
+[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)Community、Professional、または Enterprise edition。
 
-## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトを作成します。
+## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-Visual Studio を実行して開始します。 **ファイル**メニューの **新規**選び**プロジェクト**します。
+Visual Studio の実行から始めます。 **[ファイル]** メニューの **[新規作成]** を選択し、**[プロジェクト]** を選択します。
 
-展開、**インストール済み** > **Visual c#** カテゴリ。 **Visual c#**、 **Web**します。 プロジェクト テンプレートの一覧で選択**ASP.NET Web アプリケーション (.NET Framework)** します。 プロジェクトに名前を&quot;BooksAPI&quot;します。
+[**インストールされている**  >  **Visual C#** ] カテゴリを展開します。 [ **Visual C#**] で、[ **Web**] を選択します。 プロジェクトテンプレートの一覧で、[ **ASP.NET Web Application (.NET Framework)**] を選択します。 プロジェクトに「booksapi」という名前を指定 &quot; &quot; します。
 
 ![](create-a-rest-api-with-attribute-routing/_static/image1.png)
 
-**新しい ASP.NET Web アプリケーション**ダイアログ ボックスで、**空**テンプレート。 [フォルダーを追加およびコアの参照] を選択、 **Web API**チェック ボックスをオンします。 **[OK]** をクリックします。
+[ **New ASP.NET Web Application** ] ダイアログボックスで、**空**のテンプレートを選択します。 [フォルダーとコア参照の追加] で、[ **WEB API** ] チェックボックスをオンにします。 **[OK]** をクリックします。
 
 ![](create-a-rest-api-with-attribute-routing/_static/image2.png)
 
-これは、Web API の機能が構成されているスケルトン プロジェクトを作成します。
+これにより、Web API 機能用に構成されたスケルトンプロジェクトが作成されます。
 
-### <a name="domain-models"></a>ドメイン モデル
+### <a name="domain-models"></a>ドメインモデル
 
-次に、ドメイン モデル クラスを追加します。 ソリューション エクスプ ローラーで、Models フォルダーを右クリックします。 選択**追加**を選択し、**クラス**します。 クラスに `Author` という名前を付けます。
+次に、ドメインモデルのクラスを追加します。 ソリューション エクスプローラーで、[モデル] フォルダーを右クリックします。 [**追加**] を選択し、[**クラス**] を選択します。 クラスに `Author` という名前を付けます。
 
 ![](create-a-rest-api-with-attribute-routing/_static/image3.png)
 
-次のように Author.cs 内のコードに置き換えます。
+Author.cs のコードを次のコードに置き換えます。
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample1.cs)]
 
-という名前の別のクラスを追加するようになりました`Book`します。
+次に、という名前の別のクラス `Book` を追加します。
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample2.cs)]
 
-### <a name="add-a-web-api-controller"></a>Web API コント ローラーを追加します。
+### <a name="add-a-web-api-controller"></a>Web API コントローラーを追加する
 
-この手順では、データ層として Entity Framework を使用する Web API コント ローラーを追加します。
+この手順では、データ層として Entity Framework を使用する Web API コントローラーを追加します。
 
-Ctrl キーと Shift キーを押しながら B キーを押して、プロジェクトをビルドします。 Entity Framework では、リフレクションを使用して、コンパイル済みのアセンブリ、データベース スキーマを作成する必要がありますので、モデルのプロパティを検出します。
+Ctrl キーと Shift キーを押しながら B キーを押して、プロジェクトをビルドします。 Entity Framework は、リフレクションを使用してモデルのプロパティを検出します。そのため、データベーススキーマを作成するには、コンパイル済みのアセンブリが必要です。
 
-ソリューション エクスプ ローラーで、Controllers フォルダーを右クリックします。 選択**追加**を選択し、**コント ローラー**します。
+ソリューション エクスプローラーで、[コントローラー] フォルダーを右クリックします。 [**追加**] を選択し、[**コントローラー**] を選択します。
 
 ![](create-a-rest-api-with-attribute-routing/_static/image4.png)
 
-**スキャフォールディングの追加**ダイアログ ボックスで、 **Web API 2 コント ローラー アクション、Entity Framework を使用して**します。
+[**スキャフォールディングの追加**] ダイアログボックスで、[**アクションを含む Web API 2 コントローラー**] を選択し Entity Framework を使用します。
 
 [![](create-a-rest-api-with-attribute-routing/_static/image6.png)](create-a-rest-api-with-attribute-routing/_static/image5.png)
 
-**コント ローラーの追加**ダイアログ ボックスの**コント ローラー名**、入力&quot;BooksController&quot;します。 選択、&quot;非同期コント ローラー アクションを使用して、&quot;チェック ボックスをオンします。 **モデル クラス**、&quot;帳&quot;します。 (表示されない場合、`Book`クラスが、ドロップダウン リストに表示、プロジェクトをビルドするかどうかを確認してください)。「+」ボタンをクリックします。
+[**コントローラーの追加**] ダイアログボックスで、[**コントローラー名**] に「bookscontroller」と入力し &quot; &quot; ます。 [ &quot; 非同期コントローラーアクションを使用する] チェックボックスをオンにし &quot; ます。 [**モデルクラス**] で [Book] を選択し &quot; &quot; ます。 (ドロップダウンリストに表示されているクラスが表示されない場合は、プロジェクトをビルドしたことを `Book` 確認してください)。次に、[+] ボタンをクリックします。
 
 ![](create-a-rest-api-with-attribute-routing/_static/image7.png)
 
-クリックして**追加**で、**新しいデータ コンテキスト**ダイアログ。
+[**新しいデータコンテキスト**] ダイアログボックスで [**追加**] をクリックします。
 
 ![](create-a-rest-api-with-attribute-routing/_static/image8.png)
 
-クリックして**追加**で、**コント ローラーの追加**ダイアログ。 スキャフォールディングがという名前のクラスを追加します`BooksController`API コント ローラーを定義します。 という名前のクラスも追加`BooksAPIContext`Models フォルダーでの Entity Framework データ コンテキストを定義します。
+[**コントローラーの追加**] ダイアログボックスで [**追加**] をクリックします。 スキャフォールディングは、 `BooksController` API コントローラーを定義するという名前のクラスを追加します。 また、モデルフォルダーにという名前のクラスが追加され `BooksAPIContext` ます。これにより、Entity Framework のデータコンテキストが定義されます。
 
 ![](create-a-rest-api-with-attribute-routing/_static/image9.png)
 
 ### <a name="seed-the-database"></a>データベースのシード
 
-ツール メニューで、次のように選択します。 **NuGet パッケージ マネージャー**、し、**パッケージ マネージャー コンソール**します。
+[ツール] メニューの [ **NuGet パッケージマネージャー**] を選択し、[**パッケージマネージャーコンソール**] を選択します。
 
-パッケージ マネージャー コンソール ウィンドウで、次のコマンドを入力します。
+[パッケージ マネージャー コンソール] ウィンドウで、次のコマンドを入力します。
 
 [!code-powershell[Main](create-a-rest-api-with-attribute-routing/samples/sample3.ps1)]
 
-このコマンドは、Migrations フォルダーを作成し、Configuration.cs をという名前の新しいコード ファイルを追加します。 このファイルを開き、次のコードを追加、`Configuration.Seed`メソッド。
+このコマンドは、移行フォルダーを作成し、Configuration.cs という名前の新しいコードファイルを追加します。 このファイルを開き、メソッドに次のコードを追加し `Configuration.Seed` ます。
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample4.cs)]
 
-パッケージ マネージャー コンソール ウィンドウで、次のコマンドを入力します。
+[パッケージマネージャーコンソール] ウィンドウで、次のコマンドを入力します。
 
 [!code-powershell[Main](create-a-rest-api-with-attribute-routing/samples/sample5.ps1)]
 
-これらのコマンドは、ローカル データベースを作成し、データベースを設定するシード メソッドを呼び出します。
+これらのコマンドは、ローカルデータベースを作成し、Seed メソッドを呼び出してデータベースにデータを読み込みます。
 
 ![](create-a-rest-api-with-attribute-routing/_static/image10.png)
 
-## <a name="add-dto-classes"></a>DTO クラスを追加します。
+## <a name="add-dto-classes"></a>DTO クラスの追加
 
-これでアプリケーションを実行して、/api/books/1 に GET 要求を送信して、応答は次のような検索します。 (読みやすくするためのインデントが追加されます)。
+ここでアプリケーションを実行し、GET 要求を/api/books/1 に送信すると、応答は次のようになります。 (読みやすくするためにインデントを追加しました)。
 
 [!code-json[Main](create-a-rest-api-with-attribute-routing/samples/sample6.json)]
 
-代わりに、この要求のフィールドのサブセットを返すにします。 作成者 ID ではなく、著者の名を返すさせたいことも、 コント ローラー メソッドの戻り値に変更します。 これを実現する、*データ転送オブジェクト*(DTO) EF モデルではなく。 DTO は、データを伝達するだけに設計されているオブジェクトです。
+代わりに、この要求でフィールドのサブセットを返す必要があります。 また、作成者 ID ではなく、著者の名前を返すようにします。 これを実現するには、EF モデルではなく*データ転送オブジェクト*(DTO) を返すようにコントローラーメソッドを変更します。 DTO は、データを伝送するためだけに設計されたオブジェクトです。
 
-ソリューション エクスプ ローラーでプロジェクトを右クリックし、選択**追加** | **新しいフォルダー**します。 フォルダーの名前&quot;Dto&quot;します。 という名前のクラスを追加`BookDto`次の定義で、Dto フォルダー。
+ソリューションエクスプローラーで、プロジェクトを右クリックし、[ **Add**  |  **新しいフォルダー**の追加] を選択します。 フォルダーに「dto」という名前を指定 &quot; &quot; します。 次の定義を使用して、という名前のクラスを `BookDto` dto フォルダーに追加します。
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample7.cs)]
 
-という名前の別のクラスを追加`BookDetailDto`します。
+`BookDetailDto`という名前の別のクラスを追加します。
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample8.cs)]
 
-次に、更新、`BooksController`を返すクラス`BookDto`インスタンス。 使用して、 [Queryable.Select](https://msdn.microsoft.com/library/system.linq.queryable.select.aspx)メソッドをプロジェクトに`Book`インスタンスを`BookDto`インスタンス。 コント ローラー クラスの更新されたコードを次に示します。
+次に、 `BooksController` インスタンスを返すようにクラスを更新し `BookDto` ます。 インスタンスをインスタンスに投影するには、クエリ可能な[Select](https://msdn.microsoft.com/library/system.linq.queryable.select.aspx)メソッドを使用します。 `Book` `BookDto` コントローラークラスの更新されたコードを次に示します。
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample9.cs)]
 
 > [!NOTE]
-> 削除し、 `PutBook`、 `PostBook`、および`DeleteBook`メソッド、このチュートリアルで必要としないためです。
+> `PutBook`、 `PostBook` 、およびの `DeleteBook` 各メソッドは、このチュートリアルでは必要ないため、削除しました。
 
-
-これでアプリケーションを実行し、/api/books/1 を要求した場合これよう、応答本文になります。
+ここで、アプリケーションを実行して/api/books/1 を要求すると、応答本文は次のようになります。
 
 [!code-json[Main](create-a-rest-api-with-attribute-routing/samples/sample10.json)]
 
-## <a name="add-route-attributes"></a>ルート属性を追加します。
+## <a name="add-route-attributes"></a>ルート属性の追加
 
-次に、属性ルーティングを使用するコント ローラーを変換します。 最初に、追加、 **RoutePrefix**属性をコント ローラーにします。 この属性は、このコント ローラー上のすべてのメソッドの最初の URI セグメントを定義します。
+次に、属性ルーティングを使用するようにコントローラーを変換します。 まず、 **Routeprefix**属性をコントローラーに追加します。 この属性は、このコントローラーのすべてのメソッドの初期 URI セグメントを定義します。
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample11.cs?highlight=1)]
 
-追加し、 **[ルート]** 次のように、コント ローラー アクションに属性します。
+次に、 **[Route]** 属性をコントローラーアクションに追加します。
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample12.cs?highlight=1,7)]
 
-各コント ローラー メソッドのルート テンプレートは、プレフィックスと、文字列に指定されて、**ルート**属性。 `GetBook`メソッド、ルート テンプレートには、パラメーター化された文字列が含まれています。 &quot;{0} id: int}&quot;、URI セグメントには、整数値が含まれている場合に一致します。
+各コントローラーメソッドのルートテンプレートは、**ルート**属性に指定された文字列に加えて、プレフィックスとして使用されます。 メソッドでは、 `GetBook` ルートテンプレートにパラメーター化された文字列 &quot; {id: int} が含まれてい &quot; ます。これは、URI セグメントに整数値が含まれている場合に一致します。
 
-| メソッド | ルート テンプレート | URI の例 |
+| 方法 | ルート テンプレート | URI の例 |
 | --- | --- | --- |
-| `GetBooks` | "api/books" | `http://localhost/api/books` |
-| `GetBook` | "api/books/{id:int}" | `http://localhost/api/books/5` |
+| `GetBooks` | "api/ブック" | `http://localhost/api/books` |
+| `GetBook` | "api/books/{id: int}" | `http://localhost/api/books/5` |
 
-## <a name="get-book-details"></a>書籍の詳細を取得します。
+## <a name="get-book-details"></a>ブックの詳細を取得する
 
-書籍の詳細を取得するクライアントへの GET 要求を送信`/api/books/{id}/details`ここで、 *{id}* 書籍の ID です。
+ブックの詳細を取得するために、クライアントは GET 要求をに送信し `/api/books/{id}/details` ます。ここで、 *{id}* は本の id です。
 
 `BooksController` クラスに次のメソッドを追加します。
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample13.cs)]
 
-要求した場合`/api/books/1/details`、次のような応答。
+を要求すると、次の `/api/books/1/details` ような応答が表示されます。
 
 [!code-json[Main](create-a-rest-api-with-attribute-routing/samples/sample14.json)]
 
-## <a name="get-books-by-genre"></a>ジャンルでブックを取得します。
+## <a name="get-books-by-genre"></a>ジャンルで書籍を取得する
 
-書籍の一覧には、特定のジャンルを取得するクライアントへの GET 要求を送信`/api/books/genre`ここで、*ジャンル*ジャンルの名前を指定します。 (たとえば、`/api/books/fantasy`)。
+特定のジャンルに含まれる本の一覧を取得するために、クライアントは GET 要求をに送信し `/api/books/genre` ます。ここで、 *genre*はジャンルの名前です。 (例: `/api/books/fantasy`)。
 
-次のメソッドを追加`BooksController`します。
+に次のメソッドを追加し `BooksController` ます。
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample15.cs)]
 
-ここで、URI テンプレート内の {ジャンル} パラメーターを含むルート定義しています。 Web API がこれら 2 つの Uri を識別し、別のメソッドにルーティングできることに注意してください。
+ここでは、URI テンプレートに {genre} パラメーターを含むルートを定義しています。 Web API は、これらの2つの Uri を区別し、異なる方法でルーティングできることに注意してください。
 
 `/api/books/1`
 
 `/api/books/fantasy`
 
-だ、`GetBook`メソッドに"id"セグメントは整数値である必要があります、制約が含まれています。
+これは、 `GetBook` メソッドに "id" セグメントが整数値でなければならないという制約が含まれているためです。
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample16.cs?highlight=1)]
 
-/Api/books/fantasy を要求すると、応答はようになります。
+/Api/books/fantasy を要求すると、次のような応答が表示されます。
 
 `[ { "Title": "Midnight Rain", "Author": "Ralls, Kim", "Genre": "Fantasy" }, { "Title": "Maeve Ascendant", "Author": "Corets, Eva", "Genre": "Fantasy" }, { "Title": "The Sundered Grail", "Author": "Corets, Eva", "Genre": "Fantasy" } ]`
 
-## <a name="get-books-by-author"></a>ブックの作成者を取得します。
+## <a name="get-books-by-author"></a>作成者による書籍の取得
 
-に特定の作成者の、書籍の一覧を取得するクライアントは、への GET 要求を送信`/api/authors/id/books`ここで、 *id*作成者の ID です。
+特定の作成者の書籍の一覧を取得するために、クライアントは GET 要求をに送信し `/api/authors/id/books` ます。ここで、 *id*は著者の id です。
 
-次のメソッドを追加`BooksController`します。
+に次のメソッドを追加し `BooksController` ます。
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample17.cs)]
 
-興味深いは、この例ため&quot;ブックの「&quot;はの子リソースを扱う&quot;作成者&quot;します。 このパターンは、RESTful Api で非常に一般的です。
+この例は、 &quot; 書籍 &quot; が作成者の子リソースとして扱われるため、興味深いものです &quot; &quot; 。 このパターンは、RESTful Api では非常に一般的です。
 
-ルート テンプレートにティルダ (~) のオーバーライドでは、そのルート プレフィックス、 **RoutePrefix**属性。
+ルートテンプレート内のチルダ (~) は、 **routeprefix**属性のルートプレフィックスよりも優先されます。
 
-## <a name="get-books-by-publication-date"></a>発行日によってブックを取得します。
+## <a name="get-books-by-publication-date"></a>出版日による書籍の取得
 
-発行日、書籍の一覧を取得するクライアントへの GET 要求を送信`/api/books/date/yyyy-mm-dd`ここで、 *- yyyy-mm-dd*日です。
+発行日による書籍の一覧を取得するために、クライアントは GET 要求をに送信し `/api/books/date/yyyy-mm-dd` ます。ここで、 *yyyy-mm-dd*は日付です。
 
-これを行う 1 つの方法を次に示します。
+これを行う方法の1つを次に示します。
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample18.cs)]
 
-`{pubdate:datetime}`パラメーターが一致するように制約を**DateTime**値。 これは、動作より実際より制限の少ない。 たとえば、これらの Uri は、ルートと一致も。
+`{pubdate:datetime}`パラメーターは**DateTime**値に一致するように制約されています。 これは機能しますが、実際には必要以上に制限されています。 たとえば、次の Uri はルートとも一致します。
 
 `/api/books/date/Thu, 01 May 2008`
 
 `/api/books/date/2000-12-16T00:00:00`
 
-これらの Uri を許可することに問題があります。 ただし、ルート テンプレートに正規表現の制約を追加することで、ルートを特定の形式に制限できます。
+これらの Uri を許可しても問題はありません。 ただし、ルートテンプレートに正規表現の制約を追加することで、ルートを特定の形式に制限することができます。
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample19.cs?highlight=1)]
 
-形式で日付を今すぐのみ&quot;- yyyy-mm-dd&quot;は一致します。 実際の日付を入手したことを検証する正規表現を使用しない点に注意してください。 Web API に URI セグメントに変換しようとするときに処理する、 **DateTime**インスタンス。 無効な日付では、' 2012 などの 47-99' は、変換に失敗し、クライアントには、404 エラーが発生します。
+これで、yyyy-mm-dd という形式の日付のみ &quot; が一致するようになりました &quot; 。 実際の日付があることを検証するために regex を使用しないことに注意してください。 これは、Web API が URI セグメントを**DateTime**インスタンスに変換しようとしたときに処理されます。 無効な日付 (' 2012-47-99 ' など) は変換されません。クライアントは404エラーを受け取ります。
 
-スラッシュ区切り記号をサポートすることも (`/api/books/date/yyyy/mm/dd`) 別の操作を追加することによって **[ルート]** 属性はさまざまな正規表現を使用します。
+別の `/api/books/date/yyyy/mm/dd` **[Route]** 属性を別の regex と共に追加することで、スラッシュ区切り記号 () をサポートすることもできます。
 
 [!code-html[Main](create-a-rest-api-with-attribute-routing/samples/sample20.html)]
 
-若干の重要な詳細をここでは。 2 つ目のルート テンプレートがワイルドカード文字 (\*) {pubdate} パラメーターの先頭。
+ここでは、微妙ですが重要な詳細があります。 2番目のルートテンプレートには、 \* {pubdate} パラメーターの先頭にワイルドカード文字 () があります。
 
 [!code-json[Main](create-a-rest-api-with-attribute-routing/samples/sample21.json)]
 
-これは、ように、ルーティング エンジンで指示 {pubdate} は、URI の残りの部分と一致する必要があります。 既定では、テンプレート パラメーターは 1 つの URI セグメントと一致します。 この場合は、{pubdate} にいくつかの URI セグメントをまたがるします。
+これにより、{pubdate} が URI の残りの部分と一致する必要があることがルーティングエンジンに通知されます。 既定では、テンプレートパラメーターは単一の URI セグメントと一致します。 この例では、{pubdate} を複数の URI セグメントにまたがって指定します。
 
 `/api/books/date/2013/06/17`
 
-## <a name="controller-code"></a>コント ローラー コード
+## <a name="controller-code"></a>コントローラーコード
 
 BooksController クラスの完全なコードを次に示します。
 
@@ -253,4 +252,4 @@ BooksController クラスの完全なコードを次に示します。
 
 ## <a name="summary"></a>まとめ
 
-属性ルーティングでは、管理性と柔軟性、API の Uri を設計するときにします。
+属性ルーティングを使用すると、API の Uri を設計するときに、より柔軟に制御し、柔軟性を高めることができます。

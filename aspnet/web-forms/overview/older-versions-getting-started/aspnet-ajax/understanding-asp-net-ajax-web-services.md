@@ -1,310 +1,299 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-web-services
-title: ASP.NET AJAX Web サービスを理解する |Microsoft Docs
+title: ASP.NET AJAX Web サービスについて |Microsoft Docs
 author: scottcate
-description: Web サービスは、分散システムの間でデータを交換するためのクロスプラット フォーム ソリューションを提供する .NET framework の不可欠な部分です。 ただし Web.
+description: Web サービスは .NET framework の不可欠な部分であり、分散システム間でデータを交換するためのクロスプラットフォームソリューションを提供します。 ただし、Web...
 ms.author: riande
 ms.date: 03/28/2008
 ms.assetid: 3332d6e7-e2e1-4144-b805-e71d51e7e415
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-web-services
 msc.type: authoredcontent
-ms.openlocfilehash: e576e11d63f940f1683ed26d217ff255a31b007c
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: eac3d53fd871d0cb5a2870488ce752c057cc5b1a
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59388414"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "86162846"
 ---
 # <a name="understanding-aspnet-ajax-web-services"></a>ASP.NET AJAX Web サービスについて理解する
 
-によって[Scott Cate](https://github.com/scottcate)
+[Scott Cate](https://github.com/scottcate)
 
-[PDF のダウンロード](http://download.microsoft.com/download/C/1/9/C19A3451-1D14-477C-B703-54EF22E197EE/AJAX_tutorial05_Web_Services_with_MS_Ajax_cs.pdf)
+[PDF のダウンロード](https://download.microsoft.com/download/C/1/9/C19A3451-1D14-477C-B703-54EF22E197EE/AJAX_tutorial05_Web_Services_with_MS_Ajax_cs.pdf)
 
-> Web サービスは、分散システムの間でデータを交換するためのクロスプラット フォーム ソリューションを提供する .NET framework の不可欠な部分です。 Web サービスは、さまざまなオペレーティング システム、オブジェクト モデルおよびデータを送受信するプログラミング言語に通常使用される、動的に ASP.NET AJAX ページにデータを挿入またはバックエンド システムにページからデータを送信する使用できます。 このすべては、ポストバックの操作を使用しなくても実行できます。
-
+> Web サービスは .NET framework の不可欠な部分であり、分散システム間でデータを交換するためのクロスプラットフォームソリューションを提供します。 通常、Web サービスは、さまざまなオペレーティングシステム、オブジェクトモデル、およびプログラミング言語がデータを送受信できるようにするために使用されますが、ASP.NET AJAX ページにデータを動的に挿入したり、ページからバックエンドシステムにデータを送信したりするために使用することもできます。 これらはすべて、ポストバック操作を行わなくても実行できます。
 
 ## <a name="calling-web-services-with-aspnet-ajax"></a>ASP.NET AJAX を使用した Web サービスの呼び出し
 
 Dan Wahlin
 
-Web サービスは、分散システムの間でデータを交換するためのクロスプラット フォーム ソリューションを提供する .NET framework の不可欠な部分です。 Web サービスは、さまざまなオペレーティング システム、オブジェクト モデルおよびデータを送受信するプログラミング言語に通常使用される、動的に ASP.NET AJAX ページにデータを挿入またはバックエンド システムにページからデータを送信する使用できます。 このすべては、ポストバックの操作を使用しなくても実行できます。
+Web サービスは .NET framework の不可欠な部分であり、分散システム間でデータを交換するためのクロスプラットフォームソリューションを提供します。 通常、Web サービスは、さまざまなオペレーティングシステム、オブジェクトモデル、およびプログラミング言語がデータを送受信できるようにするために使用されますが、ASP.NET AJAX ページにデータを動的に挿入したり、ページからバックエンドシステムにデータを送信したりするために使用することもできます。 これらはすべて、ポストバック操作を行わなくても実行できます。
 
-ASP.NET AJAX UpdatePanel コントロールには、AJAX を使用する簡単な方法が用意されています。 いずれかの ASP.NET ページを有効にする、UpdatePanel を使用せず、サーバー上のデータを動的にアクセスする必要がある場合があります。 この記事では、作成および ASP.NET AJAX ページ内で Web サービスを使用してこれを実現する方法を確認します。
+ASP.NET AJAX UpdatePanel コントロールでは、任意の ASP.NET ページを簡単に有効にすることができますが、UpdatePanel を使用せずにサーバー上のデータに動的にアクセスすることが必要になる場合があります。 この記事では、ASP.NET AJAX ページ内で Web サービスを作成および使用することによってこれを実現する方法について説明します。
 
-この記事で、AutoCompleteExtender と呼ばれる ASP.NET AJAX toolkit Web サービスを有効になっているコントロールと同様に、core の ASP.NET AJAX Extensions で利用できる機能に焦点を当てます。 AJAX 対応 Web サービスの定義、クライアント プロキシの作成および JavaScript による Web サービスの呼び出しについて書かれています。 また、ASP.NET ページ メソッドに直接 Web サービス呼び出しを行う方法も表示されます。
+この記事では、ASP.NET AJAX のコア拡張機能と、AutoCompleteExtender と呼ばれる ASP.NET AJAX Toolkit の Web サービスが有効になっているコントロールで使用できる機能に焦点を当てます。 ここでは、AJAX 対応 Web サービスの定義、クライアントプロキシの作成、および JavaScript を使用した Web サービスの呼び出しについて説明します。 また、ASP.NET page メソッドに対して Web サービス呼び出しを直接行う方法についても説明します。
 
 ## <a name="web-services-configuration"></a>Web サービスの構成
 
-Visual Studio 2008 で新しい Web サイト プロジェクトが作成されると、web.config ファイルは、さまざまな Visual Studio の以前のバージョンのユーザーになじみがない可能性がありますが、新しい追加機能が。 HttpHandlers、HttpModules は、必要な他のユーザー定義のページで使用できるように、"asp"プレフィックスを ASP.NET AJAX コントロール変更の一部マップします。 リスト 1 に加えられた変更を示しています、 `<httpHandlers>` Web サービス呼び出しに影響を与える web.config 内の要素。 HttpHandler .asmx 呼び出しを処理するために使用する既定値は削除され、System.Web.Extensions.dll アセンブリ内にある ScriptHandlerFactory クラスに置き換えられます。 System.Web.Extensions.dll には、すべての ASP.NET AJAX で使用されるコア機能が含まれます。
+Visual Studio 2008 を使用して新しい Web サイトプロジェクトを作成すると、web.config ファイルには、以前のバージョンの Visual Studio のユーザーにとって馴染みのない多くの新しい追加機能が追加されます。 これらの変更の一部では、ページで使用できるように、"asp" プレフィックスが ASP.NET AJAX コントロールにマップされ、他のユーザーが必要な HttpHandlers と HttpModules を定義します。 リスト1は、 `<httpHandlers>` Web サービスの呼び出しに影響を与える web.config の要素に対して行われた変更を示します。 .Asmx 呼び出しを処理するために使用される既定の HttpHandler は削除され、System.Web.Extensions.dll アセンブリにある ScriptHandlerFactory クラスに置き換えられます。 System.Web.Extensions.dll には、ASP.NET AJAX によって使用される主要な機能がすべて含まれています。
 
-**1 を一覧表示します。ASP.NET AJAX Web サービス ハンドラーの構成**
+**リスト 1.ASP.NET AJAX Web サービスハンドラーの構成**
 
 [!code-xml[Main](understanding-asp-net-ajax-web-services/samples/sample1.xml)]
 
-この HttpHandler の置換が JavaScript の Web サービス プロキシを使用して .NET Web サービスに対する ASP.NET AJAX ページから JavaScript Object Notation (JSON) の呼び出しを許可するために行われます。 ASP.NET AJAX では、通常 Web サービスに関連付けられている標準的な簡易オブジェクト アクセス プロトコル (SOAP) の呼び出しではなく、JSON メッセージを Web サービスに送信します。 これにより、小さな要求と応答メッセージの全体的です。 ASP.NET AJAX JavaScript ライブラリの最適化の JSON オブジェクトを操作するためもデータのより効率的なクライアント側処理できます。 2 とリスト 3 の表示例を JSON 形式にシリアル化された Web サービス要求と応答メッセージの一覧表示します。 リスト 2 に示すように要求メッセージは、リスト 3 の応答メッセージには、Customer オブジェクトの配列とその関連プロパティの中に、「ベルギー」の値を持つ国パラメーターを渡します。
+この HttpHandler は、JavaScript Web サービスプロキシを使用して、ASP.NET AJAX ページから .NET Web サービスに JavaScript Object Notation (JSON) 呼び出しを行うことができるようにするために行われています。 ASP.NET AJAX は、通常は Web サービスに関連付けられている標準の簡易オブジェクトアクセスプロトコル (SOAP) 呼び出しとは対照的に、JSON メッセージを Web サービスに送信します。 これにより、要求メッセージと応答メッセージ全体が小さくなります。 また、ASP.NET AJAX JavaScript ライブラリが JSON オブジェクトを使用するように最適化されているため、クライアント側でのデータの処理効率が向上します。 リスト2とリスト3は、JSON 形式にシリアル化された Web サービス要求メッセージと応答メッセージの例を示しています。 リスト2に示されている要求メッセージは、"ベルギー" という値を持つ country パラメーターを渡します。リスト3の応答メッセージは、Customer オブジェクトとその関連プロパティの配列を渡します。
 
-**2 を一覧表示します。Web サービス要求メッセージが JSON にシリアル化します。**
+**リスト 2.JSON にシリアル化された Web サービス要求メッセージ**
 
 [!code-json[Main](understanding-asp-net-ajax-web-services/samples/sample2.json)]
 
-> *> [!NOTE] 操作名が web サービスの URL の一部として定義されています。さらに、要求メッセージは、JSON を使用して常には送信されません。Web サービスは UseHttpGet パラメーター経由で渡されるパラメーターが true に設定、ScriptMethod 属性を利用することができます、クエリ文字列パラメーター。*
+> *>[!NOTE]操作名は、web サービスへの URL の一部として定義されます。さらに、要求メッセージは JSON 経由で送信されることはありません。Web サービスは、UseHttpGet パラメーターを true に設定して ScriptMethod 属性を利用できます。これにより、クエリ文字列パラメーターを使用してパラメーターが渡されます。*
 
-
-**3 を一覧表示します。Web サービスの応答メッセージが JSON にシリアル化します。**
+**リスト 3.JSON にシリアル化された Web サービス応答メッセージ**
 
 [!code-json[Main](understanding-asp-net-ajax-web-services/samples/sample3.json)]
 
-次のセクションでは、JSON 要求メッセージの処理と単純かつ複雑な型に対応できる Web サービスを作成する方法を確認します。
+次のセクションでは、JSON 要求メッセージを処理し、単純型と複合型の両方に対応できる Web サービスを作成する方法について説明します。
 
-## <a name="creating-ajax-enabled-web-services"></a>AJAX 対応 Web サービスを作成します。
+## <a name="creating-ajax-enabled-web-services"></a>AJAX 対応 Web サービスの作成
 
-ASP.NET AJAX フレームワークでは、Web サービスを呼び出すいくつかの方法を提供します。 (ASP.NET AJAX Toolkit で使用可能) AutoCompleteExtender コントロールまたは JavaScript を使用することができます。 ただし、サービスを呼び出す前にある AJAX を有効にする、クライアント スクリプト コードによって呼び出すことができるようにします。
+ASP.NET AJAX フレームワークには、Web サービスを呼び出すためのさまざまな方法が用意されています。 AutoCompleteExtender コントロール (ASP.NET AJAX Toolkit で利用可能) または JavaScript を使用できます。 ただし、サービスを呼び出す前に、クライアントスクリプトコードから呼び出すことができるように、サービスを AJAX によって有効にする必要があります。
 
-ASP.NET Web サービスを初めてかどうかは、簡単に作成、および AJAX 対応のサービスがあります。 .NET framework には、2002 年の最初のリリース以降、ASP.NET Web サービスの作成がサポートされているし、ASP.NET AJAX Extensions は、.NET framework の既定の機能のセットに基づいて作成された追加の AJAX 機能を提供します。 Visual Studio .NET 2008 Beta 2 は、.asmx Web サービス ファイルを作成するための組み込みサポートを備え、System.Web.Services.WebService クラスからクラスの横にある関連付けられているコードを自動的に派生します。 クラスにメソッドを追加するに Web サービスのコンシューマーによって呼び出されるには、WebMethod 属性を適用する必要があります。
+ASP.NET ウェブサービスを初めて使用する場合でも、サービスの作成と AJAX 有効化を簡単に行うことができます。 .NET framework では、2002の初期リリース以降の ASP.NET Web サービスの作成がサポートされています。また、ASP.NET AJAX 拡張機能には、.NET framework の既定の機能セットを基盤とする追加の AJAX 機能が用意されています。 Visual Studio .NET 2008 Beta 2 には、.asmx Web サービスファイルを作成するためのサポートが組み込まれています。また、関連するコードは、System.web. WebService クラスから自動的に派生します。 クラスにメソッドを追加するときに、Web サービスコンシューマーによって呼び出されるようにするために、WebMethod 属性を適用する必要があります。
 
-リスト 4 GetCustomersByCountry() という名前のメソッドに WebMethod 属性を適用する例を示します。
+リスト4は、GetCustomersByCountry () という名前のメソッドに WebMethod 属性を適用する例を示しています。
 
-**4 を一覧表示します。Web サービスの WebMethod 属性を使用します。**
+**リスト 4.Web サービスでの WebMethod 属性の使用**
 
 [!code-csharp[Main](understanding-asp-net-ajax-web-services/samples/sample4.cs)]
 
-GetCustomersByCountry() メソッドは、国のパラメーターを受け取り、顧客オブジェクトの配列が返されます。 メソッドに渡された国の値は、データベースからデータを取得するデータ層のクラスは、データを顧客オブジェクトのプロパティを入力し、配列を返す呼び出しますビジネス層のクラスに転送されます。
+GetCustomersByCountry () メソッドは、country パラメーターを受け取り、Customer オブジェクト配列を返します。 メソッドに渡される country 値はビジネス層クラスに転送され、さらにデータレイヤークラスを呼び出してデータベースからデータを取得し、顧客オブジェクトのプロパティにデータを入力して、配列を返します。
 
-## <a name="using-the-scriptservice-attribute"></a>ScriptService 属性を使用します。
+## <a name="using-the-scriptservice-attribute"></a>ScriptService 属性の使用
 
-属性は、Web サービスに標準の SOAP メッセージを送信するクライアントによって呼び出される GetCustomersByCountry() メソッドを使用できます。 web メソッドを追加するときに JSON の呼び出しすぐに ASP.NET AJAX アプリケーションからにすることはできません。 されている ASP.NET AJAX 拡張機能の適用することができる JSON 呼び出しを許可する`ScriptService`属性を Web サービス クラス。 これにより、JSON を使用して書式設定された応答メッセージを送信する Web サービスとクライアント側スクリプトは、JSON メッセージを送信することによって、サービスの呼び出しを使用できます。
+WebMethod 属性を追加すると、標準の SOAP メッセージを Web サービスに送信するクライアントによって GetCustomersByCountry () メソッドを呼び出すことができますが、JSON 呼び出しを ASP.NET AJAX アプリケーションからすぐに実行することはできません。 JSON 呼び出しを実行できるようにするには、ASP.NET AJAX 拡張機能の `ScriptService` 属性を Web サービスクラスに適用する必要があります。 これにより、Web サービスは JSON を使用して書式設定された応答メッセージを送信できるようになり、JSON メッセージを送信することによって、クライアント側スクリプトがサービスを呼び出すことができます。
 
-リスト 5. CustomersService をという名前の Web サービス クラスに ScriptService 属性を適用する例を示します。
+リスト5は、"顧客 Sservice" という名前の Web サービスクラスに ScriptService 属性を適用する例を示しています。
 
-**5 を一覧表示します。Web サービスを AJAX を有効にするための ScriptService 属性を使用します。**
+**リスト5。ScriptService 属性を使用して Web サービスを AJAX 対応にする**
 
 [!code-csharp[Main](understanding-asp-net-ajax-web-services/samples/sample5.cs)]
 
-ScriptService 属性は、AJAX スクリプト コードから呼び出せることを示すマーカーとして機能します。 バック グラウンドで発生する JSON のシリアル化または逆シリアル化のタスクのいずれかを実際に処理がしません。 (Web.config で構成されている) ScriptHandlerFactory と関連するその他のクラスは、大量の JSON の処理を実行します。
+ScriptService 属性は、AJAX スクリプトコードから呼び出すことができることを示すマーカーとして機能します。 実際には、バックグラウンドで発生する JSON のシリアル化または逆シリアル化のタスクを処理しません。 ScriptHandlerFactory (web.config で構成) およびその他の関連クラスは、JSON の処理の大部分を実行します。
 
-## <a name="using-the-scriptmethod-attribute"></a>ScriptMethod 属性を使用します。
+## <a name="using-the-scriptmethod-attribute"></a>ScriptMethod 属性の使用
 
-ScriptService 属性は、ASP.NET AJAX ページが使用するために .NET Web サービスで定義する必要のある唯一の ASP.NET AJAX 属性です。 ただし、ScriptMethod という名前の別の属性は、サービスの Web メソッドに直接も適用できます。 含む 3 つのプロパティを定義する ScriptMethod `UseHttpGet`、`ResponseFormat`と`XmlSerializeString`します。 これらのプロパティの値を変更するは、Web メソッドが受け入れる要求の種類が Web メソッドの形式で生の XML データを返す必要があるときに、GET に変更する必要がある場合に役立ちます、`XmlDocument`または`XmlElement`オブジェクトまたはから返されたデータを サービスは、JSON ではなく XML として常にシリアル化する必要があります。
+ScriptService 属性は、ASP.NET AJAX ページで使用されるために .NET Web サービスで定義する必要がある唯一の ASP.NET AJAX 属性です。 ただし、ScriptMethod という別の属性をサービスの Web メソッドに直接適用することもできます。 ScriptMethod `UseHttpGet` は、、、およびを含む3つのプロパティを定義し `ResponseFormat` `XmlSerializeString` ます。 これらのプロパティの値を変更することは、web メソッドで受け入れられる要求の種類を GET に変更する必要がある場合、Web メソッドがオブジェクトまたはオブジェクトの形式で未加工の XML データを返す必要がある場合、 `XmlDocument` `XmlElement` またはサービスから返されるデータを JSON ではなく XML として常にシリアル化する必要がある場合に役立ちます
 
-プロパティは、Web メソッドが受け入れる必要があるときに、使用できる UseHttpGet では、POST 要求ではなく要求を取得します。 要求を送信するには、Web メソッドの入力パラメーターを持つ URL を使用して、クエリ文字列パラメーターに変換されます。 設定するプロパティの既定値は false とのみ UseHttpGet`true`操作の安全な機密データが Web サービスに渡されない場合が知られています。 リスト 6. UseHttpGet プロパティを使用して、ScriptMethod 属性を使用する例を示します。
+UseHttpGet プロパティは、Web メソッドが POST 要求ではなく GET 要求を受け入れる必要がある場合に使用できます。 要求は、Web メソッドの入力パラメーターが QueryString パラメーターに変換された URL を使用して送信されます。 UseHttpGet プロパティの既定値は false であり、 `true` 操作が安全であることがわかっている場合と、機密データが Web サービスに渡されない場合にのみ設定する必要があります。 リスト6は、ScriptMethod 属性を UseHttpGet プロパティと共に使用する例を示しています。
 
-**6 を一覧表示します。UseHttpGet プロパティでは、ScriptMethod 属性を使用します。**
+**リスト6。ScriptMethod 属性を UseHttpGet プロパティと共に使用します。**
 
 [!code-csharp[Main](understanding-asp-net-ajax-web-services/samples/sample6.cs)]
 
-リスト 6 に示す HttpGetEcho Web メソッドが呼び出されたときに送信されるヘッダーの例を次に表示されます。
+リスト6に示されている Httpgeare o Web メソッドが呼び出されたときに送信されるヘッダーの例を次に示します。
 
 `GET /CustomerViewer/DemoService.asmx/HttpGetEcho?input=%22Input Value%22 HTTP/1.1`
 
-Web メソッドを HTTP GET 要求を受け入れるようにできるだけでなく、ScriptMethod 属性こともできます XML 応答を JSON ではなく、サービスから返される必要がある場合。 たとえば、Web サービスはリモート サイトから RSS フィードを取得し、XmlDocument または XmlElement オブジェクトとして返す可能性があります。 XML の処理のデータにし、クライアントで発生します。
+XML 応答が JSON ではなくサービスから返される必要がある場合は、Web メソッドで HTTP GET 要求を受け入れることができるだけでなく、ScriptMethod 属性を使用することもできます。 たとえば、Web サービスは、リモートサイトから RSS フィードを取得し、それを XmlDocument オブジェクトまたは XmlElement オブジェクトとして返すことができます。 その後、XML データの処理をクライアントで行うことができます。
 
-リスト 7. ResponseFormat プロパティを使用して XML データを Web メソッドから返されることを指定する例を示します。
+リスト7は、ResponseFormat プロパティを使用して、Web メソッドから XML データを返すように指定する例を示しています。
 
-**7 を一覧表示します。ResponseFormat プロパティでは、ScriptMethod 属性を使用します。**
+**リスト7。ScriptMethod 属性を ResponseFormat プロパティと共に使用します。**
 
 [!code-csharp[Main](understanding-asp-net-ajax-web-services/samples/sample7.cs)]
 
-ResponseFormat プロパティは、XmlSerializeString プロパティと共にも使用できます。 XmlSerializeString プロパティが false で Web メソッドから返される文字列以外の型が XML としてシリアル化を返すすべての既定値を持つときに、`ResponseFormat`プロパティに設定されて`ResponseFormat.Xml`します。 ときに`XmlSerializeString`に設定されている`true`、Web メソッドから返されるすべての型が文字列型を含む XML としてシリアル化されます。 ResponseFormat プロパティの値を持つ場合`ResponseFormat.Json`XmlSerializeString プロパティは無視されます。
+ResponseFormat プロパティは、XmlSerializeString プロパティと共に使用することもできます。 XmlSerializeString プロパティの既定値は false です。これは、 `ResponseFormat` プロパティがに設定されている場合に、Web メソッドから返される文字列を除くすべての戻り値の型が XML としてシリアル化されることを意味し `ResponseFormat.Xml` ます。 `XmlSerializeString`がに設定されている場合 `true` 、Web メソッドから返されるすべての型は、文字列型を含む XML としてシリアル化されます。 ResponseFormat プロパティに値がある場合、 `ResponseFormat.Json` XmlSerializeString プロパティは無視されます。
 
-リスト 8. XmlSerializeString プロパティを使用して、強制的に文字列を XML としてシリアル化する例を示します。
+リスト8は、XmlSerializeString プロパティを使用して文字列を強制的に XML としてシリアル化する例を示しています。
 
-**8 を一覧表示します。XmlSerializeString プロパティを使用して、ScriptMethod 属性を使用します。**
+**リスト8。XmlSerializeString プロパティでの ScriptMethod 属性の使用**
 
 [!code-csharp[Main](understanding-asp-net-ajax-web-services/samples/sample8.cs)]
 
-一覧の 8 に示す GetXmlString Web メソッドの呼び出しから返される値は、[次へ] に表示されます。
+リスト8に示されている GetXmlString Web メソッドの呼び出しから返される値を次に示します。
 
 [!code-csharp[Main](understanding-asp-net-ajax-web-services/samples/sample9.cs)]
 
-ResponseFormat と XmlSerializeString プロパティを指定できますが、既定の JSON 形式では、要求および応答メッセージの全体的なサイズを最小限に抑えるし、クロス ブラウザーの方法で ASP.NET AJAX クライアントによってより簡単に使用される、使用するときにクライアントアプリケーションなど、Internet Explorer 5 以降では、Web メソッドから返される XML データが期待しています。
+既定の JSON 形式では、要求メッセージと応答メッセージの全体的なサイズを最小限に抑えることができ、クロスブラウザー方式で ASP.NET AJAX クライアントによって使用されるようになっていますが、Internet Explorer 5 などのクライアントアプリケーションが Web メソッドから XML データを返すことを期待する場合は、ResponseFormat と XmlSerializeString プロパティを使用できます。
 
-## <a name="working-with-complex-types"></a>複雑な型の使用
+## <a name="working-with-complex-types"></a>複合型の使用
 
-5 を一覧表示するには、Web サービスから Customer という名前の複合型を返すことの例で説明しました。 Customer クラスは、FirstName と LastName などのプロパティとして内部的にはいくつかの単純な種類を定義します。 入力パラメーターとして使用される複合型または AJAX 対応の Web メソッドの戻り値の型が JSON に、クライアント側に送信される前に自動的にシリアル化します。 ただし、(別の種類内で内部的に定義されたもの)、入れ子になった複合型いないで利用可能なクライアントにスタンドアロン オブジェクトとして既定値。
+リスト5は、Web サービスから Customer という名前の複合型を返す例を示しています。 Customer クラスは、FirstName や LastName などのプロパティとして、さまざまな単純型を内部的に定義します。 AJAX 対応の Web メソッドで入力パラメーターまたは戻り値の型として使用される複合型は、クライアント側に送信される前に自動的に JSON にシリアル化されます。 ただし、入れ子になった複合型 (別の型の内部で定義されている型) は、既定では、クライアントに対してスタンドアロンオブジェクトとして使用できません。
 
-使用ケースが入れ子になった複合型、Web サービスで使用する必要がありますもクライアント ページで、Web サービスに ASP.NET AJAX GenerateScriptType 属性を追加できます。 リスト 9 に示すように CustomerDetails クラスがアドレス、性別のプロパティを格納するなどを***入れ子になった複合型を表します。***
+Web サービスによって使用される入れ子になった複合型をクライアントページでも使用する必要がある場合は、ASP.NET AJAX の種類の属性を Web サービスに追加できます。 たとえば、リスト9に示されている customer Details クラスには、入れ子に***なった複合型を表す***Address プロパティと性別プロパティが含まれています。
 
-**9 を一覧表示します。次のとおり、CustomerDetails クラスには、2 つの入れ子になった複合型が含まれています。**
+**リスト9。ここに示す顧客詳細クラスには、2つの入れ子になった複合型が含まれています。**
 
 [!code-csharp[Main](understanding-asp-net-ajax-web-services/samples/sample10.cs)]
 
-リスト 9 に示すように CustomerDetails クラス内で定義されているアドレスと 性別のオブジェクトはありません自動的にできる使用可能な JavaScript を使用してクライアント側で入れ子にされた型であるため (アドレスは、クラス、性別は列挙型)。 Web サービス内で使用される入れ子にされた型がクライアント側で使用可能なあります状況では、前に説明した GenerateScriptType 属性を使用できます (10 の一覧を参照してください)。 この属性は、別の入れ子になった複合型がサービスから返される位置の場合に複数回追加することができます。 特定の Web メソッドの上または Web サービス クラスに直接適用できます。
+リスト9に示されている [customer Details] クラスに定義されている Address および性別オブジェクトは、入れ子になった型 (Address はクラス、性別は列挙型) であるため、クライアント側では自動的に使用できません。 Web サービス内で使用される入れ子になった型をクライアント側で使用できるようにする必要がある場合は、前述のように、公開されている型の属性を使用できます (一覧10を参照)。 この属性は、サービスから別の入れ子になった複合型が返される場合に、複数回追加できます。 これは、Web サービスクラスまたは特定の Web メソッドに直接適用できます。
 
-**10 を一覧表示します。GenerateScriptService 属性を使用して、クライアントに利用できるように入れ子にされた型を定義します。**
+**リスト10。クライアントで使用できるようにする必要がある入れ子にされた型を定義するには、公開されたサービス属性を使用します。**
 
 [!code-csharp[Main](understanding-asp-net-ajax-web-services/samples/sample11.cs)]
 
-適用することで、`GenerateScriptType`属性 Web サービスでは、アドレス、性別の種類を自動的に利用可能になります使用するためクライアント側の ASP.NET AJAX の JavaScript コード。 自動的に生成され、Web サービスで GenerateScriptType 属性を追加することで、クライアントに送信する JavaScript の例は、一覧の 11 に示します。 記事の後半で入れ子になった複合型を使用する方法を確認します。
+`GenerateScriptType`属性を Web サービスに適用することで、Address 型と性別型が自動的にクライアント側の ASP.NET AJAX JavaScript コードで使用できるようになります。 自動的に生成され、Web サービスに公開されている型の属性を追加することによってクライアントに送信される JavaScript の例については、一覧11を参照してください。 入れ子になった複合型の使用方法については、この記事の後半で説明します。
 
-**11 を一覧表示します。入れ子になった複合型が ASP.NET AJAX ページを利用します。**
+**リスト11。入れ子になった複合型は、ASP.NET AJAX ページで使用できます。**
 
 [!code-csharp[Main](understanding-asp-net-ajax-web-services/samples/sample12.cs)]
 
-Web サービスを作成し、ASP.NET AJAX ページにアクセスできるようにする方法を確認したら、作成および JavaScript プロキシを使用してデータを取得または Web サービスに送信できるようにする方法を見てをみましょう。
+ここでは、Web サービスを作成し、ASP.NET AJAX ページからアクセスできるようにする方法を説明しました。次は、データを取得または Web サービスに送信できるように、JavaScript プロキシを作成して使用する方法について説明します。
 
 ## <a name="creating-javascript-proxies"></a>JavaScript プロキシの作成
 
-通常、標準の Web サービス (.NET または別のプラットフォーム) を呼び出すには、送信 SOAP 要求と応答メッセージの複雑さからユーザを保護するプロキシ オブジェクトを作成する必要があります。 、ASP.NET AJAX Web サービス呼び出しで、JavaScript プロキシを作成して使用を簡単にシリアル化して、JSON メッセージを逆シリアル化について悩むことがなくサービスを呼び出すすることができます。 ASP.NET AJAX ScriptManager コントロールを使用して、JavaScript プロキシを自動的に生成できます。
+標準 Web サービス (.NET またはその他のプラットフォーム) を呼び出すには、通常、SOAP 要求メッセージと応答メッセージを送信する複雑さからのものであることを示すプロキシオブジェクトを作成する必要があります。 ASP.NET AJAX Web サービス呼び出しを使用すると、JavaScript プロキシを作成して、JSON メッセージのシリアル化と逆シリアル化を気にせずに簡単にサービスを呼び出すことができます。 JavaScript プロキシは、ASP.NET AJAX ScriptManager コントロールを使用して自動的に生成できます。
 
-Web サービスを呼び出すことができる JavaScript プロキシの作成は、scriptmanager コントロールのプロパティを使用して行われます。 このプロパティを使用すると、ASP.NET AJAX ページがポストバックの操作を必要とせず、データの送受信に非同期的に呼び出すことができる 1 つまたは複数のサービスを定義できます。 ASP.NET AJAX を使用してサービスを定義する`ServiceReference`コントロールとコントロールの Web サービスの URL を割り当てる`Path`プロパティ。 12 を一覧表示する CustomersService.asmx という名前のサービスを参照する例を示します。
+Web サービスを呼び出すことができる JavaScript プロキシの作成は、ScriptManager サービスプロパティを使用して行います。 このプロパティを使用すると、ASP.NET AJAX ページが非同期に呼び出して、ポストバック操作を必要とせずにデータを送受信できる1つ以上のサービスを定義できます。 サービスを定義するには、ASP.NET AJAX `ServiceReference` コントロールを使用し、Web サービスの URL をコントロールのプロパティに割り当て `Path` ます。 リスト12は、"顧客" という名前のサービスを参照する例を示しています。
 
 [!code-aspx[Main](understanding-asp-net-ajax-web-services/samples/sample13.aspx)]
 
-**12 を一覧表示します。ASP.NET AJAX ページで、Web サービスを定義します。**
+**リスト12。ASP.NET AJAX ページで使用される Web サービスを定義します。**
 
-ScriptManager コントロールを介して CustomersService.asmx への参照を追加するが動的に生成され、ページによって参照される JavaScript プロキシ。 使用して、プロキシが埋め込まれた、&lt;スクリプト&gt;タグし、CustomersService.asmx ファイルを呼び出すの末尾に/js を追加することによって動的に読み込まれます。 次の例では、JavaScript プロキシがページに埋め込まれている web.config でデバッグを無効にする方法を示しています。
+ScriptManager コントロールを介して顧客 Sservice .asmx に参照を追加すると、JavaScript プロキシが動的に生成され、ページによって参照されます。 プロキシは、スクリプトタグを使用して埋め込まれ、 &lt; &gt; 顧客のサービス .asmx ファイルを呼び出し、その末尾に/js を追加することによって動的に読み込まれます。 次の例は、web.config でデバッグが無効になっている場合に、JavaScript プロキシがページに埋め込まれる方法を示しています。
 
 [!code-html[Main](understanding-asp-net-ajax-web-services/samples/sample14.html)]
 
-> *> [!NOTE] かどうかは、生成される実際の JavaScript プロキシ コードを参照してください。 たい Internet Explorer のアドレス ボックスに目的の .NET Web サービスの URL を入力して、の末尾に/js を追加します。*
+> *>[!NOTE]生成された実際の JavaScript プロキシコードを表示するには、必要な .Net Web サービスの URL を Internet Explorer の [アドレス] ボックスに入力し、その末尾に js を追加します。*
 
-
-Web.config としてページに埋め込まれる JavaScript プロキシのデバッグ バージョンでのデバッグが有効になっている場合は、[次へ] を表示します。
+デバッグが有効になっている場合 web.config JavaScript プロキシのデバッグバージョンは、次のようにページに埋め込まれます。
 
 [!code-html[Main](understanding-asp-net-ajax-web-services/samples/sample15.html)]
 
-Scriptmanager コントロールによって作成された JavaScript プロキシもページに直接埋め込むことではなくを使用して参照、&lt;スクリプト&gt;タグの src 属性。 これは、true (既定値は false) に ServiceReference コントロールの InlineScript のプロパティを設定して実行できます。 これは、複数のページを使用して、サーバーへのネットワーク呼び出しの数を削減するには、プロキシが共有されていない場合に役立ちます。 ASP.NET AJAX アプリケーションで複数のページで、プロキシが使用されている場合、既定値は false がお勧めしますがブラウザーで InlineScript プロキシ スクリプトを true に設定した場合をキャッシュしません。 InlineScript プロパティを使用しての例は、次に示すは。
+ScriptManager によって作成された JavaScript プロキシは、 &lt; スクリプトタグの src 属性を使用して参照するのではなく、ページに直接埋め込むこともでき &gt; ます。 これを行うには、ServiceReference コントロールの InlineScript プロパティを true (既定値は false) に設定します。 これは、プロキシが複数のページで共有されておらず、サーバーに対して行われるネットワーク呼び出しの回数を減らす必要がある場合に便利です。 InlineScript が true に設定されている場合、プロキシスクリプトはブラウザーによってキャッシュされないため、ASP.NET AJAX アプリケーションの複数のページでプロキシが使用されている場合は、既定値の false を使用することをお勧めします。 InlineScript プロパティの使用例を次に示します。
 
 [!code-aspx[Main](understanding-asp-net-ajax-web-services/samples/sample16.aspx)]
 
-## <a name="using-javascript-proxies"></a>JavaScript プロキシを使用します。
+## <a name="using-javascript-proxies"></a>JavaScript プロキシの使用
 
-Web サービスが ScriptManager コントロールを使用して、ASP.NET AJAX ページによって参照され、Web サービスへの呼び出しができるコールバック関数を使用して、返されるデータを処理できます。 Web サービスは、(存在する場合は、その名前空間を参照する、クラス名、および Web メソッド名によって呼び出されます。 返されるデータを処理するコールバック関数と共に、Web サービスに渡されるパラメーターを定義できます。
+ScriptManager コントロールを使用して ASP.NET AJAX ページによって Web サービスが参照されると、Web サービスに対して呼び出しを行うことができ、返されたデータはコールバック関数を使用して処理できます。 Web サービスは、名前空間 (存在する場合)、クラス名、および Web メソッド名を参照することによって呼び出されます。 Web サービスに渡されるすべてのパラメーターは、返されたデータを処理するコールバック関数と共に定義できます。
 
-GetCustomersByCountry() という名前の Web メソッドを呼び出す JavaScript プロキシを使用する例は、13 の一覧に示します。 GetCustomersByCountry() 関数は、エンドユーザーが、ページ上のボタンをクリックしたときに呼び出されます。
+JavaScript プロキシを使用して GetCustomersByCountry () という名前の Web メソッドを呼び出す例については、一覧13を参照してください。 GetCustomersByCountry () 関数は、エンドユーザーがページのボタンをクリックしたときに呼び出されます。
 
-**13 を一覧表示します。JavaScript プロキシを使用した Web サービスの呼び出し。**
+**リスト13。JavaScript プロキシを使用して Web サービスを呼び出す。**
 
 [!code-javascript[Main](understanding-asp-net-ajax-web-services/samples/sample17.js)]
 
-この呼び出しは InterfaceTraining 名前空間を参照、CustomersService クラスと GetCustomersByCountry Web メソッドは、サービスで定義します。 テキスト ボックスから取得した国の値だけでなく、非同期 Web サービス呼び出しが戻るときに呼び出す必要がある OnWSRequestComplete をという名前のコールバック関数が渡されます。 OnWSRequestComplete は、サービスから返された Customer オブジェクトの配列を処理し、ページに表示されるテーブルに変換します。 図 1 に、呼び出しから生成された出力が表示されます。
+この呼び出しは、サービスで定義されている InterfaceTraining 名前空間、顧客 Sservice クラス、および GetCustomersByCountry Web メソッドを参照します。 このメソッドは、テキストボックスから取得された国の値に加え、非同期 Web サービス呼び出しが返されたときに呼び出される必要がある OnWSRequestComplete という名前のコールバック関数を渡します。 OnWSRequestComplete は、サービスから返された顧客オブジェクトの配列を処理し、ページに表示されるテーブルに変換します。 呼び出しから生成された出力を図1に示します。
 
+[![Web サービスに対して非同期 AJAX 呼び出しを行うことによって取得されるバインディングデータ。](understanding-asp-net-ajax-web-services/_static/image2.png)](understanding-asp-net-ajax-web-services/_static/image1.png)
 
-[![Web サービスへの非同期 AJAX 呼び出しを行うことで取得されたデータをバインドします。](understanding-asp-net-ajax-web-services/_static/image2.png)](understanding-asp-net-ajax-web-services/_static/image1.png)
+**図 1**: Web サービスに対して非同期 AJAX 呼び出しを行うことによって取得されるバインディングデータ。  ([クリックすると、フルサイズの画像が表示](understanding-asp-net-ajax-web-services/_static/image3.png)される)
 
-**図 1**:Web サービスへの非同期 AJAX 呼び出しを行うことで取得されたデータをバインドします。  ([フルサイズの画像を表示する をクリックします](understanding-asp-net-ajax-web-services/_static/image3.png))。
+また、JavaScript プロキシでは、Web メソッドを呼び出す必要があるが、プロキシが応答を待たない場合に、Web サービスに対して一方向の呼び出しを行うこともできます。 たとえば、Web サービスを呼び出して、サービスからの戻り値を待機するのではなく、作業フローなどのプロセスを開始することができます。 一方向の呼び出しをサービスに対して行う必要がある場合、リスト13に示されているコールバック関数は単に省略できます。 コールバック関数が定義されていないため、プロキシオブジェクトは、Web サービスがデータを返すまで待機しません。
 
+## <a name="handling-errors"></a>エラーの処理
 
-JavaScript プロキシは、Web メソッドを呼び出す必要がありますが、プロキシは、応答を待つべきではない場合に Web サービスへの一方向の呼び出しをこともできます。 たとえば、作業フローなどのプロセスの開始が、サービスからの戻り値を待たずに、Web サービスを呼び出したい場合があります。 一方向の呼び出しがサービスにする必要がある場合、リスト 13 に示すように、コールバック関数を単に省略できます。 コールバック関数が定義されていないため、プロキシ オブジェクト データを返す Web サービスは待機しません。
+Web サービスへの非同期コールバックでは、ネットワークがダウンしている、Web サービスが使用できない、または例外が返されているなど、さまざまな種類のエラーが発生する可能性があります。 しかし、ScriptManager によって生成された JavaScript プロキシオブジェクトでは、前に示した成功コールバックに加えて、エラーやエラーを処理するために複数のコールバックを定義することができます。 エラーコールバック関数は、リスト14に示されているように、Web メソッドの呼び出しで標準のコールバック関数の直後に定義できます。
 
-## <a name="handling-errors"></a>エラー処理
-
-Web サービスへの非同期コールバックには、さまざまな種類の Web サービスが利用できないか、例外が返されるダウンされているネットワークなどのエラーが発生する可能性が。 さいわい、scriptmanager コントロールによって生成された JavaScript プロキシ オブジェクトは、エラーと前に示した成功のコールバックだけでなく、障害を処理するために定義する複数のコールバックを許可します。 14 の一覧で示すように、Web メソッドの呼び出しで標準的なコールバック関数の後にすぐに、コールバック関数がエラーを定義できます。
-
-**14 を一覧表示します。エラーのコールバック関数を定義して、エラーを表示します。**
+**リスト14。エラーコールバック関数を定義し、エラーを表示しています。**
 
 [!code-javascript[Main](understanding-asp-net-ajax-web-services/samples/sample18.js)]
 
-Web サービスが呼び出されたときに発生したエラーをパラメーターとしてエラーを表すオブジェクトを受け取りますが呼び出される OnWSRequestFailed() コールバック関数がトリガーされます。 エラー オブジェクトは、呼び出しがタイムアウトしたかどうかも、エラーの原因を特定するさまざまな機能を公開します。別のエラー関数を使用しての例を示します 14 を一覧表示して、図 2 は、関数によって生成される出力の例を示します。
+Web サービスが呼び出されたときに発生したエラーが発生すると、エラーを表すオブジェクトをパラメーターとして受け取る OnWSRequestFailed () コールバック関数が呼び出されます。 Error オブジェクトは、エラーの原因、および呼び出しがタイムアウトしたかどうかを判断するために、いくつかの異なる関数を公開します。一覧14は、さまざまなエラー関数の使用例を示しています。図2は、関数によって生成される出力の例を示しています。
 
+[![ASP.NET AJAX エラー関数を呼び出すことによって生成される出力。](understanding-asp-net-ajax-web-services/_static/image5.png)](understanding-asp-net-ajax-web-services/_static/image4.png)
 
-[![ASP.NET AJAX エラー関数を呼び出すことによって生成された出力。](understanding-asp-net-ajax-web-services/_static/image5.png)](understanding-asp-net-ajax-web-services/_static/image4.png)
+**図 2**: ASP.NET AJAX エラー関数を呼び出すことによって生成される出力。  ([クリックすると、フルサイズの画像が表示](understanding-asp-net-ajax-web-services/_static/image6.png)される)
 
-**図 2**:ASP.NET AJAX エラー関数を呼び出すことによって生成された出力。  ([フルサイズの画像を表示する をクリックします](understanding-asp-net-ajax-web-services/_static/image6.png))。
+## <a name="handling-xml-data-returned-from-a-web-service"></a>Web サービスから返される XML データの処理
 
+前に、ScriptMethod 属性と ResponseFormat プロパティを使用して、Web メソッドが生の XML データを返す方法について説明しました。 ResponseFormat が ResponseFormat.Xml に設定されている場合、Web サービスから返されたデータは JSON ではなく XML としてシリアル化されます。 これは、JavaScript または XSLT を使用して処理するために、XML データをクライアントに直接渡す必要がある場合に便利です。 現在のところ、Internet Explorer 5 以降では、MSXML の組み込みサポートにより、XML データの解析とフィルター処理に最適なクライアント側オブジェクトモデルが提供されています。
 
-## <a name="handling-xml-data-returned-from-a-web-service"></a>Web サービスから返された XML データの処理
+Web サービスから XML データを取得することは、他のデータ型を取得することと同じです。 まず、JavaScript プロキシを呼び出して適切な関数を呼び出し、コールバック関数を定義します。 呼び出しが返されたら、コールバック関数でデータを処理できます。
 
-以前、Web メソッドがその ResponseFormat プロパティと共に ScriptMethod 属性を使用して生の XML データを返すことができる方法を説明しました。 ResponseFormat が ResponseFormat.Xml に設定されている場合、Web サービスから返されるデータは JSON ではなく XML としてシリアル化します。 これは、XML データは、JavaScript または XSLT を使用して処理するために、クライアントに直接渡される必要がある場合に役立ちます。 現在の時間には、Internet Explorer 5 以降は、解析と MSXML の組み込みサポートのための XML データをフィルター処理の最適なクライアント側オブジェクト モデルを提供します。
+リスト15は、XmlElement オブジェクトを返す GetRssFeed () という名前の Web メソッドを呼び出す例を示しています。 GetRssFeed () は、取得する RSS フィードの URL を表す1つのパラメーターを受け取ります。
 
-Web サービスから XML データの取得は、他のデータ型を取得するよりも同じです。 適切な関数を呼び出すし、コールバック関数を定義する JavaScript プロキシを呼び出すことで開始します。 呼び出しから戻ると、コールバック関数でデータを処理できます。
-
-15 を一覧表示するには、XmlElement オブジェクトを返す GetRssFeed() をという名前の Web メソッドを呼び出す例については示しています。 GetRssFeed() では、RSS フィードを取得するための URL を表す 1 つのパラメーターを受け入れます。
-
-**15 を一覧表示します。Web サービスから返された XML データを操作します。**
+**リスト15。Web サービスから返される XML データを操作する。**
 
 [!code-html[Main](understanding-asp-net-ajax-web-services/samples/sample19.html)]
 
-この例では、RSS フィードに URL を渡し、OnWSRequestComplete() 関数で返された XML データを処理します。 OnWSRequestComplete() は、まず、ブラウザーが Internet Explorer、MSXML パーサーが使用できるかどうかを把握するかどうかを確認します。 すべての検索に XPath ステートメントを使用する場合は、&lt;項目&gt;RSS フィード内のタグ。 各項目が反復と、関連付けられた&lt;タイトル&gt;と&lt;リンク&gt;タグがあるし、各項目のデータを表示するために処理します。 図 3 は、ASP.NET AJAX が GetRssFeed() Web メソッドに JavaScript プロキシ経由の呼び出しを行うから生成された出力の例を示します。
+この例では、RSS フィードに URL を渡し、OnWSRequestComplete () 関数で返された XML データを処理します。 OnWSRequestComplete () は、最初にブラウザーが Internet Explorer であるかどうかを確認し、MSXML パーサーが使用可能かどうかを確認します。 の場合、XPath ステートメントを使用して &lt; RSS フィード内のすべての項目タグを検索 &gt; します。 各項目は反復処理され、関連付けられている &lt; タイトル &gt; と &lt; リンク &gt; タグが配置され、各項目のデータが表示されます。 図3は、JavaScript プロキシ経由で GetRssFeed () Web メソッドに ASP.NET AJAX 呼び出しを行うことによって生成される出力の例を示しています。
 
 ## <a name="handling-complex-types"></a>複合型の処理
 
-承認されるか、Web サービスによって返される、複合型は、JavaScript プロキシを自動的に公開されます。 ただし、既に説明したようにサービスに GenerateScriptType 属性が適用される場合を除き、入れ子になった複合型はクライアント側で直接アクセスできません。 クライアント側で入れ子になった複合型を使用する理由はしますか。
+Web サービスによって受け入れられるか返される複合型は、JavaScript プロキシを介して自動的に公開されます。 ただし、入れ子になった複合型は、前に説明したように、サービスに対して、型の属性が適用されていない限り、クライアント側で直接アクセスすることはできません。 クライアント側で入れ子になった複合型を使用するのはなぜですか。
 
-この質問に答える、ASP.NET AJAX ページが顧客データが表示され、エンドユーザーが顧客の住所を更新することを想定しています。 Web サービスでは、アドレスの種類 (CustomerDetails クラス内で定義された複合型) をクライアントに送信できることを指定する場合、更新プロセスはより優れたコードの再利用の個別の関数に分割できます。
+この質問に答えるには、ASP.NET AJAX ページに顧客データが表示され、エンドユーザーが顧客の住所を更新できるようにすることを前提としています。 Web サービスで、アドレスの種類 (たとえば、顧客の詳細クラスで定義されている複合型) をクライアントに送信できることが指定されている場合、更新プロセスを別の関数に分割して、コードを再利用しやすくすることができます。
 
+[![RSS データを返す Web サービスを呼び出すことによって作成される出力。](understanding-asp-net-ajax-web-services/_static/image8.png)](understanding-asp-net-ajax-web-services/_static/image7.png)
 
-[![出力から RSS データを返す Web サービスの呼び出しを作成します。](understanding-asp-net-ajax-web-services/_static/image8.png)](understanding-asp-net-ajax-web-services/_static/image7.png)
+**図 3**: RSS データを返す Web サービスを呼び出すことによって生成される出力。  ([クリックすると、フルサイズの画像が表示](understanding-asp-net-ajax-web-services/_static/image9.png)される)
 
-**図 3**:出力から RSS データを返す Web サービスの呼び出しを作成します。  ([フルサイズの画像を表示する をクリックします](understanding-asp-net-ajax-web-services/_static/image9.png))。
+一覧16は、モデル名前空間で定義されたアドレスオブジェクトを呼び出すクライアント側コードの例を示しています。この例では、更新されたデータを格納し、それを顧客詳細オブジェクトの Address プロパティに割り当てています。 次に、[顧客の詳細] オブジェクトが Web サービスに渡され、処理されます。
 
-
-16 を一覧表示するには、モデルの名前空間で定義されているアドレス オブジェクトを呼び出すクライアント側コードの例は、更新されたデータを読み込み、CustomerDetails オブジェクトのアドレスのプロパティに割り当てられますが表示されます。 CustomerDetails オブジェクトは、処理し、Web サービスに渡されます。
-
-**16 を一覧表示します。入れ子になった複合型の使用**
+**一覧 16.入れ子になった複合型の使用**
 
 [!code-javascript[Main](understanding-asp-net-ajax-web-services/samples/sample20.js)]
 
-## <a name="creating-and-using-page-methods"></a>作成して、ページ メソッドを使用します。
+## <a name="creating-and-using-page-methods"></a>ページメソッドの作成と使用
 
-Web サービスは、さまざまな ASP.NET AJAX ページを含むクライアントに再利用可能なサービスを公開する優れた方法を提供します。 ただし、ページが使用またはその他のページで共有されませんはこれまでデータを取得する必要がある場合があります。 ここでは、ページ データへのアクセスを許可する .asmx ファイルを作成するように思えるかもしれません過剰サービスが 1 つのページでのみ使用されるためです。
+Web サービスは、ASP.NET AJAX ページを含むさまざまなクライアントに対して、再利用可能なサービスを公開する優れた方法を提供します。 ただし、ページが他のページで使用または共有されないデータを取得する必要がある場合もあります。 この場合、サービスは単一のページのみで使用されるため、.asmx ファイルを作成して、ページがデータにアクセスできるようにすることは過剰に思えるかもしれません。
 
-ASP.NET AJAX では、スタンドアロンの .asmx ファイルを作成しなくても Web サービスのような呼び出しを行うための別のメカニズムを提供します。 これは、「ページのメソッド」と呼ばれる手法を使用して行います。 ページ メソッドは、それらに適用された WebMethod 属性を持つように、ページやコード側ファイルに直接埋め込まれた静的 (VB.NET では shared) メソッドです。 WebMethod 属性を適用することで呼び出すことができますを取得、実行時に動的に作成された内容をという名前の特殊な JavaScript オブジェクトを使用します。 PageMethods オブジェクトは、JSON のシリアル化/逆シリアル化プロセスからユーザを保護するためのプロキシとして機能します。 PageMethods オブジェクトを使用するために設定することする必要があります、scriptmanager コントロールの EnablePageMethods プロパティを true に注意してください。
+ASP.NET AJAX には、スタンドアロンの .asmx ファイルを作成せずに、Web サービスのような呼び出しを行うための別のメカニズムが用意されています。 これを行うには、"ページメソッド" と呼ばれる手法を使用します。 ページメソッドは、WebMethod 属性が適用されているページまたはコード側ファイルに直接埋め込まれた静的な (VB.NET で共有される) メソッドです。 WebMethod 属性を適用することで、実行時に動的に作成される PageMethods という名前の特殊な JavaScript オブジェクトを使用して呼び出すことができます。 PageMethods オブジェクトは、JSON のシリアル化/逆シリアル化プロセスからのシールドを持つプロキシとして機能します。 PageMethods オブジェクトを使用するには、ScriptManager の EnablePageMethods プロパティを true に設定する必要があることに注意してください。
 
 [!code-aspx[Main](understanding-asp-net-ajax-web-services/samples/sample21.aspx)]
 
-17 を一覧表示する ASP.NET 分離コード クラスの 2 つのページ メソッドを定義する例を示します。 これらのメソッドは、アプリにあるビジネス層のクラスからデータを取得\_web サイトのコードのフォルダー。
+リスト17は、ASP.NET のコード側クラスで2つのページメソッドを定義する例を示しています。 これらのメソッドは、Web サイトのアプリコードフォルダーにあるビジネス層クラスからデータを取得 \_ します。
 
-**17 を一覧表示します。ページ メソッドを定義します。**
+**リスト17。ページメソッドを定義する。**
 
 [!code-csharp[Main](understanding-asp-net-ajax-web-services/samples/sample22.cs)]
 
-Scriptmanager コントロールがページに Web メソッドの存在を検出したときは、前述の PageMethods オブジェクトへの動的参照を生成します。 Web メソッドを呼び出すと、後に、名前、メソッドを渡す必要があるために必要なパラメーター データの PageMethods クラスを参照することによって実現されます。 18 を一覧表示する前に示した 2 つのページ メソッドの呼び出しの例を示します。
+ScriptManager がページ内の Web メソッドの存在を検出すると、前に説明した PageMethods オブジェクトへの動的参照を生成します。 Web メソッドを呼び出すには、PageMethods クラスを参照し、その後にメソッドの名前、および渡す必要がある必要なパラメーターデータを参照します。 一覧18では、前に示した2つのページのメソッドを呼び出す例を示します。
 
-**18 を一覧表示します。ページ メソッドを呼び出す PageMethods JavaScript オブジェクトを使用します。**
+**リスト18。PageMethods JavaScript オブジェクトを使用したページメソッドの呼び出し。**
 
 [!code-javascript[Main](understanding-asp-net-ajax-web-services/samples/sample23.js)]
 
-PageMethods オブジェクトを使用することは、JavaScript プロキシ オブジェクトを使用してによく似ています。 最初に、すべてのページ メソッドに渡す必要があり、非同期呼び出しが戻るときに呼び出す必要があるコールバック関数を定義するパラメーターのデータを指定します。 エラーのコールバックを指定することも (障害の処理の例については 14 の一覧を参照してください)。
+PageMethods オブジェクトの使用は、JavaScript プロキシオブジェクトを使用する場合とよく似ています。 まず、page メソッドに渡す必要があるすべてのパラメーターデータを指定し、次に非同期呼び出しが返されたときに呼び出されるコールバック関数を定義します。 エラーのコールバックを指定することもできます (エラー処理の例については、一覧14を参照してください)。
 
-## <a name="the-autocompleteextender-and-the-aspnet-ajax-toolkit"></a>AutoCompleteExtender と ASP.NET AJAX Toolkit
+## <a name="the-autocompleteextender-and-the-aspnet-ajax-toolkit"></a>AutoCompleteExtender and ASP.NET AJAX Toolkit
 
-ASP.NET AJAX Toolkit (から使用可能な[ http://ajax.asp.net ](http://ajax.asp.net)) Web サービスへのアクセスに使用できるいくつかのコントロールを提供します。 具体的には、ツールキットがという名前の便利なコントロールを含む`AutoCompleteExtender`を使用して、Web サービスを呼び出すし、すべての JavaScript コードをまったく記述しなくても、ページ内のデータを表示できます。
+ASP.NET AJAX Toolkit (から入手可能) には、 [http://ajax.asp.net](http://ajax.asp.net) Web サービスへのアクセスに使用できるいくつかのコントロールが用意されています。 具体的には、ツールキットにはという名前の便利なコントロールが含まれてい `AutoCompleteExtender` ます。これを使用すると、JavaScript コードを記述することなく、Web サービスを呼び出したり、ページにデータを表示したりできます。
 
-テキスト ボックスの既存の機能を拡張して、ユーザーの詳細について簡単に探しているデータを見つけるには、AutoCompleteExtender コントロールを使用できます。 テキスト ボックスに入力するとき、コントロールが Web サービスを照会するために使用してテキスト ボックスの下の結果が動的に表示されます。 図 4 は、サポートのアプリケーションの顧客 id を表示する AutoCompleteExtender コントロールを使用する例を示します。 ように、テキスト ボックスに別の文字を入力すると、次の入力に基づいてさまざまな項目が表示されます。 ユーザーは、目的の顧客 id を選択できます。
+AutoCompleteExtender コントロールを使用すると、テキストボックスの既存の機能を拡張し、ユーザーが探しているデータをより簡単に見つけられるようにすることができます。 テキストボックスに入力すると、コントロールを使用して Web サービスのクエリを実行し、結果をテキストボックスの下に動的に表示できます。 図4は、AutoCompleteExtender コントロールを使用して、サポートアプリケーションの顧客 id を表示する例を示しています。 ユーザーがテキストボックスに別の文字を入力すると、入力に基づいて異なる項目がその下に表示されます。 ユーザーは目的の顧客 id を選択できます。
 
-ASP.NET AJAX ページ内で AutoCompleteExtender を使用するには、AjaxControlToolkit.dll アセンブリは、web サイトの bin フォルダーに追加する必要があります。 ツールキットのアセンブリが追加されると、コントロールが含まれていますが、アプリケーションのすべてのページを使用できるように、web.config で参照します。 Web.config のでは、次のタグを追加することによってこれできます&lt;コントロール&gt;タグ。
+ASP.NET AJAX ページ内で AutoCompleteExtender を使用するには、AjaxControlToolkit.dll アセンブリを Web サイトの bin フォルダーに追加する必要があります。 Toolkit アセンブリが追加されたら、それを web.config で参照して、アプリケーション内のすべてのページでこのツールキットに含まれるコントロールを使用できるようにします。 これを行うには、web.config の controls タグ内に次のタグを追加し &lt; &gt; ます。
 
 [!code-xml[Main](understanding-asp-net-ajax-web-services/samples/sample24.xml)]
 
-だけする必要がある特定のページでコントロールを使用する場合に、web.config の更新ではなく次のように、ページの上部に Reference ディレクティブを追加することで参照できます。
+特定のページでのみコントロールを使用する必要がある場合は、web.config を更新するのではなく、次に示すように、ページの上部に参照ディレクティブを追加することで参照できます。
 
 [!code-aspx[Main](understanding-asp-net-ajax-web-services/samples/sample25.aspx)]
 
-
 [![AutoCompleteExtender コントロールを使用します。](understanding-asp-net-ajax-web-services/_static/image11.png)](understanding-asp-net-ajax-web-services/_static/image10.png)
 
-**図 4**:AutoCompleteExtender コントロールを使用します。  ([フルサイズの画像を表示する をクリックします](understanding-asp-net-ajax-web-services/_static/image12.png))。
+**図 4**: AutoCompleteExtender コントロールの使用  ([クリックすると、フルサイズの画像が表示](understanding-asp-net-ajax-web-services/_static/image12.png)される)
 
+ASP.NET AJAX Toolkit を使用するように Web サイトを構成したら、通常の ASP.NET サーバーコントロールを追加するのと同じように、AutoCompleteExtender コントロールをページに追加できます。 リスト19は、コントロールを使用して Web サービスを呼び出す例を示しています。
 
-ASP.NET の AJAX Toolkit を使用して、web サイトを構成すると、AutoCompleteExtender コントロールを追加できますページにはるか通常の ASP.NET サーバー コントロールを追加する感覚です。 19 を一覧表示する Web サービスを呼び出すコントロールを使用する例を示します。
-
-**19 を一覧表示します。ASP.NET AJAX Toolkit AutoCompleteExtender コントロールを使用します。**
+**リスト19。ASP.NET AJAX Toolkit AutoCompleteExtender コントロールの使用。**
 
 [!code-aspx[Main](understanding-asp-net-ajax-web-services/samples/sample26.aspx)]
 
-AutoCompleteExtender には、サーバー コントロールの標準的な ID と runat プロパティを含むいくつかの異なるプロパティがあります。 これらに加えて、Web サービスの前に、エンド ユーザー型がデータの照会文字の数を定義するためです。 MinimumPrefixLength プロパティを一覧表示する 19 に示すようにすると、文字がテキスト ボックスに入力されるたびに呼び出されるサービス。 注意のテキスト ボックス内の文字に一致する値を検索する呼び出されるたびに、ユーザーが文字、Web サービスを入力するために、この値を設定します。 Web サービスを呼び出すと、ターゲット Web メソッドは、それぞれ、ServicePath および ServiceMethod プロパティを使用して定義されます。 最後に、TargetControlID プロパティは、どちらのテキスト ボックスにフックする AutoCompleteExtender コントロールを識別します。
+AutoCompleteExtender には、サーバーコントロールで検出された標準 ID や runat プロパティなど、いくつかの異なるプロパティがあります。 これらに加えて、Web サービスがデータを照会する前に、エンドユーザーが入力する文字数を定義することもできます。 リスト19に示されている MinimumPrefixLength を使用すると、テキストボックスに文字が入力されるたびにサービスが呼び出されます。 この値の設定は、ユーザーが文字を入力するたびに、テキストボックス内の文字と一致する値を検索するために Web サービスが呼び出されるため、慎重に設定する必要があります。 Web サービスとターゲット Web メソッドを呼び出す Web サービスは、それぞれ ServicePath プロパティと ServiceMethod プロパティを使用して定義されます。 最後に、TargetControlID プロパティは、AutoCompleteExtender コントロールをフックするテキストボックスを識別します。
 
-呼び出される Web サービスは既に説明したように適用された ScriptService 属性が必要し、ターゲットの Web メソッドが prefixText と数という 2 つのパラメーターを受け入れる必要があります。 PrefixText パラメーターは、エンドユーザーが入力した文字を表し、count パラメーターの値が返される項目の数を表します (既定値は 10)。 20 を一覧表示するには、19 の一覧の前半で示した AutoCompleteExtender コントロールによって呼び出された GetCustomerIDs Web メソッドの例は示しています。 Web メソッドをさらに呼び出し、データ層がデータをフィルター処理と一致する結果を返すを処理するメソッドをビジネス層のメソッドを呼び出します。 データ層のメソッドのコードは、21 の一覧に表示されます。
+前に説明したように、呼び出される Web サービスには ScriptService 属性が適用されている必要があります。また、対象の Web メソッドは prefixText と count という名前の2つのパラメーターを受け入れる必要があります。 PrefixText パラメーターは、エンドユーザーによって入力された文字を表し、count パラメーターは返される項目の数を表します (既定値は 10)。 リスト20は、前に示した AutoCompleteExtender コントロールによって呼び出された GetCustomerIDs Web メソッドの例を示しています。 Web メソッドは、ビジネス層のメソッドを呼び出します。このメソッドは、データのフィルター処理を処理し、照合結果を返すデータレイヤーメソッドを呼び出します。 データレイヤーメソッドのコードは、一覧21に示されています。
 
-**20 を一覧表示します。AutoCompleteExtender コントロールから送信されたデータをフィルター処理します。**
+**リスト20。AutoCompleteExtender コントロールから送信されたデータをフィルター処理します。**
 
 [!code-csharp[Main](understanding-asp-net-ajax-web-services/samples/sample27.cs)]
 
-**21 を一覧表示します。エンド ユーザー入力に基づいて結果をフィルター処理します。**
+**リスト21。エンドユーザーの入力に基づいて結果をフィルター処理します。**
 
 [!code-csharp[Main](understanding-asp-net-ajax-web-services/samples/sample28.cs)]
 
 ## <a name="conclusion"></a>まとめ
 
-ASP.NET AJAX は、大量の要求と応答メッセージを処理するカスタムの JavaScript コードを記述することがなく Web サービスを呼び出すための優れたサポートを提供します。 この記事で説明した JSON メッセージを処理および、ScriptManager コントロールを使用して JavaScript プロキシを定義する方法を有効にする .NET Web サービスを AJAX を有効にする方法。 Web サービスを呼び出すにはプロキシを使用できる JavaScript の単純および複雑な型を処理およびエラーが処理も説明しました。 最後に、ページ メソッドを使用して、作成、および Web サービス呼び出しのプロセスを簡略化する方法と AutoCompleteExtender コントロールできるようにする最後のユーザーにヘルプを入力するときに説明しました。 ASP.NET AJAX で使用可能な UpdatePanel はその簡潔さのための多くの AJAX プログラマのための任意のコントロールできますが確かに、JavaScript プロキシ経由の Web サービスを呼び出す方法を知ることは多くのアプリケーションで役に立ちます。
+ASP.NET AJAX は、要求メッセージと応答メッセージを処理するための多数のカスタム JavaScript コードを記述することなく、Web サービスを呼び出すための優れたサポートを提供します。 この記事では、.NET Web サービスを使用して JSON メッセージを処理できるようにする方法と、ScriptManager コントロールを使用して JavaScript プロキシを定義する方法について説明しました。 また、JavaScript プロキシを使用して Web サービスを呼び出し、単純型と複合型を処理し、エラーに対処する方法についても説明しました。 最後に、ページメソッドを使用して、Web サービス呼び出しを作成および作成するプロセスを簡略化し、AutoCompleteExtender コントロールが入力時にエンドユーザーにヘルプを提供する方法について見てきました。 ASP.NET AJAX で利用できる UpdatePanel は、その単純さにより、多くの AJAX プログラマにとっては確実に選択できますが、JavaScript プロキシを介して Web サービスを呼び出す方法を理解することは、多くのアプリケーションで役に立ちます。
 
-## <a name="bio"></a>自己紹介
+## <a name="bio"></a>略歴
 
-Dan Wahlin (Microsoft Most Valuable Professional ASP.NET と XML Web サービス) は、技術トレーニングをインターフェイスで .NET の開発インストラクターとアーキテクチャ コンサルタント ([http://www.interfacett.com](http://www.interfacett.com))。 Dan は ASP.NET 開発者 Web サイトの XML を設立 ([www.XMLforASP.NET](http://www.XMLforASP.NET))、INETA の講演者の局に、いくつかのカンファレンスで講演しています。 Dan は、Professional Windows DNA (Wrox)、ASP.NET を共同執筆。ヒント、チュートリアルとコード (Sam)、ASP.NET 1.1 Insider ソリューション、Professional ASP.NET 2.0 AJAX (Wrox)、ASP.NET 2.0 の MVP ハックおよび ASP.NET 開発者向け (Sam) の XML を作成しました。 コード、記事や書籍を書き込んで彼がいない、ときに書き込み、音楽の録音およびゴルフと彼の妻と子供のバスケット ボールの再生 Dan を楽しんでいます。
+Dan Wahlin (ASP.NET と XML Web サービスの Microsoft の最も重要なプロフェッショナル) は、.NET 開発のインストラクターとアーキテクチャコンサルタントであり、インターフェイス技術トレーニング () を使用してい [http://www.interfacett.com](http://www.interfacett.com) ます。 XML for ASP.NET 開発者向け Web サイト ([www.XMLforASP.NET](http://www.XMLforASP.NET)) を設立した Dan は、Ineta スピーカーの事務局にあり、いくつかのカンファレンスで講演を行っています。 Dan 共同で作成された Professional Windows DNA (Wrox)、ASP.NET: ヒント、チュートリアルとコード (Sams)、ASP.NET 1.1 Insider ソリューション、Professional ASP.NET 2.0 AJAX (Wrox)、ASP.NET 2.0 MVP ハッキング、および ASP.NET 開発者向け XML の作成 (Sams)。 コード、記事、または書籍を書いていない人は、音楽を書いて録音し、妻や子供と共にゴルフやバスケットボールを楽しんでいます。
 
-1997 年からマイクロソフトの Web テクノロジで働いてあり myKB.com プレジデント、Scott Cate ([www.myKB.com](http://www.myKB.com)) ベースのナレッジ ベースのソフトウェア ソリューションに重点を置いてアプリケーションを ASP.NET の記述を専門としています。 Scott は時に電子メールが接続可能[ scott.cate@myKB.com ](mailto:scott.cate@myKB.com)またはで彼のブログ[ScottCate.com](http://ScottCate.com)
+Scott Cate は1997以来 Microsoft の Web テクノロジを使用しています。また、myKB.com ([www.myKB.com](http://www.myKB.com)) の大統領で、サポート技術情報のソフトウェアソリューションに重点を置いた ASP.NET ベースのアプリケーションを作成することを専門としています。 Scott は [scott.cate@myKB.com](mailto:scott.cate@myKB.com) 、 [ScottCate.com](http://ScottCate.com)で電子メールまたは彼のブログから連絡を受けることができます。
 
 > [!div class="step-by-step"]
 > [前へ](understanding-asp-net-ajax-localization.md)
