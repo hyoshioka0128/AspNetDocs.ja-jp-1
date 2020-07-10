@@ -1,6 +1,6 @@
 ---
 uid: mvc/overview/getting-started/introduction/adding-search
-title: 検索 |Microsoft Docs
+title: Search |Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: riande
@@ -8,69 +8,67 @@ ms.date: 01/17/2019
 ms.assetid: df001954-18bf-4550-b03d-43911a0ea186
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-search
 msc.type: authoredcontent
-ms.openlocfilehash: 7b49c1e6425080693229c6c132df3879504c835c
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: f6d6d32a648fed453be924790a1b55698c9cf209
+ms.sourcegitcommit: 0d583ed9253103f3e50b6d729276e667591cdd41
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59379535"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86211468"
 ---
 # <a name="search"></a>検索
 
+[!INCLUDE [Tutorial Note](index.md)]
 
-[!INCLUDE [Tutorial Note](sample/code-location.md)]
+## <a name="adding-a-search-method-and-search-view"></a>検索メソッドと検索ビューの追加
 
-## <a name="adding-a-search-method-and-search-view"></a>Search メソッドとの検索ビューを追加します。
+このセクションで `Index` は、ジャンルまたは名前で映画を検索できるように、アクションメソッドに検索機能を追加します。
 
-このセクションでは、検索機能を追加します、`Index`できるようにするアクション メソッドがムービーをジャンルで名前を検索します。
+## <a name="prerequisites"></a>前提条件
 
-## <a name="prerequisites"></a>必須コンポーネント
-
-このセクションのスクリーン ショットを一致させるのには、(f5 キーを押して) アプリケーションを実行し、データベースに次の動画を追加する必要があります。
+このセクションのスクリーンショットを照合するには、アプリケーション (F5) を実行し、次のムービーをデータベースに追加する必要があります。
 
 | タイトル | リリース日 | Genre | 価格 |
 | ----- | ------------ | ----- | ----- |
 | Ghostbusters | 6/8/1984 | コメディ | 6.99 |
 | Ghostbusters II | 6/16/1989 | コメディ | 6.99 |
-| Apes の地球 | 3/27/1986 | アクション | 5.99 |
+| Apes | 3/27/1986 | アクション | 5.99 |
 
+## <a name="updating-the-index-form"></a>インデックスフォームの更新
 
-## <a name="updating-the-index-form"></a>インデックスのフォームを更新しています
-
-更新することで開始、`Index`を既存のアクション メソッド`MoviesController`クラス。 次のコードに示します。
+まず、 `Index` 既存のクラスにアクションメソッドを更新し `MoviesController` ます。 コードは次のとおりです。
 
 [!code-csharp[Main](adding-search/samples/sample1.cs?highlight=1,6-9)]
 
-最初の行、`Index`メソッドは、次を作成します。 [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) 、ムービーを選択するクエリ。
+メソッドの1行目では、 `Index` 次の[LINQ](https://msdn.microsoft.com/library/bb397926.aspx)クエリを作成してムービーを選択します。
 
 [!code-csharp[Main](adding-search/samples/sample2.cs)]
 
-クエリでは、この時点では、定義されているが、まだデータベースに対して実行されていません。
+この時点でクエリが定義されていますが、データベースに対してまだ実行されていません。
 
-場合、`searchString`パラメーターには文字列が含まれています、ムービー クエリが、次のコードを使用して、検索文字列の値にフィルターを変更します。
+パラメーターに `searchString` 文字列が含まれている場合は、次のコードを使用して、検索文字列の値をフィルター処理するようにムービークエリが変更されます。
 
 [!code-csharp[Main](adding-search/samples/sample3.cs)]
 
-上の `s => s.Title` コードは[ラムダ式](https://msdn.microsoft.com/library/bb397687.aspx)です。 ラムダは、メソッド ベースで使用[LINQ](https://msdn.microsoft.com/library/bb397926.aspx)などの標準クエリ演算子メソッドの引数としてクエリ、[場所](https://msdn.microsoft.com/library/system.linq.enumerable.where.aspx)上記のコードで使用されるメソッド。 定義されているとき、またはなどのメソッドを呼び出すことによって変更されるときに LINQ クエリは実行されません`Where`または`OrderBy`します。 代わりに、クエリの実行は延期されます、つまり、その具体値が実際に反復されるまで、式の評価が遅れること、または[ `ToList` ](https://msdn.microsoft.com/library/bb342261.aspx)メソッドが呼び出されます。 `Search`サンプルでは、クエリがで実行、 *Index.cshtml*ビュー。 クエリの遅延実行の詳細については、「[クエリの実行](https://msdn.microsoft.com/library/bb738633.aspx)」を参照してください。
+上の `s => s.Title` コードは[ラムダ式](https://msdn.microsoft.com/library/bb397687.aspx)です。 ラムダは、メソッドベースの[LINQ](https://msdn.microsoft.com/library/bb397926.aspx)クエリで、上記のコードで使用される[Where](https://msdn.microsoft.com/library/system.linq.enumerable.where.aspx)メソッドなどの標準クエリ演算子メソッドの引数として使用されます。 LINQ クエリは、定義されている場合や、やなどのメソッドを呼び出すことによって変更された場合は実行されません `Where` `OrderBy` 。 代わりに、クエリの実行が遅延されます。つまり、式の評価は、その結果が実際に反復処理されるか、メソッドが呼び出されるまで遅延され [`ToList`](https://msdn.microsoft.com/library/bb342261.aspx) ます。 この `Search` サンプルでは、クエリは、 *cshtml*ビューで実行されます。 クエリの遅延実行の詳細については、「[クエリの実行](https://msdn.microsoft.com/library/bb738633.aspx)」を参照してください。
 
 > [!NOTE]
-> [Contains](https://msdn.microsoft.com/library/bb155125.aspx)メソッドが、データベースでは、c# コードではなく上で実行します。 データベースに対して、 [Contains](https://msdn.microsoft.com/library/bb155125.aspx)にマップ[SQL LIKE](https://msdn.microsoft.com/library/ms179859.aspx)、これは大文字と小文字を区別しません。
+> [Contains](https://msdn.microsoft.com/library/bb155125.aspx)メソッドは、上記の c# コードではなく、データベースで実行されます。 データベースでは、には、大文字と小文字を区別しない[SQL のような](https://msdn.microsoft.com/library/ms179859.aspx)マップ[が含まれてい](https://msdn.microsoft.com/library/bb155125.aspx)ます。
 
-更新することができますので、`Index`ユーザーに、フォームを表示するビュー。
+これで、フォームを `Index` 表示するビューをユーザーに更新できるようになりました。
 
-アプリケーションを実行しに移動します */ムービー/インデックス*します。 `?searchString=ghost` などのクエリ文字列を URL に追加します。 フィルターされたムービーが表示されます。
+アプリケーションを実行し、 */Movies/Index*に移動します。 `?searchString=ghost` などのクエリ文字列を URL に追加します。 フィルターされたムービーが表示されます。
 
-![SearchQryStr](adding-search/_static/image1.png)
+![Searchqrキルギスタン r](adding-search/_static/image1.png)
 
-シグネチャを変更する場合、`Index`メソッドという名前のパラメーターに`id`、`id`パラメーターが一致、`{id}`既定値のプレース ホルダーで一連のルーティング、*アプリ\_作成できます。RouteConfig.cs*ファイル。
+メソッドのシグネチャを `Index` 、という名前のパラメーターを持つように変更すると、パラメーターは、 `id` `id` `{id}` *App \_ Start\RouteConfig.cs*ファイルに設定されている既定のルートのプレースホルダーと一致します。
 
 [!code-json[Main](adding-search/samples/sample4.json)]
 
-元の`Index`次のようなメソッド。
+元のメソッドは次のようになります。 `Index`
 
 [!code-csharp[Main](adding-search/samples/sample5.cs)]
 
-変更された`Index`メソッドは次のようになります。
+変更後のメソッドは次のように `Index` なります。
 
 [!code-csharp[Main](adding-search/samples/sample6.cs?highlight=1,3)]
 
@@ -78,91 +76,91 @@ ms.locfileid: "59379535"
 
 ![](adding-search/_static/image2.png)
 
-ただし、ユーザーがムービーを検索するたびに URL の変更を求めることはできません。 そのため、ここでは UI を追加して、ムービーをフィルターできるようにします。 シグネチャを変更した場合、`Index`ルート バインド ID パラメーターを渡す方法をテストする方法を変更することができるように、`Index`という名前の文字列パラメーターを受け取ります`searchString`:
+ただし、ユーザーがムービーを検索するたびに URL の変更を求めることはできません。 そのため、ここでは UI を追加して、ムービーをフィルターできるようにします。 メソッドのシグネチャを変更して、 `Index` ルートバインド ID パラメーターを渡す方法をテストした場合は、 `Index` メソッドがという名前の文字列パラメーターを受け取るように、メソッドのシグネチャを変更し `searchString` ます。
 
 [!code-csharp[Main](adding-search/samples/sample7.cs)]
 
-開く、 *Views\Movies\Index.cshtml*ファイル、および後だけ`@Html.ActionLink("Create New", "Create")`、以下に示す形式のマークアップを追加します。
+*Views\Movies\Index.cshtml*ファイルを開き、の直後 `@Html.ActionLink("Create New", "Create")` に、下に強調表示されているフォームマークアップを追加します。
 
 [!code-cshtml[Main](adding-search/samples/sample8.cshtml?highlight=12-15)]
 
-`Html.BeginForm`ヘルパーの作成開始`<form>`タグ。 `Html.BeginForm`ヘルパーがユーザーをクリックして、フォームを送信すると、それ自体に投稿するためのフォーム、**フィルター**ボタンをクリックします。
+ヘルパーは、 `Html.BeginForm` 開始タグを作成し `<form>` ます。 ヘルパーを使うと、 `Html.BeginForm` ユーザーが [**フィルター** ] ボタンをクリックしてフォームを送信したときに、フォームがポストされます。
 
-Visual Studio 2013 では、表示およびファイルの表示を編集するときに便利な機能強化があります。 アプリケーションを実行するビュー ファイルを開き、Visual Studio 2013 は、ビューを表示する適切なコント ローラー アクション メソッドを呼び出します。
+ビューファイルを表示したり編集したりすると、Visual Studio 2013 の機能が向上します。 ビューファイルを開いた状態でアプリケーションを実行すると、Visual Studio 2013 によって正しいコントローラーアクションメソッドが呼び出され、ビューが表示されます。
 
 ![](adding-search/_static/image3.png)
 
-インデックス ビュー (上記の図で示す) のように、Visual Studio で開く、Ctr f5 キーまたは f5 キーを押してアプリケーションを実行してから、ムービーを検索 をタップします。
+(上の図に示されているように) Visual Studio でインデックスビューを開いた状態で、Ctr F5 キーまたは F5 キーをタップしてアプリケーションを実行し、ムービーを検索します。
 
 ![](adding-search/_static/image4.png)
 
-ない`HttpPost`のオーバー ロード、`Index`メソッド。 不要になった、メソッドは、アプリケーションの状態を変更されていないため、データをフィルターするだけです。
+`HttpPost`メソッドのオーバーロードはありません `Index` 。 メソッドはアプリケーションの状態を変更せず、データをフィルター処理するだけなので、必要ありません。
 
-以下の `HttpPost Index` メソッドを追加できます。 その場合は、アクション呼び出し元が一致、`HttpPost Index`メソッド、および`HttpPost Index`メソッドは、次の図に示すように実行が。
+以下の `HttpPost Index` メソッドを追加できます。 この場合、アクション呼び出し元はメソッドと一致 `HttpPost Index` し、メソッドは次の図のように実行され `HttpPost Index` ます。
 
 [!code-csharp[Main](adding-search/samples/sample9.cs)]
 
 ![SearchPostGhost](adding-search/_static/image5.png)
 
-ただし、この `HttpPost` バージョンの `Index` メソッドを追加しても、実装方法は制限されます。 たとえば、特定の検索をブックマークするか、友だちにリンクを送信し、友だちがそれをクリックしてムービーのフィルターされた同じリストを表示できるようにするとします。 HTTP POST 要求の URL は、GET 要求 (localhost:xxxxx/ムービー/インデックス) の URL と同じ--、URL 自体で検索情報がないことに注意してください。 右ここで、検索文字列の情報がサーバーに送信、フォーム フィールドの値として。 つまり、ブックマークまたは URL で友人に送信するには、その検索情報をキャプチャすることはできません。
+ただし、この `HttpPost` バージョンの `Index` メソッドを追加しても、実装方法は制限されます。 たとえば、特定の検索をブックマークするか、友だちにリンクを送信し、友だちがそれをクリックしてムービーのフィルターされた同じリストを表示できるようにするとします。 HTTP POST 要求の URL は、GET 要求の URL (localhost: xxxxx/映画/インデックス) と同じであることに注意してください。 URL 自体には検索情報がありません。 現在、検索文字列の情報は、フォームフィールド値としてサーバーに送信されます。 つまり、URL でブックマークや友人に送信するために、その検索情報をキャプチャすることはできません。
 
-ソリューションは、のオーバー ロードを使用する`BeginForm`POST 要求が URL に検索情報を追加する必要がありにルーティングする必要がありますを指定する、`HttpGet`のバージョン、`Index`メソッド。 既存のパラメーターのない`BeginForm`メソッドを次のマークアップ。
+このソリューションでは、 `BeginForm` POST 要求で URL に検索情報を追加し、メソッドのバージョンにルーティングする必要があることを指定するのオーバーロードを使用し `HttpGet` `Index` ます。 既存のパラメーターなしの `BeginForm` メソッドを次のマークアップに置き換えます。
 
 [!code-cshtml[Main](adding-search/samples/sample10.cshtml)]
 
 ![BeginFormPost_SM](adding-search/_static/image6.png)
 
-今すぐ検索を送信するときに、URL には検索のクエリ文字列が含まれます。 `HttpPost Index` メソッドがある場合でも、検索時には `HttpGet Index` アクション メソッドにも移動します。
+これで、検索を送信するときに、URL に検索クエリ文字列が含まれています。 `HttpPost Index` メソッドがある場合でも、検索時には `HttpGet Index` アクション メソッドにも移動します。
 
 ![IndexWithGetURL](adding-search/_static/image7.png)
 
 ## <a name="adding-search-by-genre"></a>ジャンルによる検索の追加
 
-追加した場合、`HttpPost`のバージョン、`Index`メソッド、今すぐ削除しています。
+メソッドのバージョンを追加した場合は `HttpPost` `Index` 、ここで削除します。
 
-次に、ユーザーがムービー ジャンルによる検索できるようにするための機能を追加します。 `Index` メソッドを次のコードで置き換えます。
+次に、ユーザーがジャンルで映画を検索できるようにする機能を追加します。 `Index` メソッドを次のコードに置き換えます。
 
 [!code-csharp[Main](adding-search/samples/sample11.cs)]
 
-このバージョンの`Index`メソッドは、追加のパラメーターが namely`movieGenre`します。 最初の数行のコードを作成、`List`データベースからムービー ジャンルを保持するオブジェクト。
+このバージョンの `Index` メソッドは、追加のパラメーターを受け取り `movieGenre` ます。 最初の数行のコードでは、 `List` データベースからムービーのジャンルを保持するオブジェクトを作成します。
 
 次のコードは、データベースからすべてのジャンルを取得する LINQ クエリです。
 
 [!code-csharp[Main](adding-search/samples/sample12.cs)]
 
-コードを使用して、`AddRange`メソッドがジェネリックの`List`個々 のすべてのジャンルを一覧に追加するコレクション。 (なし、`Distinct`修飾子は、重複するジャンルが追加されます: たとえば、コメディ サンプルでは 2 回追加されます)。 コードでジャンルのリストを格納し、`ViewBag.MovieGenre`オブジェクト。 カテゴリ データ (このようなムービー ジャンル) として格納する、 [SelectList](https://msdn.microsoft.cus/library/system.web.mvc.selectlist(v=vs.108).aspx)オブジェクト、 `ViewBag`、MVC アプリケーションの一般的なアプローチには、ドロップダウン ボックスでカテゴリ データにアクセスします。
+このコードでは、ジェネリックコレクションのメソッドを使用して、 `AddRange` `List` リストにすべての個別のジャンルを追加します。 (修飾子を指定しないと `Distinct` 、重複するジャンルが追加されます。たとえば、サンプルではコメディが2回追加されます)。 次に、このコードでは、オブジェクトにジャンルの一覧を格納し `ViewBag.MovieGenre` ます。 カテゴリデータ (ムービーのジャンルなど) を内の[Selectlist](https://msdn.microsoft.cus/library/system.web.mvc.selectlist(v=vs.108).aspx)オブジェクトとして格納した `ViewBag` 後、ドロップダウンリストボックスでカテゴリデータにアクセスすることは、MVC アプリケーションの一般的な方法です。
 
-次のコードを確認する方法を示しています、`movieGenre`パラメーター。 空ではない、コードをさらには、指定されたジャンルを選択したムービーを制限するムービーのクエリを制約します。
+次のコードは、パラメーターを確認する方法を示して `movieGenre` います。 空でない場合は、選択したムービーが指定したジャンルに限定されるように、ムービークエリがさらに制限されます。
 
 [!code-csharp[Main](adding-search/samples/sample13.cs)]
 
-既に説明したように、クエリで実行していないデータベース ムービー リストが反復処理されるまで (後のビューで動作する、`Index`アクション メソッドを返します)。
+前述のように、クエリは、ムービーリストが反復処理されるまで、データベースでは実行されません (アクションメソッドが返された後、ビューで発生し `Index` ます)。
 
-## <a name="adding-markup-to-the-index-view-to-support-search-by-genre"></a>ジャンルによる検索をサポートするために、インデックス ビューにマークアップを追加します。
+## <a name="adding-markup-to-the-index-view-to-support-search-by-genre"></a>ジャンルによる検索をサポートするためにマークアップをインデックスビューに追加する
 
-追加、`Html.DropDownList`ヘルパーが、 *Views\Movies\Index.cshtml*直前に、ファイル、`TextBox`ヘルパー。 完成したマークアップは、以下に示します。
+ヘルパーを `Html.DropDownList` ヘルパーの直前に*Views\Movies\Index.cshtml*ファイルに追加し `TextBox` ます。 完成したマークアップは次のようになります。
 
 [!code-cshtml[Main](adding-search/samples/sample14.cshtml?highlight=11)]
 
-次のコード。
+次のコードの内容は以下のとおりです。
 
 [!code-cshtml[Main](adding-search/samples/sample15.cshtml)]
 
-パラメーター"MovieGenre"キーを提供する、`DropDownList`を検索するためのヘルパーを`IEnumerable<SelectListItem>`で、`ViewBag`します。 `ViewBag`がアクション メソッドで設定されます。
+パラメーター "Mo参照 Genre" は、でを検索するためのヘルパーのキーを提供し `DropDownList` `IEnumerable<SelectListItem>` `ViewBag` ます。 は、 `ViewBag` アクションメソッドで設定されました。
 
 [!code-csharp[Main](adding-search/samples/sample16.cs?highlight=10)]
 
-オプション ラベルは、"All"パラメーター。 お使いのブラウザーでその選択を検査する場合、"value"属性が空であることがわかります。 コント ローラーのみがフィルターから`if`文字列ではありません`null`または空の値を送信する、空`movieGenre`すべてのジャンルを示しています。
+パラメーター "All" は、オプションラベルを提供します。 ブラウザーでその選択肢を調べると、"value" 属性が空であることがわかります。 コントローラーによってフィルター処理されるのは、 `if` 文字列がで `null` も空でもないため、空の値を送信するとすべてのジャンルが表示され `movieGenre` ます。
 
-既定で選択するオプションを設定することもできます。 コント ローラーのコードを変更すると、既定のオプションとして「コメディ」場合は、次のようにします。
+オプションを既定で選択するように設定することもできます。 既定のオプションとして "コメディ" が必要な場合は、コントローラーのコードを次のように変更します。
 
 [!code-cshtml[Main](adding-search/samples/sample17.cshtml)]
 
-アプリケーションを実行しを参照する */ムービー/インデックス*します。 ジャンル、映画の名称、および両方の条件は、検索を実行してください。
+アプリケーションを実行し、 */Movies/Index*に移動します。 ジャンル、映画名、両方の条件で検索を試してみてください。
 
 ![](adding-search/_static/image8.png)
 
-このセクションでは、検索アクション メソッドとユーザーがムービーのタイトルとジャンルで検索できるようにするビューを作成します。 次のセクションでは、プロパティを追加する方法について説明します、`Movie`モデルおよびテスト データベースが自動的に作成するには初期化子を追加する方法。
+このセクションでは、ユーザーがムービーのタイトルとジャンルで検索できるようにする検索アクションメソッドとビューを作成しました。 次のセクションでは、モデルにプロパティを追加する方法 `Movie` と、テストデータベースを自動的に作成する初期化子を追加する方法について説明します。
 
 > [!div class="step-by-step"]
 > [前へ](examining-the-edit-methods-and-edit-view.md)
