@@ -8,12 +8,12 @@ ms.date: 12/18/2012
 ms.assetid: 71ee4c78-c500-4d1c-b761-b4e161a291b5
 msc.legacyurl: /web-api/overview/security/integrated-windows-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: e4f31f191f3c0fabff308ea5dadb0f1d9ce7d448
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: c5fe57c4a20e28fa434659a75484e3a4c37195f8
+ms.sourcegitcommit: 000cbcd1de66fe8a766f203ef2d6f009e4435f53
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78504208"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86424783"
 ---
 # <a name="integrated-windows-authentication"></a>統合 Windows 認証
 
@@ -23,12 +23,14 @@ ms.locfileid: "78504208"
 
 | 長所 | 短所 |
 | --- | --- |
-| -IIS に組み込まれています。 -要求にユーザー資格情報を送信しません。 -クライアントコンピューターがドメイン (イントラネットアプリケーションなど) に属している場合、ユーザーは資格情報を入力する必要はありません。 | -インターネットアプリケーションには推奨されません。 -クライアントで Kerberos または NTLM のサポートが必要です。 -クライアントは Active Directory ドメインに存在する必要があります。 |
+| IIS に組み込まれています。 | インターネットアプリケーションには推奨されません。 | 
+| は、要求にユーザー資格情報を送信しません。 | クライアントで Kerberos または NTLM のサポートが必要です。 |
+| クライアントコンピューターがドメイン (たとえば、イントラネットアプリケーション) に属している場合、ユーザーは資格情報を入力する必要はありません。 | クライアントは Active Directory ドメインに存在する必要があります。 |
 
 > [!NOTE]
 > アプリケーションが Azure でホストされていて、オンプレミスの Active Directory ドメインがある場合は、オンプレミスの AD と Azure Active Directory をフェデレーションすることを検討してください。 そうすることで、ユーザーはオンプレミスの資格情報を使用してログインできますが、認証は Azure AD によって実行されます。 詳細については、「 [Azure 認証](../../../visual-studio/overview/2012/windows-azure-authentication.md)」を参照してください。
 
-統合 Windows 認証を使用するアプリケーションを作成するには、MVC 4 プロジェクトウィザードで [イントラネットアプリケーション] テンプレートを選択します。 このプロジェクトテンプレートは、web.config ファイルに次の設定を格納します。
+統合 Windows 認証を使用するアプリケーションを作成するには、MVC 4 プロジェクトウィザードで [イントラネットアプリケーション] テンプレートを選択します。 このプロジェクトテンプレートは、Web.config ファイルに次の設定を格納します。
 
 [!code-xml[Main](integrated-windows-authentication/samples/sample1.xml)]
 
