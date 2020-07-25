@@ -85,7 +85,7 @@ ms.locfileid: "78447616"
 
 3. WebClient アプリをローカルで実行するか、別の web サイトに発行します。
 
-[試してみる] ボタンをクリックすると、ドロップダウンボックスに表示されている HTTP メソッド (GET、POST、または PUT) を使用して、AJAX 要求が WebService アプリに送信されます。 これにより、さまざまなクロスオリジン要求を調べることができます。 現在、WebService アプリでは CORS がサポートされていないため、ボタンをクリックするとエラーが発生します。
+[Try it] ボタンをクリックすると、ドロップダウンボックスに表示されている HTTP メソッド (GET、POST、または PUT) を使用して、AJAX 要求が WebService アプリに送信されます。 これにより、さまざまなクロスオリジン要求を調べることができます。 現在、WebService アプリでは CORS がサポートされていないため、ボタンをクリックするとエラーが発生します。
 
 ![ブラウザーで ' Try it ' エラーが発生しています](enabling-cross-origin-requests-in-web-api/_static/image7.png)
 
