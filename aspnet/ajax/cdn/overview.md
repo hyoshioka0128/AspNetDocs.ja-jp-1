@@ -8,12 +8,12 @@ ms.date: 10/14/2017
 ms.assetid: 8935bf14-ca6d-4a4e-9dbe-b96ce74cef49
 msc.legacyurl: /ajax/cdn
 msc.type: content
-ms.openlocfilehash: 58e2d62da2181108f34bbf3e1e948977241e1dee
-ms.sourcegitcommit: b3c0e67bb231dbb0db9e8dfccd51cf715481edcc
+ms.openlocfilehash: 9eebe0e52af2a0fca967a51afb58c7db174d9fdb
+ms.sourcegitcommit: feb88edfb01b32f6fc9488f0f0ddb3c5b34e6ff0
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88161358"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88702921"
 ---
 # <a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax Content Delivery Network
 
@@ -22,7 +22,7 @@ ms.locfileid: "88161358"
 >
 > Microsoft Ajax CDN には、Azure CDN を超える SLA はありません。
 >
-> Microsoft Ajax CDN に関する問題を報告するには、[この GitHub の問題](https://github.com/dotnet/AspNetDocs/issues/116)を使用します。
+> Microsoft Ajax CDN に関する問題を報告するには、 [この GitHub の問題](https://github.com/dotnet/AspNetDocs/issues/116) を使用します。
 
 ## <a name="table-of-contents"></a>目次
 
@@ -48,7 +48,7 @@ ms.locfileid: "88161358"
  [CDN でのリリースの応答](#Respond_Releases_on_the_CDN_13)  
  [CDN でのブートストラップリリース](#Bootstrap_Releases_on_the_CDN_14)  
  [CDN でのブートストラップ TouchCarousel のリリース](#BootstrapTouchCarousel_Releases_on_the_CDN_18)  
- [CDN でのHammer.js リリース](#Hammerjs_Releases_on_the_CDN_19)  
+ [ CDN でのHammer.js リリース](#Hammerjs_Releases_on_the_CDN_19)  
  [CDN での ASP.NET Web フォームと Ajax リリース](#ASPNET_Web_Forms_and_Ajax_Releases_on_the_CDN_15)  
  [CDN での ASP.NET MVC リリース](#ASPNET_MVC_Releases_on_the_CDN_16)  
  [CDN での ASP.NET SignalR リリース](#ASPNET_SignalR_Releases_on_the_CDN_17)
@@ -84,8 +84,8 @@ JavaScript ライブラリを送信する場合は、ライブラリが上位の
 
 Microsoft.com ドメイン名を使用するために使用される CDN は、aspnetcdn.com ドメイン名を使用するように変更されています。 この変更はパフォーマンスを向上させるために行われました。これは、ブラウザーが microsoft.com ドメインを参照したときに、各要求でネットワーク経由でそのドメインからクッキーを送信するからです。 Microsoft.com パフォーマンス以外のドメイン名に名前を変更すると、25% まで増やすことができます。 注 ajax.microsoft.com は引き続き機能しますが、ajax.aspnetcdn.com をお勧めします。
 
-- 古い形式:https://ajax.microsoft.com/ajax/jQuery/jquery-1.8.0.js
-- 新しい形式:https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js
+- 古い形式: https://ajax.microsoft.com/ajax/jQuery/jquery-1.8.0.js
+- 新しい形式: https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js
 
 <a id="Visual_Studio_vsdoc_Support_19"></a>
 
@@ -128,7 +128,7 @@ CDN を使用できない場合に、ページが自分の web サイトのロ�
 
 [!code-html[Main](overview/samples/sample5.html)]
 
-Jquery の詳細について[は、jquery Web サイト](http://jquery.com/)にアクセスして jquery のローカルコピーをダウンロードしてください。
+Jquery の詳細について [は、jquery Web サイト](http://jquery.com/) にアクセスして jquery のローカルコピーをダウンロードしてください。
 
 <a id="Using_jQuery_UI_from_the_CDN_22"></a>
 
@@ -148,9 +148,9 @@ CDN は、jQuery UI ライブラリもホストします。 JQuery UI ライブ�
 - Jquery ui ライブラリ jQuery ui ライブラリには、 &mdash; 上のページで使用されている Datepicker ウィジェットなどのすべての JQUERY ui 効果とウィジェットが含まれています。
 - JQuery UI のテーマ &mdash; JQUERY ui では、さまざまなテーマがサポートされています。 上のページには、Redmond テーマをインポートするための CSS ファイルへのリンクが含まれています。
 
-すべての標準的な jQuery UI テーマは CDN でホストされます。 [このページにアクセス](jquery-ui/cdnjqueryui1910.md "Microsoft Ajax CDN の jQuery UI 1.8.10")すると、各テーマのサムネイルが表示されます。
+すべての標準的な jQuery UI テーマは CDN でホストされます。 [このページにアクセス](jquery-ui/cdnjqueryui1910.md "Microsoft Ajax CDN の jQuery UI 1.8.10") すると、各テーマのサムネイルが表示されます。
 
-JQuery UI ライブラリの詳細については、公式の[JQUERY ui web サイト](http://jQueryUI.com "jQuery UI web サイト")を参照してください。
+JQuery UI ライブラリの詳細については、公式の [JQUERY ui web サイト](http://jQueryUI.com "jQuery UI web サイト")を参照してください。
 
 <a id="Third-Party_Files_on_the_CDN_23"></a>
 
@@ -717,7 +717,7 @@ JQuery Datatable プラグインの次のリリースは、この CDN でホス�
 
 ### <a name="modernizr-releases-on-the-cdn"></a>CDN での Modernizr リリース
 
-次の[Modernizr](http://www.modernizr.com "Modernizr")のリリースは CDN でホストされています。
+次の [Modernizr](http://www.modernizr.com "Modernizr") のリリースは CDN でホストされています。
 
 - https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-3.5.0.js
 - https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.8.3.js
@@ -731,7 +731,7 @@ JQuery Datatable プラグインの次のリリースは、この CDN でホス�
 
 ### <a name="jshint-releases-on-the-cdn"></a>CDN での JSHint リリース
 
-次の[Jshint](http://www.jshint.com "JSHint")のリリースは CDN でホストされています。
+次の [Jshint](http://www.jshint.com "JSHint") のリリースは CDN でホストされています。
 
 - https://ajax.aspnetcdn.com/ajax/jshint/r07/jshint.js
 
@@ -739,7 +739,7 @@ JQuery Datatable プラグインの次のリリースは、この CDN でホス�
 
 ### <a name="knockout-releases-on-the-cdn"></a>CDN でのノックアウトリリース
 
-次の[ノックアウト](http://www.knockoutjs.com "抜き合わせ")のリリースは CDN でホストされています。
+次の [ノックアウト](http://www.knockoutjs.com "抜き合わせ") のリリースは CDN でホストされています。
 
 - https://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js
 - https://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.debug.js
@@ -766,7 +766,7 @@ JQuery Datatable プラグインの次のリリースは、この CDN でホス�
 
 ### <a name="globalize-releases-on-the-cdn"></a>CDN でのグローバライズのリリース
 
-次の[グローバライズ](https://github.com/jquery/globalize "グローバライズ")のリリースは CDN でホストされています。
+次の [グローバライズ](https://github.com/jquery/globalize "グローバライズ") のリリースは CDN でホストされています。
 
 #### <a name="globalize-version-100"></a>グローバライズバージョン1.0.0
 
@@ -830,6 +830,21 @@ JQuery Datatable プラグインの次のリリースは、この CDN でホス�
 ### <a name="bootstrap-releases-on-the-cdn"></a>CDN でのブートストラップリリース
 
 [Getbootstrap.com](http://getbootstrap.com "getbootstrap.com")ブートストラップの次のリリースは、CDN でホストされます。
+
+#### <a name="bootstrap-version-452"></a>ブートストラップバージョン4.5.2
+
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/bootstrap.bundle.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/css/bootstrap.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/css/bootstrap-grid.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/css/bootstrap-grid.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/css/bootstrap-grid.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/css/bootstrap-reboot.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/css/bootstrap-reboot.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/css/bootstrap-reboot.css.map
 
 #### <a name="bootstrap-version-450"></a>ブートストラップバージョン4.5.0
 
