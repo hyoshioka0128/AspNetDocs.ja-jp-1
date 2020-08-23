@@ -1,6 +1,6 @@
 ---
 uid: web-pages/overview/getting-started/aspnet-web-pages-razor-faq
-title: ASP.NET ウェブページ (カミソリ) に関するよくある質問 |マイクロソフトドキュメント
+title: ASP.NET ウェブページ (Razor) に関するよくある質問 |マイクロソフトドキュメント
 author: Rick-Anderson
 description: この記事では、web ページ (Razor) と WebMatrix に関してよく寄せられる質問ASP.NET一覧を示します。 チュートリアルで使用されるソフトウェアバージョンは、Web ページASP.NET(R..
 ms.author: riande
@@ -20,14 +20,14 @@ ms.locfileid: "81543705"
 [Tom FitzMacken](https://github.com/tfitzmac)
 
 > > [!NOTE] 
-> > WebMatrix は、web ページをASP.NETするための統合開発環境として推奨されなくなりました。 [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio)またはビジュアル[スタジオ コードを](https://code.visualstudio.com/)使用する 。
+> > WebMatrix は、web ページをASP.NETするための統合開発環境として推奨されなくなりました。 [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio)または [Visual Studio Code](https://code.visualstudio.com/) を使用する 。
 >
 > この記事では、web ページ (Razor) と WebMatrix に関してよく寄せられる質問ASP.NET一覧を示します。
 > 
 > ## <a name="software-versions-used-in-the-tutorial"></a>チュートリアルで使用するソフトウェアバージョン
 > 
 > 
-> - ASP.NET ウェブページ (カミソリ) 3
+> - ASP.NET ウェブページ (Razor) 3
 > - Visual Studio 2013
 > - ウェブマトリックス 3
 >   
