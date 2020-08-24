@@ -20,7 +20,7 @@ ms.locfileid: "81542982"
 > Web ページと Web マトリックスの基本を学習するために表示できるビデオ。
 
 > [!NOTE] 
-> WebMatrix は、web ページをASP.NETするための統合開発環境として推奨されなくなりました。 [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio)またはビジュアル[スタジオ コードを](https://code.visualstudio.com/)使用する 。
+> WebMatrix は、Web ページをASP.NETするための統合開発環境として推奨されなくなりました。 [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) または [Visual Studio Code](https://code.visualstudio.com/) を使用する 。
 
 - [5 分で学ぶ ASP.NET Web ページ](5-minute-introduction-to-aspnet-web-pages.md)
 - [Microsoft WebMatrix ツールをインストールし、使用する](install-and-use-the-microsoft-webmatrix-tool.md)
