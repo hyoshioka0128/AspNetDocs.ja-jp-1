@@ -1,6 +1,6 @@
 ---
 uid: web-pages/content-guide
-title: ウェブマトリックスコンテンツガイド |マイクロソフトドキュメント
+title: WebMatrix コンテンツガイド |マイクロソフトドキュメント
 author: rick-anderson
 description: ''
 ms.author: riande
@@ -18,13 +18,13 @@ ms.locfileid: "81543510"
 # <a name="webmatrix-content-guide"></a>WebMatrix コンテンツ ガイド
 
 > [!NOTE] 
-> WebMatrix は、web ページをASP.NETするための統合開発環境として推奨されなくなりました。 [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio)またはビジュアル[スタジオ コードを](https://code.visualstudio.com/)使用する 。
+> WebMatrix は、web ページをASP.NETするための統合開発環境として推奨されなくなりました。 [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio)または [Visual Studio Code](https://code.visualstudio.com/) を使用する 。
 
-WebMatrix は、Windows 用の Web サイトを簡単に作成するためのツールのセットです。 IIS Express (開発用 Web サーバー)、ASP.NET (Web プログラミング フレームワーク)、および SQL Server コンパクト (組み込みデータベース) が含まれます。 WebMatrix のクイック ツアーを参照するには、 [WebMatrix の概要](https://www.microsoft.com/web/webmatrix/)を参照してください。 WebMatrix の上位機能を確認するには、「 [WebMatrix の機能](https://www.microsoft.com/web/webmatrix/features/)」を参照してください。
+WebMatrix は、Windows 用の Web サイトを簡単に作成するためのツールのセットです。 IIS Express (開発用 Web サーバー)、ASP.NET (Web プログラミング フレームワーク)、および SQL Server コンパクト (組み込みデータベース) が含まれます。 WebMatrix のクイック ツアーを参照するには、 [WebMatrix の概要](https://www.microsoft.com/web/webmatrix/)を参照してください。 WebMatrix の上位機能を確認するには、「[WebMatrix の機能](https://www.microsoft.com/web/webmatrix/features/)」を参照してください。
 
 | **シナリオ** | **コンテンツ** |
 | --- | --- |
-| ウェブマトリックスの概要 | [WebMatrix](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/intro.mp4)の概要 (ビデオ) [WebMatrix の概要と Web ページ](https://go.microsoft.com/fwlink/?LinkId=202889)の[最初から始める](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/walkthrough1b.mp4)ASP.NET (ビデオ) ASP.NET Razor コードを使用してカスタム Web サイトを作成する方法について説明します。 [WebMatrixを使用して、最初のウェブサイト](https://go.microsoft.com/fwlink/?LinkId=208553)Web[アプリケーションで開始](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/walkthrough2b.mp4)(ビデオ) 無料のオープン ソース アプリケーションを使用して独自のサイトを作成します。 |
+| WebMatrix の概要 | [WebMatrix](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/intro.mp4)の概要 (ビデオ) [WebMatrix の概要と Web ページ](https://go.microsoft.com/fwlink/?LinkId=202889)の[最初から始める](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/walkthrough1b.mp4)ASP.NET (ビデオ) ASP.NET Razor コードを使用してカスタム Web サイトを作成する方法について説明します。 [WebMatrixを使用して、最初のウェブサイト](https://go.microsoft.com/fwlink/?LinkId=208553)Web[アプリケーションで開始](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/walkthrough2b.mp4)(ビデオ) 無料のオープン ソース アプリケーションを使用して独自のサイトを作成します。 |
 | コンポーネントのインストール (WebMatrix を含む) | [マイクロソフト Web プラットフォーム インストーラ Web プラットフォーム インストーラ](https://www.iis.net/learn/install/web-platform-installer/using-the-microsoft-web-platform-installer) [2.0 チュートリアル](https://www.iis.net/learn/install/web-platform-installer/web-platform-installer-20-walkthrough)Web プラットフォーム インストーラ[のリソースの](https://www.iis.net/learn/install/web-platform-installer/web-platform-installer-resources)使用 |
 | Web マトリックス UI の操作 | [WebMatrix サイト ワークスペース ヘルプ](https://go.microsoft.com/fwlink/?LinkId=208788) [WebMatrix ファイル ワークスペース ヘルプ](https://go.microsoft.com/fwlink/?LinkId=208787) [WebMatrix データベース ワークスペース ヘルプ](https://go.microsoft.com/fwlink/?LinkId=208786) [WebMatrix レポート ワークスペース ヘルプ](https://go.microsoft.com/fwlink/?LinkId=208789) |
 | コードの操作 | [Razor 構文を使用したASP.NET Web プログラミングの概要](https://go.microsoft.com/fwlink/?LinkId=202890)[(ビデオ](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-aspnetpages.mp4)) プログラミング ASP.NET Visual Studio の[Web ページ ASP.NETを](https://go.microsoft.com/fwlink/?LinkId=202908)使用した[Web ページのプログラミング](https://go.microsoft.com/fwlink/?LinkId=205854)ASP.NET Visual Basic [ASP.NET クイック API リファレンス](https://go.microsoft.com/fwlink/?LinkId=202907) |
@@ -45,7 +45,7 @@ WebMatrix は、Windows 用の Web サイトを簡単に作成するためのツ
 | ツールとコーディング技法を使用した Web ページのデバッグ | [デバッグの概要](https://go.microsoft.com/fwlink/?LinkId=202905)- ServerInfo ヘルパーを使用したサーバー情報の表示 - 出力式の埋め込みによるページ値の表示 - ObjectInfo ヘルパーを使用したオブジェクト値の表示 - デバッグ ツールの使用 |
 | コードでサイト全体の機能を追加する | [サイト全体の動作のカスタマイズ](https://go.microsoft.com/fwlink/?LinkId=202906)- Web サイトのスタートアップ コードの追加 - フォルダ内のファイルの前後のコードの実行 - 読み取りおよび検索可能な URL の作成 |
 | ウェブサイトを公開する | [WebMatrix を使用して Web アプリケーションを発行する方法 WebMatrix をダウンロード](https://go.microsoft.com/fwlink/?LinkId=202954)[して編集し、WebMatrix を使用して Web サイトを再発行](https://go.microsoft.com/?linkid=9751042)[する WebMatrix マイクロソフト WebMatrix: 発行](https://www.iis.net/learn/develop/troubleshooting-webmatrix/microsoft-webmatrix-publish-compatibility)[サイトの発行](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-publish.mp4)[中の証明書エラー](https://www.iis.net/learn/develop/troubleshooting-webmatrix/microsoft-webmatrix-certificate-errors-during-publishing) (ビデオ) |
-| IIS Express を使用して Web サイトをテストする | [IIS エクスプレスの概要](https://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview) [Windows システム トレイを使用して](https://www.iis.net/learn/extensions/using-iis-express/using-the-windows-system-tray-to-manage-websites-and-applications)、[コマンド ラインから IIS Express を実行している](https://www.iis.net/learn/extensions/using-iis-express/running-iis-express-from-the-command-line)Web サイトとアプリケーションを管理する Web[通信のセキュリティ保護: 証明書、SSL、および https://](https://go.microsoft.com/fwlink/?LinkId=208660) [IIS Express に関する FAQ](https://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-faq) |
+| IIS Express を使用して Web サイトをテストする | [IIS Express の概要](https://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview) [Windows システム トレイを使用して](https://www.iis.net/learn/extensions/using-iis-express/using-the-windows-system-tray-to-manage-websites-and-applications)、[コマンド ラインから IIS Express を実行している](https://www.iis.net/learn/extensions/using-iis-express/running-iis-express-from-the-command-line)Web サイトとアプリケーションを管理する Web[通信のセキュリティ保護: 証明書、SSL、および https://](https://go.microsoft.com/fwlink/?LinkId=208660) [IIS Express に関する FAQ](https://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-faq) |
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -55,14 +55,14 @@ WebMatrix は、Windows 用の Web サイトを簡単に作成するためのツ
 - [バグや提案の送信先](https://go.microsoft.com/fwlink/?LinkId=195940)
 - [WebMatrix Readme](readme/index.md)
 - [アプリ ギャラリーに関するよくある質問](https://go.microsoft.com/fwlink/?LinkId=196179)
-- [IIS エクスプレス ドキュメント](https://go.microsoft.com/fwlink/?LinkID=195075)
-- [ASP.NETカミソリ構文コードサンプルとチュートリアルダウンロードページ](https://go.microsoft.com/fwlink/?LinkId=208516)
+- [IIS Express ドキュメント](https://go.microsoft.com/fwlink/?LinkID=195075)
+- [ASP.NET Razor 構文コードサンプルとチュートリアルダウンロードページ](https://go.microsoft.com/fwlink/?LinkId=208516)
 - [フォーラムで質問したり、議論したりする](https://forums.asp.net/1224.aspx)
-- [SQL サーバーのコンパクトな情報](https://go.microsoft.com/fwlink/?LinkId=195939)
+- [SQL Server のコンパクトな情報](https://go.microsoft.com/fwlink/?LinkId=195939)
 
 **見る (ビデオ)**
 
-- [ウェブマトリックスの概要](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/intro.mp4)
+- [WebMatrix の概要](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/intro.mp4)
 - [最初から始める](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/walkthrough1b.mp4)
 - [Web アプリを使用して開始する](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/walkthrough2b.mp4)
 - [小さいが完全なパッケージ](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-compact.mp4)
