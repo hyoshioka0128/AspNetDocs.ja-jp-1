@@ -18,7 +18,7 @@ ms.locfileid: "81543042"
 # <a name="videos"></a>ビデオ
 
 > [!NOTE] 
-> WebMatrix は、web ページをASP.NETするための統合開発環境として推奨されなくなりました。 [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio)またはビジュアル[スタジオ コードを](https://code.visualstudio.com/)使用する 。
+> WebMatrix は、Web ページをASP.NETするための統合開発環境として推奨されなくなりました。 [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio)または [Visual Studio Code](https://code.visualstudio.com/) を使用する 。
 
 - [はじめに](introduction/index.md)
 
@@ -32,7 +32,7 @@ ms.locfileid: "81543042"
     - [WebMatrix でデータ編集ページを作成する](introduction/create-an-edit-data-page-in-webmatrix.md)
     - [WebMatrix でデータ削除ページを作成する](introduction/create-a-delete-data-page-in-webmatrix.md)
     - [WebMatrix を使用してインターネットに Web サイトを公開する](introduction/publish-a-website-to-the-internet-using-webmatrix.md)
-- [ASP.NETカミソリページ](aspnet-razor-pages/index.md)
+- [ASP.NET Razor ページ](aspnet-razor-pages/index.md)
 
     - [WebMatrix と ASP.NET Web ページの概要](aspnet-razor-pages/getting-started-with-webmatrix-and-aspnet-web-pages.md)
     - [ASP.NET Web プログラミング Razor 構文入門](aspnet-razor-pages/introduction-to-aspnet-web-programming-using-the-razor-syntax.md)
