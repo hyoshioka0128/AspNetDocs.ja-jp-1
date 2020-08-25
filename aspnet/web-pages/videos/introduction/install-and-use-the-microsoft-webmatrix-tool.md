@@ -20,7 +20,7 @@ ms.locfileid: "81543003"
 [アドヴァイヤ](https://twitter.com/Advaiyasolns)著
 
 > [!NOTE] 
-> WebMatrix は、web ページをASP.NETするための統合開発環境として推奨されなくなりました。 [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio)またはビジュアル[スタジオ コードを](https://code.visualstudio.com/)使用する 。
+> WebMatrix は、Web ページをASP.NETするための統合開発環境として推奨されなくなりました。 [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio)または [Visual Studio Code](https://code.visualstudio.com/) を使用する 。
 
 第 1 部では、WebMatrix と、それをインストールして使用する方法について説明します。
 
