@@ -1,6 +1,6 @@
 ---
 uid: web-pages/overview/getting-started/aspnet-web-pages-razor-faq
-title: ASP.NET ウェブページ (カミソリ) に関するよくある質問 |マイクロソフトドキュメント
+title: ASP.NET ウェブページ (Razor) に関するよくある質問 |マイクロソフトドキュメント
 author: Rick-Anderson
 description: この記事では、web ページ (Razor) と WebMatrix に関してよく寄せられる質問ASP.NET一覧を示します。 チュートリアルで使用されるソフトウェアバージョンは、Web ページASP.NET(R..
 ms.author: riande
@@ -20,16 +20,16 @@ ms.locfileid: "81543705"
 [Tom FitzMacken](https://github.com/tfitzmac)
 
 > > [!NOTE] 
-> > WebMatrix は、web ページをASP.NETするための統合開発環境として推奨されなくなりました。 [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio)またはビジュアル[スタジオ コードを](https://code.visualstudio.com/)使用する 。
+> > WebMatrix は、Web ページをASP.NETするための統合開発環境として推奨されなくなりました。 [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio)またはビジュアル[スタジオ コードを](https://code.visualstudio.com/)使用する 。
 >
 > この記事では、web ページ (Razor) と WebMatrix に関してよく寄せられる質問ASP.NET一覧を示します。
 > 
 > ## <a name="software-versions-used-in-the-tutorial"></a>チュートリアルで使用するソフトウェアバージョン
 > 
 > 
-> - ASP.NET ウェブページ (カミソリ) 3
+> - ASP.NET ウェブページ (Razor) 3
 > - Visual Studio 2013
-> - ウェブマトリックス 3
+> - WebMatrix 3
 >   
 > 
 > このチュートリアルは、web ページ 2、Web マトリックス 2、および Visual Studio 2012 ASP.NETでも動作します。
@@ -123,13 +123,13 @@ WebMatrix の**スターター サイト**テンプレートには、いくつ�
 
 ASP.NET Web ページで jQuery を使用する方法を示すブログ投稿を次に示します。
 
-- レイチェル・アペルによる[ウェブマトリックスを使用してASP.NETウェブページにjQueryの良さを追加](http://rachelappel.com/jquery/adding-jquery-goodness-to-asp-net-web-pages-using-webmatrix/)する
-- [5分: ウェブマトリックス + jQuery UI + json + jQuery テンプレート](http://joeriks.com/2011/01/30/5-min-webmatrix-jquery-ui-json-jquery-templates/)by ジョナス・エリクソン
-- マイク・ブリンドによる[ウェブマトリックスとjQueryフォーム](http://mikesdotnetting.com/Article/155/WebMatrix-And-jQuery-Forms)
+- レイチェル・アペルによる[WebMatrix を使用してASP.NETウェブページにjQueryの良さを追加](http://rachelappel.com/jquery/adding-jquery-goodness-to-asp-net-web-pages-using-webmatrix/)する
+- [5分: WebMatrix + jQuery UI + json + jQuery テンプレート](http://joeriks.com/2011/01/30/5-min-webmatrix-jquery-ui-json-jquery-templates/)by ジョナス・エリクソン
+- マイク・ブリンドによる[WebMatrix とjQueryフォーム](http://mikesdotnetting.com/Article/155/WebMatrix-And-jQuery-Forms)
 
 <a id="AdditionalResources"></a>
 ## <a name="additional-resources"></a>その他のリソース
 
 [ASP.NET Web ページ (Razor) トラブルシューティング ガイド](https://go.microsoft.com/fwlink/?LinkId=253001)
 
-ASP.NET[ウェブサイト上のウェブマトリックスとASP.NETウェブページフォーラム](https://forums.asp.net/1224.aspx/1?WebMatrix)
+ASP.NET[ウェブサイト上の WebMatrix とASP.NETウェブページフォーラム](https://forums.asp.net/1224.aspx/1?WebMatrix)
