@@ -1,8 +1,8 @@
 ---
 uid: web-pages/pluralsight
-title: 複数形からウェブマトリックスとウェブページのビデオトレーニング |マイクロソフトドキュメント
+title: 複数形から WebMatrix とウェブページのビデオトレーニング |マイクロソフトドキュメント
 author: rick-anderson
-description: 複数視&amp;からのウェブマトリックス Web ページ トレーニング この詳細なコースでは、WebMatrix とASP.NET Web ページを使用して、立ち上がって実行します。 それはすべてをカバーしています.
+description: 複数視&amp;からの WebMatrix Web ページ トレーニング この詳細なコースでは、WebMatrix とASP.NET Web ページを使用して、立ち上がって実行します。 それはすべてをカバーしています.
 ms.author: riande
 ms.date: 05/18/2012
 ms.assetid: 79eca52c-e7ad-44ab-a3e4-d8093e9da5a7
@@ -18,11 +18,11 @@ ms.locfileid: "81543159"
 # <a name="webmatrix-and-web-pages-video-training-from-pluralsight"></a>Pluralsight の WebMatrix と Web ページのビデオ トレーニング
 
 > [!NOTE] 
-> WebMatrix は、web ページをASP.NETするための統合開発環境として推奨されなくなりました。 [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio)またはビジュアル[スタジオ コードを](https://code.visualstudio.com/)使用する 。
+> WebMatrix は、Web ページをASP.NETするための統合開発環境として推奨されなくなりました。 [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio)またはビジュアル[スタジオ コードを](https://code.visualstudio.com/)使用する 。
 
 ### <a name="videos"></a>ビデオ
 
-- [ウェブマトリックスの概要](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m1&mode=live&clip=0&course=webmatrix-introduction)
+- [WebMatrix の概要](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m1&mode=live&clip=0&course=webmatrix-introduction)
 - [サイトとファイル ワークスペース](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m2&mode=live&clip=0&course=webmatrix-introduction)
 - [データベースの操作](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m3&mode=live&clip=0&course=webmatrix-introduction)
 - [標準 Web ドキュメントの操作](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m4&mode=live&clip=0&course=webmatrix-introduction)
