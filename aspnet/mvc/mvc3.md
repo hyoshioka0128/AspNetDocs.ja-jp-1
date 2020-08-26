@@ -29,7 +29,7 @@ ms.locfileid: "80675139"
 
 - NuGet 経由で拡張可能な統合スキャフォールディング システム
 - HTML 5 有効プロジェクト テンプレート
-- 新しいカミソリビューエンジンを含む表現力豊かなビュー
+- 新しい Razor ビューエンジンを含む表現力豊かなビュー
 - 依存性注入とグローバルアクションフィルタを備えた強力なフック
 - 控えめな JavaScript、jQuery 検証、JSON バインディングを使用した豊富な JavaScript サポート
 - *[以下](#overview)の機能の全リストを読む*
@@ -39,7 +39,7 @@ ms.locfileid: "80675139"
 mvc 3 の新機能ASP.NET
 
 - フィル・ハーク: [ASP.NET MVC 3 リリース済み](http://haacked.com/archive/2011/01/13/aspnetmvc3-released.aspx)
-- スコット・ヘンゼルマン: [ASP.NET MVC3、ウェブマトリックス、ヌゲット、IISエクスプレス、オーチャードがリリース - マイクロソフト 1 月の Web リリースをコンテキストでリリース](http://www.hanselman.com/blog/ASPNETMVC3WebMatrixNuGetIISExpressAndOrchardReleasedTheMicrosoftJanuaryWebReleaseInContext.aspx)
+- スコット・ヘンゼルマン: [ASP.NET MVC3, WebMatrix, NuGet, IIS Express and Orchard released - The Microsoft January Web Release in Context](http://www.hanselman.com/blog/ASPNETMVC3WebMatrixNuGetIISExpressAndOrchardReleasedTheMicrosoftJanuaryWebReleaseInContext.aspx)
 - スコット・ガスリー: [ASP.NET MVC 3、IIS エクスプレス、SQL CE 4、Web ファーム フレームワーク、オーチャード、WebMatrix のリリースを発表](https://weblogs.asp.net/scottgu/archive/2011/01/13/announcing-release-of-asp-net-mvc-3-iis-express-sql-ce-4-web-farm-framework-orchard-webmatrix.aspx)
 - [ASP.NET MVC 3 のリリース ノート](../whitepapers/mvc3-release-notes.md)
 
@@ -58,7 +58,7 @@ mvc 3 ASP.NET、ASP.NET MVC 1 と 2 に基づいて構築され、コードを�
 
 - [MvcScaffold統合による拡張可能な足場](#BM_MvcScaffolding)
 - [HTML 5 有効プロジェクト テンプレート](#BM_HTML5)
-- [カミソリビューエンジン](#BM_TheRazorViewEngine)
+- [Razor ビューエンジン](#BM_TheRazorViewEngine)
 - [複数ビュー エンジンのサポート](#BM_Support_for_Multiple_View_Engines)
 - [コントローラの改良点](#BM_Controller_Improvements)
 - [ジャワスクリプトとアヤックス](#BM_JavaScript_and_Ajax_Improvements)
@@ -113,7 +113,7 @@ ASP.NET MVC 3 でスキャフォールディングの詳細については、次
 
 <a id="BM_TheRazorViewEngine"></a>
 
-## <a name="the-razor-view-engine"></a>カミソリビューエンジン
+## <a name="the-razor-view-engine"></a>Razor ビューエンジン
 
 ASP.NET MVC 3 には、次の利点を提供する Razor という名前の新しいビュー エンジンが付属しています。
 
@@ -143,7 +143,7 @@ Razor の詳細については、次のリソースを参照してください�
 - [レイザーを紹介するスコット・ガスリーのブログ記事](https://weblogs.asp.net/scottgu/archive/2010/07/02/introducing-razor.aspx)
 - [キーワードを紹介するスコット・ガスリーの@modelブログ記事](https://weblogs.asp.net/scottgu/archive/2010/10/19/asp-net-mvc-3-new-model-directive-support-in-razor.aspx)
 - [Razorレイアウトを紹介するスコット・ガスリーのブログ記事](https://weblogs.asp.net/scottgu/archive/2010/10/22/asp-net-mvc-3-layouts.aspx)
-- [カミソリ API クイック リファレンス](../web-pages/overview/api-reference/asp-net-web-pages-api-reference.md)
+- [Razor API クイック リファレンス](../web-pages/overview/api-reference/asp-net-web-pages-api-reference.md)
 - [MVC 3 リリースノート](../whitepapers/mvc3-release-notes.md)
 
 <a id="BM_Support_for_Multiple_View_Engines"></a>
@@ -231,7 +231,7 @@ MVC 3 `DataAnnotations` ASP.NET、 などのメタデータ`DisplayAttribute`属
 
 [IClientValidatable](https://msdn.microsoft.com/library/system.web.mvc.iclientvalidatable(v=VS.98).aspx)インターフェイスを使用すると、ASP.NET MVC は、検証コントロールがクライアント検証をサポートしているかどうかを実行時に検出できます。 このインターフェイスは、さまざまな検証フレームワークと統合できるように設計されています。
 
-検証インターフェイスの詳細については[、Scott Guthrie の MVC 3 プレビュー ブログのブログ記事の](https://weblogs.asp.net/scottgu/archive/2010/07/27/introducing-asp-net-mvc-3-preview-1.aspx)**モデル検証の改善**セクションを参照してください。 (ただし、ブログの "IValidateObject" への参照は "IValidatableObject" にする必要があることに注意してください。
+検証インターフェイスの詳細については、[Scott Guthrie の MVC 3 プレビュー ブログのブログ記事の](https://weblogs.asp.net/scottgu/archive/2010/07/27/introducing-asp-net-mvc-3-preview-1.aspx)**モデル検証の改善**セクションを参照してください。 (ただし、ブログの "IValidateObject" への参照は "IValidatableObject" にする必要があることに注意してください。
 
 <a id="BM_Dependency_Injection_Improvements"></a>
 
