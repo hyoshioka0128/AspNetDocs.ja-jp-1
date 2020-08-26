@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio
-title: Visual Studio ASP.NET を使用した web ページ (Razor) のプログラミング |マイクロソフトドキュメント
+title: Visual Studio ASP.NET を使用した Web ページ (Razor) のプログラミング |マイクロソフトドキュメント
 author: Rick-Anderson
-description: この付録では、Visual Studio 2010 または Visual Web 開発者 2010 Express を使用して、Razor 構文を使用して web ページASP.NETプログラムする方法について説明します。
+description: この付録では、Visual Studio 2010 または Visual Web 開発者 2010 Express を使用して、Razor 構文を使用して Web ページASP.NETプログラムする方法について説明します。
 ms.author: riande
 ms.date: 02/13/2014
 ms.assetid: 0acfec5a-48f2-4766-a801-a0f426966f0a
@@ -15,11 +15,11 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/17/2020
 ms.locfileid: "81542899"
 ---
-# <a name="programming-aspnet-web-pages-razor-using-visual-studio"></a>Visual Studio を使用した web ページ (Razor) ASP.NETプログラミング
+# <a name="programming-aspnet-web-pages-razor-using-visual-studio"></a>Visual Studio を使用した Web ページ (Razor) ASP.NETプログラミング
 
 [Tom FitzMacken](https://github.com/tfitzmac)
 
-> この記事では、Visual Studio または Visual Web 開発者用エクスプレスを使用して、web ページ (Razor) のwebサイトASP.NETプログラムする方法について説明します。
+> この記事では、Visual Studio または Visual Web 開発者用エクスプレスを使用して、Web ページ (Razor) の Web サイト ASP.NET プログラムする方法について説明します。
 >
 > 学習内容
 >
@@ -31,12 +31,12 @@ ms.locfileid: "81542899"
 > ## <a name="software-versions-used-in-the-tutorial"></a>チュートリアルで使用するソフトウェアバージョン
 >
 >
-> - ASP.NET ウェブページ (カミソリ) 3
+> - ASP.NET Web ページ (Razor) 3
 > - Visual Studio 2013
-> - ウェブマトリックス 3
+> - WebMatrix 3
 >
 >
-> このチュートリアルは、web ページ 2、Visual Studio 2012、Visual Studio 2010、および WebMatrix 2 ASP.NETでも動作します。
+> このチュートリアルは、Web ページ 2、Visual Studio 2012、Visual Studio 2010、および WebMatrix 2 ASP.NETでも動作します。
 
 WebMatrix やその他 ASP.NETの多くのコード エディターを使用して、Web ページを Razor 構文でプログラミングできます。 また、多くの種類のアプリケーション (Web サイトだけでなく) を作成するための強力なツール セットを提供する、フル機能の統合開発環境 (IDE) である Microsoft Visual Studio を使用することもできます。 ASP.NET の Razor ページを操作するには[、Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)を使用できます。
 
@@ -47,7 +47,7 @@ ASP.NET Razor Web ページを使用したプログラミングに Visual Studio
 
 ## <a name="using-visual-studio-with-different-versions-of-aspnet-web-pages"></a>異なるバージョンの web ページでの Visual Studio の使用ASP.NET
 
-Visual Studio 2017 で ASP.NET Web アプリを開発するには **、ASP.NETと web 開発**ワークロードをインストールします。
+Visual Studio 2017 で ASP.NET Web アプリを開発するには **、ASP.NETと Web 開発**ワークロードをインストールします。
 
 Visual Studio 2012 および Visual Studio 2013 には、ASP.NET Web ページのサポートが含まれています。 (ASP.NET Web ページをサポートするために必要なパッケージは、Visual Studio のインストール時にインストールされます)。
 
@@ -62,17 +62,17 @@ Visual Studio 2010 には、ASP.NET Web ページの既定のサポートは含�
 
 Visual Studio 2010 を使用するには[、「Visual Studio 2010 での ASP.NET Web ページのサポートのインストール](#vs2010support)」を参照してください。
 
-## <a name="launching-visual-studio-from-webmatrix"></a>Web マトリックスからビジュアル スタジオを起動する
+## <a name="launching-visual-studio-from-webmatrix"></a>WebMatrix から Visual Studio を起動する
 
 WebMatrix でプロジェクトを開始し、Visual Studio に切り替える場合は、WebMatrix は、簡単に Visual Studio でプロジェクトを開くボタンを提供します。 このボタンを有効にするには、Visual Studio がコンピューターにインストールされている必要があります。 次の図は、WebMatrix のボタンを示しています。
 
-![起動ビジュアル スタジオ](program-asp-net-web-pages-in-visual-studio/_static/image1.png)
+![Visual Studio 起動](program-asp-net-web-pages-in-visual-studio/_static/image1.png)
 
 ボタンをクリックすると、プロジェクトが Visual Studio で開かれます。 WebMatrix と Visual Studio を切り替えても問題なく切り替えることができます。 他の環境でファイルが変更された場合は、最新の変更を取得するために再ロードする必要がある場合は、通知されます。
 
-## <a name="creating-aspnet-razor-site-in-visual-studio"></a>visual Studio でASP.NETカミソリサイトを作成する
+## <a name="creating-aspnet-razor-site-in-visual-studio"></a>Visual Studio で ASP.NET Razor サイトを作成する
 
-ビジュアル スタジオでASP.NETの Razor Web サイトを作成するには:
+Visual Studio で ASP.NET の Razor Web サイトを作成するには:
 
 1. Visual Studio を開きます。
 2. [**ファイル]** メニューの [**新しい Web サイト**] をクリックします。
@@ -81,7 +81,7 @@ WebMatrix でプロジェクトを開始し、Visual Studio に切り替える�
 3. [**新しい Web サイト]** ダイアログ ボックスで、使用する言語を選択します (Visual C# または Visual Basic)。
 4. **[ASP.NET Web サイト (Razor)]** テンプレートを選択します。
 
-    ![カミソリサイト](program-asp-net-web-pages-in-visual-studio/_static/image3.png)
+    ![Razor サイト](program-asp-net-web-pages-in-visual-studio/_static/image3.png)
 5. **[OK]** をクリックします。
 
 新しいプロジェクトが存在し、作業を開始するのに役立ついくつかの既定の Web ページが設定されます。
@@ -131,7 +131,7 @@ Razor 構文は、ASP.NET MVC プロジェクトでも広く使用されます�
 <a id="vs2010support"></a>
 ## <a name="installing-support-for-aspnet-web-pages-in-visual-studio-2010"></a>Visual Studio 2010 での ASP.NET Web ページのサポートのインストール
 
-このセクションでは、Visual Web 開発者 Express 2010 と visual Studio 用の ASP.NET Web ページ ツールをインストールする方法を示します。
+このセクションでは、Visual Web Developer 2010 Express と Visual Studio 用の ASP.NET Web ページ ツールをインストールする方法を示します。
 
 1. Web プラットフォーム インストーラーをまだインストールしていない場合は、次の URL からダウンロードしてください。
 
