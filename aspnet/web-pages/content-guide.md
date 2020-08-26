@@ -18,7 +18,7 @@ ms.locfileid: "81543510"
 # <a name="webmatrix-content-guide"></a>WebMatrix コンテンツ ガイド
 
 > [!NOTE] 
-> WebMatrix は、web ページをASP.NETするための統合開発環境として推奨されなくなりました。 [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio)またはビジュアル[スタジオ コードを](https://code.visualstudio.com/)使用する 。
+> WebMatrix は、Web ページをASP.NETするための統合開発環境として推奨されなくなりました。 [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio)またはビジュアル[スタジオ コードを](https://code.visualstudio.com/)使用する 。
 
 WebMatrix は、Windows 用の Web サイトを簡単に作成するためのツールのセットです。 IIS Express (開発用 Web サーバー)、ASP.NET (Web プログラミング フレームワーク)、および SQL Server コンパクト (組み込みデータベース) が含まれます。 WebMatrix のクイック ツアーを参照するには、[WebMatrix の概要](https://www.microsoft.com/web/webmatrix/)を参照してください。 WebMatrix の上位機能を確認するには、「[WebMatrix の機能](https://www.microsoft.com/web/webmatrix/features/)」を参照してください。
 
