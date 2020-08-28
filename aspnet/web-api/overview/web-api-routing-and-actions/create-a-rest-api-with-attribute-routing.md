@@ -8,18 +8,18 @@ ms.date: 06/26/2013
 ms.assetid: 23fc77da-2725-4434-99a0-ff872d96336b
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
 msc.type: authoredcontent
-ms.openlocfilehash: 6eac36767bf34857d5341188d0653e7fec7cade2
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: f6ff5fa18a44b3e6717ec0141ebe101bcdc0bee4
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "86188849"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89045183"
 ---
 # <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>ASP.NET Web API 2 で属性ルーティングを使用して REST API を作成する
 
 [Mike Wasson](https://github.com/MikeWasson)
 
-Web API 2 では、*属性ルーティング*と呼ばれる新しい種類のルーティングがサポートされています。 属性ルーティングの一般的な概要については、「 [WEB API 2 での属性ルーティング](attribute-routing-in-web-api-2.md)」を参照してください。 このチュートリアルでは、属性ルーティングを使用して、書籍のコレクションの REST API を作成します。 API は、次のアクションをサポートします。
+Web API 2 では、 *属性ルーティング*と呼ばれる新しい種類のルーティングがサポートされています。 属性ルーティングの一般的な概要については、「 [WEB API 2 での属性ルーティング](attribute-routing-in-web-api-2.md)」を参照してください。 このチュートリアルでは、属性ルーティングを使用して、書籍のコレクションの REST API を作成します。 API は、次のアクションをサポートします。
 
 | アクション | URI の例 |
 | --- | --- |
@@ -46,7 +46,7 @@ Web API 2 では、*属性ルーティング*と呼ばれる新しい種類の�
 
 ## <a name="prerequisites"></a>前提条件
 
-[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)Community、Professional、または Enterprise edition。
+[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) Community、Professional、または Enterprise edition。
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
@@ -56,7 +56,7 @@ Visual Studio の実行から始めます。 **[ファイル]** メニューの 
 
 ![](create-a-rest-api-with-attribute-routing/_static/image1.png)
 
-[ **New ASP.NET Web Application** ] ダイアログボックスで、**空**のテンプレートを選択します。 [フォルダーとコア参照の追加] で、[ **WEB API** ] チェックボックスをオンにします。 **[OK]** をクリックします。
+[ **New ASP.NET Web Application** ] ダイアログボックスで、 **空** のテンプレートを選択します。 [フォルダーとコア参照の追加] で、[ **WEB API** ] チェックボックスをオンにします。 **[OK]** をクリックします。
 
 ![](create-a-rest-api-with-attribute-routing/_static/image2.png)
 
@@ -64,7 +64,7 @@ Visual Studio の実行から始めます。 **[ファイル]** メニューの 
 
 ### <a name="domain-models"></a>ドメインモデル
 
-次に、ドメインモデルのクラスを追加します。 ソリューション エクスプローラーで、[モデル] フォルダーを右クリックします。 [**追加**] を選択し、[**クラス**] を選択します。 クラスに `Author` という名前を付けます。
+次に、ドメインモデルのクラスを追加します。 ソリューション エクスプローラーで、[モデル] フォルダーを右クリックします。 [ **追加**] を選択し、[ **クラス**] を選択します。 クラスに `Author` という名前を付けます。
 
 ![](create-a-rest-api-with-attribute-routing/_static/image3.png)
 
@@ -82,15 +82,15 @@ Author.cs のコードを次のコードに置き換えます。
 
 Ctrl キーと Shift キーを押しながら B キーを押して、プロジェクトをビルドします。 Entity Framework は、リフレクションを使用してモデルのプロパティを検出します。そのため、データベーススキーマを作成するには、コンパイル済みのアセンブリが必要です。
 
-ソリューション エクスプローラーで、[コントローラー] フォルダーを右クリックします。 [**追加**] を選択し、[**コントローラー**] を選択します。
+ソリューション エクスプローラーで、[コントローラー] フォルダーを右クリックします。 [ **追加**] を選択し、[ **コントローラー**] を選択します。
 
 ![](create-a-rest-api-with-attribute-routing/_static/image4.png)
 
-[**スキャフォールディングの追加**] ダイアログボックスで、[**アクションを含む Web API 2 コントローラー**] を選択し Entity Framework を使用します。
+[ **スキャフォールディングの追加** ] ダイアログボックスで、[ **アクションを含む Web API 2 コントローラー**] を選択し Entity Framework を使用します。
 
 [![](create-a-rest-api-with-attribute-routing/_static/image6.png)](create-a-rest-api-with-attribute-routing/_static/image5.png)
 
-[**コントローラーの追加**] ダイアログボックスで、[**コントローラー名**] に「bookscontroller」と入力し &quot; &quot; ます。 [ &quot; 非同期コントローラーアクションを使用する] チェックボックスをオンにし &quot; ます。 [**モデルクラス**] で [Book] を選択し &quot; &quot; ます。 (ドロップダウンリストに表示されているクラスが表示されない場合は、プロジェクトをビルドしたことを `Book` 確認してください)。次に、[+] ボタンをクリックします。
+[ **コントローラーの追加** ] ダイアログボックスで、[ **コントローラー名**] に「bookscontroller」と入力し &quot; &quot; ます。 [ &quot; 非同期コントローラーアクションを使用する] チェックボックスをオンにし &quot; ます。 [ **モデルクラス**] で [Book] を選択し &quot; &quot; ます。 (ドロップダウンリストに表示されているクラスが表示されない場合は、プロジェクトをビルドしたことを `Book` 確認してください)。次に、[+] ボタンをクリックします。
 
 ![](create-a-rest-api-with-attribute-routing/_static/image7.png)
 
@@ -104,7 +104,7 @@ Ctrl キーと Shift キーを押しながら B キーを押して、プロジ�
 
 ### <a name="seed-the-database"></a>データベースのシード
 
-[ツール] メニューの [ **NuGet パッケージマネージャー**] を選択し、[**パッケージマネージャーコンソール**] を選択します。
+[ツール] メニューの [ **NuGet パッケージマネージャー**] を選択し、[ **パッケージマネージャーコンソール**] を選択します。
 
 [パッケージ マネージャー コンソール] ウィンドウで、次のコマンドを入力します。
 
@@ -128,7 +128,7 @@ Ctrl キーと Shift キーを押しながら B キーを押して、プロジ�
 
 [!code-json[Main](create-a-rest-api-with-attribute-routing/samples/sample6.json)]
 
-代わりに、この要求でフィールドのサブセットを返す必要があります。 また、作成者 ID ではなく、著者の名前を返すようにします。 これを実現するには、EF モデルではなく*データ転送オブジェクト*(DTO) を返すようにコントローラーメソッドを変更します。 DTO は、データを伝送するためだけに設計されたオブジェクトです。
+代わりに、この要求でフィールドのサブセットを返す必要があります。 また、作成者 ID ではなく、著者の名前を返すようにします。 これを実現するには、EF モデルではなく *データ転送オブジェクト* (DTO) を返すようにコントローラーメソッドを変更します。 DTO は、データを伝送するためだけに設計されたオブジェクトです。
 
 ソリューションエクスプローラーで、プロジェクトを右クリックし、[ **Add**  |  **新しいフォルダー**の追加] を選択します。 フォルダーに「dto」という名前を指定 &quot; &quot; します。 次の定義を使用して、という名前のクラスを `BookDto` dto フォルダーに追加します。
 
@@ -151,7 +151,7 @@ Ctrl キーと Shift キーを押しながら B キーを押して、プロジ�
 
 ## <a name="add-route-attributes"></a>ルート属性の追加
 
-次に、属性ルーティングを使用するようにコントローラーを変換します。 まず、 **Routeprefix**属性をコントローラーに追加します。 この属性は、このコントローラーのすべてのメソッドの初期 URI セグメントを定義します。
+次に、属性ルーティングを使用するようにコントローラーを変換します。 まず、 **Routeprefix** 属性をコントローラーに追加します。 この属性は、このコントローラーのすべてのメソッドの初期 URI セグメントを定義します。
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample11.cs?highlight=1)]
 
@@ -159,7 +159,7 @@ Ctrl キーと Shift キーを押しながら B キーを押して、プロジ�
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample12.cs?highlight=1,7)]
 
-各コントローラーメソッドのルートテンプレートは、**ルート**属性に指定された文字列に加えて、プレフィックスとして使用されます。 メソッドでは、 `GetBook` ルートテンプレートにパラメーター化された文字列 &quot; {id: int} が含まれてい &quot; ます。これは、URI セグメントに整数値が含まれている場合に一致します。
+各コントローラーメソッドのルートテンプレートは、 **ルート** 属性に指定された文字列に加えて、プレフィックスとして使用されます。 メソッドでは、 `GetBook` ルートテンプレートにパラメーター化された文字列 &quot; {id: int} が含まれてい &quot; ます。これは、URI セグメントに整数値が含まれている場合に一致します。
 
 | 方法 | ルート テンプレート | URI の例 |
 | --- | --- | --- |
@@ -180,7 +180,7 @@ Ctrl キーと Shift キーを押しながら B キーを押して、プロジ�
 
 ## <a name="get-books-by-genre"></a>ジャンルで書籍を取得する
 
-特定のジャンルに含まれる本の一覧を取得するために、クライアントは GET 要求をに送信し `/api/books/genre` ます。ここで、 *genre*はジャンルの名前です。 (例: `/api/books/fantasy`)。
+特定のジャンルに含まれる本の一覧を取得するために、クライアントは GET 要求をに送信し `/api/books/genre` ます。ここで、 *genre* はジャンルの名前です。 (例: `/api/books/fantasy`)。
 
 に次のメソッドを追加し `BooksController` ます。
 
@@ -202,7 +202,7 @@ Ctrl キーと Shift キーを押しながら B キーを押して、プロジ�
 
 ## <a name="get-books-by-author"></a>作成者による書籍の取得
 
-特定の作成者の書籍の一覧を取得するために、クライアントは GET 要求をに送信し `/api/authors/id/books` ます。ここで、 *id*は著者の id です。
+特定の作成者の書籍の一覧を取得するために、クライアントは GET 要求をに送信し `/api/authors/id/books` ます。ここで、 *id* は著者の id です。
 
 に次のメソッドを追加し `BooksController` ます。
 
@@ -210,11 +210,11 @@ Ctrl キーと Shift キーを押しながら B キーを押して、プロジ�
 
 この例は、 &quot; 書籍 &quot; が作成者の子リソースとして扱われるため、興味深いものです &quot; &quot; 。 このパターンは、RESTful Api では非常に一般的です。
 
-ルートテンプレート内のチルダ (~) は、 **routeprefix**属性のルートプレフィックスよりも優先されます。
+ルートテンプレート内のチルダ (~) は、 **routeprefix** 属性のルートプレフィックスよりも優先されます。
 
 ## <a name="get-books-by-publication-date"></a>出版日による書籍の取得
 
-発行日による書籍の一覧を取得するために、クライアントは GET 要求をに送信し `/api/books/date/yyyy-mm-dd` ます。ここで、 *yyyy-mm-dd*は日付です。
+発行日による書籍の一覧を取得するために、クライアントは GET 要求をに送信し `/api/books/date/yyyy-mm-dd` ます。ここで、 *yyyy-mm-dd* は日付です。
 
 これを行う方法の1つを次に示します。
 
@@ -230,7 +230,7 @@ Ctrl キーと Shift キーを押しながら B キーを押して、プロジ�
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample19.cs?highlight=1)]
 
-これで、yyyy-mm-dd という形式の日付のみ &quot; が一致するようになりました &quot; 。 実際の日付があることを検証するために regex を使用しないことに注意してください。 これは、Web API が URI セグメントを**DateTime**インスタンスに変換しようとしたときに処理されます。 無効な日付 (' 2012-47-99 ' など) は変換されません。クライアントは404エラーを受け取ります。
+これで、yyyy-mm-dd という形式の日付のみ &quot; が一致するようになりました &quot; 。 実際の日付があることを検証するために regex を使用しないことに注意してください。 これは、Web API が URI セグメントを **DateTime** インスタンスに変換しようとしたときに処理されます。 無効な日付 (' 2012-47-99 ' など) は変換されません。クライアントは404エラーを受け取ります。
 
 別の `/api/books/date/yyyy/mm/dd` **[Route]** 属性を別の regex と共に追加することで、スラッシュ区切り記号 () をサポートすることもできます。
 
@@ -238,7 +238,7 @@ Ctrl キーと Shift キーを押しながら B キーを押して、プロジ�
 
 ここでは、微妙ですが重要な詳細があります。 2番目のルートテンプレートには、 \* {pubdate} パラメーターの先頭にワイルドカード文字 () があります。
 
-[!code-json[Main](create-a-rest-api-with-attribute-routing/samples/sample21.json)]
+[!code-json[Main](create-a-rest-api-with-attribute-routing/samples/sample21.txt)]
 
 これにより、{pubdate} が URI の残りの部分と一致する必要があることがルーティングエンジンに通知されます。 既定では、テンプレートパラメーターは単一の URI セグメントと一致します。 この例では、{pubdate} を複数の URI セグメントにまたがって指定します。
 

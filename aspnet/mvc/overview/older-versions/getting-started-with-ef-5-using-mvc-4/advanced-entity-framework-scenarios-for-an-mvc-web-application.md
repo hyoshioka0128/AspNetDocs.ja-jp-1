@@ -8,12 +8,12 @@ ms.date: 07/30/2013
 ms.assetid: 64906a1d-f734-41cf-9615-ee95f8740996
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: f8f079f6d8ea663c6888456be422a2bae93a4b87
-ms.sourcegitcommit: c9d9210e0d16fbb3829b7688cfb832dc263c79cc
+ms.openlocfilehash: 85dd59016d904a9f654c438db977b5ae2c0187d2
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "86163582"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89045053"
 ---
 # <a name="advanced-entity-framework-scenarios-for-an-mvc-web-application-10-of-10"></a>MVC Web アプリケーションの高度な Entity Framework シナリオ (10/10)
 
@@ -191,7 +191,7 @@ Department Edit ページを実行して、部門の管理者を、既に別の�
 
 ここで、メソッドのおよびステートメントの *GenericRepository.cs* にブレークポイントを設定し `return query.ToList();` `return orderBy(query).ToList();` `Get` ます。 プロジェクトをデバッグモードで実行し、[コースのインデックス] ページを選択します。 コードがブレークポイントに到達したら、 `query` 変数を調べます。 SQL Server に送信されるクエリが表示されます。 これは単純な `Select` ステートメントです。
 
-[!code-json[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample14.json)]
+[!code-json[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample14.sql)]
 
 ![](advanced-entity-framework-scenarios-for-an-mvc-web-application/_static/image12.png)
 
@@ -219,7 +219,7 @@ Department Edit ページを実行して、部門の管理者を、既に別の�
 
 今回は、ドロップダウンリストの部門クエリの最初のブレークポイントになります。 これをスキップし、 `query` 次にコードがブレークポイントに到達したときに変数を表示して、クエリがどのように見えるかを確認し `Course` ます。 次のような内容が表示されます。
 
-[!code-json[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample17.json)]
+[!code-json[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample17.sql)]
 
 クエリが `JOIN` `Department` データと共にデータを読み込み `Course` 、句を含むクエリであることがわかります `WHERE` 。
 
@@ -287,7 +287,7 @@ Web アプリケーションを構築した後にデプロイする方法の詳�
 
 *このファイルが既に存在する場合は、' DotNetOpenAuth ' を作成/シャドウコピーできません。*
 
-解決方法:
+解答:
 
 数秒待ってから、ページを更新してください。
 
@@ -297,7 +297,7 @@ Web アプリケーションを構築した後にデプロイする方法の詳�
 
 *"データベースの更新" という用語は、コマンドレット、関数、スクリプトファイル、または操作可能なプログラムの名前として認識されません。名前の綴りを確認するか、パスが含まれている場合は、パスが正しいことを確認してから、もう一度やり直してください。*(PMC の *`Update-Database`* コマンドから)
 
-解決方法:
+解答:
 
 Visual Studio を終了します。 プロジェクトを再度開き、もう一度やり直してください。
 
@@ -307,7 +307,7 @@ Visual Studio を終了します。 プロジェクトを再度開き、もう�
 
 *1つ以上のエンティティの検証に失敗しました。詳細については、' EntityValidationErrors ' プロパティを参照してください。* (PMC の *`Update-Database`* コマンドから)
 
-解決方法:
+解答:
 
 この問題の原因の1つは、メソッドの実行時の検証エラーです `Seed` 。 メソッドのデバッグに関するヒントについては、「 [Entity Framework (EF) db のシード処理とデバッグ](https://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx) 」を参照してください `Seed` 。
 
@@ -317,7 +317,7 @@ Visual Studio を終了します。 プロジェクトを再度開き、もう�
 
 *HTTP エラー 500.19-内部サーバーエラーページの関連する構成データが無効なため、要求されたページにアクセスできません。*
 
-解決方法:
+解答:
 
 このエラーを発生させる1つの方法は、ソリューションの複数のコピーを保持し、それぞれが同じポート番号を使用することです。 通常、この問題を解決するには、Visual Studio のすべてのインスタンスを終了し、作業中のプロジェクトを再起動します。 それでもうまくいかない場合は、ポート番号を変更してみてください。 プロジェクトファイルを右クリックし、[プロパティ] をクリックします。 [ **Web** ] タブを選択し、[ **プロジェクトの Url** ] テキストボックスでポート番号を変更します。
 
@@ -327,7 +327,7 @@ Visual Studio を終了します。 プロジェクトを再度開き、もう�
 
 *SQL Server への接続の確立中に、ネットワーク関連またはインスタンス固有のエラーが発生しました。サーバーが見つからなかったか、アクセスできませんでした。インスタンス名が正しいこと、および SQL Server がリモート接続を許可するように構成されていることを確認してください。(プロバイダー: SQL ネットワークインターフェイス、エラー:26-指定されたサーバー/インスタンスの検索でエラーが発生しました)*
 
-解決方法:
+解答:
 
 接続文字列を確認してください。 データベースを手動で削除した場合は、構築文字列内のデータベースの名前を変更します。
 

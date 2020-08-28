@@ -8,19 +8,19 @@ ms.date: 01/12/2011
 ms.assetid: 1d266bf0-a61e-423b-a3d2-13773d7dafe2
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: 0fb3d3cf6c1f4634834aaac1e9170218ca5730bb
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: baa300c66bfae9fe602a8fe597e21b0abbaf3a63
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "86163718"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89044988"
 ---
 # <a name="examining-the-edit-methods-and-edit-view-c"></a>Edit メソッドと Edit ビューの確認 (C#)
 
 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 > > [!NOTE]
-> > このチュートリアルの更新バージョンは、ASP.NET MVC 5 と Visual Studio 2013 を使用する[こちらで](../../../getting-started/introduction/getting-started.md)入手できます。 より安全で、より簡単にフォローし、より多くの機能を紹介します。
+> > このチュートリアルの更新バージョンは、ASP.NET MVC 5 と Visual Studio 2013 を使用する [こちらで](../../../getting-started/introduction/getting-started.md) 入手できます。 より安全で、より簡単にフォローし、より多くの機能を紹介します。
 > 
 > 
 > このチュートリアルでは、Microsoft Visual Studio の無料バージョンである Microsoft Visual Web Developer 2010 Express Service Pack 1 を使用した ASP.NET MVC Web アプリケーションの構築の基本について説明します。 開始する前に、以下に示す前提条件がインストールされていることを確認してください。 これらのすべてをインストールするには、[ [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)] リンクをクリックします。 または、次のリンクを使用して、前提条件を個別にインストールすることもできます。
@@ -31,11 +31,11 @@ ms.locfileid: "86163718"
 > 
 > Visual Web Developer 2010 ではなく Visual Studio 2010 を使用している場合は、次のリンクをクリックして必要なコンポーネントをインストールします: [Visual studio 2010 の前提条件](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=VS2010SP1Pack)。
 > 
-> このトピックでは、C# ソースコードを含む Visual Web Developer プロジェクトを使用できます。 [C# バージョンをダウンロード](https://code.msdn.microsoft.com/Introduction-to-MVC-3-10d1b098)します。 Visual Basic を希望する場合は、このチュートリアルの[Visual Basic バージョン](../vb/intro-to-aspnet-mvc-3.md)に切り替えてください。
+> このトピックでは、C# ソースコードを含む Visual Web Developer プロジェクトを使用できます。 [C# バージョンをダウンロード](https://code.msdn.microsoft.com/Introduction-to-MVC-3-10d1b098)します。 Visual Basic を希望する場合は、このチュートリアルの [Visual Basic バージョン](../vb/intro-to-aspnet-mvc-3.md) に切り替えてください。
 
 このセクションでは、ムービーコントローラーに対して生成されたアクションメソッドとビューを確認します。 次に、カスタム検索ページを追加します。
 
-アプリケーションを実行し、 `Movies` ブラウザーのアドレスバーの URL に */ムービー*を追加して、コントローラーを参照します。 **編集**リンクの上にマウスポインターを置くと、リンク先の URL が表示されます。
+アプリケーションを実行し、 `Movies` ブラウザーのアドレスバーの URL に */ムービー* を追加して、コントローラーを参照します。 **編集**リンクの上にマウスポインターを置くと、リンク先の URL が表示されます。
 
 [![EditLink_sm](examining-the-edit-methods-and-edit-view/_static/image2.png)](examining-the-edit-methods-and-edit-view/_static/image1.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "86163718"
 
 [![Html.actionlink](examining-the-edit-methods-and-edit-view/_static/image4.png)](examining-the-edit-methods-and-edit-view/_static/image3.png)
 
-`Html`オブジェクトは、基底クラスのプロパティを使用して公開されるヘルパーです `WebViewPage` 。 `ActionLink`ヘルパーのメソッドを使用すると、コントローラーのアクションメソッドにリンクする HTML ハイパーリンクを簡単に動的に生成できます。 メソッドの最初の引数 `ActionLink` は、表示するリンクテキスト (など `<a>Edit Me</a>` ) です。 2番目の引数は、呼び出すアクションメソッドの名前です。 最後の引数は、ルートデータ (この場合は4の ID) を生成する[匿名オブジェクト](https://weblogs.asp.net/scottgu/archive/2007/05/15/new-orcas-language-feature-anonymous-types.aspx)です。
+`Html`オブジェクトは、基底クラスのプロパティを使用して公開されるヘルパーです `WebViewPage` 。 `ActionLink`ヘルパーのメソッドを使用すると、コントローラーのアクションメソッドにリンクする HTML ハイパーリンクを簡単に動的に生成できます。 メソッドの最初の引数 `ActionLink` は、表示するリンクテキスト (など `<a>Edit Me</a>` ) です。 2番目の引数は、呼び出すアクションメソッドの名前です。 最後の引数は、ルートデータ (この場合は4の ID) を生成する [匿名オブジェクト](https://weblogs.asp.net/scottgu/archive/2007/05/15/new-orcas-language-feature-anonymous-types.aspx) です。
 
 前の図に示すように、生成されたリンクは `http://localhost:xxxxx/Movies/Edit/4` です。 既定のルートは、URL パターンを受け取り `{controller}/{action}/{id}` ます。 したがって、ASP.NET は、 `http://localhost:xxxxx/Movies/Edit/4` `Edit` `Movies` パラメーターが4に等しいコントローラーのアクションメソッドへの要求に変換し `ID` ます。
 
@@ -65,13 +65,13 @@ ms.locfileid: "86163718"
 
 ビューテンプレートにファイルの先頭にステートメントが含まれていることに注意して `@model MvcMovie.Models.Movie` ください。これは、ビューがビューテンプレートのモデルを型と想定していることを示し `Movie` ます。
 
-スキャフォールディングコードでは、HTML マークアップを効率化するためにいくつかの*ヘルパーメソッド*を使用しています。 ヘルパーには、 [`Html.LabelFor`](https://msdn.microsoft.com/library/gg401864(VS.98).aspx) フィールドの名前 ("Title"、"ReleaseDate"、"Genre"、または "Price") が表示されます。 ヘルパーは、 [`Html.EditorFor`](https://msdn.microsoft.com/library/system.web.mvc.html.editorextensions.editorfor(VS.98).aspx) HTML 要素を表示し `<input>` ます。 ヘルパーには、 [`Html.ValidationMessageFor`](https://msdn.microsoft.com/library/system.web.mvc.html.validationextensions.validationmessagefor(VS.98).aspx) そのプロパティに関連付けられている検証メッセージが表示されます。
+スキャフォールディングコードでは、HTML マークアップを効率化するためにいくつかの *ヘルパーメソッド* を使用しています。 ヘルパーには、 [`Html.LabelFor`](https://msdn.microsoft.com/library/gg401864(VS.98).aspx) フィールドの名前 ("Title"、"ReleaseDate"、"Genre"、または "Price") が表示されます。 ヘルパーは、 [`Html.EditorFor`](https://msdn.microsoft.com/library/system.web.mvc.html.editorextensions.editorfor(VS.98).aspx) HTML 要素を表示し `<input>` ます。 ヘルパーには、 [`Html.ValidationMessageFor`](https://msdn.microsoft.com/library/system.web.mvc.html.validationextensions.validationmessagefor(VS.98).aspx) そのプロパティに関連付けられている検証メッセージが表示されます。
 
-アプリケーションを実行し、 */ムービー*の URL に移動します。 **[編集]** リンクをクリックします。 ブラウザーで、ページのソースを表示します。 ページの HTML は次の例のようになります。 (わかりやすくするためにメニューマークアップが除外されました)。
+アプリケーションを実行し、 */ムービー* の URL に移動します。 **[編集]** リンクをクリックします。 ブラウザーで、ページのソースを表示します。 ページの HTML は次の例のようになります。 (わかりやすくするためにメニューマークアップが除外されました)。
 
 [!code-html[Main](examining-the-edit-methods-and-edit-view/samples/sample4.html)]
 
-要素は、 `<input>` `<form>` `action` 属性が */Movies/Edit* URL にポストされるように設定されている HTML 要素に含まれています。 [**編集**] ボタンがクリックされると、フォームデータはサーバーにポストされます。
+要素は、 `<input>` `<form>` `action` 属性が */Movies/Edit* URL にポストされるように設定されている HTML 要素に含まれています。 [ **編集** ] ボタンがクリックされると、フォームデータはサーバーにポストされます。
 
 ## <a name="processing-the-post-request"></a>POST 要求の処理
 
@@ -111,7 +111,7 @@ ASP.NET framework モデルバインダーは、ポストされたフォーム�
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample7.cs)]
 
-メソッドの1行目では、 `SearchIndex` 次の[LINQ](https://msdn.microsoft.com/library/bb397926.aspx)クエリを作成してムービーを選択します。
+メソッドの1行目では、 `SearchIndex` 次の [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) クエリを作成してムービーを選択します。
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample8.cs)]
 
@@ -123,11 +123,11 @@ ASP.NET framework モデルバインダーは、ポストされたフォーム�
 
 LINQ クエリは、定義されている場合や、やなどのメソッドを呼び出すことによって変更された場合は実行されません `Where` `OrderBy` 。 代わりに、クエリの実行が遅延されます。つまり、式の評価は、その結果が実際に反復処理されるか、メソッドが呼び出されるまで遅延され [`ToList`](https://msdn.microsoft.com/library/bb342261.aspx) ます。 このサンプルでは、 `SearchIndex` クエリは SearchIndex ビューで実行されます。 クエリの遅延実行の詳細については、「[クエリの実行](https://msdn.microsoft.com/library/bb738633.aspx)」を参照してください。
 
-これで、フォームを `SearchIndex` ユーザーに表示するビューを実装できるようになりました。 メソッド内を右クリックし、 `SearchIndex` [**ビューの追加**] をクリックします。 [**ビューの追加**] ダイアログボックスで、 `Movie` モデルクラスとしてビューテンプレートにオブジェクトを渡すように指定します。 [**スキャフォールディング template** ] の一覧で [ **list**] を選択し、[ **Add**] をクリックします。
+これで、フォームを `SearchIndex` ユーザーに表示するビューを実装できるようになりました。 メソッド内を右クリックし、 `SearchIndex` [ **ビューの追加**] をクリックします。 [ **ビューの追加** ] ダイアログボックスで、 `Movie` モデルクラスとしてビューテンプレートにオブジェクトを渡すように指定します。 [ **スキャフォールディング template** ] の一覧で [ **list**] を選択し、[ **Add**] をクリックします。
 
 [![AddSearchView](examining-the-edit-methods-and-edit-view/_static/image12.png)](examining-the-edit-methods-and-edit-view/_static/image11.png)
 
-[**追加**] ボタンをクリックすると、 *Views\Movies\SearchIndex.cshtml* view テンプレートが作成されます。 [**スキャフォールディング template** ] の一覧で [ **list** ] を選択したので、Visual Web Developer はビューの一部の既定のコンテンツを自動的に生成 (スキャフォールディング) します。 スキャフォールディングによって HTML フォームが作成されました。 クラスを調べ、 `Movie` `<label>` クラスの各プロパティの要素をレンダリングするコードを作成しました。 次の一覧は、生成された Create ビューを示しています。
+[ **追加** ] ボタンをクリックすると、 *Views\Movies\SearchIndex.cshtml* view テンプレートが作成されます。 [**スキャフォールディング template** ] の一覧で [ **list** ] を選択したので、Visual Web Developer はビューの一部の既定のコンテンツを自動的に生成 (スキャフォールディング) します。 スキャフォールディングによって HTML フォームが作成されました。 クラスを調べ、 `Movie` `<label>` クラスの各プロパティの要素をレンダリングするコードを作成しました。 次の一覧は、生成された Create ビューを示しています。
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample10.cshtml)]
 
@@ -135,9 +135,9 @@ LINQ クエリは、定義されている場合や、やなどのメソッドを
 
 [![Searchqrキルギスタン r](examining-the-edit-methods-and-edit-view/_static/image14.png)](examining-the-edit-methods-and-edit-view/_static/image13.png)
 
-メソッドのシグネチャを `SearchIndex` 、という名前のパラメーターを持つように変更すると `id` 、 `id` パラメーターは `{id}` *global.asax*ファイルに設定されている既定のルートのプレースホルダーと一致します。
+メソッドのシグネチャを `SearchIndex` 、という名前のパラメーターを持つように変更すると `id` 、 `id` パラメーターは `{id}` *global.asax* ファイルに設定されている既定のルートのプレースホルダーと一致します。
 
-[!code-json[Main](examining-the-edit-methods-and-edit-view/samples/sample11.json)]
+[!code-json[Main](examining-the-edit-methods-and-edit-view/samples/sample11.txt)]
 
 変更後のメソッドは次のように `SearchIndex` なります。
 
@@ -155,11 +155,11 @@ LINQ クエリは、定義されている場合や、やなどのメソッドを
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample14.cshtml)]
 
-次の例では、フィルターマークアップが追加された*Views\Movies\SearchIndex.cshtml*ファイルの一部を示します。
+次の例では、フィルターマークアップが追加された *Views\Movies\SearchIndex.cshtml* ファイルの一部を示します。
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample15.cshtml)]
 
-ヘルパーは、 `Html.BeginForm` 開始タグを作成し `<form>` ます。 ヘルパーを使うと、 `Html.BeginForm` ユーザーが [**フィルター** ] ボタンをクリックしてフォームを送信したときに、フォームがポストされます。
+ヘルパーは、 `Html.BeginForm` 開始タグを作成し `<form>` ます。 ヘルパーを使うと、 `Html.BeginForm` ユーザーが [ **フィルター** ] ボタンをクリックしてフォームを送信したときに、フォームがポストされます。
 
 アプリケーションを実行し、ムービーを検索します。
 
@@ -207,7 +207,7 @@ LINQ クエリは、定義されている場合や、やなどのメソッドを
 
 ## <a name="adding-markup-to-the-searchindex-view-to-support-search-by-genre"></a>ジャンルによる検索をサポートするために、SearchIndex ビューにマークアップを追加する
 
-ヘルパーを `Html.DropDownList` ヘルパーの直前に*Views\Movies\SearchIndex.cshtml*ファイルに追加し `TextBox` ます。 完成したマークアップは次のようになります。
+ヘルパーを `Html.DropDownList` ヘルパーの直前に *Views\Movies\SearchIndex.cshtml* ファイルに追加し `TextBox` ます。 完成したマークアップは次のようになります。
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample21.cshtml)]
 

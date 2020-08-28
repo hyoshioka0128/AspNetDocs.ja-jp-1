@@ -8,23 +8,23 @@ ms.date: 08/28/2012
 ms.assetid: 41eb99ca-e88f-4720-ae6d-49a958da8116
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: 85ad9a5758d70b5fe4ed792efb80217d7b3e2132
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 16ce02ba00e13b4cff2d6e86b2d9e0684aab096e
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "86163054"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89044520"
 ---
 # <a name="examining-the-edit-methods-and-edit-view"></a>Edit メソッドと Edit ビューの確認
 
 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 > > [!NOTE]
-> > このチュートリアルの更新バージョンは、ASP.NET MVC 5 と Visual Studio 2013 を使用する[こちらで](../../getting-started/introduction/getting-started.md)入手できます。 より安全で、より簡単にフォローし、より多くの機能を紹介します。
+> > このチュートリアルの更新バージョンは、ASP.NET MVC 5 と Visual Studio 2013 を使用する [こちらで](../../getting-started/introduction/getting-started.md) 入手できます。 より安全で、より簡単にフォローし、より多くの機能を紹介します。
 
 このセクションでは、ムービーコントローラーに対して生成されたアクションメソッドとビューを確認します。 次に、カスタム検索ページを追加します。
 
-アプリケーションを実行し、 `Movies` ブラウザーのアドレスバーの URL に */ムービー*を追加して、コントローラーを参照します。 **編集**リンクの上にマウスポインターを置くと、リンク先の URL が表示されます。
+アプリケーションを実行し、 `Movies` ブラウザーのアドレスバーの URL に */ムービー* を追加して、コントローラーを参照します。 **編集**リンクの上にマウスポインターを置くと、リンク先の URL が表示されます。
 
 ![EditLink_sm](examining-the-edit-methods-and-edit-view/_static/image1.png)
 
@@ -34,7 +34,7 @@ ms.locfileid: "86163054"
 
 ![Html.actionlink](examining-the-edit-methods-and-edit-view/_static/image2.png)
 
-`Html`オブジェクトは、 [System.web. Mvc. WebViewPage](https://msdn.microsoft.com/library/gg402107(VS.98).aspx)基本クラスのプロパティを使用して公開されるヘルパーです。 `ActionLink`ヘルパーのメソッドを使用すると、コントローラーのアクションメソッドにリンクする HTML ハイパーリンクを簡単に動的に生成できます。 メソッドの最初の引数 `ActionLink` は、表示するリンクテキスト (など `<a>Edit Me</a>` ) です。 2番目の引数は、呼び出すアクションメソッドの名前です。 最後の引数は、ルートデータ (この場合は4の ID) を生成する[匿名オブジェクト](https://weblogs.asp.net/scottgu/archive/2007/05/15/new-orcas-language-feature-anonymous-types.aspx)です。
+`Html`オブジェクトは、 [System.web. Mvc. WebViewPage](https://msdn.microsoft.com/library/gg402107(VS.98).aspx)基本クラスのプロパティを使用して公開されるヘルパーです。 `ActionLink`ヘルパーのメソッドを使用すると、コントローラーのアクションメソッドにリンクする HTML ハイパーリンクを簡単に動的に生成できます。 メソッドの最初の引数 `ActionLink` は、表示するリンクテキスト (など `<a>Edit Me</a>` ) です。 2番目の引数は、呼び出すアクションメソッドの名前です。 最後の引数は、ルートデータ (この場合は4の ID) を生成する [匿名オブジェクト](https://weblogs.asp.net/scottgu/archive/2007/05/15/new-orcas-language-feature-anonymous-types.aspx) です。
 
 前の図に示すように、生成されたリンクは `http://localhost:xxxxx/Movies/Edit/4` です。 既定のルート ( *App \_ Start\RouteConfig.cs*で確立されます) は、URL パターンを受け取り `{controller}/{action}/{id}` ます。 したがって、ASP.NET は、 `http://localhost:xxxxx/Movies/Edit/4` `Edit` `Movies` パラメーターが4に等しいコントローラーのアクションメソッドへの要求に変換し `ID` ます。 *App \_ Start\RouteConfig.cs*ファイルから次のコードを確認します。
 
@@ -50,19 +50,19 @@ ms.locfileid: "86163054"
 
 2 番目の `Edit` アクション メソッドの前に `HttpPost` 属性が付いていることに注意してください。 この属性は、メソッドのオーバーロードを `Edit` POST 要求に対してのみ呼び出すことができるように指定します。 `HttpGet`最初の編集メソッドに属性を適用することもできますが、これは既定値なので必要ありません。 (メソッドとして暗黙的に属性を割り当てられるアクションメソッドを参照し `HttpGet` `HttpGet` ます)。
 
-`HttpGet` `Edit` メソッドはムービー ID パラメーターを受け取り、Entity Framework メソッドを使用してムービーを検索 `Find` し、選択したムービーを編集ビューに返します。 パラメーターを指定せずにメソッドが呼び出された場合、ID パラメーターは[既定値](https://msdn.microsoft.com/library/dd264739.aspx)のゼロを指定し `Edit` ます。 ムービーが見つからない場合は、 [HttpNotFound](https://msdn.microsoft.com/library/gg453938(VS.98).aspx)が返されます。 スキャフォールディング システムが編集ビューを作成したときは、そのシステムが `Movie` クラスを調べて、クラスの各プロパティの `<label>` および `<input>` 要素をレンダリングするコードを作成しました。 次の例は、生成された編集ビューを示しています。
+`HttpGet` `Edit` メソッドはムービー ID パラメーターを受け取り、Entity Framework メソッドを使用してムービーを検索 `Find` し、選択したムービーを編集ビューに返します。 パラメーターを指定せずにメソッドが呼び出された場合、ID パラメーターは [既定値](https://msdn.microsoft.com/library/dd264739.aspx) のゼロを指定し `Edit` ます。 ムービーが見つからない場合は、 [HttpNotFound](https://msdn.microsoft.com/library/gg453938(VS.98).aspx) が返されます。 スキャフォールディング システムが編集ビューを作成したときは、そのシステムが `Movie` クラスを調べて、クラスの各プロパティの `<label>` および `<input>` 要素をレンダリングするコードを作成しました。 次の例は、生成された編集ビューを示しています。
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample4.cshtml)]
 
 ビューテンプレートにファイルの先頭にステートメントが含まれていることに注意して `@model MvcMovie.Models.Movie` ください。これは、ビューがビューテンプレートのモデルを型と想定していることを示し `Movie` ます。
 
-スキャフォールディングコードでは、HTML マークアップを効率化するためにいくつかの*ヘルパーメソッド*を使用しています。 ヘルパーには、 [`Html.LabelFor`](https://msdn.microsoft.com/library/gg401864(VS.98).aspx) フィールドの名前 ( &quot; Title &quot; 、 &quot; releasedate &quot; 、 &quot; Genre &quot; 、または &quot; Price &quot; ) が表示されます。 ヘルパーは、 [`Html.EditorFor`](https://msdn.microsoft.com/library/system.web.mvc.html.editorextensions.editorfor(VS.98).aspx) HTML 要素をレンダリングし `<input>` ます。 ヘルパーには、 [`Html.ValidationMessageFor`](https://msdn.microsoft.com/library/system.web.mvc.html.validationextensions.validationmessagefor(VS.98).aspx) そのプロパティに関連付けられている検証メッセージが表示されます。
+スキャフォールディングコードでは、HTML マークアップを効率化するためにいくつかの *ヘルパーメソッド* を使用しています。 ヘルパーには、 [`Html.LabelFor`](https://msdn.microsoft.com/library/gg401864(VS.98).aspx) フィールドの名前 ( &quot; Title &quot; 、 &quot; releasedate &quot; 、 &quot; Genre &quot; 、または &quot; Price &quot; ) が表示されます。 ヘルパーは、 [`Html.EditorFor`](https://msdn.microsoft.com/library/system.web.mvc.html.editorextensions.editorfor(VS.98).aspx) HTML 要素をレンダリングし `<input>` ます。 ヘルパーには、 [`Html.ValidationMessageFor`](https://msdn.microsoft.com/library/system.web.mvc.html.validationextensions.validationmessagefor(VS.98).aspx) そのプロパティに関連付けられている検証メッセージが表示されます。
 
-アプリケーションを実行し、 */ムービー*の URL に移動します。 **[編集]** リンクをクリックします。 ブラウザーで、ページのソースを表示します。 Form 要素の HTML を次に示します。
+アプリケーションを実行し、 */ムービー* の URL に移動します。 **[編集]** リンクをクリックします。 ブラウザーで、ページのソースを表示します。 Form 要素の HTML を次に示します。
 
 [!code-html[Main](examining-the-edit-methods-and-edit-view/samples/sample5.html?highlight=7,10-11)]
 
-要素は、 `<input>` `<form>` `action` 属性が */Movies/Edit* URL にポストされるように設定されている HTML 要素に含まれています。 [**編集**] ボタンがクリックされると、フォームデータはサーバーにポストされます。
+要素は、 `<input>` `<form>` `action` 属性が */Movies/Edit* URL にポストされるように設定されている HTML 要素に含まれています。 [ **編集** ] ボタンがクリックされると、フォームデータはサーバーにポストされます。
 
 ## <a name="processing-the-post-request"></a>POST 要求の処理
 
@@ -77,7 +77,7 @@ ms.locfileid: "86163054"
 ![abcNotValid](examining-the-edit-methods-and-edit-view/_static/image4.png)
 
 > [!NOTE]
-> 小数点にコンマ (,) を使用する英語以外のロケールの jQuery 検証をサポートするには、 &quot; &quot; *globalize.js*および特定の*カルチャ/globalize.cultures.js*ファイル (from [https://github.com/jquery/globalize](https://github.com/jquery/globalize) ) と JavaScript を使用する必要があり `Globalize.parseFloat` ます。 次のコードは、fr-fr カルチャを操作するための Views\Movies\Edit.cshtml ファイルの変更を示してい &quot; &quot; ます。
+> 小数点にコンマ (,) を使用する英語以外のロケールの jQuery 検証をサポートするには、 &quot; &quot; *globalize.js* および特定の *カルチャ/globalize.cultures.js* ファイル (from [https://github.com/jquery/globalize](https://github.com/jquery/globalize) ) と JavaScript を使用する必要があり `Globalize.parseFloat` ます。 次のコードは、fr-fr カルチャを操作するための Views\Movies\Edit.cshtml ファイルの変更を示してい &quot; &quot; ます。
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample7.cshtml)]
 
@@ -85,7 +85,7 @@ ms.locfileid: "86163054"
 
 [!code-xml[Main](examining-the-edit-methods-and-edit-view/samples/sample8.xml)]
 
-すべての `HttpGet` メソッドは同様のパターンに従います。 これらは、ムービーオブジェクト (またはの場合はオブジェクトの一覧) を取得 `Index` し、モデルをビューに渡します。 メソッドは、 `Create` 空のムービーオブジェクトを Create ビューに渡します。 データの作成、編集、削除、またはそれ以外の変更を行うすべてのメソッドは、メソッドの `HttpPost` のオーバーロードでそれを行います。 HTTP GET メソッドでのデータの変更は、セキュリティ上のリスクがあります。ブログ投稿「 [ASP.NET MVC Tip #46 –セキュリティホールを作成](http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx)するので、Delete リンクは使用しない」を参照してください。 GET メソッドでデータを変更することは、HTTP のベストプラクティスおよびアーキテクチャの[REST](http://en.wikipedia.org/wiki/Representational_State_Transfer)パターンにも違反します。これは、get 要求でアプリケーションの状態を変更しないことを指定します。 つまり、GET 操作の実行は、副作用がなく、永続化されたデータを変更しない、安全な操作である必要があります。
+すべての `HttpGet` メソッドは同様のパターンに従います。 これらは、ムービーオブジェクト (またはの場合はオブジェクトの一覧) を取得 `Index` し、モデルをビューに渡します。 メソッドは、 `Create` 空のムービーオブジェクトを Create ビューに渡します。 データの作成、編集、削除、またはそれ以外の変更を行うすべてのメソッドは、メソッドの `HttpPost` のオーバーロードでそれを行います。 HTTP GET メソッドでのデータの変更は、セキュリティ上のリスクがあります。ブログ投稿「 [ASP.NET MVC Tip #46 –セキュリティホールを作成](http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx)するので、Delete リンクは使用しない」を参照してください。 GET メソッドでデータを変更することは、HTTP のベストプラクティスおよびアーキテクチャの [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer) パターンにも違反します。これは、get 要求でアプリケーションの状態を変更しないことを指定します。 つまり、GET 操作の実行は、副作用がなく、永続化されたデータを変更しない、安全な操作である必要があります。
 
 ## <a name="adding-a-search-method-and-search-view"></a>検索メソッドと検索ビューの追加
 
@@ -97,7 +97,7 @@ ms.locfileid: "86163054"
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample9.cs)]
 
-メソッドの1行目では、 `SearchIndex` 次の[LINQ](https://msdn.microsoft.com/library/bb397926.aspx)クエリを作成してムービーを選択します。
+メソッドの1行目では、 `SearchIndex` 次の [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) クエリを作成してムービーを選択します。
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample10.cs)]
 
@@ -107,13 +107,13 @@ ms.locfileid: "86163054"
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample11.cs)]
 
-上の `s => s.Title` コードは[ラムダ式](https://msdn.microsoft.com/library/bb397687.aspx)です。 ラムダは、メソッドベースの[LINQ](https://msdn.microsoft.com/library/bb397926.aspx)クエリで、上記のコードで使用される[Where](https://msdn.microsoft.com/library/system.linq.enumerable.where.aspx)メソッドなどの標準クエリ演算子メソッドの引数として使用されます。 LINQ クエリは、定義されている場合や、やなどのメソッドを呼び出すことによって変更された場合は実行されません `Where` `OrderBy` 。 代わりに、クエリの実行が遅延されます。つまり、式の評価は、その結果が実際に反復処理されるか、メソッドが呼び出されるまで遅延され [`ToList`](https://msdn.microsoft.com/library/bb342261.aspx) ます。 このサンプルでは、 `SearchIndex` クエリは SearchIndex ビューで実行されます。 クエリの遅延実行の詳細については、「[クエリの実行](https://msdn.microsoft.com/library/bb738633.aspx)」を参照してください。
+上の `s => s.Title` コードは[ラムダ式](https://msdn.microsoft.com/library/bb397687.aspx)です。 ラムダは、メソッドベースの [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) クエリで、上記のコードで使用される [Where](https://msdn.microsoft.com/library/system.linq.enumerable.where.aspx) メソッドなどの標準クエリ演算子メソッドの引数として使用されます。 LINQ クエリは、定義されている場合や、やなどのメソッドを呼び出すことによって変更された場合は実行されません `Where` `OrderBy` 。 代わりに、クエリの実行が遅延されます。つまり、式の評価は、その結果が実際に反復処理されるか、メソッドが呼び出されるまで遅延され [`ToList`](https://msdn.microsoft.com/library/bb342261.aspx) ます。 このサンプルでは、 `SearchIndex` クエリは SearchIndex ビューで実行されます。 クエリの遅延実行の詳細については、「[クエリの実行](https://msdn.microsoft.com/library/bb738633.aspx)」を参照してください。
 
-これで、フォームを `SearchIndex` ユーザーに表示するビューを実装できるようになりました。 メソッド内を右クリックし、 `SearchIndex` [**ビューの追加**] をクリックします。 [**ビューの追加**] ダイアログボックスで、 `Movie` モデルクラスとしてビューテンプレートにオブジェクトを渡すように指定します。 [**スキャフォールディング template** ] の一覧で [ **list**] を選択し、[ **Add**] をクリックします。
+これで、フォームを `SearchIndex` ユーザーに表示するビューを実装できるようになりました。 メソッド内を右クリックし、 `SearchIndex` [ **ビューの追加**] をクリックします。 [ **ビューの追加** ] ダイアログボックスで、 `Movie` モデルクラスとしてビューテンプレートにオブジェクトを渡すように指定します。 [ **スキャフォールディング template** ] の一覧で [ **list**] を選択し、[ **Add**] をクリックします。
 
 ![AddSearchView](examining-the-edit-methods-and-edit-view/_static/image5.png)
 
-[**追加**] ボタンをクリックすると、 *Views\Movies\SearchIndex.cshtml* view テンプレートが作成されます。 [**スキャフォールディング template** ] の一覧で [ **list** ] を選択したので、Visual Studio では、既定のマークアップがビューに自動的に生成されます (スキャフォールディング)。 スキャフォールディングによって HTML フォームが作成されました。 クラスを調べ、 `Movie` `<label>` クラスの各プロパティの要素をレンダリングするコードを作成しました。 次の一覧は、生成された Create ビューを示しています。
+[ **追加** ] ボタンをクリックすると、 *Views\Movies\SearchIndex.cshtml* view テンプレートが作成されます。 [**スキャフォールディング template** ] の一覧で [ **list** ] を選択したので、Visual Studio では、既定のマークアップがビューに自動的に生成されます (スキャフォールディング)。 スキャフォールディングによって HTML フォームが作成されました。 クラスを調べ、 `Movie` `<label>` クラスの各プロパティの要素をレンダリングするコードを作成しました。 次の一覧は、生成された Create ビューを示しています。
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample12.cshtml)]
 
@@ -121,9 +121,9 @@ ms.locfileid: "86163054"
 
 ![Searchqrキルギスタン r](examining-the-edit-methods-and-edit-view/_static/image6.png)
 
-メソッドのシグネチャを `SearchIndex` 、という名前のパラメーターを持つように変更すると `id` 、 `id` パラメーターは `{id}` *global.asax*ファイルに設定されている既定のルートのプレースホルダーと一致します。
+メソッドのシグネチャを `SearchIndex` 、という名前のパラメーターを持つように変更すると `id` 、 `id` パラメーターは `{id}` *global.asax* ファイルに設定されている既定のルートのプレースホルダーと一致します。
 
-[!code-json[Main](examining-the-edit-methods-and-edit-view/samples/sample13.json)]
+[!code-json[Main](examining-the-edit-methods-and-edit-view/samples/sample13.txt)]
 
 元のメソッドは次のようになります。 `SearchIndex`
 
@@ -145,11 +145,11 @@ ms.locfileid: "86163054"
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample17.cshtml?highlight=2)]
 
-次の例では、フィルターマークアップが追加された*Views\Movies\SearchIndex.cshtml*ファイルの一部を示します。
+次の例では、フィルターマークアップが追加された *Views\Movies\SearchIndex.cshtml* ファイルの一部を示します。
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample18.cshtml?highlight=12-15)]
 
-ヘルパーは、 `Html.BeginForm` 開始タグを作成し `<form>` ます。 ヘルパーを使うと、 `Html.BeginForm` ユーザーが [**フィルター** ] ボタンをクリックしてフォームを送信したときに、フォームがポストされます。
+ヘルパーは、 `Html.BeginForm` 開始タグを作成し `<form>` ます。 ヘルパーを使うと、 `Html.BeginForm` ユーザーが [ **フィルター** ] ボタンをクリックしてフォームを送信したときに、フォームがポストされます。
 
 アプリケーションを実行し、ムービーを検索します。
 
@@ -197,7 +197,7 @@ ms.locfileid: "86163054"
 
 ## <a name="adding-markup-to-the-searchindex-view-to-support-search-by-genre"></a>ジャンルによる検索をサポートするために、SearchIndex ビューにマークアップを追加する
 
-ヘルパーを `Html.DropDownList` ヘルパーの直前に*Views\Movies\SearchIndex.cshtml*ファイルに追加し `TextBox` ます。 完成したマークアップは次のようになります。
+ヘルパーを `Html.DropDownList` ヘルパーの直前に *Views\Movies\SearchIndex.cshtml* ファイルに追加し `TextBox` ます。 完成したマークアップは次のようになります。
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample24.cshtml?highlight=4)]
 

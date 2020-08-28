@@ -8,16 +8,16 @@ ms.date: 01/17/2019
 ms.assetid: df001954-18bf-4550-b03d-43911a0ea186
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-search
 msc.type: authoredcontent
-ms.openlocfilehash: f6d6d32a648fed453be924790a1b55698c9cf209
-ms.sourcegitcommit: 0d583ed9253103f3e50b6d729276e667591cdd41
+ms.openlocfilehash: be4e4d13e574b0fcb77d2d0fb8c6f58041b1ece2
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86211468"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89044928"
 ---
 # <a name="search"></a>検索
 
-[!INCLUDE [Tutorial Note](index.md)]
+[!INCLUDE [consider RP](~/includes/razor.md)]
 
 ## <a name="adding-a-search-method-and-search-view"></a>検索メソッドと検索ビューの追加
 
@@ -39,7 +39,7 @@ ms.locfileid: "86211468"
 
 [!code-csharp[Main](adding-search/samples/sample1.cs?highlight=1,6-9)]
 
-メソッドの1行目では、 `Index` 次の[LINQ](https://msdn.microsoft.com/library/bb397926.aspx)クエリを作成してムービーを選択します。
+メソッドの1行目では、 `Index` 次の [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) クエリを作成してムービーを選択します。
 
 [!code-csharp[Main](adding-search/samples/sample2.cs)]
 
@@ -49,7 +49,7 @@ ms.locfileid: "86211468"
 
 [!code-csharp[Main](adding-search/samples/sample3.cs)]
 
-上の `s => s.Title` コードは[ラムダ式](https://msdn.microsoft.com/library/bb397687.aspx)です。 ラムダは、メソッドベースの[LINQ](https://msdn.microsoft.com/library/bb397926.aspx)クエリで、上記のコードで使用される[Where](https://msdn.microsoft.com/library/system.linq.enumerable.where.aspx)メソッドなどの標準クエリ演算子メソッドの引数として使用されます。 LINQ クエリは、定義されている場合や、やなどのメソッドを呼び出すことによって変更された場合は実行されません `Where` `OrderBy` 。 代わりに、クエリの実行が遅延されます。つまり、式の評価は、その結果が実際に反復処理されるか、メソッドが呼び出されるまで遅延され [`ToList`](https://msdn.microsoft.com/library/bb342261.aspx) ます。 この `Search` サンプルでは、クエリは、 *cshtml*ビューで実行されます。 クエリの遅延実行の詳細については、「[クエリの実行](https://msdn.microsoft.com/library/bb738633.aspx)」を参照してください。
+上の `s => s.Title` コードは[ラムダ式](https://msdn.microsoft.com/library/bb397687.aspx)です。 ラムダは、メソッドベースの [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) クエリで、上記のコードで使用される [Where](https://msdn.microsoft.com/library/system.linq.enumerable.where.aspx) メソッドなどの標準クエリ演算子メソッドの引数として使用されます。 LINQ クエリは、定義されている場合や、やなどのメソッドを呼び出すことによって変更された場合は実行されません `Where` `OrderBy` 。 代わりに、クエリの実行が遅延されます。つまり、式の評価は、その結果が実際に反復処理されるか、メソッドが呼び出されるまで遅延され [`ToList`](https://msdn.microsoft.com/library/bb342261.aspx) ます。 この `Search` サンプルでは、クエリは、 *cshtml* ビューで実行されます。 クエリの遅延実行の詳細については、「[クエリの実行](https://msdn.microsoft.com/library/bb738633.aspx)」を参照してください。
 
 > [!NOTE]
 > [Contains](https://msdn.microsoft.com/library/bb155125.aspx)メソッドは、上記の c# コードではなく、データベースで実行されます。 データベースでは、には、大文字と小文字を区別しない[SQL のような](https://msdn.microsoft.com/library/ms179859.aspx)マップ[が含まれてい](https://msdn.microsoft.com/library/bb155125.aspx)ます。
@@ -60,9 +60,9 @@ ms.locfileid: "86211468"
 
 ![Searchqrキルギスタン r](adding-search/_static/image1.png)
 
-メソッドのシグネチャを `Index` 、という名前のパラメーターを持つように変更すると、パラメーターは、 `id` `id` `{id}` *App \_ Start\RouteConfig.cs*ファイルに設定されている既定のルートのプレースホルダーと一致します。
+メソッドのシグネチャを `Index` 、という名前のパラメーターを持つように変更すると、パラメーターは、 `id` `id` `{id}` *App \_ Start\RouteConfig.cs* ファイルに設定されている既定のルートのプレースホルダーと一致します。
 
-[!code-json[Main](adding-search/samples/sample4.json)]
+[!code-json[Main](adding-search/samples/sample4.txt)]
 
 元のメソッドは次のようになります。 `Index`
 
@@ -84,7 +84,7 @@ ms.locfileid: "86211468"
 
 [!code-cshtml[Main](adding-search/samples/sample8.cshtml?highlight=12-15)]
 
-ヘルパーは、 `Html.BeginForm` 開始タグを作成し `<form>` ます。 ヘルパーを使うと、 `Html.BeginForm` ユーザーが [**フィルター** ] ボタンをクリックしてフォームを送信したときに、フォームがポストされます。
+ヘルパーは、 `Html.BeginForm` 開始タグを作成し `<form>` ます。 ヘルパーを使うと、 `Html.BeginForm` ユーザーが [ **フィルター** ] ボタンをクリックしてフォームを送信したときに、フォームがポストされます。
 
 ビューファイルを表示したり編集したりすると、Visual Studio 2013 の機能が向上します。 ビューファイルを開いた状態でアプリケーションを実行すると、Visual Studio 2013 によって正しいコントローラーアクションメソッドが呼び出され、ビューが表示されます。
 
@@ -128,7 +128,7 @@ ms.locfileid: "86211468"
 
 [!code-csharp[Main](adding-search/samples/sample12.cs)]
 
-このコードでは、ジェネリックコレクションのメソッドを使用して、 `AddRange` `List` リストにすべての個別のジャンルを追加します。 (修飾子を指定しないと `Distinct` 、重複するジャンルが追加されます。たとえば、サンプルではコメディが2回追加されます)。 次に、このコードでは、オブジェクトにジャンルの一覧を格納し `ViewBag.MovieGenre` ます。 カテゴリデータ (ムービーのジャンルなど) を内の[Selectlist](https://msdn.microsoft.cus/library/system.web.mvc.selectlist(v=vs.108).aspx)オブジェクトとして格納した `ViewBag` 後、ドロップダウンリストボックスでカテゴリデータにアクセスすることは、MVC アプリケーションの一般的な方法です。
+このコードでは、ジェネリックコレクションのメソッドを使用して、 `AddRange` `List` リストにすべての個別のジャンルを追加します。 (修飾子を指定しないと `Distinct` 、重複するジャンルが追加されます。たとえば、サンプルではコメディが2回追加されます)。 次に、このコードでは、オブジェクトにジャンルの一覧を格納し `ViewBag.MovieGenre` ます。 カテゴリデータ (ムービーのジャンルなど) を内の [Selectlist](https://msdn.microsoft.cus/library/system.web.mvc.selectlist(v=vs.108).aspx) オブジェクトとして格納した `ViewBag` 後、ドロップダウンリストボックスでカテゴリデータにアクセスすることは、MVC アプリケーションの一般的な方法です。
 
 次のコードは、パラメーターを確認する方法を示して `movieGenre` います。 空でない場合は、選択したムービーが指定したジャンルに限定されるように、ムービークエリがさらに制限されます。
 
@@ -138,7 +138,7 @@ ms.locfileid: "86211468"
 
 ## <a name="adding-markup-to-the-index-view-to-support-search-by-genre"></a>ジャンルによる検索をサポートするためにマークアップをインデックスビューに追加する
 
-ヘルパーを `Html.DropDownList` ヘルパーの直前に*Views\Movies\Index.cshtml*ファイルに追加し `TextBox` ます。 完成したマークアップは次のようになります。
+ヘルパーを `Html.DropDownList` ヘルパーの直前に *Views\Movies\Index.cshtml* ファイルに追加し `TextBox` ます。 完成したマークアップは次のようになります。
 
 [!code-cshtml[Main](adding-search/samples/sample14.cshtml?highlight=11)]
 

@@ -8,14 +8,14 @@ ms.date: 04/21/2011
 ms.assetid: b3193d33-2d0b-4d98-9712-58bd897c62ec
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6
 msc.type: authoredcontent
-ms.openlocfilehash: bc031dd5be61cc6707c522f85f6af77a420c8b31
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 24d3f028a9a720e5b526518624c9c1c2ce2c37d4
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78433534"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89044949"
 ---
-# <a name="part-6-using-data-annotations-for-model-validation"></a>パート 6: モデルの検証にデータ注釈を使用する
+# <a name="part-6-using-data-annotations-for-model-validation"></a>第 6 部:モデル検証にデータ注釈を使用する
 
 ( [Jon Galloway](https://github.com/jongalloway) )
 
@@ -33,16 +33,16 @@ ms.locfileid: "78433534"
 
 次のデータ注釈属性を使用します。
 
-- **必須**–プロパティが必須フィールドであることを示します。
+- **必須** –プロパティが必須フィールドであることを示します。
 - **DisplayName** –フォームフィールドおよび検証メッセージで使用するテキストを定義します。
 - **Stringlength** –文字列フィールドの最大長を定義します。
 - **Range** –数値フィールドの最大値と最小値を指定します。
 - **Bind** –パラメーターまたはフォーム値をモデルプロパティにバインドするときに、除外または含めるフィールドを一覧表示します
 - **ScaffoldColumn** –エディターフォームのフィールドを非表示にすることができます
 
-*注: データ注釈属性を使用したモデル検証の詳細については、MSDN のドキュメントを参照してください*[`https://go.microsoft.com/fwlink/?LinkId=159063`](https://go.microsoft.com/fwlink/?LinkId=159063)
+*注: データ注釈属性を使用したモデル検証の詳細については、MSDN ドキュメント () を参照してください。*[`https://go.microsoft.com/fwlink/?LinkId=159063`](https://go.microsoft.com/fwlink/?LinkId=159063)
 
-アルバムクラスを開き、次の*using*ステートメントを先頭に追加します。
+アルバムクラスを開き、次の *using* ステートメントを先頭に追加します。
 
 [!code-csharp[Main](mvc-music-store-part-6/samples/sample1.cs)]
 

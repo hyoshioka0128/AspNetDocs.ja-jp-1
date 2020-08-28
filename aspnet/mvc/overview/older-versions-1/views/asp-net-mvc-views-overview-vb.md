@@ -8,12 +8,12 @@ ms.date: 02/16/2008
 ms.assetid: c28ba88d-3a93-47f5-a306-049bd766714d
 msc.legacyurl: /mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f02728ed248f29b09d654e509977ed43889cbb83
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: a07d15cb14e9ef90b62c5a8702dee53f1a0a6032
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78435274"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89044667"
 ---
 # <a name="aspnet-mvc-views-overview-vb"></a>ASP.NET MVC ビュー概要 (VB)
 
@@ -25,7 +25,7 @@ ms.locfileid: "78435274"
 
 ## <a name="understanding-views"></a>ビューについて
 
-ASP.NET または Active Server ページとは異なり、ASP.NET MVC には、ページに直接対応するものは含まれません。 ASP.NET MVC アプリケーションでは、ブラウザーのアドレスバーに入力する URL 内のパスに対応するページがディスク上にありません。 ASP.NET MVC アプリケーションのページに最も近いのは、*ビュー*と呼ばれるものです。
+ASP.NET または Active Server ページとは異なり、ASP.NET MVC には、ページに直接対応するものは含まれません。 ASP.NET MVC アプリケーションでは、ブラウザーのアドレスバーに入力する URL 内のパスに対応するページがディスク上にありません。 ASP.NET MVC アプリケーションのページに最も近いのは、 *ビュー*と呼ばれるものです。
 
 ASP.NET MVC アプリケーションでは、入力方向のブラウザー要求がコントローラーアクションにマップされます。 コントローラーアクションはビューを返すことがあります。 ただし、コントローラーアクションでは、他の種類のアクション (別のコントローラーアクションへのリダイレクトなど) が実行される場合があります。
 
@@ -57,7 +57,7 @@ View ()
 
 必要に応じて、ビューを明示的に指定することもできます。 次のコード行では、Fred という名前のビューが返されます。
 
-View( Fred )
+ビュー (Fred)
 
 このコード行を実行すると、次のパスからビューが返されます。
 
@@ -81,15 +81,15 @@ View( Fred )
 
 &lt;% Response. 書き込み (DateTime. Now)%&gt;
 
-スクリプトの区切り記号 &lt;% および%&gt; を使用して、スクリプトの先頭と末尾にマークを付けます。 このスクリプトは、Visual basic で記述されています。 ブラウザーにコンテンツを表示するために、Write () メソッドを呼び出して現在の日付と時刻を表示します。 スクリプトの区切り記号 &lt;% および%&gt; を使用して、1つまたは複数のステートメントを実行できます。
+スクリプト &lt; &gt; の先頭と末尾を示すには、スクリプトの区切り記号% と% を使用します。 このスクリプトは、Visual basic で記述されています。 ブラウザーにコンテンツを表示するために、Write () メソッドを呼び出して現在の日付と時刻を表示します。 スクリプトの区切り記号 &lt; % と% を使用して、 &gt; 1 つまたは複数のステートメントを実行できます。
 
-Response. Write () を呼び出すと、Microsoft から、Response () メソッドを呼び出すためのショートカットが提供されます。 リスト3のビューでは、応答の呼び出し () のショートカットとして、区切り記号 &lt;% = および%&gt; を使用します。
+Response. Write () を呼び出すと、Microsoft から、Response () メソッドを呼び出すためのショートカットが提供されます。 リスト3のビューでは、 &lt; &gt; 応答の呼び出し () のショートカットとして区切り記号% = と% を使用します。
 
 **リスト 3-Views\Home\Index2.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample3.aspx)]
 
-任意の .NET 言語を使用して、動的なコンテンツをビューに生成できます。 通常は、Visual Basic .NET またはC#を使用して、コントローラーとビューを作成します。
+任意の .NET 言語を使用して、動的なコンテンツをビューに生成できます。 通常は、Visual Basic .NET または C# のいずれかを使用して、コントローラーとビューを記述します。
 
 ## <a name="using-html-helpers-to-generate-view-content"></a>HTML ヘルパーを使用したビューコンテンツの生成
 
@@ -101,13 +101,13 @@ Response. Write () を呼び出すと、Microsoft から、Response () メソッ
 
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample4.aspx)]
 
-[[新しいプロジェクト] ダイアログボックスの ![](asp-net-mvc-views-overview-vb/_static/image1.jpg)](asp-net-mvc-views-overview-vb/_static/image1.png)
+[![[New Project]\(新しいプロジェクト\) ダイアログ ボックス](asp-net-mvc-views-overview-vb/_static/image1.jpg)](asp-net-mvc-views-overview-vb/_static/image1.png)
 
 **図 01**: 標準のログインフォーム ([クリックすると、フルサイズの画像が表示](asp-net-mvc-views-overview-vb/_static/image2.png)される)
 
 すべての HTML ヘルパーメソッドは、ビューの Html プロパティで呼び出されます。 たとえば、TextBox () メソッドを呼び出すことによってテキストボックスをレンダリングします。
 
-Html の TextBox () ヘルパーと .Html () ヘルパーの両方を呼び出すときは、スクリプトの区切り記号 &lt;% = および%&gt; を使用することに注意してください。 これらのヘルパーは単に文字列を返します。 文字列をブラウザーに表示するには、Response. Write () を呼び出す必要があります。
+&lt; &gt; Html の TextBox () ヘルパーと .html () ヘルパーの両方を呼び出すときは、スクリプトの区切り記号% = と% を使用することに注意してください。 これらのヘルパーは単に文字列を返します。 文字列をブラウザーに表示するには、Response. Write () を呼び出す必要があります。
 
 HTML ヘルパーメソッドの使用は省略可能です。 記述する必要のある HTML およびスクリプトの量を減らすことで、作業が簡単になります。 リスト5のビューでは、HTML ヘルパーを使用せずに、リスト4のビューとまったく同じ形式がレンダリングされます。
 
@@ -115,7 +115,7 @@ HTML ヘルパーメソッドの使用は省略可能です。 記述する必�
 
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample5.aspx)]
 
-独自の HTML ヘルパーを作成することもできます。 たとえば、データベースレコードのセットを HTML テーブルに自動的に表示する GridView () ヘルパーメソッドを作成できます。 このトピックでは、**カスタム HTML ヘルパーの作成**について説明します。
+独自の HTML ヘルパーを作成することもできます。 たとえば、データベースレコードのセットを HTML テーブルに自動的に表示する GridView () ヘルパーメソッドを作成できます。 このトピックでは、 **カスタム HTML ヘルパーの作成**について説明します。
 
 ## <a name="using-view-data-to-pass-data-to-a-view"></a>ビューデータを使用してビューにデータを渡す
 
@@ -133,13 +133,13 @@ Controller ViewData プロパティは、名前と値のペアのコレクショ
 
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample7.aspx)]
 
-このビューでは、メッセージを表示するときに html. Encode () HTML ヘルパーメソッドが利用されていることに注意してください。 Html. Encode () HTML ヘルパーは、&lt; や &gt; などの特殊文字を、web ページに安全に表示できる文字にエンコードします。 ユーザーが web サイトに送信するコンテンツをレンダリングするときは常に、JavaScript インジェクション攻撃を防ぐためにコンテンツをエンコードする必要があります。
+このビューでは、メッセージを表示するときに html. Encode () HTML ヘルパーメソッドが利用されていることに注意してください。 Html の Encode () HTML ヘルパーは、やなどの特殊文字を、 &lt; &gt; web ページに安全に表示できる文字にエンコードします。 ユーザーが web サイトに送信するコンテンツをレンダリングするときは常に、JavaScript インジェクション攻撃を防ぐためにコンテンツをエンコードする必要があります。
 
 (ProductController に自分でメッセージを作成したので、実際にはメッセージをエンコードする必要はありません。 ただし、ビュー内のビューデータから取得したコンテンツを表示するときは、常に Html の Encode () メソッドを呼び出すことをお勧めします。
 
 リスト7では、ビューデータを利用して、コントローラーからビューに単純な文字列メッセージを渡していました。 また、ビューデータを使用して、データベースレコードのコレクションなど、他の種類のデータをコントローラーからビューに渡すこともできます。 たとえば、Products データベーステーブルの内容をビューに表示する場合は、データベースレコードのコレクションをビューデータに渡すことになります。
 
-また、厳密に型指定されたビューデータをコントローラーからビューに渡すこともできます。 このトピックでは、厳密に**型指定されたビューのデータとビューについ**て説明します。
+また、厳密に型指定されたビューデータをコントローラーからビューに渡すこともできます。 このトピックでは、厳密に **型指定されたビューのデータとビューについ**て説明します。
 
 ## <a name="summary"></a>まとめ
 

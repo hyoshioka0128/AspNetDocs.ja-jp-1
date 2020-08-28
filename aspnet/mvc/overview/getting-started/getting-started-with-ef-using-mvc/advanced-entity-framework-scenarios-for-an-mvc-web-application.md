@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.assetid: f35a9b0c-49ef-4cde-b06d-19d1543feb0b
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: d7cc83a5b78a60f575f5c3065079679189296a0c
-ms.sourcegitcommit: c9d9210e0d16fbb3829b7688cfb832dc263c79cc
+ms.openlocfilehash: 2bfa4401c73b56be87502ffbb189abab3c59c226
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "86188732"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89045001"
 ---
 # <a name="tutorial-learn-about-advanced-ef-scenarios-for-an-mvc-5-web-app"></a>チュートリアル: MVC 5 Web アプリの高度な EF シナリオについて説明します。
 
@@ -130,7 +130,7 @@ Contoso 大学の管理者が、すべてのコースのクレジットの数を
 
 次に、ステートメントにブレークポイントを設定し `return` ます (その行のカーソルを使用して、F9 キーを押します)。 **F5**キーを押してプロジェクトをデバッグモードで実行し、[Course Index] ページを選択します。 コードがブレークポイントに到達したら、 `sql` 変数を調べます。 SQL Server に送信されるクエリが表示されます。 これは単純な `Select` ステートメントです。
 
-[!code-json[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample7.json)]
+[!code-json[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample7.sql)]
 
 虫眼鏡をクリックすると、 **テキストビジュアライザー**でクエリが表示されます。
 
@@ -292,7 +292,7 @@ Visual Studio を終了します。 プロジェクトを再度開き、もう�
 
 [完成したプロジェクトのダウンロード](https://webpifeed.blob.core.windows.net/webpifeed/Partners/ASP.NET%20MVC%20Application%20Using%20Entity%20Framework%20Code%20First.zip)
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="additional-resources"></a>その他の技術情報
 
  Entity Framework を使用してデータを操作する方法の詳細については、 [MSDN の EF ドキュメントページ](https://msdn.microsoft.com/data/ee712907) および [ASP.NET Data Access の推奨リソース](../../../../whitepapers/aspnet-data-access-content-map.md)に関するページを参照してください。
 
@@ -300,7 +300,7 @@ Web アプリケーションを構築した後にデプロイする方法の詳�
 
 認証や承認など、MVC に関連するその他のトピックについては、 [ASP.NET mvc の推奨リソース](../recommended-resources-for-mvc.md)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次の作業を行いました。
 
