@@ -889,7 +889,7 @@ Web アプリケーション プロジェクトの場合、Visual Studio 2012 �
 <a id="_Toc318097428"></a>
 ### <a name="iis-express"></a>IIS Express
 
-Visual Studio で Web プロジェクトをテストするための既定の Web サーバーが IIS エクスプレスになりました。 開発中のローカル Web サーバーの場合は、Visual Studio 開発サーバーが依然としてオプションですが、IIS Express が推奨されるサーバーになりました。 Visual Studio 11 ベータ版で IIS エクスプレスを使用するエクスペリエンスは、Visual Studio 2010 SP1 での使用と非常によく似ています。
+Visual Studio で Web プロジェクトをテストするための既定の Web サーバーが IIS Express になりました。 開発中のローカル Web サーバーの場合は、Visual Studio 開発サーバーが依然としてオプションですが、IIS Express が推奨されるサーバーになりました。 Visual Studio 11 ベータ版で IIS Express を使用するエクスペリエンスは、Visual Studio 2010 SP1 での使用と非常によく似ています。
 
 <a id="_Toc318097429"></a>
 ## <a name="disclaimer"></a>免責事項
