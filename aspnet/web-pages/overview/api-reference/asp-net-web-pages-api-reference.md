@@ -1,6 +1,6 @@
 ---
 uid: web-pages/overview/api-reference/asp-net-web-pages-api-reference
-title: ASP.NET ウェブページ (Razor) API クイック リファレンス |マイクロソフトドキュメント
+title: ASP.NET Web ページ (Razor) API クイック リファレンス |マイクロソフトドキュメント
 author: Rick-Anderson
 description: このページには、最も一般的に使用されるオブジェクト、プロパティ、および Razor 構文を使用して Web ページをプログラミングするためのメソッドの簡単な例ASP.NETリストが含まれています。
 ms.author: riande
@@ -28,7 +28,7 @@ ms.locfileid: "80675851"
 > ## <a name="software-versions"></a>ソフトウェアバージョン
 > 
 > 
-> - ASP.NET ウェブページ (Razor) 3
+> - ASP.NET Web ページ (Razor) 3
 >   
 > 
 > このチュートリアルは、ASP.NET Web ページ 2 と ASP.NET Web ページ 1.0 でも動作します (v2 とマークされた機能を除く)。
